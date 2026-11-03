@@ -80,7 +80,11 @@ About 10 topics x 3 levels x 5-10 problems = roughly 150-300 problems. Each prob
 - The name AlgoMashq is decided. The site runs on the free Cloudflare address `algomashq.<subdomain>.workers.dev`.
   A paid custom domain (`algomashq.dev`) is optional and can wait.
 - Confirmation of the VPS option for code execution (needed before Phase 2).
-- First deployment: create the D1 database, the Turnstile widget and the Brevo key (steps are in README.md).
+- Git auto-deploy: pushing to GitHub should deploy the Worker through Cloudflare's Workers Builds. Builds were stuck
+  during a Cloudflare incident on 2026-11-03, so the first deployments were made with `npm run deploy`. Confirm that a
+  push now deploys by itself.
+- Email delivery: login codes are sent from a personal Gmail address through Brevo. If they land in spam, a custom
+  domain with SPF and DKIM is the fix.
 
 ## 10. Phase 1 status: done
 
@@ -99,6 +103,9 @@ Decisions made while building it:
   added later. It is deployed as one Cloudflare Worker (static files plus the API). The platform is independent of
   TypeLab (no shared code or design).
 - A welcome tour runs once for a new member (remembered on the server) and can be replayed from Settings.
+
+Live at https://algomashq.mukeemkhan.workers.dev (one Cloudflare Worker, a D1 database, a Turnstile widget and Brevo
+for the login emails, all on free plans). A real sign-up, email code and login worked on the live site on 2026-11-03.
 
 Verified: 16 unit tests (`npm test`), 53 API checks against a local server, and full browser runs (sign-up with and
 without a photo, code, dashboard, tour, profile, settings, reload, log out, camera capture, photo upload and removal).
