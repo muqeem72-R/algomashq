@@ -28,5 +28,5 @@ APP_NAME = "AlgoMashq"
 # Public Turnstile site key (Cloudflare dashboard > Turnstile). It is public by design; the secret key is not stored here.
 TURNSTILE_SITE_KEY = "0x4AAAAAAFyUOqDaBEATu8SS"
 # Sender shown on login emails. It must be a sender or domain verified in Brevo.
-BREVO_SENDER_EMAIL = "REPLACE_WITH_VERIFIED_SENDER@example.com"
+BREVO_SENDER_EMAIL = "mukeemuddeen9694@gmail.com"
 BREVO_SENDER_NAME = "AlgoMashq"
