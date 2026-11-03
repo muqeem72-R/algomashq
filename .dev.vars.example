@@ -1,0 +1,16 @@
+# Copy this file to .dev.vars for local development. .dev.vars is git-ignored: never commit it.
+# Values here override [vars] in wrangler.toml when running `npm run dev`.
+
+# Any long random text. Used to hash one-time codes and rate-limit keys.
+APP_SECRET=local-dev-secret-change-me
+
+# Cloudflare's official Turnstile test keys (the widget always passes). Do not use them in production.
+TURNSTILE_SITE_KEY=1x00000000000000000000AA
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+
+# 1 = print the login code in the dev server console instead of sending an email.
+DEV_LOG_OTP=1
+
+# Leave empty while DEV_LOG_OTP=1. Put the real Brevo API key here to test real emails.
+BREVO_API_KEY=
+BREVO_SENDER_EMAIL=

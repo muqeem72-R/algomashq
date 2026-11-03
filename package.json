@@ -1,0 +1,15 @@
+{
+  "name": "algomashq",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A free platform to learn Data Structures and Algorithms by solving problems in C++, Java and Python.",
+  "scripts": {
+    "db:local": "wrangler d1 execute algomashq --local --file=db/schema.sql",
+    "dev": "wrangler pages dev public --port 8788",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
