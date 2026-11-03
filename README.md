@@ -3,10 +3,11 @@
 A free platform to learn Data Structures and Algorithms by solving problems in C++, Java and Python.
 The product plan is in [ROADMAP.md](ROADMAP.md). This repository currently holds **Phase 1: foundation and login**.
 
-Address: `https://algomashq.dev` (planned; until the domain is set up the site runs on `algomashq.pages.dev`).
+Address: the free Cloudflare address `https://algomashq.<your-subdomain>.workers.dev`. A paid custom domain such as
+`algomashq.dev` is optional and can be added later.
 
-Everything runs on free tiers: Cloudflare Pages (site and API), Cloudflare D1 (database), Cloudflare Turnstile
-(human check) and Brevo (login emails). Only the domain name itself is paid.
+Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare D1 (database), Cloudflare Turnstile
+(human check) and Brevo (login emails).
 
 ## What Phase 1 includes
 
@@ -48,15 +49,16 @@ members can never get the same id, whatever their names are. The code is in `fun
 ## Project layout
 
 ```
-public/                 static site (this folder is the Cloudflare Pages output directory)
+public/                 static site, served directly by Cloudflare
   index.html
   _headers              security headers and the Content-Security-Policy
   assets/css/           tokens (themes), base, auth screen, app shell
   assets/js/            main.js, router, api, theme, views/, components/, data/
-functions/              Cloudflare Pages Functions (the API)
+src/worker.js           the Worker: sends every /api/* request to the matching handler in functions/
+functions/              the API handlers
   api/auth/             request-otp, verify-otp, me, logout
   api/me/               photo, tour, settings
-  api/users/[id].js     public view of a member (user id only)
+  api/users/[id].js     what other members can see of a member
   api/config.js         public settings for the browser
   _lib/                 shared code: validation, crypto, sessions, rate limits, Turnstile, Brevo
 db/schema.sql           database tables
@@ -82,19 +84,18 @@ With `DEV_LOG_OTP=1` (set in `.dev.vars`) no email is sent: the login code is pr
 
 1. **Push the code to GitHub.** Make sure `.dev.vars` is not committed (it is already in `.gitignore`).
 
-2. **Create the database.**
+2. **Create the database.** Either in the dashboard (Storage & databases > D1 SQL database > Create database, name
+   `algomashq`, then open its Console tab and run the contents of `db/schema.sql`), or from the terminal:
    ```bash
    npx wrangler login
    npx wrangler d1 create algomashq
-   ```
-   Copy the `database_id` it prints into `wrangler.toml`, then create the tables:
-   ```bash
    npx wrangler d1 execute algomashq --remote --file=db/schema.sql
    ```
+   Copy the database id into `wrangler.toml` (`database_id`).
 
-3. **Create a Turnstile widget.** Cloudflare dashboard > Turnstile > Add widget. Add your site's hostnames
-   (for example `your-project.pages.dev` and your `.dev` domain), choose *Managed*. Put the **site key** in `wrangler.toml`
-   (`TURNSTILE_SITE_KEY`). Keep the **secret key** for step 5.
+3. **Create a Turnstile widget.** Cloudflare dashboard > Turnstile > Add widget. Add the site's hostname
+   (for example `algomashq.<your-subdomain>.workers.dev`, plus a custom domain later if you add one), choose *Managed*.
+   Put the **site key** in `wrangler.toml` (`TURNSTILE_SITE_KEY`). Keep the **secret key** for step 5.
 
 4. **Set up Brevo.** Create a free account, then:
    - SMTP & API > API keys > create a key. Keep it for step 5.
@@ -104,13 +105,14 @@ With `DEV_LOG_OTP=1` (set in `.dev.vars`) no email is sent: the login code is pr
      A free mail address such as Gmail may land in spam. The free plan allows 300 emails a day; the app stops
      at 250 a day to stay under that.
 
-5. **Create the Pages project.** Cloudflare dashboard > Workers & Pages > Create > Pages > Connect to Git, pick the
-   repository, and use:
-   - Framework preset: *None*
+5. **Create the Worker from GitHub.** Cloudflare dashboard > Workers & Pages > Create application > import the
+   repository `algomashq`. Use:
    - Build command: *(leave empty)*
-   - Build output directory: `public`
+   - Deploy command: `npx wrangler deploy` (the default)
+   - Root directory: `/`
 
-   Then open the project > Settings > Variables and Secrets and add these as **secrets**:
+   Every push to `main` then deploys automatically. Open the Worker > Settings > Variables and Secrets and add these
+   as **secrets**:
 
    | Secret | Value |
    |---|---|
@@ -122,13 +124,13 @@ With `DEV_LOG_OTP=1` (set in `.dev.vars`) no email is sent: the login code is pr
 
 6. Redeploy, open the site and sign up. The first member to sign up gets sequence number `001` (for example `mk001A`).
 
-7. **Custom domain (a `.dev` domain).** Pages project > Custom domains > Set up a domain. Websites on `.dev` only work
-   over HTTPS, which Cloudflare Pages provides automatically. Add the domain's hostname to the Turnstile widget, and
-   in Brevo authenticate the same domain (Senders, domains & dedicated IPs > Domains) so login emails reach the inbox.
-   A domain is the only part that is not free: it is paid yearly at a registrar.
+7. **Optional: a custom domain** (for example `algomashq.dev`). Worker > Settings > Domains & Routes > Add > Custom
+   domain. Add the hostname to the Turnstile widget, and in Brevo authenticate the same domain (Senders, domains &
+   dedicated IPs > Domains) so login emails reach the inbox. A domain is the only part that costs money: it is paid
+   yearly at a registrar.
 
-If something is missing, the API answers `not_configured`, `captcha_unavailable` or `email_failed`, and the log of the
-Pages project (Functions > Real-time logs) says why.
+If something is missing, the API answers `not_configured`, `captcha_unavailable` or `email_failed`, and the Worker's
+logs (Worker > Observability > Logs) say why.
 
 ## Changing the app name
 
@@ -159,6 +161,6 @@ for a moment while the app loads.
   A session lasts 30 days from the last visit.
 - The login form answers the same way for known and unknown emails, so it cannot be used to find out who is registered.
 - Rate limits (per IP, per email, and a daily cap on emails) are kept in the database, so they hold across servers.
-- Every request that changes data checks the `Origin` header. Pages are served with a strict Content-Security-Policy.
+- Every request that changes data checks the `Origin` header. Pages of the site are served with a strict Content-Security-Policy.
 - Profile photos are small JPEGs stored as base64 in D1 (about 30 KB each). They are served only to signed-in members,
   never to the public. Looking up other members is rate-limited, so a script cannot walk through every user id.
