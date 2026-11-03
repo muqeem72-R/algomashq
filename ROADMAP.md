@@ -77,8 +77,8 @@ About 10 topics x 3 levels x 5-10 problems = roughly 150-300 problems. Each prob
 
 ## 9. Open items
 
-- Register the domain `algomashq.dev` (the name AlgoMashq is decided). Until then the site can run on a free
-  `algomashq.pages.dev` address.
+- The name AlgoMashq is decided. The site runs on the free Cloudflare address `algomashq.<subdomain>.workers.dev`.
+  A paid custom domain (`algomashq.dev`) is optional and can wait.
 - Confirmation of the VPS option for code execution (needed before Phase 2).
 - First deployment: create the D1 database, the Turnstile widget and the Brevo key (steps are in README.md).
 
@@ -95,7 +95,9 @@ Decisions made while building it:
 - Sign-up collects first name, last name (not marked optional in the form), email, country, state, preferred
   language and a profile photo (upload or camera). The photo is optional: without one a letter logo is made from the
   first letter of the first name, and the color is fixed per letter.
-- The domain will be a `.dev` domain. The platform is independent of TypeLab (no shared code or design).
+- Everything must stay free, so the site uses a free Cloudflare Workers address; a `.dev` domain is optional and can be
+  added later. It is deployed as one Cloudflare Worker (static files plus the API). The platform is independent of
+  TypeLab (no shared code or design).
 - A welcome tour runs once for a new member (remembered on the server) and can be replayed from Settings.
 
 Verified: 16 unit tests (`npm test`), 53 API checks against a local server, and full browser runs (sign-up with and

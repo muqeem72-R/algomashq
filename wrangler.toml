@@ -1,21 +1,28 @@
-# Cloudflare Pages configuration (static files in public/, API in functions/).
+# Cloudflare Worker configuration: the static site is in public/, the API is in functions/ (routed by src/worker.js).
 # Secrets (BREVO_API_KEY, TURNSTILE_SECRET, APP_SECRET) are NOT stored here: add them in
-# the Cloudflare dashboard (Settings > Variables and Secrets) and, for local work, in .dev.vars.
+# the Cloudflare dashboard (Worker > Settings > Variables and Secrets) and, for local work, in .dev.vars.
 
 name = "algomashq"
+main = "src/worker.js"
 compatibility_date = "2025-09-01"
-pages_build_output_dir = "./public"
 
-# Replace database_id with the id printed by:  npx wrangler d1 create algomashq
+# Files in public/ are served directly. Only /api/* runs the Worker code.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+# Replace database_id with the id of the D1 database named algomashq (dashboard > Storage & databases > D1,
+# or: npx wrangler d1 create algomashq).
 [[d1_databases]]
 binding = "DB"
 database_name = "algomashq"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "c1fa11d5-8968-424d-a6c1-d8856e047636"
 
 [vars]
 APP_NAME = "AlgoMashq"
 # Public Turnstile site key (Cloudflare dashboard > Turnstile). Replace before deploying.
 TURNSTILE_SITE_KEY = "REPLACE_WITH_TURNSTILE_SITE_KEY"
-# Sender shown on login emails. It must be a sender/domain verified in Brevo.
+# Sender shown on login emails. It must be a sender or domain verified in Brevo.
 BREVO_SENDER_EMAIL = "REPLACE_WITH_VERIFIED_SENDER@example.com"
 BREVO_SENDER_NAME = "AlgoMashq"
