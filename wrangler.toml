@@ -1,0 +1,21 @@
+# Cloudflare Pages configuration (static files in public/, API in functions/).
+# Secrets (BREVO_API_KEY, TURNSTILE_SECRET, APP_SECRET) are NOT stored here: add them in
+# the Cloudflare dashboard (Settings > Variables and Secrets) and, for local work, in .dev.vars.
+
+name = "algomashq"
+compatibility_date = "2025-09-01"
+pages_build_output_dir = "./public"
+
+# Replace database_id with the id printed by:  npx wrangler d1 create algomashq
+[[d1_databases]]
+binding = "DB"
+database_name = "algomashq"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[vars]
+APP_NAME = "AlgoMashq"
+# Public Turnstile site key (Cloudflare dashboard > Turnstile). Replace before deploying.
+TURNSTILE_SITE_KEY = "REPLACE_WITH_TURNSTILE_SITE_KEY"
+# Sender shown on login emails. It must be a sender/domain verified in Brevo.
+BREVO_SENDER_EMAIL = "REPLACE_WITH_VERIFIED_SENDER@example.com"
+BREVO_SENDER_NAME = "AlgoMashq"
