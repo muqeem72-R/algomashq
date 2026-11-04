@@ -2353,6 +2353,1279 @@
     "parsing",
     "simulation"
    ]
+  },
+  {
+   "slug": "two-sum-indices",
+   "title": "Two Numbers That Add Up",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 201,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "complement"
+   ]
+  },
+  {
+   "slug": "contains-duplicate",
+   "title": "Is There a Duplicate?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 202,
+   "tags": [
+    "hashing",
+    "hash-set"
+   ]
+  },
+  {
+   "slug": "count-distinct-numbers",
+   "title": "How Many Different Numbers?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 203,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "counting"
+   ]
+  },
+  {
+   "slug": "frequency-table",
+   "title": "Frequency Table",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 204,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "most-frequent-number",
+   "title": "The Most Frequent Number",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 205,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "first-repeated-number",
+   "title": "The First Number Seen Twice",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 206,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "scan"
+   ]
+  },
+  {
+   "slug": "single-number",
+   "title": "The Number Without a Partner",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 207,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "common-elements",
+   "title": "Numbers in Both Lists",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 208,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "intersection"
+   ]
+  },
+  {
+   "slug": "isomorphic-strings",
+   "title": "Isomorphic Words",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 209,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "mapping"
+   ]
+  },
+  {
+   "slug": "ransom-note",
+   "title": "Can the Note Be Written?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 210,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "good-pairs",
+   "title": "Count the Equal Pairs",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 211,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "count-pairs-with-sum",
+   "title": "How Many Pairs Add Up?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 212,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "complement"
+   ]
+  },
+  {
+   "slug": "pairs-with-difference",
+   "title": "Pairs With a Given Difference",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 213,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "missing-and-repeated",
+   "title": "One Missing, One Repeated",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 214,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "unique-occurrences",
+   "title": "Are the Frequencies All Different?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 215,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "hash-set",
+    "counting"
+   ]
+  },
+  {
+   "slug": "jewels-and-stones",
+   "title": "Jewels and Stones",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 216,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "strings"
+   ]
+  },
+  {
+   "slug": "happy-number",
+   "title": "Happy Number",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 217,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "cycle-detection",
+    "math"
+   ]
+  },
+  {
+   "slug": "majority-element",
+   "title": "The Majority Element",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 218,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "find-all-duplicates",
+   "title": "All the Repeated Values",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 219,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "disappeared-numbers",
+   "title": "Numbers That Disappeared",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 220,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "range"
+   ]
+  },
+  {
+   "slug": "word-pattern",
+   "title": "Does the Pattern Match the Words?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 221,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "mapping",
+    "strings"
+   ]
+  },
+  {
+   "slug": "zero-sum-subarray",
+   "title": "Is There a Block With Sum Zero?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 222,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "prefix-sum"
+   ]
+  },
+  {
+   "slug": "same-multiset",
+   "title": "Is One List a Rearrangement of the Other?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 223,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "first-unique-number",
+   "title": "The First Number That Occurs Once",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 224,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "two-passes"
+   ]
+  },
+  {
+   "slug": "word-frequency",
+   "title": "Word Frequencies",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 225,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "sum-of-unique-numbers",
+   "title": "Sum of the Numbers That Occur Once",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 226,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "arithmetic-progression-check",
+   "title": "Can They Form an Arithmetic Progression?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 227,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "math"
+   ]
+  },
+  {
+   "slug": "count-elements-with-successor",
+   "title": "Numbers With a Successor",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 228,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "counting"
+   ]
+  },
+  {
+   "slug": "palindrome-rearrangement",
+   "title": "Can the Letters Make a Palindrome?",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 229,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "palindrome"
+   ]
+  },
+  {
+   "slug": "longest-palindrome-from-letters",
+   "title": "Longest Palindrome You Can Build",
+   "topic": "hashing",
+   "difficulty": "easy",
+   "order": 230,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "palindrome",
+    "counting"
+   ]
+  },
+  {
+   "slug": "subarray-sum-equals-k",
+   "title": "Count the Blocks With Sum k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 231,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum"
+   ]
+  },
+  {
+   "slug": "longest-block-with-sum-k",
+   "title": "The Longest Block With Sum k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 232,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum"
+   ]
+  },
+  {
+   "slug": "longest-block-equal-zeros-ones",
+   "title": "Longest Block With Equally Many 0s and 1s",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 233,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "binary"
+   ]
+  },
+  {
+   "slug": "count-blocks-equal-zeros-ones",
+   "title": "Count the Blocks With Equally Many 0s and 1s",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 234,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "binary"
+   ]
+  },
+  {
+   "slug": "subarrays-divisible-by-k",
+   "title": "Blocks Whose Sum Is a Multiple of k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 235,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "modulo"
+   ]
+  },
+  {
+   "slug": "continuous-sum-multiple-of-k",
+   "title": "A Block of Length Two or More With Sum Divisible by k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 236,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "modulo"
+   ]
+  },
+  {
+   "slug": "nice-subarrays",
+   "title": "Blocks With Exactly k Odd Numbers",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 237,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "counting"
+   ]
+  },
+  {
+   "slug": "vowel-consonant-balance",
+   "title": "Substrings With As Many Vowels as Consonants",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 238,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "strings"
+   ]
+  },
+  {
+   "slug": "subarrays-with-xor-k",
+   "title": "Blocks With Xor Equal to k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 239,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-xor",
+    "bit-manipulation"
+   ]
+  },
+  {
+   "slug": "group-anagrams",
+   "title": "Group the Anagrams",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 240,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "grouping"
+   ]
+  },
+  {
+   "slug": "longest-consecutive-run",
+   "title": "Longest Run of Consecutive Values",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 241,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "sequences"
+   ]
+  },
+  {
+   "slug": "top-k-frequent",
+   "title": "The k Most Frequent Numbers",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 242,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "sorting",
+    "counting"
+   ]
+  },
+  {
+   "slug": "four-arrays-sum-zero",
+   "title": "Four Arrays, Sum Zero",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 243,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "meet-in-the-middle"
+   ]
+  },
+  {
+   "slug": "anagram-positions",
+   "title": "All the Anagram Positions",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 244,
+   "tags": [
+    "hashing",
+    "sliding-window",
+    "counting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "nearby-duplicate",
+   "title": "Duplicates Close to Each Other",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 245,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "shifted-string-groups",
+   "title": "Groups of Shifted Words",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 246,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "grouping"
+   ]
+  },
+  {
+   "slug": "sort-letters-by-frequency",
+   "title": "Sort the Letters by Frequency",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 247,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "sorting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "fewest-bricks-crossed",
+   "title": "The Line That Crosses the Fewest Bricks",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 248,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "counting"
+   ]
+  },
+  {
+   "slug": "multiset-intersection",
+   "title": "Common Elements With Repeats",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 249,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "intersection"
+   ]
+  },
+  {
+   "slug": "boomerang-triples",
+   "title": "Equal Distances From a Point",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 250,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "geometry",
+    "counting"
+   ]
+  },
+  {
+   "slug": "minimum-index-sum",
+   "title": "Favourite Lists: Smallest Index Sum",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 251,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-harmonious-subsequence",
+   "title": "Longest Harmonious Subsequence",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 252,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting"
+   ]
+  },
+  {
+   "slug": "bulls-and-cows",
+   "title": "Bulls and Cows",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 253,
+   "tags": [
+    "hashing",
+    "counting",
+    "strings",
+    "game"
+   ]
+  },
+  {
+   "slug": "check-sudoku-board",
+   "title": "Is the Sudoku Board Valid?",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 254,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "simulation",
+    "grid"
+   ]
+  },
+  {
+   "slug": "pairs-sum-divisible",
+   "title": "Pairs Whose Sum Is Divisible by d",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 255,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "modulo",
+    "counting"
+   ]
+  },
+  {
+   "slug": "max-number-of-k-sum-pairs",
+   "title": "Remove Pairs With Sum k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 256,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "equal-row-and-column",
+   "title": "Rows That Equal Columns",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 257,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "matrix",
+    "sequences"
+   ]
+  },
+  {
+   "slug": "unique-email-addresses",
+   "title": "Count the Real Mailboxes",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 258,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "strings",
+    "normalisation"
+   ]
+  },
+  {
+   "slug": "shortest-subarray-same-degree",
+   "title": "Shortest Block With the Same Degree",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 259,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "subarray"
+   ]
+  },
+  {
+   "slug": "repeated-dna-blocks",
+   "title": "Repeated DNA Blocks",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 260,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "strings"
+   ]
+  },
+  {
+   "slug": "distinct-blocks-of-length-k",
+   "title": "Distinct Blocks of Length k",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 261,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "strings",
+    "substrings"
+   ]
+  },
+  {
+   "slug": "words-from-letters",
+   "title": "Words You Can Build",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 262,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "letters-common-to-all-words",
+   "title": "Letters Common to All Words",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 263,
+   "tags": [
+    "hashing",
+    "counting",
+    "strings",
+    "intersection"
+   ]
+  },
+  {
+   "slug": "anagram-index-mapping",
+   "title": "Where Did Each Number Go?",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 264,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "permutations"
+   ]
+  },
+  {
+   "slug": "largest-digit-sum-groups",
+   "title": "The Biggest Digit-Sum Groups",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 265,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "math"
+   ]
+  },
+  {
+   "slug": "strings-are-close",
+   "title": "Can One Word Become the Other?",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 266,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "equivalent-domino-pairs",
+   "title": "Equivalent Dominoes",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 267,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "canonical-form"
+   ]
+  },
+  {
+   "slug": "subdomain-visit-counts",
+   "title": "Visits to Every Subdomain",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 268,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "aggregation"
+   ]
+  },
+  {
+   "slug": "rabbits-in-the-forest",
+   "title": "Rabbits in the Forest",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 269,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "nice-pairs-with-reversal",
+   "title": "Pairs That Stay Equal After Reversal",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 270,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "math"
+   ]
+  },
+  {
+   "slug": "sorted-in-alien-alphabet",
+   "title": "Sorted in an Unusual Alphabet?",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 271,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "strings",
+    "sorting-order"
+   ]
+  },
+  {
+   "slug": "balanced-letter-splits",
+   "title": "Splits With Equally Many Different Letters",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 272,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "prefix",
+    "strings"
+   ]
+  },
+  {
+   "slug": "steps-to-make-anagram",
+   "title": "Fewest Replacements to Make an Anagram",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 273,
+   "tags": [
+    "hashing",
+    "counting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-block-limited-frequency",
+   "title": "Longest Block Where Nothing Repeats Too Often",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 274,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "sliding-window",
+    "counting"
+   ]
+  },
+  {
+   "slug": "palindrome-of-two-letter-words",
+   "title": "Palindrome From Two-Letter Words",
+   "topic": "hashing",
+   "difficulty": "medium",
+   "order": 275,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "palindrome",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-repeated-substring",
+   "title": "Longest Substring That Occurs Twice",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 276,
+   "tags": [
+    "hashing",
+    "rolling-hash",
+    "binary-search",
+    "strings"
+   ]
+  },
+  {
+   "slug": "count-distinct-substrings",
+   "title": "Count the Different Substrings",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 277,
+   "tags": [
+    "hashing",
+    "rolling-hash",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "longest-common-substring",
+   "title": "Longest Common Block of Two Words",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 278,
+   "tags": [
+    "hashing",
+    "rolling-hash",
+    "binary-search",
+    "strings"
+   ]
+  },
+  {
+   "slug": "shortest-palindrome-by-prepending",
+   "title": "Shortest Palindrome by Adding Letters in Front",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 279,
+   "tags": [
+    "hashing",
+    "rolling-hash",
+    "palindrome",
+    "strings"
+   ]
+  },
+  {
+   "slug": "find-substring-with-hash-value",
+   "title": "Find the Block With a Given Hash",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 280,
+   "tags": [
+    "hashing",
+    "rolling-hash",
+    "modular-arithmetic",
+    "strings"
+   ]
+  },
+  {
+   "slug": "distinct-doubled-substrings",
+   "title": "Different Substrings of the Form xx",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 281,
+   "tags": [
+    "hashing",
+    "rolling-hash",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "anagram-block-pairs",
+   "title": "Pairs of Blocks That Are Anagrams",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 282,
+   "tags": [
+    "hashing",
+    "zobrist-hash",
+    "counting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "concatenation-of-all-words",
+   "title": "Blocks Made of All the Words",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 283,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "sliding-window",
+    "strings"
+   ]
+  },
+  {
+   "slug": "max-points-on-a-line",
+   "title": "Most Points on One Line",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 284,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "geometry",
+    "gcd"
+   ]
+  },
+  {
+   "slug": "palindrome-pairs-count",
+   "title": "Pairs of Words That Make a Palindrome",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 285,
+   "tags": [
+    "hashing",
+    "hash-set",
+    "palindrome",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-block-equal-three-letters",
+   "title": "Longest Block With Equally Many a, b and c",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 286,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-well-performing-interval",
+   "title": "Longest Run With More Hard Days Than Easy Days",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 287,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "first-occurrence"
+   ]
+  },
+  {
+   "slug": "longest-block-even-vowels",
+   "title": "Longest Block With an Even Number of Each Vowel",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 288,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "bitmask",
+    "prefix",
+    "strings"
+   ]
+  },
+  {
+   "slug": "remove-block-for-divisibility",
+   "title": "Remove the Shortest Block to Make the Sum Divisible",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 289,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "modulo"
+   ]
+  },
+  {
+   "slug": "almost-duplicate-nearby",
+   "title": "Close Positions, Close Values",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 290,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "buckets",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "flip-columns-equal-rows",
+   "title": "Flip Columns for the Most Equal Rows",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 291,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "matrix",
+    "canonical-form"
+   ]
+  },
+  {
+   "slug": "longest-arithmetic-subsequence-of-difference",
+   "title": "Longest Subsequence With a Fixed Difference",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 292,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "dynamic-programming",
+    "subsequence"
+   ]
+  },
+  {
+   "slug": "interchangeable-rectangles",
+   "title": "Rectangles With the Same Shape",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 293,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "gcd",
+    "counting"
+   ]
+  },
+  {
+   "slug": "reduce-x-to-zero",
+   "title": "Take From the Ends to Reach Exactly x",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 294,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "complement"
+   ]
+  },
+  {
+   "slug": "equal-xor-triplets",
+   "title": "Triplets With Equal Xor on Both Sides",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 295,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-xor",
+    "counting"
+   ]
+  },
+  {
+   "slug": "count-submatrices-with-sum",
+   "title": "Rectangles With a Given Sum",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 296,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "matrix",
+    "prefix-sum"
+   ]
+  },
+  {
+   "slug": "squares-on-a-grid",
+   "title": "Count the Squares Through a Query Point",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 297,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "geometry",
+    "design"
+   ]
+  },
+  {
+   "slug": "tuples-with-same-product",
+   "title": "Four Numbers With Equal Products",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 298,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "counting",
+    "combinatorics"
+   ]
+  },
+  {
+   "slug": "words-that-are-subsequences",
+   "title": "How Many Words Are Subsequences of the Text?",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 299,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "subsequence",
+    "strings",
+    "buckets"
+   ]
+  },
+  {
+   "slug": "sum-of-distances-to-equal-elements",
+   "title": "Total Distance to the Equal Elements",
+   "topic": "hashing",
+   "difficulty": "hard",
+   "order": 300,
+   "tags": [
+    "hashing",
+    "hash-map",
+    "prefix-sum",
+    "grouping"
+   ]
   }
  ]
 }

@@ -107,7 +107,7 @@ for (const { file, p } of entries) {
   const tests = hiddenInputs.map((input) => ({ input, output: p.solve(input) + '\n' }));
   for (const t of [...examples, ...tests]) if (!t.output.trim()) fail(p.slug, 'a test has an empty expected output');
   const bytes = JSON.stringify(tests).length;
-  if (bytes > 2_000_000) fail(p.slug, `hidden tests are ${bytes} bytes; keep them under 2 MB`);
+  if (bytes > 5_000_000) fail(p.slug, `hidden tests are ${bytes} bytes; keep them under 5 MB`);
 
   problems.push({
     slug: p.slug, title: p.title, topic: p.topic, difficulty: p.difficulty, order: p.order, tags: p.tags,
