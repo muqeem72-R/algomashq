@@ -4852,6 +4852,1225 @@
     "heap",
     "simulation"
    ]
+  },
+  {
+   "slug": "integer-partitions",
+   "title": "Ways to Split a Number Into Parts",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 401,
+   "tags": [
+    "recursion",
+    "memoization",
+    "counting"
+   ]
+  },
+  {
+   "slug": "stair-climbing-with-broken-steps",
+   "title": "Stairs With Broken Steps",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 402,
+   "tags": [
+    "recursion",
+    "memoization",
+    "counting"
+   ]
+  },
+  {
+   "slug": "lucky-numbers-four-seven",
+   "title": "Numbers Made of Fours and Sevens",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 403,
+   "tags": [
+    "recursion",
+    "enumeration",
+    "numbers"
+   ]
+  },
+  {
+   "slug": "cut-a-number-into-parts",
+   "title": "Every Way to Cut a Number",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 404,
+   "tags": [
+    "recursion",
+    "backtracking",
+    "strings"
+   ]
+  },
+  {
+   "slug": "nested-list-weighted-sum",
+   "title": "Numbers in Nested Lists",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 405,
+   "tags": [
+    "recursion",
+    "parsing",
+    "nesting"
+   ]
+  },
+  {
+   "slug": "cantor-set-string",
+   "title": "A Pattern That Contains Itself",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 406,
+   "tags": [
+    "recursion",
+    "strings",
+    "fractals"
+   ]
+  },
+  {
+   "slug": "number-in-words",
+   "title": "A Number in English Words",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 407,
+   "tags": [
+    "recursion",
+    "strings",
+    "numbers"
+   ]
+  },
+  {
+   "slug": "brace-expansion",
+   "title": "Expand the Choices",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 408,
+   "tags": [
+    "recursion",
+    "backtracking",
+    "strings"
+   ]
+  },
+  {
+   "slug": "paths-in-a-dag",
+   "title": "Routes Between the First and the Last Stop",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 409,
+   "tags": [
+    "recursion",
+    "memoization",
+    "graph"
+   ]
+  },
+  {
+   "slug": "splits-without-conflicts",
+   "title": "Groups Without Conflicts",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 410,
+   "tags": [
+    "backtracking",
+    "recursion",
+    "counting"
+   ]
+  },
+  {
+   "slug": "all-subsets-of-letters",
+   "title": "All Subsets of a Set of Letters",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 411,
+   "tags": [
+    "backtracking",
+    "subsets",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "subsets-with-given-sum",
+   "title": "How Many Subsets Add Up to s",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 412,
+   "tags": [
+    "backtracking",
+    "subsets",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "combinations-of-numbers",
+   "title": "Choose k Numbers Out of n",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 413,
+   "tags": [
+    "backtracking",
+    "combinations",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "permutations-of-letters",
+   "title": "All Orders of Different Letters",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 414,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "derangements-by-search",
+   "title": "Nobody in Their Own Place",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 415,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "counting"
+   ]
+  },
+  {
+   "slug": "no-two-adjacent-ones",
+   "title": "Binary Strings Without Two Ones in a Row",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 416,
+   "tags": [
+    "backtracking",
+    "strings",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "balanced-parentheses-list",
+   "title": "Generate the Balanced Brackets",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 417,
+   "tags": [
+    "backtracking",
+    "strings",
+    "parentheses"
+   ]
+  },
+  {
+   "slug": "phone-keypad-words",
+   "title": "Letters on a Phone Keypad",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 418,
+   "tags": [
+    "backtracking",
+    "strings",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "gray-code-list",
+   "title": "The Gray Code",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 419,
+   "tags": [
+    "recursion",
+    "bits",
+    "strings"
+   ]
+  },
+  {
+   "slug": "equal-sum-split",
+   "title": "Two Piles With the Same Sum",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 420,
+   "tags": [
+    "backtracking",
+    "subsets",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "grid-paths-without-revisiting",
+   "title": "Walks Through a Grid Without Visiting a Cell Twice",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 421,
+   "tags": [
+    "backtracking",
+    "grid",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "letter-case-variants",
+   "title": "Every Way to Change the Case",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 422,
+   "tags": [
+    "backtracking",
+    "strings",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "xor-of-all-subsets",
+   "title": "The Sum of the XOR of Every Subset",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 423,
+   "tags": [
+    "backtracking",
+    "subsets",
+    "bits"
+   ]
+  },
+  {
+   "slug": "plus-minus-target",
+   "title": "Plus or Minus in Front of Each Number",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 424,
+   "tags": [
+    "backtracking",
+    "recursion",
+    "counting"
+   ]
+  },
+  {
+   "slug": "n-queens-count",
+   "title": "Place n Queens So None Attacks Another",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 425,
+   "tags": [
+    "backtracking",
+    "chessboard",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "codes-with-given-digit-sum",
+   "title": "Lock Codes With a Given Digit Sum",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 426,
+   "tags": [
+    "backtracking",
+    "pruning",
+    "digits"
+   ]
+  },
+  {
+   "slug": "compositions-with-steps",
+   "title": "All Ways to Climb With Steps of 1, 2 or 3",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 427,
+   "tags": [
+    "backtracking",
+    "recursion",
+    "enumeration"
+   ]
+  },
+  {
+   "slug": "subsets-with-small-product",
+   "title": "Subsets Whose Product Is Small",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 428,
+   "tags": [
+    "backtracking",
+    "pruning",
+    "subsets"
+   ]
+  },
+  {
+   "slug": "numbers-with-distinct-digits",
+   "title": "Numbers With No Repeated Digit",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 429,
+   "tags": [
+    "backtracking",
+    "digits",
+    "counting"
+   ]
+  },
+  {
+   "slug": "palindromes-over-an-alphabet",
+   "title": "All Palindromes Over k Letters",
+   "topic": "backtracking",
+   "difficulty": "easy",
+   "order": 430,
+   "tags": [
+    "backtracking",
+    "strings",
+    "palindrome"
+   ]
+  },
+  {
+   "slug": "distinct-subsets-of-multiset",
+   "title": "Different Subsets of a List With Repeats",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 431,
+   "tags": [
+    "backtracking",
+    "subsets",
+    "duplicates"
+   ]
+  },
+  {
+   "slug": "distinct-permutations-of-word",
+   "title": "Different Arrangements of Letters With Repeats",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 432,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "duplicates"
+   ]
+  },
+  {
+   "slug": "rank-of-a-permutation",
+   "title": "The Position of a Permutation in the Dictionary",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 433,
+   "tags": [
+    "recursion",
+    "permutations",
+    "counting"
+   ]
+  },
+  {
+   "slug": "kth-combination",
+   "title": "The k-th Group in the Dictionary",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 434,
+   "tags": [
+    "recursion",
+    "combinations",
+    "counting"
+   ]
+  },
+  {
+   "slug": "combination-sum-lists",
+   "title": "Ways to Reach the Target With Reusable Numbers",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 435,
+   "tags": [
+    "backtracking",
+    "combinations",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "unique-combination-count",
+   "title": "Different Groups of Numbers With a Given Sum",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 436,
+   "tags": [
+    "backtracking",
+    "combinations",
+    "duplicates"
+   ]
+  },
+  {
+   "slug": "min-difference-split",
+   "title": "Two Piles as Equal as Possible",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 437,
+   "tags": [
+    "backtracking",
+    "pruning",
+    "subsets"
+   ]
+  },
+  {
+   "slug": "beautiful-arrangements",
+   "title": "Numbers That Divide Their Positions",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 438,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "letter-tile-sequences",
+   "title": "Words You Can Make From Tiles",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 439,
+   "tags": [
+    "backtracking",
+    "counting",
+    "duplicates"
+   ]
+  },
+  {
+   "slug": "palindrome-partitions",
+   "title": "Cut a Word Into Palindromes",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 440,
+   "tags": [
+    "backtracking",
+    "strings",
+    "palindrome"
+   ]
+  },
+  {
+   "slug": "restore-ip-addresses",
+   "title": "Put the Dots Back in an Address",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 441,
+   "tags": [
+    "backtracking",
+    "strings",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "word-break-sentences",
+   "title": "All the Sentences From a Dictionary",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 442,
+   "tags": [
+    "backtracking",
+    "strings",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "additive-sequence",
+   "title": "Is the Digit String an Additive Sequence?",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 443,
+   "tags": [
+    "backtracking",
+    "strings",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "strobogrammatic-numbers",
+   "title": "Numbers That Look the Same Upside Down",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 444,
+   "tags": [
+    "recursion",
+    "strings",
+    "enumeration"
+   ]
+  },
+  {
+   "slug": "max-unique-concatenation",
+   "title": "The Longest Word Without a Repeated Letter",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 445,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "subsets"
+   ]
+  },
+  {
+   "slug": "max-score-words",
+   "title": "The Best Words From a Bag of Letters",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 446,
+   "tags": [
+    "backtracking",
+    "subsets",
+    "counting"
+   ]
+  },
+  {
+   "slug": "parenthesize-results",
+   "title": "All Values of an Expression With Any Brackets",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 447,
+   "tags": [
+    "recursion",
+    "divide-and-conquer",
+    "expressions"
+   ]
+  },
+  {
+   "slug": "word-abbreviations",
+   "title": "Every Way to Abbreviate a Word",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 448,
+   "tags": [
+    "backtracking",
+    "strings",
+    "subsets"
+   ]
+  },
+  {
+   "slug": "signs-between-digits",
+   "title": "Plus, Minus or Nothing Between the Digits",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 449,
+   "tags": [
+    "backtracking",
+    "expressions",
+    "strings"
+   ]
+  },
+  {
+   "slug": "word-search-in-grid",
+   "title": "Is the Word Hidden in the Grid?",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 450,
+   "tags": [
+    "backtracking",
+    "grid",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "smallest-path-in-maze",
+   "title": "The Smallest Way Through the Maze",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 451,
+   "tags": [
+    "backtracking",
+    "grid",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "walk-over-every-empty-cell",
+   "title": "A Walk That Visits Every Free Square Once",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 452,
+   "tags": [
+    "backtracking",
+    "grid",
+    "hamiltonian"
+   ]
+  },
+  {
+   "slug": "gold-mine-path",
+   "title": "The Richest Walk in the Gold Mine",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 453,
+   "tags": [
+    "backtracking",
+    "grid",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "tic-tac-toe-outcome",
+   "title": "Who Wins the Game of Noughts and Crosses?",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 454,
+   "tags": [
+    "backtracking",
+    "game",
+    "minimax"
+   ]
+  },
+  {
+   "slug": "flip-game-winner",
+   "title": "The Flipping Game",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 455,
+   "tags": [
+    "backtracking",
+    "game",
+    "memoization"
+   ]
+  },
+  {
+   "slug": "can-first-player-win",
+   "title": "Pick Numbers Without Repeating, Reach the Target First",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 456,
+   "tags": [
+    "backtracking",
+    "game",
+    "bitmask"
+   ]
+  },
+  {
+   "slug": "predict-the-winner",
+   "title": "Taking From Either End of a Row",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 457,
+   "tags": [
+    "recursion",
+    "game",
+    "memoization"
+   ]
+  },
+  {
+   "slug": "twenty-four-game",
+   "title": "Make 24 From Four Cards",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 458,
+   "tags": [
+    "backtracking",
+    "recursion",
+    "expressions"
+   ]
+  },
+  {
+   "slug": "n-queens-with-blocked-squares",
+   "title": "Queens on a Board With Forbidden Squares",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 459,
+   "tags": [
+    "backtracking",
+    "chessboard",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "first-n-queens-placement",
+   "title": "The First Placement of n Queens",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 460,
+   "tags": [
+    "backtracking",
+    "chessboard",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "mini-sudoku-completions",
+   "title": "Complete the Small Sudoku",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 461,
+   "tags": [
+    "backtracking",
+    "sudoku",
+    "constraints"
+   ]
+  },
+  {
+   "slug": "graph-coloring-count",
+   "title": "Colour the Map With k Colours",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 462,
+   "tags": [
+    "backtracking",
+    "graph",
+    "coloring"
+   ]
+  },
+  {
+   "slug": "hamiltonian-path-exists",
+   "title": "A Walk That Visits Every Town Once",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 463,
+   "tags": [
+    "backtracking",
+    "graph",
+    "hamiltonian"
+   ]
+  },
+  {
+   "slug": "max-independent-set",
+   "title": "The Largest Group of Strangers",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 464,
+   "tags": [
+    "backtracking",
+    "graph",
+    "bitmask"
+   ]
+  },
+  {
+   "slug": "seating-without-enemy-neighbours",
+   "title": "Seats in a Row Without Quarrels",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 465,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "partition-into-equal-subsets",
+   "title": "Split Into k Groups of Equal Sum",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 466,
+   "tags": [
+    "backtracking",
+    "partition",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "fair-cookie-distribution",
+   "title": "Share the Cookie Bags Fairly",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 467,
+   "tags": [
+    "backtracking",
+    "pruning",
+    "optimization"
+   ]
+  },
+  {
+   "slug": "magic-square-completions",
+   "title": "Finish the Magic Square",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 468,
+   "tags": [
+    "backtracking",
+    "constraints",
+    "permutations"
+   ]
+  },
+  {
+   "slug": "shopping-offers",
+   "title": "The Cheapest Way to Buy With Special Offers",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 469,
+   "tags": [
+    "recursion",
+    "memoization",
+    "optimization"
+   ]
+  },
+  {
+   "slug": "cryptarithm-count",
+   "title": "Letters Instead of Digits",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 470,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "puzzle"
+   ]
+  },
+  {
+   "slug": "paint-grid-count",
+   "title": "Paint the Grid So Neighbours Differ",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 471,
+   "tags": [
+    "backtracking",
+    "grid",
+    "counting"
+   ]
+  },
+  {
+   "slug": "non-attacking-rooks",
+   "title": "Rooks That Do Not Attack Each Other",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 472,
+   "tags": [
+    "backtracking",
+    "chessboard",
+    "counting"
+   ]
+  },
+  {
+   "slug": "domino-tilings-count",
+   "title": "Cover the Board With Dominoes",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 473,
+   "tags": [
+    "backtracking",
+    "grid",
+    "tiling"
+   ]
+  },
+  {
+   "slug": "prime-rings-count",
+   "title": "Rings of Numbers With Prime Sums",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 474,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "primes"
+   ]
+  },
+  {
+   "slug": "peaceful-kings",
+   "title": "Kings That Do Not Touch",
+   "topic": "backtracking",
+   "difficulty": "medium",
+   "order": 475,
+   "tags": [
+    "backtracking",
+    "chessboard",
+    "counting"
+   ]
+  },
+  {
+   "slug": "sudoku-solver",
+   "title": "Solve the Sudoku",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 476,
+   "tags": [
+    "backtracking",
+    "sudoku",
+    "bitmask",
+    "constraints"
+   ]
+  },
+  {
+   "slug": "expression-add-operators",
+   "title": "Reach the Target With Plus, Minus and Times",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 477,
+   "tags": [
+    "backtracking",
+    "expressions",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "remove-invalid-parentheses",
+   "title": "Fix the Brackets by Deleting as Few as Possible",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 478,
+   "tags": [
+    "backtracking",
+    "strings",
+    "parentheses",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "word-search-ii",
+   "title": "Which Words Hide in the Grid?",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 479,
+   "tags": [
+    "backtracking",
+    "trie",
+    "grid",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "word-squares-count",
+   "title": "Squares Where Rows Equal Columns",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 480,
+   "tags": [
+    "backtracking",
+    "strings",
+    "prefix"
+   ]
+  },
+  {
+   "slug": "largest-valid-sequence",
+   "title": "The Largest Sequence With Spaced Pairs",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 481,
+   "tags": [
+    "backtracking",
+    "greedy",
+    "constraints"
+   ]
+  },
+  {
+   "slug": "smallest-sufficient-team",
+   "title": "The Smallest Team That Knows Every Skill",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 482,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "set-cover",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "minimum-work-sessions",
+   "title": "The Fewest Work Sessions",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 483,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "bin-packing",
+    "memoization"
+   ]
+  },
+  {
+   "slug": "closest-subset-sum",
+   "title": "The Subset Sum Closest to a Goal",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 484,
+   "tags": [
+    "backtracking",
+    "meet-in-the-middle",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "optimal-account-balancing",
+   "title": "Settle the Debts With the Fewest Payments",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 485,
+   "tags": [
+    "backtracking",
+    "greedy",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "shortest-superstring",
+   "title": "The Shortest Text That Contains All Words",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 486,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "strings",
+    "overlap"
+   ]
+  },
+  {
+   "slug": "stickers-to-spell-word",
+   "title": "The Fewest Stickers That Spell a Word",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 487,
+   "tags": [
+    "backtracking",
+    "memoization",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "exact-cover-count",
+   "title": "Cover Every Element Exactly Once",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 488,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "exact-cover",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "skyscraper-puzzle",
+   "title": "The Skyscraper Puzzle",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 489,
+   "tags": [
+    "backtracking",
+    "puzzle",
+    "permutations",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "lights-out-moves",
+   "title": "Switch Off All the Lights",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 490,
+   "tags": [
+    "backtracking",
+    "puzzle",
+    "enumeration",
+    "bits"
+   ]
+  },
+  {
+   "slug": "assign-bikes",
+   "title": "Give Every Worker a Bike",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 491,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "memoization",
+    "assignment"
+   ]
+  },
+  {
+   "slug": "squareful-arrays",
+   "title": "Neighbours That Add Up to a Square",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 492,
+   "tags": [
+    "backtracking",
+    "permutations",
+    "duplicates",
+    "math"
+   ]
+  },
+  {
+   "slug": "smallest-hamiltonian-path",
+   "title": "The Smallest Walk Through All Towns",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 493,
+   "tags": [
+    "backtracking",
+    "bitmask",
+    "graph",
+    "hamiltonian"
+   ]
+  },
+  {
+   "slug": "number-path-puzzle",
+   "title": "Numbers That Follow Each Other",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 494,
+   "tags": [
+    "backtracking",
+    "puzzle",
+    "grid",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "minimum-colours-for-graph",
+   "title": "The Fewest Colours for a Map",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 495,
+   "tags": [
+    "backtracking",
+    "graph",
+    "coloring",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "smallest-dominating-set",
+   "title": "The Fewest Guards for a Network",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 496,
+   "tags": [
+    "backtracking",
+    "graph",
+    "bitmask",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "latin-square-completions",
+   "title": "Complete the Latin Square",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 497,
+   "tags": [
+    "backtracking",
+    "constraints",
+    "bitmask",
+    "latin-square"
+   ]
+  },
+  {
+   "slug": "count-automorphisms",
+   "title": "How Many Ways Does a Graph Look the Same?",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 498,
+   "tags": [
+    "backtracking",
+    "graph",
+    "permutations",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "tromino-tilings-count",
+   "title": "Cover the Board With L-Shaped Pieces",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 499,
+   "tags": [
+    "backtracking",
+    "grid",
+    "tiling"
+   ]
+  },
+  {
+   "slug": "futoshiki-count",
+   "title": "The Latin Square With Greater-Than Signs",
+   "topic": "backtracking",
+   "difficulty": "hard",
+   "order": 500,
+   "tags": [
+    "backtracking",
+    "constraints",
+    "puzzle",
+    "latin-square"
+   ]
   }
  ]
 }
