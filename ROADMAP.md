@@ -336,5 +336,57 @@ What to know:
 - The calendar shows the days on which something was **solved**, not the days on which something was tried: a submit that is not
   accepted is not saved, and hints and attempts have no time stamp.
 - Days are the learner's own local days.
-- Phase 4 is complete (4a to 4d). Next in the plan: Phase 5, writing the other nine topics.
+- Phase 4 is complete (4a to 4d). Phase 5, writing the other nine topics, is in section 18.
 
+
+## 18. Phase 5: the other nine topics, one topic at a time
+
+Every topic has exactly 100 problems: 30 easy, 45 medium and 25 hard, numbered by effort. Topic number `T` uses the numbers
+`(T - 1) * 100 + 1` to `T * 100`. A topic is written, checked in all three languages, and only then released and deployed; the next
+topic is started after the released one has been checked on the live site.
+
+How it works:
+
+- `tools/problems/release.json` lists the released topics. They must be the first topics of the roadmap in order, and each must
+  have exactly 100 problems. Only released topics are written to `public/problems`; the unit tests enforce this.
+- The sources of a topic live in `tools/problems/topics/<topic id>/`. A file may hold many problems, and the build gives the
+  numbers (easy, then medium, then hard).
+- `node tools/problems/build.mjs --all --out <folder>` builds every topic, also the unreleased ones, into a folder. The checking
+  scripts can serve that folder instead of the site, so a topic can be verified before it is on the site.
+- The program generator reads matrices (`g:int[n][m]`), lists of words (`w:word[n]`) and grids of lines, and `fast: true` gives
+  fast input in all three languages (needed for inputs of thousands of numbers, where Java's `Scanner` is too slow).
+- The tests are not made smaller to save space: the largest tests (up to 20000 numbers) are what separates a fast solution from
+  a slow one.
+
+How a topic is checked before it is released:
+
+- The build refuses duplicate numbers, titles and slugs, a missing field, and a level that goes backwards.
+- Every Python solution runs natively against every example and hidden test, and the problems that are easy to get wrong
+  compare their reference solution with a brute force while the tests are built.
+- All solutions and all starter files go through the real judge in a real browser (Edge), in Python, C++ and Java.
+- A real browser session on a clean server: sign up, the dashboard, the roadmap, the problem list with its filters, solving
+  problems through the editor, and the Progress page.
+
+### Arrays and Strings (101-200, released)
+
+| Numbers | What they teach |
+|---|---|
+| 101-110 | one pass over an array: counters, running sums, rotation, a write index, merging, runs, a sum formula, range sums |
+| 111-116 | digits with a carry, looking at neighbours, matrices (transpose, diagonals, row and column sums, the border) |
+| 117-126 | strings: counting letters, anagrams, prefixes, words, runs of letters, subsequence, rotation, pattern search |
+| 127-130 | binary search, two pointers on sorted arrays, Pascal's triangle |
+| 131-137 | binary search variants (lower bound, rotated arrays, a peak) and binary search on the answer |
+| 138-148 | sliding windows and two pointers: window sums, distinct letters, replacements, flips, permutation in a string, water, triplets, three colours |
+| 149-160 | maximum subarray (sum, product, circle), prefix products, next permutation, difference arrays, mountains, cycle detection, intervals, custom sorting |
+| 161-167 | matrices: rotation, spiral, zeroes, search in a sorted matrix, diagonals, the Game of Life, rectangle sums |
+| 168-175 | strings in depth: palindromes, parsing a number, zigzag, Roman numerals, version numbers, count and say |
+| 176-184 | hard windows and searches: the smallest window, trapped water, the first missing positive, the median of two arrays, the k-th smallest by binary search |
+| 185-194 | hard arrays: inversions with merge sort, reverse pairs, "exactly k" windows, two blocks, the best rectangle, chunks, swaps and cycles, flips, a deletion |
+| 195-200 | text justification, the k-th permutation, a number in English, divide and conquer on a string, four numbers with a sum, an expression with precedence |
+
+How it was checked: 1171 native Python runs against the JavaScript reference with no difference; 100 of 100 solutions Accepted in
+each of Python, C++ and Java by the real judge in a real browser, and all 300 starter files compile; 290 unit tests pass; a browser
+session on a clean server passed 25 checks (dashboard, roadmap, list and filters, three problems solved through the editor,
+Progress page).
+
+Next: Hashing (201-300).

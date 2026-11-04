@@ -5,7 +5,9 @@
 //                                           (used to check the unreleased topics without putting them on the site)
 //   add --verbose for one line per problem
 //
-// The problems live in tools/problems/problems/ (Basics) and tools/problems/topics/<topic>/ (the other topics), one file each.
+// The problems live in tools/problems/problems/ (Basics, one file each) and tools/problems/topics/<topic>/ (the other topics). A file in a
+// topic folder may export one problem or an array of problems, and its problems do not need `topic` (the folder name is used) or
+// `order`: the numbers of a topic are given here, easy problems first, then medium, then hard, each level in the order of the files.
 // For every one this script:
 //   - writes the starter and solution code of a problem that has a `program` (see programs.mjs)
 //   - makes the tests, and computes the expected output with the problem's own JavaScript reference solution
@@ -71,13 +73,31 @@ function sourceFiles() {
   return list;
 }
 
-const problems = [];
+const entries = [];
 for (const file of sourceFiles()) {
   const mod = await import(pathToFileURL(file).href);
-  const p = expand(mod.default);
-  check(p, path.basename(file));
   const folder = path.basename(path.dirname(file));
-  if (folder !== 'problems' && folder !== p.topic) fail(p.slug, `the file is in topics/${folder} but the problem says topic "${p.topic}"`);
+  for (const raw of [].concat(mod.default)) {
+    if (folder !== 'problems' && raw.topic !== undefined && folder !== raw.topic) fail(raw.slug, `the file is in topics/${folder} but the problem says topic "${raw.topic}"`);
+    entries.push({ file, p: expand(folder === 'problems' ? raw : { ...raw, topic: folder }) });
+  }
+}
+
+// Number the problems of a topic whose files do not give numbers.
+for (const topic of TOPICS) {
+  const mine = entries.filter((e) => e.p.topic === topic.id);
+  const numbered = mine.filter((e) => e.p.order !== undefined).length;
+  if (numbered !== 0 && numbered !== mine.length) fail(topic.id, 'either all or none of the problems of a topic give their number');
+  if (numbered === 0) {
+    const base = TOPICS.indexOf(topic) * PER_TOPIC;
+    mine.map((e, i) => ({ e, i })).sort((a, b) => DIFFICULTIES.indexOf(a.e.p.difficulty) - DIFFICULTIES.indexOf(b.e.p.difficulty) || a.i - b.i)
+      .forEach(({ e }, k) => { e.p.order = base + k + 1; });
+  }
+}
+
+const problems = [];
+for (const { file, p } of entries) {
+  check(p, path.basename(file));
 
   const examples = p.examples.map((e) => ({ input: e.input, output: p.solve(e.input) + '\n', note: e.note }));
   const hiddenInputs = p.tests();
