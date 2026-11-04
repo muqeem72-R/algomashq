@@ -82,8 +82,8 @@ function runTour() {
   const name = state.user.firstName;
   const steps = [
     { target: null, title: `Welcome, ${name}!`, body: 'Take a 30-second tour to see where everything is. You can skip it at any time.' },
-    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap and Problems are ready to use. Progress and Submissions open up as the platform grows.' },
-    { target: '[data-tour="topics"]', title: 'The roadmap', body: 'Ten DSA topics, from the basics to advanced. Each one starts with a short concept note, then Easy, Medium and Hard problems.' },
+    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap and Problems are ready to use. The Roadmap shows all ten topics. Progress and Submissions open up as the platform grows.' },
+    { target: '[data-tour="next"]', title: 'Your next problem', body: 'The dashboard always shows the next problem for you, plus your progress and your streak. Problems are numbered by effort: start at 1 and work your way up.' },
     { target: '[data-tour="theme"]', title: 'Make it yours', body: 'Switch between light, dark and system themes, and pick the accent color you like.' },
     { target: '[data-tour="avatar"]', title: 'Your profile', body: 'Click your photo to see your user ID, open your profile, change settings or log out. Other members see your photo, user ID and country, never your name or email.' },
     { target: null, title: 'You are all set', body: 'Start with the Basics topic whenever you are ready. You can replay this tour from Settings.' }
