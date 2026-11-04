@@ -1,4 +1,4 @@
-// The roadmap cards, shown on the dashboard and on the Roadmap page.
+// The roadmap cards, shown on the Roadmap page (and only there).
 // A topic that already has problems shows how many and links to them; the others say "Opening soon".
 
 import { h } from '../dom.js';

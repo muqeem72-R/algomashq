@@ -30,7 +30,9 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   shows both of the last two levels. The chat level is ready (`chatView`) but is not served by any endpoint yet:
   when chat is built, the chat endpoints must first confirm that both people belong to that chat.
 - A one-time welcome tour for new members, which can be replayed from Settings.
-- Dashboard, Roadmap (the 10 topics), My profile and Settings pages. Problems, Progress and Submissions are placeholders.
+- A dashboard that shows the learner's own progress (the next problem, solved problems by difficulty, a solving streak and the
+  recently solved list), the Roadmap page (the 10 topics, only there), the Problems pages, My profile and Settings. Progress
+  and Submissions are placeholders for Phase 4.
 
 ## What Phase 2 includes
 
