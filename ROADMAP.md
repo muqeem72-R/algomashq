@@ -46,7 +46,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 | 1. Foundation and Login (DONE, see section 10) | Full-page desktop layout, themes, Brevo login (email OTP), Turnstile, sessions, D1 database, user ids, profile photo, welcome tour | A user can log in and see a dashboard |
 | 2. Problem workspace (DONE for Python, C++ and Java; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
-| 4. Progress (4a, 4b and 4c DONE, see sections 14 to 16) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
+| 4. Progress (DONE, see sections 14 to 17) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
 | 6. Polish and hardening | Admin page, rate limits, security, analytics, accessibility | Public launch |
 | 7. Optional | Leaderboard, discussion, contests, mock interviews | Later |
@@ -303,4 +303,38 @@ What to know:
 - Two devices editing the same note at the same time do not merge: the copy with the newer time wins.
 - Not done on purpose, to look at later: a "Saved for later" card on the dashboard.
 - Still to come in Phase 4: 4d the Progress page (per-topic progress, a year-long activity calendar).
+
+## 17. Phase 4d status: the Progress page (done)
+
+What 4d does (the page behind "Progress" in the sidebar):
+
+- **Numbers on top:** problems solved (the one large figure), active days, current streak, best streak.
+- **A 61-day calendar:** 30 days back, today and 30 days ahead, laid out under Monday to Sunday, with the **date of every day printed
+  in its cell** (1, 2, 3 ...) and the month name on the first day and on every 1st. A day with one solve is lit softly, a day with two or
+  more is lit fully, today has a ring, days to come are empty outlines. Hover or keyboard focus on a day shows how many problems were
+  solved and which ones (with their language). A table view lists the days with solves.
+- **Milestones** (a small set, to be tuned later): first solve, 10, 25 and 50 problems, all the Easy ones, every problem, 7 days in a
+  row, and a problem in each of the three languages. Each shows "reached" or how far you are.
+- **By topic** (only topics that have problems, plus a line about the others still to come), **by difficulty** and **by language**.
+- **Solved each week:** a column chart of the last 12 weeks (thin columns, value labels only on this week and the best week), with a
+  readout on hover and a table view.
+- **How you learn:** solved without any hint, accepted on the first submit, solution opened before solving, hints opened in all,
+  concepts read, submits per solved problem. Plain numbers with no judgement.
+- **Solved problems:** a list, newest first, with the languages and the first-solved date, filtered by difficulty and language.
+
+How it is built:
+
+- No new table or endpoint: it reads the solves and the per-problem state that the account already keeps (section 14), and the
+  counting is in `progress-stats.js` (day numbers, streaks, the calendar, weekly totals, rows, habits, milestones) with 13 unit tests
+  that also pass in other time zones. The dashboard uses the same day and streak counting.
+- The charts follow a few fixed rules (from the data-visualisation guide used for this page): one hue in steps for "how much", thin
+  marks, a readout on every mark that also works with the keyboard, text in text colours, no number on every point, and a table view
+  under each chart.
+
+What to know:
+
+- The calendar shows the days on which something was **solved**, not the days on which something was tried: a submit that is not
+  accepted is not saved, and hints and attempts have no time stamp.
+- Days are the learner's own local days.
+- Phase 4 is complete (4a to 4d). Next in the plan: Phase 5, writing the other nine topics.
 

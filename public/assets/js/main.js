@@ -12,7 +12,7 @@ import { dashboardView } from './views/dashboard.js';
 import { roadmapView } from './views/roadmap.js';
 import { profileView } from './views/profile.js';
 import { settingsView } from './views/settings.js';
-import { soonView } from './views/soon.js';
+import { progressView } from './views/progress.js';
 import * as engine from './runner/engine.js';
 import { problemsView } from './views/problems.js';
 import { workspaceView } from './views/workspace.js';
@@ -26,7 +26,7 @@ const PAGES = {
   dashboard: { title: 'Dashboard', view: dashboardView },
   roadmap: { title: 'Roadmap', view: roadmapView },
   problems: { title: 'Problems', view: (c) => problemsView(c, null) },
-  progress: { title: 'Progress', view: () => soonView('progress') },
+  progress: { title: 'Progress', view: progressView },
   submissions: { title: 'Submissions', view: (c) => submissionsView(c, null) },
   profile: { title: 'My profile', view: profileView },
   settings: { title: 'Settings', view: settingsView }
@@ -101,7 +101,7 @@ function runTour() {
   const name = state.user.firstName;
   const steps = [
     { target: null, title: `Welcome, ${name}!`, body: 'Take a 30-second tour to see where everything is. You can skip it at any time.' },
-    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap, Problems and Submissions are ready to use. The Roadmap shows all ten topics. Progress opens up as the platform grows.' },
+    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap, Problems, Progress and Submissions are ready to use. The Roadmap shows all ten topics; Progress shows your calendar, streaks and milestones.' },
     { target: '[data-tour="next"]', title: 'Your next problem', body: 'The dashboard always shows the next problem for you, plus your progress and your streak. Problems are numbered by effort: start at 1 and work your way up.' },
     { target: '[data-tour="theme"]', title: 'Make it yours', body: 'Switch between light, dark and system themes, and pick the accent color you like.' },
     { target: '[data-tour="avatar"]', title: 'Your profile', body: 'Click your photo to see your user ID, open your profile, change settings or log out. Other members see your photo, user ID and country, never your name or email.' },

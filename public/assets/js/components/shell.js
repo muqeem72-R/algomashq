@@ -10,7 +10,7 @@ const NAV = [
   { path: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
   { path: 'roadmap', label: 'Roadmap', icon: 'roadmap' },
   { path: 'problems', label: 'Problems', icon: 'problems' },
-  { path: 'progress', label: 'Progress', icon: 'progress', soon: true },
+  { path: 'progress', label: 'Progress', icon: 'progress' },
   { path: 'submissions', label: 'Submissions', icon: 'submissions' },
   { path: 'settings', label: 'Settings', icon: 'settings' }
 ];

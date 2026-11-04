@@ -228,6 +228,8 @@ export function flush() {
 
 // ---- Solved problems ----
 export const getSolved = () => solved;             // { slug: { lang, at } }
+export const getSolveItems = () => items;          // every solve: [{ slug, lang, at }], one per problem and language (read only)
+export const getAllStates = () => states;          // { slug: { conceptSeen, hints, revealed, attempts } } (read only)
 export const isSolved = (slug) => !!solved[slug];
 export const solvedLanguages = (slug) => langs[slug] || [];
 
