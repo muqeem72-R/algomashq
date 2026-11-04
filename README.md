@@ -32,7 +32,7 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
 - A one-time welcome tour for new members, which can be replayed from Settings.
 - A dashboard that shows the learner's own progress (the next problem, solved problems by difficulty, a solving streak and the
   recently solved list), the Roadmap page (the 10 topics, only there), the Problems pages, the Submissions page (your history),
-  My profile and Settings. The Progress page is a placeholder for Phase 4d.
+  My profile and Settings, and the Progress page (below).
 
 ## What Phase 2 includes
 
@@ -88,7 +88,16 @@ problem opens in the language of its newest draft. Bookmarks and notes follow th
 private plain-text note of at most 500 characters on a problem (the Notes tab). Both are kept in the account, the newer copy wins, and
 removing a bookmark or emptying a note keeps a small record with its time, so an old copy on another device cannot bring it back. The
 Problems list can be filtered by what you did: all, solved, unsolved, bookmarked, and with notes; the numbers on the filters count what
-the topic, difficulty and search leave. The Progress page comes in the next part.
+the topic, difficulty and search leave.
+
+**The Progress page** reads all of it and needs no server of its own (no table, no endpoint): the numbers are worked out in the
+browser by `public/assets/js/progress-stats.js`, which has its own unit tests. It shows: the problems solved, active days and the current
+and best streak; a **61-day calendar** (30 days back, today, 30 days ahead, the date printed in every cell, a day lights up when you
+solve something, a readout with the problems on hover and on keyboard focus); eight **milestones**; progress **by topic** (only
+topics that have problems), **by difficulty** and **by language**; a chart of **solves per week** for the last 12 weeks; **how you
+learn** (solved without hints, accepted on the first submit, solutions opened before solving, hints opened, concepts read, submits
+per problem, all plain numbers); and the list of **solved problems** with filters. Each chart has a table view with the same numbers.
+Calendar days are the learner's own local days; only solves count, because a failed submit is not saved.
 
 ## User ids
 

@@ -228,3 +228,81 @@
 .sub-code { padding-top: 4px; }
 .sub-code .code-block { max-height: 360px; background: var(--bg); }
 .sub-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+/* ---- Progress page ---- */
+.prog-row { display: grid; gap: 16px; margin-bottom: 16px; }
+.prog-stats { grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); }
+.prog-split { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+.prog-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.prog-card h3 { font-size: 16px; }
+.prog-card .sub { margin: 4px 0 16px; font-size: 13.5px; color: var(--muted); }
+.prog-hero { display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.prog-hero-value { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+.prog-hero-value span { font-size: 24px; font-weight: 600; letter-spacing: 0; color: var(--faint); }
+.tile-value { margin-top: 8px; font-size: 28px; font-weight: 700; letter-spacing: -.02em; }
+.bar.tint, .bar.tint::-webkit-progress-bar { background: color-mix(in srgb, var(--accent) 16%, var(--surface-3)); }
+
+/* the calendar: one hue in steps, the date printed in every cell */
+.cal-head, .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.cal-head { margin-bottom: 6px; }
+.cal-head span { text-align: center; font-size: 12px; font-weight: 600; color: var(--faint); }
+.cal-cell { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 52px; border-radius: 8px; background: var(--surface-3); color: var(--text); transition: transform .12s var(--ease); }
+.cal-cell.is-pad { background: transparent; }
+.cal-day { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cal-mon { position: absolute; top: 4px; left: 6px; font-size: 10.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.cal-cell.l1 { background: color-mix(in srgb, var(--accent) 30%, var(--surface-3)); }
+.cal-cell.l2 { background: var(--accent); color: var(--accent-ink); }
+.cal-cell.l2 .cal-mon { color: var(--accent-ink); opacity: .8; }
+.cal-cell.is-future { background: transparent; box-shadow: inset 0 0 0 1px var(--border); color: var(--faint); }
+.cal-cell.is-today { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+.cal-cell:not(.is-pad):hover, .cal-cell:focus-visible { transform: translateY(-2px); outline: 2px solid var(--accent-text); outline-offset: 1px; }
+.cal-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 16px; font-size: 12.5px; color: var(--muted); }
+.swatch-key { display: inline-flex; align-items: center; gap: 8px; }
+.cal-cell.mini { display: inline-block; width: 14px; height: 14px; border-radius: 4px; transition: none; }
+.cal-cell.mini.is-today { outline-width: 2px; outline-offset: 1px; }
+
+/* meters and the language bars */
+.meter-list { display: grid; gap: 18px; }
+.meter-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px 12px; }
+.meter-row .bar { grid-column: 1 / -1; }
+.meter-name { font-size: 14px; font-weight: 600; }
+.meter-count { font: 600 13px var(--mono); color: var(--muted); }
+
+/* the weekly chart */
+.viz-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.viz-grid { stroke: var(--border); stroke-width: 1; }
+.viz-axis { fill: var(--faint); font: 11px var(--font); }
+.viz-value { fill: var(--text); font: 700 12px var(--font); }
+.viz-bar { fill: var(--accent); }
+.viz-hit { fill: transparent; }
+.viz-slot { outline: none; }
+.viz-slot:hover .viz-bar, .viz-slot:focus-visible .viz-bar { fill: color-mix(in srgb, var(--accent) 72%, var(--text)); }
+.viz-slot:focus-visible .viz-hit { stroke: var(--accent-text); stroke-width: 2; rx: 6; }
+.viz-tooltip { position: fixed; z-index: 60; max-width: 300px; padding: 8px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); pointer-events: none; font-size: 13px; }
+.viz-tip-value { display: block; font-size: 15px; font-weight: 700; color: var(--text); }
+.viz-tip-label { color: var(--muted); }
+.viz-tip-rows { margin: 6px 0 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--muted); }
+.viz-table summary { margin-top: 14px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent-text); }
+.viz-table table { width: 100%; margin-top: 8px; border-collapse: collapse; font-size: 13px; }
+.viz-table th, .viz-table td { padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+.viz-table th { color: var(--faint); font-weight: 600; }
+
+/* milestones and habits */
+.milestones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.milestone { display: flex; gap: 10px; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); }
+.milestone.is-done { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.ms-icon { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-3); color: var(--faint); }
+.milestone.is-done .ms-icon { background: var(--accent); color: var(--accent-ink); }
+.ms-text { display: grid; gap: 1px; min-width: 0; }
+.ms-text strong { font-size: 14px; }
+.ms-text span { font: 600 12.5px var(--mono); color: var(--muted); }
+.ms-text small { font-size: 12px; color: var(--faint); }
+.habit-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.habit-row:last-child { border-bottom: 0; }
+.habit-value { font-size: 18px; font-weight: 700; white-space: nowrap; }
+.habit-value small { font-size: 13px; font-weight: 600; color: var(--faint); }
+
+/* the list of solved problems */
+.prog-list-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-bottom: 14px; }
+.prog-filters { display: flex; flex-wrap: wrap; gap: 10px; }
+.lang-chips { display: inline-flex; flex-wrap: wrap; gap: 6px; }

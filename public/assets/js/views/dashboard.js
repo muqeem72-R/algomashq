@@ -1,17 +1,15 @@
 // The dashboard: where the learner stands and what to do next.
-// The topic cards live on the Roadmap page only; this page shows the learner's own progress (kept in this browser).
+// The topic cards live on the Roadmap page only; this page shows the learner's own progress (kept in the account).
 
 import { h, icon } from '../dom.js';
 import { LANGUAGES } from '../data/topics.js';
 import { loadIndex } from '../problems-data.js';
 import { getSolved, getState } from '../progress.js';
+import { DAY, dayNumber, solvesPerDay, streaks } from '../progress-stats.js';
 
 const LEVELS = ['easy', 'medium', 'hard'];
-const DAY = 86400000;
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 
-// A whole number for the calendar day (in the learner's own time zone) that a moment falls in.
-const dayNumber = (ts) => { const d = new Date(ts); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };
 
 function when(ts) {
   const diff = dayNumber(Date.now()) - dayNumber(ts);
@@ -21,23 +19,16 @@ function when(ts) {
   return new Date(ts).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
 }
 
-// Streaks and the last four weeks, from the moments at which problems were solved.
+// Streaks and the last four weeks, from the moments at which problems were solved (the counting is shared with the Progress page).
 function activity(entries) {
-  const days = new Set(entries.map((e) => dayNumber(e.at)));
+  const counts = solvesPerDay(entries);
   const today = dayNumber(Date.now());
-  let current = 0;
-  for (let cursor = days.has(today) ? today : today - 1; days.has(cursor); cursor--) current++;   // a day without a solve yet does not end the streak
-  let best = 0, run = 0, previous = null;
-  for (const d of [...days].sort((a, b) => a - b)) {
-    run = previous !== null && d === previous + 1 ? run + 1 : 1;
-    best = Math.max(best, run);
-    previous = d;
-  }
+  const { current, best } = streaks(counts, today);
   return {
     current, best,
-    solvedToday: days.has(today),
+    solvedToday: counts.has(today),
     week: entries.filter((e) => Date.now() - e.at < 7 * DAY).length,
-    recent: Array.from({ length: 28 }, (_, i) => ({ on: days.has(today - 27 + i), isToday: i === 27 }))
+    recent: Array.from({ length: 28 }, (_, i) => ({ on: counts.has(today - 27 + i), isToday: i === 27 }))
   };
 }
 
