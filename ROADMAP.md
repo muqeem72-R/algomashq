@@ -254,28 +254,27 @@ What to know:
 - If a shared computer is used, the very first sign-in after the update takes over the old browser-only progress. Later accounts
   on that browser start empty, because each account now has its own saved copy.
 
-## 15. Phase 4b status: submission history and drafts (done)
+## 15. Phase 4b status: the last submission and drafts (done)
 
 What 4b does:
 
-- Table `submissions`: one row per Submit (the verdict, tests passed, slowest time, language, time and the code). Run and
-  Examples are not recorded. Code is kept for the last 5 submissions of a problem and for the latest accepted solution in each
-  language, and at most 20 rows are kept per problem; pressing Submit again on the same code with the same result adds nothing.
-  An accepted submission also marks the problem solved.
+- Table `submissions`: for every problem and language the account keeps ONE submission, the last one the learner pressed Submit
+  for: its verdict, tests passed, slowest time and its code. A newer Submit replaces it; another language keeps its own, so there
+  are at most three per problem. Run and Examples are not recorded. An accepted submission also marks the problem solved, and a
+  worse later submission does not undo it. A report that waited offline and is older than the stored one does not replace it.
 - Table `drafts`: the code typed so far, per problem and language. It reaches the account when a problem is submitted or left
   (or the page is hidden), not on every keystroke. The newer copy wins. A problem opens in the language of its newest draft.
-- The Submissions page (`#/submissions`, and `#/submissions/<problem>` from the "History" link on a problem): a table with the
+- The Submissions page (`#/submissions`, and `#/submissions/<problem>` from the "Submissions" link on a problem): a table with the
   result, language, tests and time; a click shows the code, with "Use this code in the editor" and "Copy"; a filter (all, accepted,
-  not accepted); "Show more"; and "Clear history" (it does not touch what you solved).
+  not accepted); and "Clear submissions" (it does not touch what you solved).
 - Everything is private to its owner; the tests check that other learners get 404 or an empty answer and that no member view
   contains any of it.
 
 What to know:
 
-- Free-tier cost of a Submit: about 4 database writes (the rate limit counter, the row, the trimming only when something is
-  trimmed, and the solved row if accepted), plus the draft and the state. About 10 000 submits a day fit in the free write limit,
-  which is plenty for now; it is a number to watch in Phase 6.
+- Free-tier cost of a Submit: about 3 database writes (the rate limit counter, the submission, and the solved row when accepted),
+  plus the draft and the state. Roughly 10 000 submits a day fit in the free write limit; it is a number to watch in Phase 6.
+- The storage is small and bounded: at most 3 submissions per problem, 300 per learner, each at most 20 000 characters.
 - A draft that a learner resets on one device can come back from another device that still has the old text (there are no
   "deleted" markers). It is a small price for keeping the sync simple.
 - Still to come in Phase 4: 4c bookmarks and notes, 4d the Progress page (per-topic progress, a year-long activity calendar).
-

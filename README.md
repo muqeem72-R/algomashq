@@ -79,11 +79,12 @@ connection drops: every change goes to the copy first and then through a small q
 Solving is never undone and the counters only grow, so two copies are merged by keeping the most. The first sign-in after the
 update moves the progress that older versions kept in the browser into the account.
 
-The same holds for the code. Every Submit is written to the history (the `submissions` table): its result, and the code for the
-last 5 submissions of each problem and for the latest accepted solution in each language (a problem keeps its last 20 rows at
-most; pressing Submit again on the same code with the same result adds nothing). The code typed so far (a *draft*) is saved in
-the account when a problem is submitted or left, not on every keystroke, and comes back on another device: the newer copy wins,
-and the problem opens in the language of its newest draft. Bookmarks, notes and the Progress page come in the next parts.
+The same holds for the code. For every problem and language the account keeps **one** submission: the last code the learner
+pressed Submit for, with its result (the `submissions` table). Submitting again in the same language replaces it; another language
+keeps its own. A learner therefore has at most three saved submissions per problem, and a worse later submission does not undo
+"solved". The code typed so far (a *draft*) is saved in the account when a problem is submitted or left, not on every keystroke, and
+comes back on another device: the newer copy wins, and the problem opens in the language of its newest draft. Bookmarks, notes and the
+Progress page come in the next parts.
 
 ## User ids
 
@@ -248,10 +249,10 @@ for a moment while the app loads.
 | `GET /api/me/progress` | your own progress: the problems you solved (with language and time) and how each problem went |
 | `POST /api/me/solved` | record a solve `{ slug, lang, at? }`; repeating it changes nothing |
 | `PATCH /api/me/state` | save how a problem is going (concept read, hints shown, solution opened, submissions); values only grow |
-| `GET /api/me/submissions` | your submission history, newest first, without the code (`?limit`, `?before` cursor, `?problem=<slug>`, `?verdict=accepted\|failed`) |
-| `POST /api/me/submissions` | record one Submit `{ slug, lang, verdict, passed, total, timeMs?, code?, at? }`; an accepted one also counts as solved; the same code with the same result again is ignored |
-| `GET /api/me/submissions/:id` | one of your submissions with its code (someone else's is 404) |
-| `DELETE /api/me/submissions` | clear your history (`?problem=<slug>` for one problem); your solved problems stay |
+| `GET /api/me/submissions` | your saved submissions, newest first, without the code: one per problem and language (`?problem=<slug>`, `?verdict=accepted\|failed`) |
+| `POST /api/me/submissions` | save a Submit `{ slug, lang, verdict, passed, total, timeMs?, code?, at? }`: it replaces the earlier submission of that problem and language; an accepted one also counts as solved |
+| `GET /api/me/submissions/:slug/:lang` | your saved submission of one problem in one language, with its code |
+| `DELETE /api/me/submissions` | clear your saved submissions (`?problem=<slug>` for one problem); your solved problems stay |
 | `PUT /api/me/drafts` | save the code typed so far `{ slug, lang, code, at }`; a newer copy replaces an older one; `code: null` removes it |
 | `GET /api/me/drafts/:slug` | your saved drafts of one problem |
 | `POST /api/me/import` | move the progress that older versions kept in the browser into the account (once, nothing is removed) |

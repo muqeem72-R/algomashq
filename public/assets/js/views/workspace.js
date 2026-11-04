@@ -66,7 +66,7 @@ export function workspaceView(ctx, slug) {
       h('span', { class: `level ${problem.difficulty}`, text: problem.difficulty[0].toUpperCase() + problem.difficulty.slice(1) }),
       topic ? h('span', { class: 'ws-topic', text: topic.title }) : null,
       solvedBadge,
-      h('a', { class: 'ws-history', href: `#/submissions/${slug}`, title: 'Your earlier submissions of this problem' }, icon('clock', 15), 'History')
+      h('a', { class: 'ws-history', href: `#/submissions/${slug}`, title: 'The code you last submitted for this problem, in each language' }, icon('clock', 15), 'Submissions')
     );
 
     // ---------- Left: tabs ----------
