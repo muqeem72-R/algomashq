@@ -48,6 +48,10 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   complexity ("a loop would take years, find the formula") up to big-number arithmetic and matrix power. Every problem has a concept
   note, a statement with examples, three hints, starter code, a worked solution with its complexity, and hidden tests, in Python,
   C++ and Java.
+- 100 original problems in the **Arrays and Strings** topic, numbered 101 to 200 by effort (101-130 easy, 131-175 medium,
+  176-200 hard): prefix sums, two pointers, sliding windows, sorting, binary search (also on the answer), matrices, and strings
+  from counting letters to parsing. The other topics follow the same pattern, one topic at a time (see ROADMAP.md, section 18).
+  A topic has exactly 100 problems and topic number `T` uses the numbers `(T - 1) * 100 + 1` to `T * 100`.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 
@@ -162,17 +166,25 @@ With `DEV_LOG_OTP=1` (set in `.dev.vars`) no email is sent: the login code is pr
 
 ## Adding or changing a problem
 
-Each problem is one file in `tools/problems/problems/`. It has the text (concept, statement, formats, hints), starter code
-and solution code for Python, C++ and Java, a JavaScript reference solution (`solve`), and a function that makes the test inputs.
-The expected outputs are computed from the reference solution.
+Each problem has the text (concept, statement, formats, hints), starter code and solution code for Python, C++ and Java, a
+JavaScript reference solution (`solve`), and a function that makes the test inputs. The expected outputs are computed from the
+reference solution. Basics problems are one file each in `tools/problems/problems/`. The other topics live in
+`tools/problems/topics/<topic id>/`, where a file may export one problem or an array of problems, and a problem does not need
+`topic` (the folder name is used) or `order`.
 
-The number of a problem is its `order`: it must be unique, and a harder level must never come before an easier one (the build
-checks both). A problem with no input sets `noInput: true`.
+The number of a problem is its `order`: it is unique, and a harder level never comes before an easier one (the build checks
+both). In a topic folder the build gives the numbers itself: easy problems first, then medium, then hard, each level in the
+order of the files. A problem with no input sets `noInput: true`.
+
+A topic goes on the site when its id is listed in `tools/problems/release.json`. The released topics must be the first topics of
+the roadmap, in order, and each must have exactly 100 problems (the build and `npm test` check this). Topics that are not
+released can still be built into another folder to be checked: `node tools/problems/build.mjs --all --out <folder>`.
 
 To avoid writing six full programs by hand, a problem can describe its program once in a `program` entry: the input (`io`, for
 example `['n:int', 'a:int[n]']`) and the solution logic in each language. `tools/problems/programs.mjs` then writes the complete
 starter code and solution code (reading the input, includes, `main`, optional helper functions). Hand-written `starter` or
-`solution.code` for a language still wins over the generated text.
+`solution.code` for a language still wins over the generated text. `io` also reads a matrix (`'g:int[n][m]'`), a list of words
+(`'w:word[n]'`), and a grid of lines (`'rows:rows[n]'`); `fast: true` switches Python, C++ and Java to fast input for big inputs.
 
 ```bash
 npm run problems        # rebuilds public/problems/*.json and checks that every problem is complete
