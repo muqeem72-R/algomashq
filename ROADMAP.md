@@ -389,4 +389,30 @@ each of Python, C++ and Java by the real judge in a real browser, and all 300 st
 session on a clean server passed 25 checks (dashboard, roadmap, list and filters, three problems solved through the editor,
 Progress page).
 
-Next: Hashing (201-300).
+### Hashing (201-300, released)
+
+| Numbers | What they teach |
+|---|---|
+| 201-210 | sets and maps: two numbers that add up, duplicates, distinct values, frequency tables, the most frequent value, the first repeat, a number without a partner, intersections, one-to-one mappings, "can the note be written" |
+| 211-220 | counting pairs with a map (equal pairs, a given sum or difference), a missing and a repeated number, equal frequencies, jewels, happy numbers (a cycle found with a set), the majority element, repeated and missing values |
+| 221-230 | word patterns, a block with sum zero from equal prefix sums, same multisets, the first number that occurs once, word frequencies, an arithmetic progression, successors, palindromes from letter counts |
+| 231-239 | prefix sums with a map: blocks with sum k, the longest block, equally many 0s and 1s, remainders modulo k, odd numbers, vowels against consonants, prefix xor |
+| 240-249 | grouping by a key: anagram groups, the longest run of consecutive values, the k most frequent values, four arrays with sum zero, anagram positions, duplicates close to each other, shifted words, letters by frequency, a brick wall, multiset intersection |
+| 250-259 | lookups: equal distances from a point, favourite lists, a harmonious subsequence, bulls and cows, a sudoku board, pairs with a sum divisible by d, k-sum pairs, rows equal to columns, normalised email addresses, the degree of an array |
+| 260-267 | text and counting: repeated DNA blocks, blocks of length k, words from letters, common letters, anagram index mapping, groups of digit sums, "close" strings, dominoes |
+| 268-275 | keys that are computed: subdomain visits, rabbits in a forest, nice pairs after a reversal, an unusual alphabet, balanced splits, anagram steps, a window with limited frequency, a palindrome from two-letter words |
+| 276-282 | hashing of strings: a rolling hash with binary search (longest repeated block, longest common block), all different substrings, the shortest palindrome by prepending, a block with a given hash value, doubled substrings, a Zobrist hash for anagram pairs |
+| 283-290 | blocks made of all the words, the most points on a line (reduced slopes), palindrome pairs, three equal letter counts, a walk that moves by one step, bitmask prefixes, a removed block for divisibility, buckets for "almost" duplicates |
+| 291-300 | canonical forms of rows, a subsequence ending with a value, reduced fractions, taking from both ends, the xor of both sides, rectangles with a given sum, squares through a query point, equal products, words that are subsequences (buckets by the next letter), the sum of distances to equal elements |
+
+How it was checked: 1203 native Python runs against the JavaScript reference with no difference (the references of the string
+problems are exact, for example a suffix automaton, and most medium and hard problems are also compared with a brute force while
+the tests are built); 100 of 100 solutions Accepted in each of Python, C++ and Java by the real judge in a real browser, and all
+starter files compile; 390 unit tests pass; a browser session on a clean server passed 25 checks (three topics on the site,
+roadmap, list and filters, three problems solved through the editor, Progress page).
+
+Two things that came up: the build now accepts hidden tests of up to 5 MB per problem (the tests are not made smaller to fit),
+and a Java solution had a real compile error in the real judge (a `long` used as a string index) that the other two languages
+did not show, which is why every language is run for every problem.
+
+Next: Linked List, Stack, Queue (301-400).

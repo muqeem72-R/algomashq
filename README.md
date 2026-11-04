@@ -52,6 +52,9 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   176-200 hard): prefix sums, two pointers, sliding windows, sorting, binary search (also on the answer), matrices, and strings
   from counting letters to parsing. The other topics follow the same pattern, one topic at a time (see ROADMAP.md, section 18).
   A topic has exactly 100 problems and topic number `T` uses the numbers `(T - 1) * 100 + 1` to `T * 100`.
+- 100 original problems in the **Hashing** topic, numbered 201 to 300 by effort (201-230 easy, 231-275 medium, 276-300 hard):
+  sets and maps, counting, prefix sums with a map, grouping by a key (sorted letters, reduced fractions, canonical forms),
+  matching with complements, bitmask prefixes, buckets, and polynomial and Zobrist hashing of strings.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 
