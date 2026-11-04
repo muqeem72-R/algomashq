@@ -24,6 +24,9 @@
 .topic.has-problems { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
 .open-link { margin-left: auto; font-weight: 600; }
 
+/* The hidden iframe that runs Java (a page on another origin). It must stay in the page, but it is never seen. */
+.java-frame { position: fixed; left: -9999px; top: 0; width: 1px; height: 1px; border: 0; visibility: hidden; }
+
 /* ---- The problem page ---- */
 .content.flush { padding: 0; overflow: hidden; }
 .ws { display: flex; flex-direction: column; height: 100%; min-height: 0; }

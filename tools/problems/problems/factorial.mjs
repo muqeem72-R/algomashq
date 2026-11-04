@@ -29,11 +29,12 @@ export default {
   hints: [
     'Can you express `n!` using a smaller factorial?',
     'Which input has an answer you know without any work? That is your base case.',
-    '21! does not fit in a signed 64-bit integer, which is why `n` stops at 20. In C++ use `long long`.'
+    '21! does not fit in a signed 64-bit integer, which is why `n` stops at 20. In C++ use `long long`, in Java use `long`.'
   ],
   starter: {
     python: '# Read n and print n!\nn = int(input())\n\ndef factorial(n):\n    # Your code here\n    pass\n\nprint(factorial(n))\n',
-    cpp: '#include <iostream>\nusing namespace std;\n\nlong long factorial(int n) {\n    // Your code here\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << factorial(n) << endl;\n    return 0;\n}\n'
+    cpp: '#include <iostream>\nusing namespace std;\n\nlong long factorial(int n) {\n    // Your code here\n    return 0;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << factorial(n) << endl;\n    return 0;\n}\n',
+    java: 'import java.util.Scanner;\n\npublic class Main {\n    static long factorial(int n) {\n        // Your code here\n        return 0;\n    }\n\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        int n = in.nextInt();\n        System.out.println(factorial(n));\n    }\n}\n'
   },
   solution: {
     explanation: [
@@ -43,7 +44,8 @@ export default {
     complexity: 'Time O(n), space O(n) for the chain of calls.',
     code: {
       python: 'n = int(input())\n\ndef factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(n))\n',
-      cpp: '#include <iostream>\nusing namespace std;\n\nlong long factorial(int n) {\n    if (n == 0) return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << factorial(n) << endl;\n    return 0;\n}\n'
+      cpp: '#include <iostream>\nusing namespace std;\n\nlong long factorial(int n) {\n    if (n == 0) return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int n;\n    cin >> n;\n    cout << factorial(n) << endl;\n    return 0;\n}\n',
+      java: 'import java.util.Scanner;\n\npublic class Main {\n    static long factorial(int n) {\n        if (n == 0) return 1;\n        return n * factorial(n - 1);\n    }\n\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        int n = in.nextInt();\n        System.out.println(factorial(n));\n    }\n}\n'
     }
   },
 

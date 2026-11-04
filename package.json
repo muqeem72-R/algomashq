@@ -10,6 +10,8 @@
     "problems": "node tools/problems/build.mjs",
     "dev": "wrangler dev --port 8788",
     "deploy": "wrangler deploy",
+    "dev:java": "wrangler dev -c java/wrangler.toml --port 8789",
+    "deploy:java": "wrangler deploy -c java/wrangler.toml",
     "test": "node --test"
   },
   "devDependencies": {

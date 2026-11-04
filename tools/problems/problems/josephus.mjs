@@ -53,7 +53,8 @@ export default {
   ],
   starter: {
     python: '# Read n and k, print the number of the last person left.\nn, k = map(int, input().split())\n\n# Your code here\n',
-    cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n, k;\n    cin >> n >> k;\n    // Print the number of the last person left.\n    return 0;\n}\n'
+    cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n, k;\n    cin >> n >> k;\n    // Print the number of the last person left.\n    return 0;\n}\n',
+    java: 'import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        long n = in.nextLong();\n        long k = in.nextLong();\n        // Print the number of the last person left.\n    }\n}\n'
   },
   solution: {
     explanation: [
@@ -63,7 +64,8 @@ export default {
     complexity: 'Time O(n), space O(1).',
     code: {
       python: 'n, k = map(int, input().split())\n\nsurvivor = 0\nfor size in range(2, n + 1):\n    survivor = (survivor + k) % size\nprint(survivor + 1)\n',
-      cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n, k;\n    cin >> n >> k;\n    long long survivor = 0;\n    for (long long size = 2; size <= n; size++) {\n        survivor = (survivor + k) % size;\n    }\n    cout << survivor + 1 << endl;\n    return 0;\n}\n'
+      cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n, k;\n    cin >> n >> k;\n    long long survivor = 0;\n    for (long long size = 2; size <= n; size++) {\n        survivor = (survivor + k) % size;\n    }\n    cout << survivor + 1 << endl;\n    return 0;\n}\n',
+      java: 'import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        long n = in.nextLong();\n        long k = in.nextLong();\n        long survivor = 0;\n        for (long size = 2; size <= n; size++) {\n            survivor = (survivor + k) % size;\n        }\n        System.out.println(survivor + 1);\n    }\n}\n'
     }
   },
 

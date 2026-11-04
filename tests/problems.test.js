@@ -36,7 +36,7 @@ for (const entry of index) {
     assert.ok(p.statement.length >= 1 && p.inputFormat.length >= 1 && p.outputFormat.length >= 1 && p.constraints.length >= 1);
     assert.ok(p.examples.length >= 1);
     assert.ok(p.tests.length >= 5, 'at least 5 hidden tests');
-    for (const lang of ['python', 'cpp']) {
+    for (const lang of ['python', 'cpp', 'java']) {
       assert.ok(p.starter[lang] && p.starter[lang].length > 20, `starter code for ${lang}`);
       assert.ok(p.solution.code[lang] && p.solution.code[lang].length > 40, `solution code for ${lang}`);
       assert.notEqual(p.starter[lang], p.solution.code[lang], `the starter must not already be the solution (${lang})`);

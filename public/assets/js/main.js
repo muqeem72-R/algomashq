@@ -13,6 +13,7 @@ import { roadmapView } from './views/roadmap.js';
 import { profileView } from './views/profile.js';
 import { settingsView } from './views/settings.js';
 import { soonView } from './views/soon.js';
+import * as engine from './runner/engine.js';
 import { problemsView } from './views/problems.js';
 import { workspaceView } from './views/workspace.js';
 
@@ -164,6 +165,7 @@ async function boot() {
     return;
   }
   document.title = state.config.appName;
+  engine.configure({ javaOrigin: state.config.javaOrigin });   // Java is offered only when its sandbox is set up
   try {
     state.user = (await api('/api/auth/me')).user;
   } catch (e) {
