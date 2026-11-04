@@ -14,6 +14,10 @@ import * as logout from '../functions/api/auth/logout.js';
 import * as mePhoto from '../functions/api/me/photo.js';
 import * as meTour from '../functions/api/me/tour.js';
 import * as meSettings from '../functions/api/me/settings.js';
+import * as meProgress from '../functions/api/me/progress.js';
+import * as meSolved from '../functions/api/me/solved.js';
+import * as meState from '../functions/api/me/state.js';
+import * as meImport from '../functions/api/me/import.js';
 import * as userById from '../functions/api/users/[id].js';
 import * as userPhoto from '../functions/api/users/[id]/photo.js';
 import { onRequest as middleware } from '../functions/api/_middleware.js';
@@ -29,6 +33,10 @@ const ROUTES = [
   { pattern: /^\/api\/me\/photo$/, names: [], handlers: mePhoto },
   { pattern: /^\/api\/me\/tour$/, names: [], handlers: meTour },
   { pattern: /^\/api\/me\/settings$/, names: [], handlers: meSettings },
+  { pattern: /^\/api\/me\/progress$/, names: [], handlers: meProgress },
+  { pattern: /^\/api\/me\/solved$/, names: [], handlers: meSolved },
+  { pattern: /^\/api\/me\/state$/, names: [], handlers: meState },
+  { pattern: /^\/api\/me\/import$/, names: [], handlers: meImport },
   { pattern: /^\/api\/users\/([^/]+)\/photo$/, names: ['id'], handlers: userPhoto },
   { pattern: /^\/api\/users\/([^/]+)$/, names: ['id'], handlers: userById }
 ];
