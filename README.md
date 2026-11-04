@@ -59,6 +59,11 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   376-400 hard): lists, stacks, queues and deques, monotonic stacks and queues, expression parsing, and designs such as an LRU
   and an LFU cache. A list problem reads the values from the input; its starter code builds the list and prints the result, and you
   only write the function that works on the nodes.
+- 100 original problems in the **Recursion and Backtracking** topic, numbered 401 to 500 by effort (401-430 easy, 431-475 medium,
+  476-500 hard): recursion on numbers, text and nested lists, then the choose - explore - unchoose pattern for subsets,
+  permutations, combinations, strings and grids, games with memoisation, constraint puzzles (queens, sudoku, Latin squares,
+  skyscrapers, lights out) and exact search with pruning, bitmasks and meet in the middle. Problems whose answer is a list print
+  at most a few thousand lines.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 

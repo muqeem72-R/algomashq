@@ -447,4 +447,36 @@ problem now put the one-node list at the smallest or the largest value (still 1 
 short list. The number of tests did not go down (it went up by three). Once, during a long Java run, the runner gave no answer in
 time; the same problem was Accepted at once when it was run alone.
 
-Next: Recursion and Backtracking (401-500).
+### Recursion and Backtracking (401-500, released)
+
+| Numbers | What they teach |
+|---|---|
+| 401-410 | recursion on numbers, text and structures: ways to split a number, stairs with broken steps, numbers made of fours and sevens, every cut of a number, nested lists, a pattern that contains itself, a number in words, brace expansion, routes in a DAG, groups without conflicts |
+| 411-420 | the first enumerations: subsets, subsets with a given sum, combinations, permutations, derangements, strings without two ones in a row, balanced brackets, phone keypad words, the Gray code, two piles with equal sums |
+| 421-430 | more easy searches: walks in a grid without revisiting, case variants, the XOR of all subsets, plus or minus to a target, n queens, codes with a digit sum, climbing with steps of 1, 2 and 3, subsets with a small product, numbers without a repeated digit, palindromes over an alphabet |
+| 431-439 | subsets and orders: different subsets and arrangements of lists with repeats, the rank of a permutation, the k-th combination, combination sums, the smallest difference of two piles, beautiful arrangements, words from tiles |
+| 440-449 | strings: palindrome cuts, IP addresses, all sentences of a dictionary, additive sequences, strobogrammatic numbers, unique concatenations, the best words from a bag of letters, every bracketing of an expression, abbreviations, signs between digits |
+| 450-458 | grids and games: word search, the smallest path in a maze, a walk over every square, a gold mine, noughts and crosses, the flipping game, a number-picking game, taking from both ends of a row, the 24 game |
+| 459-468 | constraints: queens with forbidden squares, the first placement of n queens, a small sudoku, graph colouring, a walk through all towns, the largest independent set, seating without enemies, equal sums in k groups, fair cookie sharing, magic squares |
+| 469-475 | puzzles: shopping offers, cryptarithms, painting a grid, rooks, domino tilings, prime rings, kings that do not touch |
+| 476-481 | hard: sudoku, expressions that reach a target, fixing brackets, many words in a grid with a trie, word squares, the largest sequence with spaced pairs |
+| 482-488 | hard: the smallest team, work sessions, the closest subset sum (meet in the middle), settling debts, the shortest superstring, stickers, exact covers |
+| 489-494 | hard: skyscrapers, lights out, bike assignment, squareful arrays, the smallest Hamiltonian path, a number path puzzle |
+| 495-500 | hard: the chromatic number, dominating sets, Latin squares, automorphisms, tromino tilings, futoshiki |
+
+How it was checked: 1587 native Python runs against the JavaScript reference with no difference (most medium and hard problems
+are also compared with a brute force or an independent method while the tests are built; the puzzles use generated puzzles whose
+number of solutions is checked); 100 of 100 solutions Accepted in each of Python, C++ and Java by the real judge in a real
+browser (300 checks, on files identical to the released ones), and all starter files compile; 590 unit tests pass; a browser
+session on a clean server passed 25 checks (five topics on the site, roadmap, list and filters, three problems solved through
+the editor, Progress page).
+
+Things that came up: the Basics topic already has the simple recursions (factorial, Fibonacci with a memo, fast power, the Tower
+of Hanoi, all binary strings), so this topic starts with recursion on structures and goes on to backtracking. A list of results
+is only used when the number of lines is small (at most a few thousand); the other problems ask for a count, the first or the
+smallest answer, or a yes or no. The real-browser check found one Java compile error that the other languages did not show (a
+variable called `sc` clashed with the scanner of the generated program), and a unit test found a few test inputs without the
+final newline; both were fixed before the release. The hidden tests were chosen so that the slowest Python reference takes
+about two seconds natively (the browser limit for Python is ten); no hidden test was made smaller to fit.
+
+Next: Trees (501-600).
