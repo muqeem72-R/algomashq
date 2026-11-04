@@ -44,7 +44,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 |---|---|---|
 | 0. Decisions | Name and domain, stack, code-execution backend | Decisions finalised |
 | 1. Foundation and Login (DONE, see section 10) | Full-page desktop layout, themes, Brevo login (email OTP), Turnstile, sessions, D1 database, user ids, profile photo, welcome tour | A user can log in and see a dashboard |
-| 2. Problem workspace | 3-pane page: problem statement, code editor with C++/Java/Python switch, input/output console, Run and Submit buttons | One problem works end to end |
+| 2. Problem workspace (DONE for Python and C++, Java still to do; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
 | 4. Progress | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
@@ -79,7 +79,7 @@ About 10 topics x 3 levels x 5-10 problems = roughly 150-300 problems. Each prob
 
 - The name AlgoMashq is decided. The site runs on the free Cloudflare address `algomashq.<subdomain>.workers.dev`.
   A paid custom domain (`algomashq.dev`) is optional and can wait.
-- Confirmation of the VPS option for code execution (needed before Phase 2).
+- Java: it runs in the browser in the spike (CheerpJ), but it is not in the product yet. See section 12.
 - Git auto-deploy: pushing to GitHub should deploy the Worker through Cloudflare's Workers Builds. Builds were stuck
   during a Cloudflare incident on 2026-11-03, so the first deployments were made with `npm run deploy`. Confirm that a
   push now deploys by itself.
@@ -110,7 +110,7 @@ for the login emails, all on free plans). A real sign-up, email code and login w
 Verified: 16 unit tests (`npm test`), 53 API checks against a local server, and full browser runs (sign-up with and
 without a photo, code, dashboard, tour, profile, settings, reload, log out, camera capture, photo upload and removal).
 
-Next: Phase 2, the problem workspace. It needs the code-execution decision from section 8.
+Next: Phase 2, the problem workspace (see sections 11 and 12).
 
 ## 11. Phase 2 spike results: running code in the browser
 
@@ -145,3 +145,28 @@ Known limits and workarounds:
 Online compiler APIs (Judge0, JDoodle, Piston): the free tiers are tiny (Judge0 on RapidAPI about 50 submissions a
 day, JDoodle about 200 credits a day) and every user would share one key; public community instances have no uptime
 guarantee. They can only be an optional best-effort fallback, never the main engine.
+
+## 12. Phase 2 status: done for Python and C++
+
+What exists:
+
+- Problems page (`#/problems`, with topic pages at `#/problems/<topic>`) and the problem page (`#/problem/<slug>`).
+- The problem page teaches before it tests: Concept first, then Problem, three Hints and a Solution tab that unlocks after
+  the problem is solved (or when the learner chooses to open it).
+- Editor (CodeMirror 6, mounted in a shadow root so its styles work under the strict CSP), drafts saved per problem and language.
+- A judge: compile once, run every test, stop at the first failure. Verdicts: Accepted, Wrong Answer, Runtime Error, Time Limit,
+  Memory Limit, Output Limit, Compile Error. Hidden test data is never shown.
+- Python (Pyodide) and C++ (clang in WebAssembly) run in Web Workers inside the learner's browser. A program that passes its
+  time limit is stopped by terminating its worker.
+- 6 original problems in the Basics topic (2 easy, 2 medium, 2 hard). Each one teaches a complexity or recursion idea, and a
+  naive solution fails on time on purpose.
+- All 12 reference solutions (6 problems x 2 languages) were run through the real judge in a real browser and are Accepted.
+  Wrong, slow, crashing and non-compiling programs get the right verdicts.
+
+What is not done:
+
+- **Java.** It is listed in the editor as "coming soon". It worked in the spike with CheerpJ, but there are open problems:
+  an endless loop freezes the page unless Java runs in a separate-origin frame, reading stdin is untested, the runtime is
+  loaded from CheerpJ's CDN, and the license terms must be read. The Java reference solutions also need a way to be verified.
+- Progress is kept in the browser only. The solved list moves to the account database in Phase 4.
+- More problems and the other 9 topics (Phases 3 and 5).

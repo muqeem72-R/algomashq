@@ -1,0 +1,64 @@
+export default {
+  slug: 'count-primes',
+  title: 'Count the Primes',
+  topic: 'basics',
+  difficulty: 'medium',
+  order: 4,
+  tags: ['math', 'sieve', 'complexity'],
+
+  concept: {
+    title: 'The Sieve of Eratosthenes',
+    body: [
+      'A **prime** is a number greater than 1 whose only divisors are 1 and itself. To test one number you can try dividing it by every number up to its square root. Doing that for every number up to `N` costs about `N * sqrt(N)` steps, which is billions of steps when `N` is two million.',
+      'The sieve avoids the repeated work. Keep a list of flags, one per number, all set to "prime". Go through the numbers in order. When you meet a number that is still marked prime, mark all of its multiples as not prime. Every composite number gets crossed out by its smallest prime factor.',
+      'Two small optimizations: start crossing out at `p * p`, because smaller multiples were already crossed out by smaller primes, and stop looking for new primes once `p * p > N`. The total work is about `N * log(log N)`, which is almost linear.'
+    ]
+  },
+
+  statement: [
+    'A prime number has exactly two divisors: 1 and itself. The number 1 is **not** prime.',
+    'Given `N`, print how many prime numbers there are between 1 and `N` (inclusive).'
+  ],
+  inputFormat: ['A single integer `N`.'],
+  outputFormat: ['Print the number of primes less than or equal to `N`.'],
+  constraints: ['1 <= N <= 2000000'],
+  examples: [
+    { input: '10\n', note: 'The primes up to 10 are 2, 3, 5 and 7, so the answer is 4.' },
+    { input: '1\n', note: '1 is not prime, so there are none.' }
+  ],
+  hints: [
+    'Testing every number separately repeats a lot of work.',
+    'When you find a prime `p`, none of `2p`, `3p`, `4p`, ... can be prime. Cross them out in one pass.',
+    'Start crossing out from `p * p`, and you only need to look for new primes while `p * p <= N`. In C++ a `vector<char>` of flags is fast and small.'
+  ],
+  starter: {
+    python: '# Read N and print how many primes are in 1..N\nn = int(input())\n\n# Your code here\n',
+    cpp: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // Print the number of primes in 1..n\n    return 0;\n}\n'
+  },
+  solution: {
+    explanation: [
+      'Make an array `is_prime` of size `N + 1`, all ones, and set positions 0 and 1 to 0. For each `p` from 2 while `p * p <= N`: if `is_prime[p]` is still 1, set `is_prime[j] = 0` for `j = p*p, p*p + p, p*p + 2p, ...` up to `N`. At the end, count the ones.',
+      'In Python, slice assignment crosses out all multiples of `p` at once, which is much faster than a loop written in Python.'
+    ],
+    complexity: 'Time O(N log log N), space O(N).',
+    code: {
+      python: 'n = int(input())\n\nif n < 2:\n    print(0)\nelse:\n    is_prime = bytearray([1]) * (n + 1)\n    is_prime[0] = is_prime[1] = 0\n    p = 2\n    while p * p <= n:\n        if is_prime[p]:\n            is_prime[p * p::p] = bytearray(len(range(p * p, n + 1, p)))\n        p += 1\n    print(sum(is_prime))\n',
+      cpp: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<char> isPrime(n + 1, 1);\n    isPrime[0] = 0;\n    if (n >= 1) isPrime[1] = 0;\n    for (long long p = 2; p * p <= n; p++) {\n        if (isPrime[p]) {\n            for (long long j = p * p; j <= n; j += p) isPrime[j] = 0;\n        }\n    }\n    int count = 0;\n    for (int i = 2; i <= n; i++) count += isPrime[i];\n    cout << count << endl;\n    return 0;\n}\n'
+    }
+  },
+
+  solve(input) {
+    const n = Number(input.trim());
+    const flags = new Uint8Array(n + 1).fill(1);
+    flags[0] = 0;
+    if (n >= 1) flags[1] = 0;
+    for (let p = 2; p * p <= n; p++) if (flags[p]) for (let j = p * p; j <= n; j += p) flags[j] = 0;
+    let count = 0;
+    for (let i = 2; i <= n; i++) count += flags[i];
+    return String(count);
+  },
+
+  tests() {
+    return [1, 2, 3, 4, 9, 25, 100, 1000, 99991, 100000, 1000000, 1999999, 2000000].map((n) => `${n}\n`);
+  }
+};

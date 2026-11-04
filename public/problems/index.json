@@ -1,0 +1,74 @@
+{
+ "problems": [
+  {
+   "slug": "sum-of-array",
+   "title": "Sum of an Array",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 1,
+   "tags": [
+    "loops",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "factorial",
+   "title": "Factorial",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 2,
+   "tags": [
+    "recursion",
+    "math"
+   ]
+  },
+  {
+   "slug": "fast-power",
+   "title": "Fast Power",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 3,
+   "tags": [
+    "math",
+    "complexity",
+    "modular arithmetic"
+   ]
+  },
+  {
+   "slug": "count-primes",
+   "title": "Count the Primes",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 4,
+   "tags": [
+    "math",
+    "sieve",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "josephus",
+   "title": "The Last Person Standing",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 5,
+   "tags": [
+    "recursion",
+    "math",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "fibonacci-modulo",
+   "title": "Gigantic Fibonacci",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 6,
+   "tags": [
+    "recursion",
+    "math",
+    "complexity"
+   ]
+  }
+ ]
+}

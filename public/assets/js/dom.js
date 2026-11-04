@@ -49,7 +49,11 @@ const ICONS = {
   upload: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M17 8l-5-5-5 5 M12 3v12',
   copy: 'M9 9h11v11H9z M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1',
   clock: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M12 6v6l4 2',
-  image: 'M3 5h18v14H3z M8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z M21 15l-5-5L5 19'
+  image: 'M3 5h18v14H3z M8.5 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z M21 15l-5-5L5 19',
+  back: 'M19 12H5 M12 19l-7-7 7-7',
+  arrow: 'M5 12h14 M12 5l7 7-7 7',
+  play: 'M6 4l14 8-14 8z',
+  lock: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4'
 };
 
 export function icon(name, size = 20) {

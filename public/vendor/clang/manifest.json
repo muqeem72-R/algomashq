@@ -1,0 +1,36 @@
+{
+ "llvm.core.wasm": {
+  "size": 75532134,
+  "parts": [
+   {
+    "file": "llvm.core.wasm.0.gz",
+    "bytes": 6109367
+   },
+   {
+    "file": "llvm.core.wasm.1.gz",
+    "bytes": 6163615
+   },
+   {
+    "file": "llvm.core.wasm.2.gz",
+    "bytes": 6808359
+   },
+   {
+    "file": "llvm.core.wasm.3.gz",
+    "bytes": 3723996
+   }
+  ]
+ },
+ "llvm-resources.tar": {
+  "size": 29665280,
+  "parts": [
+   {
+    "file": "llvm-resources.tar.0.gz",
+    "bytes": 2299108
+   },
+   {
+    "file": "llvm-resources.tar.1.gz",
+    "bytes": 1967020
+   }
+  ]
+ }
+}

@@ -13,14 +13,16 @@ import { roadmapView } from './views/roadmap.js';
 import { profileView } from './views/profile.js';
 import { settingsView } from './views/settings.js';
 import { soonView } from './views/soon.js';
+import { problemsView } from './views/problems.js';
+import { workspaceView } from './views/workspace.js';
 
 const app = document.getElementById('app');
-const state = { config: null, user: null, shell: null, tourShown: false, replay: false };
+const state = { config: null, user: null, shell: null, tourShown: false, replay: false, destroyView: null };
 
 const PAGES = {
   dashboard: { title: 'Dashboard', view: dashboardView },
   roadmap: { title: 'Roadmap', view: roadmapView },
-  problems: { title: 'Problems', view: () => soonView('problems') },
+  problems: { title: 'Problems', view: (c) => problemsView(c, null) },
   progress: { title: 'Progress', view: () => soonView('progress') },
   submissions: { title: 'Submissions', view: () => soonView('submissions') },
   profile: { title: 'My profile', view: profileView },
@@ -30,6 +32,8 @@ const PAGES = {
 // What the views are allowed to ask of the app.
 const ctx = {
   user: () => state.user,
+  get appName() { return state.config.appName; },
+  setTitle: (text) => { if (state.shell) state.shell.setTitle(text); },
   patchUser: (patch) => Object.assign(state.user, patch),   // same object, so views holding it stay current
   async refreshUser() {
     const result = await api('/api/auth/me');
@@ -77,7 +81,7 @@ function runTour() {
   const name = state.user.firstName;
   const steps = [
     { target: null, title: `Welcome, ${name}!`, body: 'Take a 30-second tour to see where everything is. You can skip it at any time.' },
-    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap, Problems, Progress and Submissions live here. Problems, Progress and Submissions open up as the platform grows.' },
+    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap and Problems are ready to use. Progress and Submissions open up as the platform grows.' },
     { target: '[data-tour="topics"]', title: 'The roadmap', body: 'Ten DSA topics, from the basics to advanced. Each one starts with a short concept note, then Easy, Medium and Hard problems.' },
     { target: '[data-tour="theme"]', title: 'Make it yours', body: 'Switch between light, dark and system themes, and pick the accent color you like.' },
     { target: '[data-tour="avatar"]', title: 'Your profile', body: 'Click your photo to see your user ID, open your profile, change settings or log out. Other members see your photo, user ID and country, never your name or email.' },
@@ -94,8 +98,19 @@ function runTour() {
 
 // ---- Rendering ----------------------------------------------------------------------------------
 
+// Finds the page for an address: a fixed page, a topic's problem list (problems/basics) or one problem (problem/factorial).
+function resolvePage(path) {
+  if (PAGES[path]) return { key: path, ...PAGES[path] };
+  const topicMatch = /^problems\/([a-z0-9-]+)$/.exec(path);
+  if (topicMatch) { const topic = topicMatch[1]; return { key: 'problems', title: 'Problems', view: (c) => problemsView(c, topic) }; }
+  const problemMatch = /^problem\/([a-z0-9-]+)$/.exec(path);
+  if (problemMatch) { const slug = problemMatch[1]; return { key: 'problems', title: 'Problems', view: (c) => workspaceView(c, slug) }; }
+  return null;
+}
+
 function render() {
   const path = currentPath();
+  if (state.destroyView) { state.destroyView(); state.destroyView = null; }   // lets the page we leave stop its work
 
   if (!state.user) {
     if (path !== 'login') { navigate('login'); return; }
@@ -112,7 +127,7 @@ function render() {
     app.append(state.shell.el);
   }
 
-  const page = PAGES[path];
+  const page = resolvePage(path);
   if (!page) {
     state.shell.setPage('', 'Page not found');
     state.shell.content.replaceChildren(
@@ -125,8 +140,11 @@ function render() {
     return;
   }
 
-  state.shell.setPage(path, page.title);
-  state.shell.content.replaceChildren(page.view(ctx));
+  state.shell.setPage(page.key, page.title);
+  const view = page.view(ctx);
+  state.destroyView = view.__destroy || null;
+  state.shell.content.classList.toggle('flush', view.dataset.flush === 'true');   // the problem page uses the whole area
+  state.shell.content.replaceChildren(view);
   document.title = `${page.title} · ${state.config.appName}`;
 
   // The tour shows once, to a member who has never seen it; a replay from Settings waits here too.

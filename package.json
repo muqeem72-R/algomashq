@@ -6,6 +6,8 @@
   "description": "A free platform to learn Data Structures and Algorithms by solving problems in C++, Java and Python.",
   "scripts": {
     "db:local": "wrangler d1 execute algomashq --local --file=db/schema.sql",
+    "vendor": "npm --prefix tools/vendor install && node tools/vendor/build.mjs",
+    "problems": "node tools/problems/build.mjs",
     "dev": "wrangler dev --port 8788",
     "deploy": "wrangler deploy",
     "test": "node --test"
