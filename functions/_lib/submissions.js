@@ -1,20 +1,20 @@
-// What a learner last submitted: for every problem and language ONE submission, the last one, with its result and its code.
-// A newer Submit replaces it. It is private to its owner. Nothing here judges anything: the judge runs in the browser, so
-// the server only checks that a report is well formed.
+// The solutions a learner got accepted: for every problem and language ONE, the last accepted one, with its code.
+// A submission that is not accepted is never saved, and it never replaces a saved solution. It is private to its owner.
+// Nothing here judges anything: the judge runs in the browser, so the server only checks that a report is well formed.
 
 import { LANGUAGE_IDS } from './validate.js';
 import { isSlug, believableTime } from './progress.js';
 
-export const VERDICTS = ['accepted', 'wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error'];
+export const SAVED_VERDICT = 'accepted';   // the only result that is saved
 export const CODE_MAX = 20000;
 
 const whole = (value, lo, hi) => (Number.isInteger(value) && value >= lo && value <= hi ? value : null);
 
-// A report { slug, lang, verdict, passed, total, timeMs?, code, at? } -> a clean one, or null.
+// A report { slug, lang, verdict, passed, total, timeMs?, code, at? } -> a clean one, or null (also for any verdict but accepted).
 // Code that is too long is not kept, but the result still is.
 export function cleanSubmission(raw, slugs, now = Date.now()) {
   if (!raw || typeof raw !== 'object') return null;
-  if (!isSlug(raw.slug, slugs) || !LANGUAGE_IDS.includes(raw.lang) || !VERDICTS.includes(raw.verdict)) return null;
+  if (!isSlug(raw.slug, slugs) || !LANGUAGE_IDS.includes(raw.lang) || raw.verdict !== SAVED_VERDICT) return null;
   const passed = whole(raw.passed, 0, 1000);
   const total = whole(raw.total, 0, 1000);
   if (passed === null || total === null || passed > total) return null;
@@ -26,7 +26,7 @@ export function cleanSubmission(raw, slugs, now = Date.now()) {
   };
 }
 
-// Saves the submission as THE submission of its problem and language. A report that arrives late (it waited offline) and is
+// Saves the solution as THE saved solution of its problem and language. A report that arrives late (it waited offline) and is
 // older than what is stored does not replace it.
 export const saveSubmission = (db, userId, s) =>
   db
@@ -41,13 +41,11 @@ export const saveSubmission = (db, userId, s) =>
 
 const rowOut = (r) => ({ slug: r.slug, lang: r.lang, verdict: r.verdict, passed: r.passed, total: r.total, timeMs: r.time_ms, at: r.submitted_at, hasCode: !!r.has_code });
 
-// All of the learner's saved submissions, newest first, without the code (there is at most one per problem and language).
-export async function listSubmissions(db, userId, { slug = null, verdict = null } = {}) {
-  const where = ['user_id = ?'];
+// All of the learner's saved solutions, newest first, without the code (there is at most one per problem and language).
+export async function listSubmissions(db, userId, { slug = null } = {}) {
+  const where = ['user_id = ?', "verdict = 'accepted'"];
   const args = [userId];
   if (slug) { where.push('slug = ?'); args.push(slug); }
-  if (verdict === 'accepted') where.push("verdict = 'accepted'");
-  if (verdict === 'failed') where.push("verdict <> 'accepted'");
   const { results } = await db
     .prepare(`SELECT slug, lang, verdict, passed, total, time_ms, submitted_at, code IS NOT NULL AS has_code FROM submissions WHERE ${where.join(' AND ')} ORDER BY submitted_at DESC LIMIT 400`)
     .bind(...args)
@@ -57,7 +55,7 @@ export async function listSubmissions(db, userId, { slug = null, verdict = null 
 
 export async function getSubmission(db, userId, slug, lang) {
   const r = await db
-    .prepare('SELECT slug, lang, verdict, passed, total, time_ms, submitted_at, code, code IS NOT NULL AS has_code FROM submissions WHERE user_id = ? AND slug = ? AND lang = ?')
+    .prepare("SELECT slug, lang, verdict, passed, total, time_ms, submitted_at, code, code IS NOT NULL AS has_code FROM submissions WHERE user_id = ? AND slug = ? AND lang = ? AND verdict = 'accepted'")
     .bind(userId, slug, lang)
     .first();
   return r ? { ...rowOut(r), code: r.code } : null;

@@ -1,21 +1,25 @@
 // The submission history and the drafts: the checks the server makes, and how the browser keeps them in step with the account.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cleanSubmission, VERDICTS, CODE_MAX } from '../functions/_lib/submissions.js';
+import { cleanSubmission, SAVED_VERDICT, CODE_MAX } from '../functions/_lib/submissions.js';
 import { cleanDraft, DRAFT_MAX } from '../functions/_lib/drafts.js';
 import { withBrowser } from './helpers/browser-fakes.js';
 
 const SLUGS = new Set(['hello-world', 'sum-of-array']);
 const NOW = Date.UTC(2026, 5, 1);
 const report = (over = {}) => ({ slug: 'hello-world', lang: 'python', verdict: 'accepted', passed: 2, total: 2, timeMs: 5, code: 'print(1)', at: NOW - 1000, ...over });
+const NOT_ACCEPTED = ['wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error', 'cancelled', 'not_run'];
 
 // ---- the server's checks ----
 
-test('a submission report is accepted only when everything in it makes sense', () => {
+test('only an accepted solution is saved: every other result is refused', () => {
+  assert.equal(SAVED_VERDICT, 'accepted');
   assert.deepEqual(cleanSubmission(report(), SLUGS, NOW), { slug: 'hello-world', lang: 'python', verdict: 'accepted', passed: 2, total: 2, timeMs: 5, code: 'print(1)', at: NOW - 1000 });
-  for (const verdict of VERDICTS) assert.ok(cleanSubmission(report({ verdict }), SLUGS, NOW), verdict);
-  assert.equal(cleanSubmission(report({ verdict: 'cancelled' }), SLUGS, NOW), null, 'a cancelled run is not a submission');
-  assert.equal(cleanSubmission(report({ verdict: 'not_run' }), SLUGS, NOW), null);
+  for (const verdict of NOT_ACCEPTED) assert.equal(cleanSubmission(report({ verdict }), SLUGS, NOW), null, verdict);
+  assert.equal(cleanSubmission(report({ verdict: undefined }), SLUGS, NOW), null);
+});
+
+test('a report is accepted only when everything else in it makes sense too', () => {
   assert.equal(cleanSubmission(report({ slug: 'nope' }), SLUGS, NOW), null);
   assert.equal(cleanSubmission(report({ lang: 'ruby' }), SLUGS, NOW), null);
   assert.equal(cleanSubmission(report({ passed: 5, total: 2 }), SLUGS, NOW), null, 'more passed than there are tests');
@@ -23,12 +27,6 @@ test('a submission report is accepted only when everything in it makes sense', (
   assert.equal(cleanSubmission(report({ passed: 1.5 }), SLUGS, NOW), null);
   assert.equal(cleanSubmission(report({ total: 1e9, passed: 1 }), SLUGS, NOW), null);
   assert.equal(cleanSubmission(null, SLUGS, NOW), null);
-});
-
-test('a compile error has no tests and is still a valid submission', () => {
-  const s = cleanSubmission(report({ verdict: 'compile_error', passed: 0, total: 0, timeMs: null }), SLUGS, NOW);
-  assert.equal(s.verdict, 'compile_error');
-  assert.equal(s.timeMs, null);
 });
 
 test('code that is too long is not kept, but the result is', () => {
@@ -62,11 +60,11 @@ test('a draft needs a real problem and language, and code of a sensible size or 
 
 const user = (id) => ({ userId: id });
 
-test('a submission is queued, sent with its code, and replayed after being offline', async () => {
+test('an accepted solution is queued, sent with its code, and replayed after being offline', async () => {
   await withBrowser(async ({ progress, server }) => {
     await progress.load(user('mk001A'));
     server.online = false;
-    progress.recordSubmission({ slug: 'hello-world', lang: 'python', verdict: 'wrong_answer', passed: 0, total: 2, timeMs: 3, code: 'print(0)' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'python', verdict: 'accepted', passed: 2, total: 2, timeMs: 3, code: 'print("hello world!")' });
     await progress.flush();
     assert.equal(server.submissions.length, 0);
     server.online = true;
@@ -74,16 +72,26 @@ test('a submission is queued, sent with its code, and replayed after being offli
     await progress.load(user('mk001A'));
     await progress.flush();
     assert.equal(server.submissions.length, 1);
-    assert.equal(server.submissions[0].code, 'print(0)');
-    assert.equal(server.submissions[0].verdict, 'wrong_answer');
+    assert.equal(server.submissions[0].code, 'print("hello world!")');
+    assert.equal(server.submissions[0].verdict, 'accepted');
     assert.equal(server.submissions[0].t, undefined, 'the queue bookkeeping is not sent');
   });
 });
 
-test('a cancelled run is never recorded; too much code is sent without the code', async () => {
+test('a submission that is not accepted is never queued, so nothing is saved for it', async () => {
+  await withBrowser(async ({ progress, server, storage }) => {
+    await progress.load(user('mk001A'));
+    for (const verdict of NOT_ACCEPTED) progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict, passed: 0, total: 5, timeMs: 1, code: 'x' });
+    assert.deepEqual(JSON.parse(storage.getItem('algomashq.u.mk001A.queue')), []);
+    await progress.flush();
+    assert.equal(server.submissions.length, 0);
+    assert.equal(server.calls.filter((c) => c.path === '/api/me/submissions').length, 0);
+  });
+});
+
+test('code that is too long is sent without the code', async () => {
   await withBrowser(async ({ progress, server }) => {
     await progress.load(user('mk001A'));
-    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'cancelled', passed: 0, total: 5, code: 'x' });
     progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'accepted', passed: 5, total: 5, timeMs: 9, code: 'y'.repeat(20001) });
     await progress.flush();
     assert.equal(server.submissions.length, 1);
@@ -91,19 +99,20 @@ test('a cancelled run is never recorded; too much code is sent without the code'
   });
 });
 
-test('only the last submission of a problem and language is sent', async () => {
+test('only the last accepted solution of a problem and language is sent', async () => {
   await withBrowser(async ({ progress, server }) => {
     await progress.load(user('mk001A'));
     server.online = false;
-    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'wrong_answer', passed: 0, total: 2, timeMs: 1, code: 'first try' });
-    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'accepted', passed: 2, total: 2, timeMs: 2, code: 'second try' });
-    progress.recordSubmission({ slug: 'hello-world', lang: 'python', verdict: 'wrong_answer', passed: 0, total: 2, timeMs: 1, code: 'python try' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'accepted', passed: 2, total: 2, timeMs: 1, code: 'first accepted' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'wrong_answer', passed: 0, total: 2, timeMs: 1, code: 'a failed try' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'accepted', passed: 2, total: 2, timeMs: 2, code: 'second accepted' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'python', verdict: 'accepted', passed: 2, total: 2, timeMs: 1, code: 'python solution' });
     progress.recordSubmission({ slug: 'sum-of-array', lang: 'cpp', verdict: 'accepted', passed: 9, total: 9, timeMs: 3, code: 'another problem' });
     await progress.flush();
     server.online = true;
     await progress.flush();
     const sent = server.submissions.map((s) => `${s.slug}/${s.lang}: ${s.code}`).sort();
-    assert.deepEqual(sent, ['hello-world/cpp: second try', 'hello-world/python: python try', 'sum-of-array/cpp: another problem']);
+    assert.deepEqual(sent, ['hello-world/cpp: second accepted', 'hello-world/python: python solution', 'sum-of-array/cpp: another problem']);
   });
 });
 

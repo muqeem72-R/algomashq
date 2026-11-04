@@ -66,7 +66,7 @@ export function workspaceView(ctx, slug) {
       h('span', { class: `level ${problem.difficulty}`, text: problem.difficulty[0].toUpperCase() + problem.difficulty.slice(1) }),
       topic ? h('span', { class: 'ws-topic', text: topic.title }) : null,
       solvedBadge,
-      h('a', { class: 'ws-history', href: `#/submissions/${slug}`, title: 'The code you last submitted for this problem, in each language' }, icon('clock', 15), 'Submissions')
+      h('a', { class: 'ws-history', href: `#/submissions/${slug}`, title: 'Your accepted solutions of this problem, in each language' }, icon('clock', 15), 'Submissions')
     );
 
     // ---------- Left: tabs ----------
@@ -372,8 +372,8 @@ export function workspaceView(ctx, slug) {
       resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine({ phase: 'compiling' })));
       const v = await judge.submit(problem, submittedLang, code, (info) => resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine(info))));
       renderVerdict(v);
-      // The result goes into the submission history (a cancelled run is skipped), and the account hears about the code.
-      progress.recordSubmission({ slug, lang: submittedLang, verdict: v.status, passed: v.passed, total: v.total, timeMs: v.status === 'accepted' ? v.slowest : v.ms, code });
+      // Only an accepted solution is saved in the account (the last one for this language); a failed Submit saves nothing.
+      progress.recordSubmission({ slug, lang: submittedLang, verdict: v.status, passed: v.passed, total: v.total, timeMs: v.slowest, code });
       progress.saveDraft(slug, submittedLang, code, problem.starter[submittedLang]);
       progress.syncDrafts();
       if (v.status === 'accepted') {
