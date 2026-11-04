@@ -165,6 +165,8 @@ function enqueue(entry) {
   // Only the latest state of a problem, and the latest draft of a problem and language, matter.
   if (entry.t === 'state') queue = queue.filter((q) => !(q.t === 'state' && q.slug === entry.slug));
   if (entry.t === 'draft') queue = queue.filter((q) => !(q.t === 'draft' && q.slug === entry.slug && q.lang === entry.lang));
+  // The account keeps only the last submission of a problem and language, so an unsent older one is not worth sending.
+  if (entry.t === 'submission') queue = queue.filter((q) => !(q.t === 'submission' && q.slug === entry.slug && q.lang === entry.lang));
   queue.push(entry);
   if (queue.length > QUEUE_MAX) queue = queue.slice(-QUEUE_MAX);
   persist();
@@ -230,7 +232,7 @@ export function setState(slug, patch) {
   return next;
 }
 
-// ---- Submissions: the result of every Submit (the server keeps the code of the recent ones) ----
+// ---- Submissions: the result and code of a Submit. The account keeps the last one for each problem and language. ----
 export function recordSubmission({ slug, lang, verdict, passed, total, timeMs, code }) {
   if (!owner || !VERDICTS.includes(verdict)) return;   // a cancelled or unfinished run is not a submission
   enqueue({

@@ -83,23 +83,22 @@ CREATE TABLE IF NOT EXISTS problem_state (
   PRIMARY KEY (user_id, slug)
 );
 
--- ---- Phase 4b: submission history and drafts that follow the learner ----
--- One row per Submit (not per Run or Examples). The code is kept for the last 5 submissions of a problem and for the latest
--- accepted solution in each language; older rows keep only their result, and only the last 20 rows of a problem are kept.
+-- ---- Phase 4b: the last submission and the code typed so far ----
+-- For every problem and language the account keeps ONE submission: the last one the learner pressed Submit for, with its
+-- result and its code. A newer Submit replaces it (Run and Examples are not recorded).
 CREATE TABLE IF NOT EXISTS submissions (
-  id         INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_id    TEXT NOT NULL,
-  slug       TEXT NOT NULL,
-  lang       TEXT NOT NULL CHECK (lang IN ('cpp', 'java', 'python')),
-  verdict    TEXT NOT NULL CHECK (verdict IN ('accepted', 'wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error')),
-  passed     INTEGER NOT NULL,
-  total      INTEGER NOT NULL,
-  time_ms    INTEGER,
-  code       TEXT,
-  created_at INTEGER NOT NULL
+  user_id      TEXT NOT NULL,
+  slug         TEXT NOT NULL,
+  lang         TEXT NOT NULL CHECK (lang IN ('cpp', 'java', 'python')),
+  verdict      TEXT NOT NULL CHECK (verdict IN ('accepted', 'wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error')),
+  passed       INTEGER NOT NULL,
+  total        INTEGER NOT NULL,
+  time_ms      INTEGER,
+  code         TEXT,
+  submitted_at INTEGER NOT NULL,
+  PRIMARY KEY (user_id, slug, lang)
 );
-CREATE INDEX IF NOT EXISTS idx_submissions_user ON submissions (user_id, id);
-CREATE INDEX IF NOT EXISTS idx_submissions_problem ON submissions (user_id, slug, id);
+CREATE INDEX IF NOT EXISTS idx_submissions_recent ON submissions (user_id, submitted_at);
 
 -- The code typed so far, per problem and language. A newer copy replaces an older one.
 CREATE TABLE IF NOT EXISTS drafts (

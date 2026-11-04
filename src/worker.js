@@ -19,7 +19,7 @@ import * as meSolved from '../functions/api/me/solved.js';
 import * as meState from '../functions/api/me/state.js';
 import * as meImport from '../functions/api/me/import.js';
 import * as meSubmissions from '../functions/api/me/submissions.js';
-import * as meSubmission from '../functions/api/me/submissions/[id].js';
+import * as meSubmission from '../functions/api/me/submissions/[slug]/[lang].js';
 import * as meDrafts from '../functions/api/me/drafts.js';
 import * as meDraftsOfProblem from '../functions/api/me/drafts/[slug].js';
 import * as userById from '../functions/api/users/[id].js';
@@ -42,7 +42,7 @@ const ROUTES = [
   { pattern: /^\/api\/me\/state$/, names: [], handlers: meState },
   { pattern: /^\/api\/me\/import$/, names: [], handlers: meImport },
   { pattern: /^\/api\/me\/submissions$/, names: [], handlers: meSubmissions },
-  { pattern: /^\/api\/me\/submissions\/([0-9]+)$/, names: ['id'], handlers: meSubmission },
+  { pattern: /^\/api\/me\/submissions\/([^/]+)\/([^/]+)$/, names: ['slug', 'lang'], handlers: meSubmission },
   { pattern: /^\/api\/me\/drafts$/, names: [], handlers: meDrafts },
   { pattern: /^\/api\/me\/drafts\/([^/]+)$/, names: ['slug'], handlers: meDraftsOfProblem },
   { pattern: /^\/api\/users\/([^/]+)\/photo$/, names: ['id'], handlers: userPhoto },

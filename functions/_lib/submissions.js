@@ -1,15 +1,12 @@
-// The history of what a learner submitted: the result of every Submit and, for the recent ones, the code.
-// It is private to its owner. Nothing here judges anything: the judge runs in the browser, so the server only checks
-// that a report is well formed, and keeps the table small (the last 20 rows of a problem, code for the last 5).
+// What a learner last submitted: for every problem and language ONE submission, the last one, with its result and its code.
+// A newer Submit replaces it. It is private to its owner. Nothing here judges anything: the judge runs in the browser, so
+// the server only checks that a report is well formed.
 
 import { LANGUAGE_IDS } from './validate.js';
 import { isSlug, believableTime } from './progress.js';
 
 export const VERDICTS = ['accepted', 'wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error'];
 export const CODE_MAX = 20000;
-export const KEEP_CODE = 5;
-export const KEEP_ROWS = 20;
-export const PAGE_MAX = 50;
 
 const whole = (value, lo, hi) => (Number.isInteger(value) && value >= lo && value <= hi ? value : null);
 
@@ -29,48 +26,39 @@ export function cleanSubmission(raw, slugs, now = Date.now()) {
   };
 }
 
-export async function lastSubmission(db, userId, slug) {
-  return db.prepare('SELECT id, lang, verdict, code FROM submissions WHERE user_id = ? AND slug = ? ORDER BY id DESC LIMIT 1').bind(userId, slug).first();
-}
-
-export const insertSubmission = (db, userId, s) =>
+// Saves the submission as THE submission of its problem and language. A report that arrives late (it waited offline) and is
+// older than what is stored does not replace it.
+export const saveSubmission = (db, userId, s) =>
   db
-    .prepare('INSERT INTO submissions (user_id, slug, lang, verdict, passed, total, time_ms, code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
+    .prepare(
+      `INSERT INTO submissions (user_id, slug, lang, verdict, passed, total, time_ms, code, submitted_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+       ON CONFLICT (user_id, slug, lang) DO UPDATE SET
+         verdict = excluded.verdict, passed = excluded.passed, total = excluded.total,
+         time_ms = excluded.time_ms, code = excluded.code, submitted_at = excluded.submitted_at
+       WHERE excluded.submitted_at >= submissions.submitted_at`
+    )
     .bind(userId, s.slug, s.lang, s.verdict, s.passed, s.total, s.timeMs, s.code, s.at);
 
-// The two statements that keep a problem's history small. The latest accepted solution of each language is never trimmed.
-export function trimStatements(db, userId, slug) {
-  const keepNewest = (n) => `SELECT id FROM submissions WHERE user_id = ?1 AND slug = ?2 ORDER BY id DESC LIMIT ${n}`;
-  const keepAccepted = "SELECT MAX(id) FROM submissions WHERE user_id = ?1 AND slug = ?2 AND verdict = 'accepted' GROUP BY lang";
-  return [
-    db.prepare(`UPDATE submissions SET code = NULL WHERE user_id = ?1 AND slug = ?2 AND code IS NOT NULL AND id NOT IN (${keepNewest(KEEP_CODE)}) AND id NOT IN (${keepAccepted})`).bind(userId, slug),
-    db.prepare(`DELETE FROM submissions WHERE user_id = ?1 AND slug = ?2 AND id NOT IN (${keepNewest(KEEP_ROWS)}) AND id NOT IN (${keepAccepted})`).bind(userId, slug)
-  ];
-}
+const rowOut = (r) => ({ slug: r.slug, lang: r.lang, verdict: r.verdict, passed: r.passed, total: r.total, timeMs: r.time_ms, at: r.submitted_at, hasCode: !!r.has_code });
 
-const rowOut = (r) => ({ id: r.id, slug: r.slug, lang: r.lang, verdict: r.verdict, passed: r.passed, total: r.total, timeMs: r.time_ms, at: r.created_at, hasCode: !!r.has_code });
-
-// A page of the history, newest first. `before` is the id to continue after; `next` is the cursor for the following page.
-export async function listSubmissions(db, userId, { limit = 30, before = null, slug = null, verdict = null } = {}) {
-  const size = Math.max(1, Math.min(PAGE_MAX, limit));
+// All of the learner's saved submissions, newest first, without the code (there is at most one per problem and language).
+export async function listSubmissions(db, userId, { slug = null, verdict = null } = {}) {
   const where = ['user_id = ?'];
   const args = [userId];
-  if (before) { where.push('id < ?'); args.push(before); }
   if (slug) { where.push('slug = ?'); args.push(slug); }
   if (verdict === 'accepted') where.push("verdict = 'accepted'");
   if (verdict === 'failed') where.push("verdict <> 'accepted'");
   const { results } = await db
-    .prepare(`SELECT id, slug, lang, verdict, passed, total, time_ms, created_at, code IS NOT NULL AS has_code FROM submissions WHERE ${where.join(' AND ')} ORDER BY id DESC LIMIT ?`)
-    .bind(...args, size + 1)
+    .prepare(`SELECT slug, lang, verdict, passed, total, time_ms, submitted_at, code IS NOT NULL AS has_code FROM submissions WHERE ${where.join(' AND ')} ORDER BY submitted_at DESC LIMIT 400`)
+    .bind(...args)
     .all();
-  const page = results.slice(0, size).map(rowOut);
-  return { submissions: page, next: results.length > size ? page[page.length - 1].id : null };
+  return { submissions: results.map(rowOut) };
 }
 
-export async function getSubmission(db, userId, id) {
+export async function getSubmission(db, userId, slug, lang) {
   const r = await db
-    .prepare('SELECT id, slug, lang, verdict, passed, total, time_ms, created_at, code, code IS NOT NULL AS has_code FROM submissions WHERE user_id = ? AND id = ?')
-    .bind(userId, id)
+    .prepare('SELECT slug, lang, verdict, passed, total, time_ms, submitted_at, code, code IS NOT NULL AS has_code FROM submissions WHERE user_id = ? AND slug = ? AND lang = ?')
+    .bind(userId, slug, lang)
     .first();
   return r ? { ...rowOut(r), code: r.code } : null;
 }

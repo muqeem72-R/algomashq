@@ -91,6 +91,22 @@ test('a cancelled run is never recorded; too much code is sent without the code'
   });
 });
 
+test('only the last submission of a problem and language is sent', async () => {
+  await withBrowser(async ({ progress, server }) => {
+    await progress.load(user('mk001A'));
+    server.online = false;
+    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'wrong_answer', passed: 0, total: 2, timeMs: 1, code: 'first try' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'cpp', verdict: 'accepted', passed: 2, total: 2, timeMs: 2, code: 'second try' });
+    progress.recordSubmission({ slug: 'hello-world', lang: 'python', verdict: 'wrong_answer', passed: 0, total: 2, timeMs: 1, code: 'python try' });
+    progress.recordSubmission({ slug: 'sum-of-array', lang: 'cpp', verdict: 'accepted', passed: 9, total: 9, timeMs: 3, code: 'another problem' });
+    await progress.flush();
+    server.online = true;
+    await progress.flush();
+    const sent = server.submissions.map((s) => `${s.slug}/${s.lang}: ${s.code}`).sort();
+    assert.deepEqual(sent, ['hello-world/cpp: second try', 'hello-world/python: python try', 'sum-of-array/cpp: another problem']);
+  });
+});
+
 // ---- the browser: drafts ----
 
 test('a draft reaches the account only when it is synced, and only if it changed', async () => {
