@@ -1,4 +1,5 @@
-// What the learner has done: which problems are solved, how each one went, what was submitted and the code typed so far.
+// What the learner has done: which problems are solved, how each one went, the accepted solutions, the code typed so far,
+// the bookmarks and the personal notes.
 //
 // The account (the server) is the source of truth, so all of it follows the learner to every device. This browser keeps
 // a copy for two reasons: pages open instantly, and nothing is lost when the connection drops. Every change is written to
@@ -17,6 +18,7 @@ const SEND_DELAY_MS = 1200;
 const DRAFT_WAIT_MS = 1500;       // how long opening a problem waits for the drafts from the account
 const DRAFT_MAX = 20000;          // the server keeps no more than this much code
 const QUEUE_MAX = 300;
+export const NOTE_MAX = 500;      // characters in a personal note (plain text)
 const LANGS = ['cpp', 'java', 'python'];
 
 function read(key, fallback) {
@@ -38,6 +40,8 @@ let langs = {};       // slug -> [lang, ...]: every language it was solved in
 let states = {};      // slug -> { conceptSeen, hints, revealed, attempts }
 let queue = [];       // changes the server has not confirmed yet (see enqueue)
 let dirty = new Map();   // 'slug:lang' -> true | 'cleared': drafts the account has not heard about yet
+let bookmarks = new Set();   // the slugs of the bookmarked problems
+let noteSlugs = new Set();   // the slugs of the problems that have a note
 let flushing = null;  // the promise of the run that is sending the queue, or null
 let sendTimer = null;
 let retryTimer = null;
@@ -61,6 +65,8 @@ function persist() {
   write(mine('solved'), items);
   write(mine('states'), states);
   write(mine('queue'), queue);
+  write(mine('bookmarks'), [...bookmarks]);
+  write(mine('notes'), [...noteSlugs]);
 }
 
 const validItem = (x) => x && typeof x.slug === 'string' && typeof x.lang === 'string' && Number.isFinite(x.at);
@@ -121,6 +127,8 @@ export async function load(user) {
   states = read(mine('states'), {}) || {};
   queue = read(mine('queue'), []) || [];
   dirty = new Map();
+  bookmarks = new Set(read(mine('bookmarks'), []) || []);
+  noteSlugs = new Set(read(mine('notes'), []) || []);
   rebuild();
   if (!listening) {
     listening = true;
@@ -138,6 +146,14 @@ export async function load(user) {
     mergeItems(server.solved || []);
     mergeStates(server.states || {});
     rebuild();
+    // Bookmarks and notes can be taken away, so the account's list replaces the saved one; the changes that are still
+    // waiting in the queue are newer than the account, so they are laid over it again.
+    bookmarks = new Set(server.bookmarks || []);
+    noteSlugs = new Set(server.notes || []);
+    for (const q of queue) {
+      if (q.t === 'bookmark') { if (q.marked) bookmarks.add(q.slug); else bookmarks.delete(q.slug); }
+      if (q.t === 'note') { if (q.body) noteSlugs.add(q.slug); else noteSlugs.delete(q.slug); }
+    }
   } catch (e) { /* offline, or the server has a problem: carry on with the saved copy */ }
   persist();
   flush();
@@ -147,7 +163,7 @@ export async function load(user) {
 export function reset() {
   clearTimeout(sendTimer);
   clearTimeout(retryTimer);
-  owner = null; items = []; solved = {}; langs = {}; states = {}; queue = []; dirty = new Map();
+  owner = null; items = []; solved = {}; langs = {}; states = {}; queue = []; dirty = new Map(); bookmarks = new Set(); noteSlugs = new Set();
 }
 
 // ---- Sending ----
@@ -160,12 +176,14 @@ function schedule(delay) {
 //   { t: 'solved', slug, lang, at }          { t: 'state', slug, state }
 //   { t: 'submission', slug, lang, verdict, passed, total, timeMs, code, at }
 //   { t: 'draft', slug, lang, code, at }     (code null = the draft was reset)
+//   { t: 'bookmark', slug, marked, at }      { t: 'note', slug, body, at }     (body '' = the note was emptied)
 function enqueue(entry) {
   // Only the latest state of a problem, and the latest draft of a problem and language, matter.
   if (entry.t === 'state') queue = queue.filter((q) => !(q.t === 'state' && q.slug === entry.slug));
   if (entry.t === 'draft') queue = queue.filter((q) => !(q.t === 'draft' && q.slug === entry.slug && q.lang === entry.lang));
   // The account keeps only the last submission of a problem and language, so an unsent older one is not worth sending.
   if (entry.t === 'submission') queue = queue.filter((q) => !(q.t === 'submission' && q.slug === entry.slug && q.lang === entry.lang));
+  if (entry.t === 'bookmark' || entry.t === 'note') queue = queue.filter((q) => !(q.t === entry.t && q.slug === entry.slug));
   queue.push(entry);
   if (queue.length > QUEUE_MAX) queue = queue.slice(-QUEUE_MAX);
   persist();
@@ -177,6 +195,8 @@ function send(entry) {
   if (t === 'solved') return api('/api/me/solved', { method: 'POST', body: rest, keepalive: true });
   if (t === 'state') return api('/api/me/state', { method: 'PATCH', body: { slug: entry.slug, ...entry.state }, keepalive: true });
   if (t === 'submission') return api('/api/me/submissions', { method: 'POST', body: rest, keepalive: true });
+  if (t === 'bookmark') return api('/api/me/bookmarks', { method: 'PUT', body: rest, keepalive: true });
+  if (t === 'note') return api('/api/me/notes', { method: 'PUT', body: rest, keepalive: true });
   return api('/api/me/drafts', { method: 'PUT', body: rest, keepalive: true });
 }
 
@@ -311,6 +331,61 @@ export async function loadDrafts(slug) {
       else if (local && (!server || local.at > server.at)) dirty.set(`${slug}:${lang}`, true);   // this device has the newer one: tell the account
     }
   } catch (e) { /* offline or slow: the drafts of this browser are used */ } finally { clearTimeout(timer); }
+}
+
+// ---- Bookmarks ----
+export const isBookmarked = (slug) => bookmarks.has(slug);
+export const bookmarkedSlugs = () => bookmarks;   // a Set: read it, do not change it
+
+export function setBookmark(slug, marked) {
+  if (marked === bookmarks.has(slug)) return marked;
+  if (marked) bookmarks.add(slug); else bookmarks.delete(slug);
+  enqueue({ t: 'bookmark', slug, marked, at: Date.now() });
+  return marked;
+}
+
+// ---- Notes: a private note on a problem, plain text, at most NOTE_MAX characters ----
+// Kept in this browser as { body, at } and sent to the account when it changes. The newer copy wins; an emptied note is
+// kept as an empty one (with its time), so an old copy on another device cannot bring it back.
+const noteKey = (slug) => mine(`note.${slug}`);
+const readNote = (slug) => { const n = read(noteKey(slug), null); return n && typeof n.body === 'string' ? { body: n.body, at: Number(n.at) || 0 } : null; };
+
+export const hasNote = (slug) => noteSlugs.has(slug);
+export const noteSlugSet = () => noteSlugs;   // a Set: read it, do not change it
+export const getNote = (slug) => { const n = owner ? readNote(slug) : null; return n ? n.body : ''; };
+
+export function saveNote(slug, text) {
+  if (!owner) return;
+  const body = String(text).slice(0, NOTE_MAX);
+  const clean = body.trim() === '' ? '' : body;
+  const have = readNote(slug);
+  if ((have ? have.body : '') === clean) return;   // nothing changed
+  const at = Date.now();
+  write(noteKey(slug), { body: clean, at });
+  if (clean) noteSlugs.add(slug); else noteSlugs.delete(slug);
+  enqueue({ t: 'note', slug, body: clean, at });
+}
+
+// Fetches the note of one problem from the account and keeps the newer copy. Never throws, and gives up after a moment so
+// that a slow connection cannot hold up opening a problem.
+export async function loadNote(slug) {
+  if (!owner) return;
+  let timer;
+  try {
+    const answer = await Promise.race([
+      api(`/api/me/notes/${slug}`),
+      new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('slow')), DRAFT_WAIT_MS); })
+    ]);
+    const server = answer && answer.note;
+    const local = readNote(slug);
+    if (server && (!local || server.at > local.at)) {
+      write(noteKey(slug), { body: server.body, at: server.at });
+      if (server.body) noteSlugs.add(slug); else noteSlugs.delete(slug);
+      persist();
+    } else if (local && (!server || local.at > server.at)) {
+      enqueue({ t: 'note', slug, body: local.body, at: local.at });   // this device has the newer copy: tell the account
+    }
+  } catch (e) { /* offline or slow: the note of this browser is used */ } finally { clearTimeout(timer); }
 }
 
 // ---- The last language used ----

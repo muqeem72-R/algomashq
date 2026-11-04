@@ -14,7 +14,7 @@ export function fakeStorage() {
 
 // An account kept in memory. Switch `online` off to simulate a lost connection; `refuse(path, body)` can make it answer 422.
 export function fakeServer() {
-  const server = { solved: [], states: {}, submissions: [], drafts: {}, calls: [], online: true, failDrafts: false, refuse: null };
+  const server = { solved: [], states: {}, submissions: [], drafts: {}, bookmarks: {}, notes: {}, calls: [], online: true, failDrafts: false, refuse: null };
   globalThis.fetch = async (path, opts = {}) => {
     const method = opts.method || 'GET';
     const body = opts.body ? JSON.parse(opts.body) : null;
@@ -22,7 +22,25 @@ export function fakeServer() {
     if (!server.online) throw new TypeError('network down');
     const reply = (status, data) => ({ ok: status < 400, status, json: async () => data });
     if (server.refuse && server.refuse(path, body)) return reply(422, { error: 'invalid_input' });
-    if (path === '/api/me/progress') return reply(200, { solved: server.solved, states: server.states });
+    if (path === '/api/me/progress') {
+      return reply(200, {
+        solved: server.solved, states: server.states,
+        bookmarks: Object.keys(server.bookmarks).filter((k) => server.bookmarks[k].marked),
+        notes: Object.keys(server.notes).filter((k) => server.notes[k].body !== '')
+      });
+    }
+    if (path === '/api/me/bookmarks' && method === 'PUT') {
+      const have = server.bookmarks[body.slug];
+      if (!have || body.at >= have.at) server.bookmarks[body.slug] = { marked: body.marked, at: body.at };
+      return reply(200, { saved: true });
+    }
+    if (path === '/api/me/notes' && method === 'PUT') {
+      const have = server.notes[body.slug];
+      if (!have || body.at >= have.at) server.notes[body.slug] = { body: body.body, at: body.at };
+      return reply(200, { saved: true });
+    }
+    const noteMatch = /^\/api\/me\/notes\/([a-z0-9-]+)$/.exec(path);
+    if (noteMatch) return reply(200, { note: server.notes[noteMatch[1]] || null });
     if (path === '/api/me/solved') {
       if (!server.solved.some((x) => x.slug === body.slug && x.lang === body.lang)) server.solved.push({ slug: body.slug, lang: body.lang, at: body.at });
       return reply(200, { saved: true });

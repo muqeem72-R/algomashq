@@ -47,12 +47,21 @@ export function cleanState(raw) {
   return { conceptSeen: raw.conceptSeen ? 1 : 0, hints: whole(raw.hints, 3), revealed: raw.revealed ? 1 : 0, attempts: whole(raw.attempts, 100000) };
 }
 
+// Everything the learner has done, in one answer: the solved problems, how each problem went, the bookmarked problems and the
+// problems that have a note (the notes themselves are fetched one at a time, when a problem is opened).
 export async function loadProgress(db, userId) {
-  const [solved, states] = await db.batch([
+  const [solved, states, bookmarks, notes] = await db.batch([
     db.prepare('SELECT slug, lang, solved_at FROM solved WHERE user_id = ? ORDER BY solved_at').bind(userId),
-    db.prepare('SELECT slug, concept_seen, hints, revealed, attempts FROM problem_state WHERE user_id = ?').bind(userId)
+    db.prepare('SELECT slug, concept_seen, hints, revealed, attempts FROM problem_state WHERE user_id = ?').bind(userId),
+    db.prepare('SELECT slug FROM bookmarks WHERE user_id = ? AND marked = 1').bind(userId),
+    db.prepare("SELECT slug FROM notes WHERE user_id = ? AND body <> ''").bind(userId)
   ]);
-  const out = { solved: solved.results.map((r) => ({ slug: r.slug, lang: r.lang, at: r.solved_at })), states: {} };
+  const out = {
+    solved: solved.results.map((r) => ({ slug: r.slug, lang: r.lang, at: r.solved_at })),
+    states: {},
+    bookmarks: bookmarks.results.map((r) => r.slug),
+    notes: notes.results.map((r) => r.slug)
+  };
   for (const r of states.results) out.states[r.slug] = { conceptSeen: !!r.concept_seen, hints: r.hints, revealed: !!r.revealed, attempts: r.attempts };
   return out;
 }

@@ -53,7 +53,9 @@ const ICONS = {
   back: 'M19 12H5 M12 19l-7-7 7-7',
   arrow: 'M5 12h14 M12 5l7 7-7 7',
   play: 'M6 4l14 8-14 8z',
-  lock: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4'
+  lock: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4',
+  star: 'M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z',
+  note: 'M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z M14 3v6h6 M8 13h8 M8 17h5'
 };
 
 export function icon(name, size = 20) {
