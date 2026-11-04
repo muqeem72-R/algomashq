@@ -3626,6 +3626,1232 @@
     "prefix-sum",
     "grouping"
    ]
+  },
+  {
+   "slug": "reverse-linked-list",
+   "title": "Reverse a Linked List",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 301,
+   "tags": [
+    "linked-list",
+    "pointers"
+   ]
+  },
+  {
+   "slug": "middle-of-the-list",
+   "title": "The Middle of the List",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 302,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "slow-fast"
+   ]
+  },
+  {
+   "slug": "remove-duplicates-from-sorted-list",
+   "title": "Remove Duplicates From a Sorted List",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 303,
+   "tags": [
+    "linked-list",
+    "sorted",
+    "in-place"
+   ]
+  },
+  {
+   "slug": "merge-two-sorted-lists",
+   "title": "Merge Two Sorted Lists",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 304,
+   "tags": [
+    "linked-list",
+    "merge",
+    "dummy-node"
+   ]
+  },
+  {
+   "slug": "palindrome-linked-list",
+   "title": "Is the List a Palindrome?",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 305,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "palindrome"
+   ]
+  },
+  {
+   "slug": "remove-linked-list-elements",
+   "title": "Remove All Nodes With a Value",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 306,
+   "tags": [
+    "linked-list",
+    "dummy-node",
+    "in-place"
+   ]
+  },
+  {
+   "slug": "kth-node-from-the-end",
+   "title": "The k-th Node From the End",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 307,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "gap"
+   ]
+  },
+  {
+   "slug": "linked-list-cycle",
+   "title": "Does the List Have a Cycle?",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 308,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "cycle-detection"
+   ]
+  },
+  {
+   "slug": "insert-into-sorted-list",
+   "title": "Insert Into a Sorted List",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 309,
+   "tags": [
+    "linked-list",
+    "sorted",
+    "insertion"
+   ]
+  },
+  {
+   "slug": "binary-list-to-number",
+   "title": "Binary Number in a Linked List",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 310,
+   "tags": [
+    "linked-list",
+    "traversal",
+    "binary"
+   ]
+  },
+  {
+   "slug": "valid-parentheses",
+   "title": "Valid Brackets",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 311,
+   "tags": [
+    "stack",
+    "strings",
+    "brackets"
+   ]
+  },
+  {
+   "slug": "remove-adjacent-duplicates",
+   "title": "Remove Equal Neighbours",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 312,
+   "tags": [
+    "stack",
+    "strings",
+    "cancel"
+   ]
+  },
+  {
+   "slug": "baseball-game-score",
+   "title": "Baseball Game Score",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 313,
+   "tags": [
+    "stack",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "backspace-string-compare",
+   "title": "Typing With Backspaces",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 314,
+   "tags": [
+    "stack",
+    "strings",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "evaluate-postfix-expression",
+   "title": "Evaluate a Postfix Expression",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 315,
+   "tags": [
+    "stack",
+    "expression",
+    "parsing"
+   ]
+  },
+  {
+   "slug": "next-greater-element",
+   "title": "Next Greater Element",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 316,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "min-stack-operations",
+   "title": "A Stack That Knows Its Minimum",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 317,
+   "tags": [
+    "stack",
+    "design",
+    "minimum"
+   ]
+  },
+  {
+   "slug": "final-prices-with-discount",
+   "title": "Final Prices With a Discount",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 318,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "make-the-string-great",
+   "title": "Make the String Great",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 319,
+   "tags": [
+    "stack",
+    "strings",
+    "cancel"
+   ]
+  },
+  {
+   "slug": "maximum-nesting-depth",
+   "title": "Maximum Nesting Depth of Parentheses",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 320,
+   "tags": [
+    "stack",
+    "strings",
+    "parentheses",
+    "counter"
+   ]
+  },
+  {
+   "slug": "remove-outermost-parentheses",
+   "title": "Remove the Outermost Parentheses",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 321,
+   "tags": [
+    "stack",
+    "strings",
+    "parentheses",
+    "counter"
+   ]
+  },
+  {
+   "slug": "crawler-log-folder",
+   "title": "Back to the Main Folder",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 322,
+   "tags": [
+    "stack",
+    "simulation",
+    "counter"
+   ]
+  },
+  {
+   "slug": "queue-with-two-stacks",
+   "title": "A Queue Built From Two Stacks",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 323,
+   "tags": [
+    "queue",
+    "stack",
+    "design"
+   ]
+  },
+  {
+   "slug": "number-of-recent-calls",
+   "title": "Recent Calls",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 324,
+   "tags": [
+    "queue",
+    "sliding-window",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "moving-sum-of-stream",
+   "title": "Moving Sum of a Stream",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 325,
+   "tags": [
+    "queue",
+    "sliding-window",
+    "running-sum"
+   ]
+  },
+  {
+   "slug": "time-to-buy-tickets",
+   "title": "Time Needed to Buy Tickets",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 326,
+   "tags": [
+    "queue",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "first-unique-in-stream",
+   "title": "First Non-Repeating Letter in a Stream",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 327,
+   "tags": [
+    "queue",
+    "hash-map",
+    "stream"
+   ]
+  },
+  {
+   "slug": "students-and-sandwiches",
+   "title": "Students and Sandwiches",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 328,
+   "tags": [
+    "queue",
+    "stack",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "circular-queue-operations",
+   "title": "A Circular Queue of Fixed Size",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 329,
+   "tags": [
+    "queue",
+    "design",
+    "circular-buffer",
+    "array"
+   ]
+  },
+  {
+   "slug": "stack-using-queue",
+   "title": "A Stack Built From a Queue",
+   "topic": "linear",
+   "difficulty": "easy",
+   "order": 330,
+   "tags": [
+    "stack",
+    "queue",
+    "design"
+   ]
+  },
+  {
+   "slug": "remove-nth-from-end",
+   "title": "Remove the k-th Node From the End",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 331,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "dummy-node"
+   ]
+  },
+  {
+   "slug": "swap-nodes-in-pairs",
+   "title": "Swap Every Two Neighbouring Nodes",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 332,
+   "tags": [
+    "linked-list",
+    "pointers",
+    "dummy-node"
+   ]
+  },
+  {
+   "slug": "rotate-list",
+   "title": "Rotate a List to the Right",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 333,
+   "tags": [
+    "linked-list",
+    "pointers",
+    "rotation"
+   ]
+  },
+  {
+   "slug": "partition-list",
+   "title": "Partition a List Around a Value",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 334,
+   "tags": [
+    "linked-list",
+    "two-lists",
+    "stable"
+   ]
+  },
+  {
+   "slug": "add-two-numbers-in-lists",
+   "title": "Add Two Numbers Stored in Lists",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 335,
+   "tags": [
+    "linked-list",
+    "math",
+    "carry"
+   ]
+  },
+  {
+   "slug": "odd-even-linked-list",
+   "title": "Group Odd and Even Positions",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 336,
+   "tags": [
+    "linked-list",
+    "pointers",
+    "in-place"
+   ]
+  },
+  {
+   "slug": "reverse-linked-list-between",
+   "title": "Reverse Part of a List",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 337,
+   "tags": [
+    "linked-list",
+    "pointers",
+    "reversal"
+   ]
+  },
+  {
+   "slug": "reorder-list",
+   "title": "Reorder a List: First, Last, Second, Second Last",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 338,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "reversal",
+    "merge"
+   ]
+  },
+  {
+   "slug": "sort-linked-list",
+   "title": "Sort a Linked List",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 339,
+   "tags": [
+    "linked-list",
+    "merge-sort",
+    "divide-and-conquer"
+   ]
+  },
+  {
+   "slug": "remove-all-duplicates-from-sorted-list",
+   "title": "Remove Every Value That Occurs More Than Once",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 340,
+   "tags": [
+    "linked-list",
+    "sorted",
+    "dummy-node"
+   ]
+  },
+  {
+   "slug": "linked-list-cycle-start",
+   "title": "Where Does the Cycle Begin?",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 341,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "cycle-detection",
+    "math"
+   ]
+  },
+  {
+   "slug": "intersection-of-two-lists",
+   "title": "Where Do the Two Lists Meet?",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 342,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "intersection"
+   ]
+  },
+  {
+   "slug": "add-two-numbers-ii-lists",
+   "title": "Add Two Numbers Stored in Lists, Most Significant First",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 343,
+   "tags": [
+    "linked-list",
+    "stack",
+    "math",
+    "carry"
+   ]
+  },
+  {
+   "slug": "delete-middle-node",
+   "title": "Delete the Middle Node",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 344,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "slow-fast"
+   ]
+  },
+  {
+   "slug": "maximum-twin-sum",
+   "title": "Maximum Twin Sum of a List",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 345,
+   "tags": [
+    "linked-list",
+    "two-pointers",
+    "reversal"
+   ]
+  },
+  {
+   "slug": "daily-temperatures",
+   "title": "Days Until a Warmer Day",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 346,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "decode-nested-string",
+   "title": "Decode a Nested String",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 347,
+   "tags": [
+    "stack",
+    "strings",
+    "parsing",
+    "nesting"
+   ]
+  },
+  {
+   "slug": "simplify-file-path",
+   "title": "Simplify a File Path",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 348,
+   "tags": [
+    "stack",
+    "strings",
+    "parsing"
+   ]
+  },
+  {
+   "slug": "asteroid-collision",
+   "title": "Asteroid Collision",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 349,
+   "tags": [
+    "stack",
+    "simulation",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "remove-k-digits",
+   "title": "Remove k Digits for the Smallest Number",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 350,
+   "tags": [
+    "stack",
+    "greedy",
+    "strings",
+    "monotonic-stack"
+   ]
+  },
+  {
+   "slug": "stock-span",
+   "title": "The Stock Span",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 351,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "car-fleet",
+   "title": "Car Fleets",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 352,
+   "tags": [
+    "stack",
+    "sorting",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "remove-adjacent-k-duplicates",
+   "title": "Remove k Equal Neighbours",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 353,
+   "tags": [
+    "stack",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "next-greater-element-circular",
+   "title": "Next Greater Element on a Circle",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 354,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "circular-array"
+   ]
+  },
+  {
+   "slug": "sum-of-subarray-minimums",
+   "title": "Sum of the Minimums of All Blocks",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 355,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "counting",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "score-of-parentheses",
+   "title": "The Score of a Balanced Word",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 356,
+   "tags": [
+    "stack",
+    "parentheses",
+    "recursion-to-stack"
+   ]
+  },
+  {
+   "slug": "minimum-removals-for-valid-parentheses",
+   "title": "Remove Parentheses to Make the Text Valid",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 357,
+   "tags": [
+    "stack",
+    "strings",
+    "parentheses",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "validate-stack-sequences",
+   "title": "Is This Pop Order Possible?",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 358,
+   "tags": [
+    "stack",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "smallest-subsequence-of-distinct-letters",
+   "title": "Smallest Word With Every Letter Once",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 359,
+   "tags": [
+    "stack",
+    "greedy",
+    "strings",
+    "monotonic-stack"
+   ]
+  },
+  {
+   "slug": "exclusive-time-of-functions",
+   "title": "Exclusive Running Time of Functions",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 360,
+   "tags": [
+    "stack",
+    "simulation",
+    "parsing",
+    "call-stack"
+   ]
+  },
+  {
+   "slug": "find-132-pattern",
+   "title": "The 132 Pattern",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 361,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "next-larger-nodes-in-list",
+   "title": "Next Larger Node in a List",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 362,
+   "tags": [
+    "linked-list",
+    "stack",
+    "monotonic-stack"
+   ]
+  },
+  {
+   "slug": "reverse-text-between-parentheses",
+   "title": "Reverse the Text Inside Parentheses",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 363,
+   "tags": [
+    "stack",
+    "strings",
+    "parentheses"
+   ]
+  },
+  {
+   "slug": "sliding-window-maximum",
+   "title": "Maximum of Every Window",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 364,
+   "tags": [
+    "deque",
+    "monotonic-queue",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "circular-deque-operations",
+   "title": "A Circular Double-Ended Queue",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 365,
+   "tags": [
+    "deque",
+    "design",
+    "circular-buffer"
+   ]
+  },
+  {
+   "slug": "jump-game-with-scores",
+   "title": "The Best Score With Jumps of Up to k",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 366,
+   "tags": [
+    "deque",
+    "dynamic-programming",
+    "monotonic-queue"
+   ]
+  },
+  {
+   "slug": "longest-subarray-with-limit",
+   "title": "Longest Block With a Small Spread",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 367,
+   "tags": [
+    "deque",
+    "sliding-window",
+    "monotonic-queue"
+   ]
+  },
+  {
+   "slug": "people-seen-in-a-queue",
+   "title": "How Many People Can Each Person See?",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 368,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "hit-counter",
+   "title": "Count the Hits of the Last 5 Minutes",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 369,
+   "tags": [
+    "queue",
+    "design",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "dota-senate",
+   "title": "The Senate Vote",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 370,
+   "tags": [
+    "queue",
+    "simulation",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "reveal-cards-in-increasing-order",
+   "title": "Arrange the Deck to Reveal Cards in Order",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 371,
+   "tags": [
+    "queue",
+    "simulation",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "queue-with-maximum",
+   "title": "A Queue That Knows Its Maximum",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 372,
+   "tags": [
+    "queue",
+    "deque",
+    "design",
+    "monotonic-queue"
+   ]
+  },
+  {
+   "slug": "stack-with-increment",
+   "title": "A Stack With an Increment Operation",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 373,
+   "tags": [
+    "stack",
+    "design",
+    "lazy-update"
+   ]
+  },
+  {
+   "slug": "browser-history",
+   "title": "Browser History",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 374,
+   "tags": [
+    "design",
+    "array",
+    "stack"
+   ]
+  },
+  {
+   "slug": "robots-within-budget",
+   "title": "The Most Robots Within a Budget",
+   "topic": "linear",
+   "difficulty": "medium",
+   "order": 375,
+   "tags": [
+    "deque",
+    "sliding-window",
+    "monotonic-queue"
+   ]
+  },
+  {
+   "slug": "reverse-nodes-in-k-group",
+   "title": "Reverse a List in Groups of k",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 376,
+   "tags": [
+    "linked-list",
+    "pointers",
+    "reversal"
+   ]
+  },
+  {
+   "slug": "merge-k-sorted-lists",
+   "title": "Merge k Sorted Lists",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 377,
+   "tags": [
+    "linked-list",
+    "heap",
+    "priority-queue",
+    "merge"
+   ]
+  },
+  {
+   "slug": "copy-list-with-random-pointer",
+   "title": "Copy a List With Random Pointers",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 378,
+   "tags": [
+    "linked-list",
+    "hash-map",
+    "deep-copy"
+   ]
+  },
+  {
+   "slug": "lru-cache-operations",
+   "title": "An LRU Cache",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 379,
+   "tags": [
+    "design",
+    "hash-map",
+    "linked-list",
+    "cache"
+   ]
+  },
+  {
+   "slug": "lfu-cache-operations",
+   "title": "An LFU Cache",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 380,
+   "tags": [
+    "design",
+    "hash-map",
+    "linked-list",
+    "cache"
+   ]
+  },
+  {
+   "slug": "remove-zero-sum-consecutive-nodes",
+   "title": "Remove Blocks That Add Up to Zero",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 381,
+   "tags": [
+    "linked-list",
+    "prefix-sum",
+    "hash-map"
+   ]
+  },
+  {
+   "slug": "reverse-even-length-groups",
+   "title": "Reverse the Even-Length Groups",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 382,
+   "tags": [
+    "linked-list",
+    "pointers",
+    "reversal"
+   ]
+  },
+  {
+   "slug": "largest-rectangle-in-histogram",
+   "title": "Largest Rectangle in a Histogram",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 383,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "maximal-rectangle",
+   "title": "The Largest Rectangle of Ones",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 384,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "matrix",
+    "histogram"
+   ]
+  },
+  {
+   "slug": "count-submatrices-with-all-ones",
+   "title": "Count the Rectangles of Ones",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 385,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "matrix",
+    "counting"
+   ]
+  },
+  {
+   "slug": "basic-calculator",
+   "title": "A Calculator With Parentheses",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 386,
+   "tags": [
+    "stack",
+    "parsing",
+    "expressions",
+    "strings"
+   ]
+  },
+  {
+   "slug": "calculator-with-all-operations",
+   "title": "A Calculator With Precedence",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 387,
+   "tags": [
+    "stack",
+    "parsing",
+    "expressions",
+    "precedence"
+   ]
+  },
+  {
+   "slug": "longest-valid-parentheses",
+   "title": "The Longest Valid Parentheses",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 388,
+   "tags": [
+    "stack",
+    "strings",
+    "parentheses"
+   ]
+  },
+  {
+   "slug": "sum-of-subarray-ranges",
+   "title": "The Sum of Subarray Ranges",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 389,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays",
+    "counting"
+   ]
+  },
+  {
+   "slug": "maximum-width-ramp",
+   "title": "The Widest Ramp",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 390,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "number-of-atoms",
+   "title": "Count the Atoms of a Formula",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 391,
+   "tags": [
+    "stack",
+    "parsing",
+    "hash-map",
+    "strings"
+   ]
+  },
+  {
+   "slug": "shortest-subarray-with-sum-at-least-k",
+   "title": "Shortest Subarray With a Large Sum (Negative Numbers Allowed)",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 392,
+   "tags": [
+    "deque",
+    "monotonic-queue",
+    "prefix-sum",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "maximum-sum-with-length-limits",
+   "title": "The Best Sum With a Length Between L and R",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 393,
+   "tags": [
+    "deque",
+    "monotonic-queue",
+    "prefix-sum",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "maximum-of-minimums-for-every-window-size",
+   "title": "The Best Minimum for Every Window Size",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 394,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays",
+    "windows"
+   ]
+  },
+  {
+   "slug": "second-greater-element",
+   "title": "The Second Greater Element",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 395,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "maximum-frequency-stack",
+   "title": "A Stack That Pops the Most Frequent Element",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 396,
+   "tags": [
+    "stack",
+    "design",
+    "hash-map"
+   ]
+  },
+  {
+   "slug": "text-editor-with-cursor",
+   "title": "A Text Editor With a Cursor",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 397,
+   "tags": [
+    "stack",
+    "design",
+    "strings",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "maximum-subarray-min-product",
+   "title": "The Maximum Min-Product of a Subarray",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 398,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "prefix-sum",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "minimum-cost-tree-from-leaf-values",
+   "title": "The Cheapest Tree From Its Leaves",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 399,
+   "tags": [
+    "stack",
+    "monotonic-stack",
+    "greedy",
+    "trees"
+   ]
+  },
+  {
+   "slug": "dinner-plate-stacks",
+   "title": "Dinner Plate Stacks",
+   "topic": "linear",
+   "difficulty": "hard",
+   "order": 400,
+   "tags": [
+    "stack",
+    "design",
+    "heap",
+    "simulation"
+   ]
   }
  ]
 }

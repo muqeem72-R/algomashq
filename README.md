@@ -55,6 +55,10 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
 - 100 original problems in the **Hashing** topic, numbered 201 to 300 by effort (201-230 easy, 231-275 medium, 276-300 hard):
   sets and maps, counting, prefix sums with a map, grouping by a key (sorted letters, reduced fractions, canonical forms),
   matching with complements, bitmask prefixes, buckets, and polynomial and Zobrist hashing of strings.
+- 100 original problems in the **Linked List, Stack and Queue** topic, numbered 301 to 400 by effort (301-330 easy, 331-375 medium,
+  376-400 hard): lists, stacks, queues and deques, monotonic stacks and queues, expression parsing, and designs such as an LRU
+  and an LFU cache. A list problem reads the values from the input; its starter code builds the list and prints the result, and you
+  only write the function that works on the nodes.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 
