@@ -9,10 +9,11 @@ export class ApiError extends Error {
   }
 }
 
-export async function api(path, { method = 'GET', body } = {}) {
+export async function api(path, { method = 'GET', body, keepalive = false } = {}) {
   const response = await fetch(path, {
     method,
     credentials: 'same-origin',
+    keepalive,   // lets a request that is sent while the page is closing still arrive
     headers: body === undefined ? {} : { 'Content-Type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body)
   });

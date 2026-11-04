@@ -1,8 +1,7 @@
 import { h, icon } from '../dom.js';
 
 const COPY = {
-  progress: { iconName: 'progress', title: 'Progress tracking is coming', text: 'Solved problems, streaks and per-topic progress will show up here once you start solving.' },
-  submissions: { iconName: 'submissions', title: 'No submissions yet', text: 'Every solution you submit will be listed here, with its result and language.' }
+  progress: { iconName: 'progress', title: 'Progress tracking is coming', text: 'Solved problems, streaks and per-topic progress will show up here once you start solving.' }
 };
 
 export function soonView(name) {

@@ -16,6 +16,7 @@ import { soonView } from './views/soon.js';
 import * as engine from './runner/engine.js';
 import { problemsView } from './views/problems.js';
 import { workspaceView } from './views/workspace.js';
+import { submissionsView } from './views/submissions.js';
 import * as progress from './progress.js';
 
 const app = document.getElementById('app');
@@ -26,7 +27,7 @@ const PAGES = {
   roadmap: { title: 'Roadmap', view: roadmapView },
   problems: { title: 'Problems', view: (c) => problemsView(c, null) },
   progress: { title: 'Progress', view: () => soonView('progress') },
-  submissions: { title: 'Submissions', view: () => soonView('submissions') },
+  submissions: { title: 'Submissions', view: (c) => submissionsView(c, null) },
   profile: { title: 'My profile', view: profileView },
   settings: { title: 'Settings', view: settingsView }
 };
@@ -100,7 +101,7 @@ function runTour() {
   const name = state.user.firstName;
   const steps = [
     { target: null, title: `Welcome, ${name}!`, body: 'Take a 30-second tour to see where everything is. You can skip it at any time.' },
-    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap and Problems are ready to use. The Roadmap shows all ten topics. Progress and Submissions open up as the platform grows.' },
+    { target: '[data-tour="nav"]', title: 'Your navigation', body: 'Dashboard, Roadmap, Problems and Submissions are ready to use. The Roadmap shows all ten topics. Progress opens up as the platform grows.' },
     { target: '[data-tour="next"]', title: 'Your next problem', body: 'The dashboard always shows the next problem for you, plus your progress and your streak. Problems are numbered by effort: start at 1 and work your way up.' },
     { target: '[data-tour="theme"]', title: 'Make it yours', body: 'Switch between light, dark and system themes, and pick the accent color you like.' },
     { target: '[data-tour="avatar"]', title: 'Your profile', body: 'Click your photo to see your user ID, open your profile, change settings or log out. Other members see your photo, user ID and country, never your name or email.' },
@@ -122,6 +123,8 @@ function resolvePage(path) {
   if (PAGES[path]) return { key: path, ...PAGES[path] };
   const topicMatch = /^problems\/([a-z0-9-]+)$/.exec(path);
   if (topicMatch) { const topic = topicMatch[1]; return { key: 'problems', title: 'Problems', view: (c) => problemsView(c, topic) }; }
+  const historyMatch = /^submissions\/([a-z0-9-]+)$/.exec(path);
+  if (historyMatch) { const history = historyMatch[1]; return { key: 'submissions', title: 'Submissions', view: (c) => submissionsView(c, history) }; }
   const problemMatch = /^problem\/([a-z0-9-]+)$/.exec(path);
   if (problemMatch) { const slug = problemMatch[1]; return { key: 'problems', title: 'Problems', view: (c) => workspaceView(c, slug) }; }
   return null;

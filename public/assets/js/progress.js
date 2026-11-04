@@ -1,9 +1,10 @@
-// What the learner has done: which problems are solved and how each one went.
+// What the learner has done: which problems are solved, how each one went, what was submitted and the code typed so far.
 //
-// The account (the server) is the source of truth, so the progress follows the learner to every device. This browser keeps
+// The account (the server) is the source of truth, so all of it follows the learner to every device. This browser keeps
 // a copy for two reasons: pages open instantly, and nothing is lost when the connection drops. Every change is written to
 // the copy first and then sent to the server through a small queue that is kept in localStorage and retried until it works.
-// Solving is never undone and the counters only grow, so two copies are merged simply by keeping the most.
+// Solving is never undone and the counters only grow, so two copies are merged simply by keeping the most; for a draft the
+// newer copy wins.
 //
 // Everything that touches localStorage is wrapped in try/catch because storage can be blocked (private windows, strict
 // settings); the progress then lasts until the page is closed.
@@ -13,6 +14,11 @@ import { api, ApiError } from './api.js';
 const PREFIX = 'algomashq.';
 const RETRY_MS = 30000;
 const SEND_DELAY_MS = 1200;
+const DRAFT_WAIT_MS = 1500;       // how long opening a problem waits for the drafts from the account
+const DRAFT_MAX = 20000;          // the server keeps no more than this much code
+const QUEUE_MAX = 300;
+const LANGS = ['cpp', 'java', 'python'];
+const VERDICTS = ['accepted', 'wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error'];
 
 function read(key, fallback) {
   try {
@@ -31,8 +37,9 @@ let items = [];       // every solve: { slug, lang, at }
 let solved = {};      // slug -> { lang, at }: the first time the problem was solved
 let langs = {};       // slug -> [lang, ...]: every language it was solved in
 let states = {};      // slug -> { conceptSeen, hints, revealed, attempts }
-let queue = [];       // changes the server has not confirmed yet: { t: 'solved', slug, lang, at } or { t: 'state', slug, state }
-let flushing = null;   // the promise of the run that is sending the queue, or null
+let queue = [];       // changes the server has not confirmed yet (see enqueue)
+let dirty = new Map();   // 'slug:lang' -> true | 'cleared': drafts the account has not heard about yet
+let flushing = null;  // the promise of the run that is sending the queue, or null
 let sendTimer = null;
 let retryTimer = null;
 let listening = false;
@@ -114,10 +121,17 @@ export async function load(user) {
   items = (read(mine('solved'), []) || []).filter(validItem);
   states = read(mine('states'), {}) || {};
   queue = read(mine('queue'), []) || [];
+  dirty = new Map();
   rebuild();
-  if (!listening && typeof window !== 'undefined' && window.addEventListener) {
+  if (!listening) {
     listening = true;
-    window.addEventListener('online', () => flush());
+    if (typeof window !== 'undefined' && window.addEventListener) {
+      window.addEventListener('online', () => flush());
+      window.addEventListener('pagehide', () => { syncDrafts(); flush(); });
+    }
+    if (typeof document !== 'undefined' && document.addEventListener) {
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') { syncDrafts(); flush(); } });
+    }
   }
   try { await importLegacy(); } catch (e) { /* the old data stays in the browser and is tried again at the next sign-in */ }
   try {
@@ -134,7 +148,7 @@ export async function load(user) {
 export function reset() {
   clearTimeout(sendTimer);
   clearTimeout(retryTimer);
-  owner = null; items = []; solved = {}; langs = {}; states = {}; queue = [];
+  owner = null; items = []; solved = {}; langs = {}; states = {}; queue = []; dirty = new Map();
 }
 
 // ---- Sending ----
@@ -143,11 +157,26 @@ function schedule(delay) {
   sendTimer = setTimeout(() => flush(), delay);
 }
 
+// An entry is one of:
+//   { t: 'solved', slug, lang, at }          { t: 'state', slug, state }
+//   { t: 'submission', slug, lang, verdict, passed, total, timeMs, code, at }
+//   { t: 'draft', slug, lang, code, at }     (code null = the draft was reset)
 function enqueue(entry) {
-  if (entry.t === 'state') queue = queue.filter((q) => !(q.t === 'state' && q.slug === entry.slug));   // only the latest state of a problem matters
+  // Only the latest state of a problem, and the latest draft of a problem and language, matter.
+  if (entry.t === 'state') queue = queue.filter((q) => !(q.t === 'state' && q.slug === entry.slug));
+  if (entry.t === 'draft') queue = queue.filter((q) => !(q.t === 'draft' && q.slug === entry.slug && q.lang === entry.lang));
   queue.push(entry);
+  if (queue.length > QUEUE_MAX) queue = queue.slice(-QUEUE_MAX);
   persist();
   schedule(SEND_DELAY_MS);
+}
+
+function send(entry) {
+  const { t, ...rest } = entry;
+  if (t === 'solved') return api('/api/me/solved', { method: 'POST', body: rest, keepalive: true });
+  if (t === 'state') return api('/api/me/state', { method: 'PATCH', body: { slug: entry.slug, ...entry.state }, keepalive: true });
+  if (t === 'submission') return api('/api/me/submissions', { method: 'POST', body: rest, keepalive: true });
+  return api('/api/me/drafts', { method: 'PUT', body: rest, keepalive: true });
 }
 
 // Sends the queue, oldest first. If it is already being sent, the caller waits for that same run.
@@ -159,8 +188,7 @@ export function flush() {
       while (queue.length) {
         const entry = queue[0];
         try {
-          if (entry.t === 'solved') await api('/api/me/solved', { method: 'POST', body: { slug: entry.slug, lang: entry.lang, at: entry.at } });
-          else await api('/api/me/state', { method: 'PATCH', body: { slug: entry.slug, ...entry.state } });
+          await send(entry);
         } catch (e) {
           const refusedForGood = e instanceof ApiError && e.status >= 400 && e.status < 500 && e.status !== 401 && e.status !== 429;
           if (!refusedForGood) { failed = true; break; }   // offline, signed out, rate limited or a server problem: try again later
@@ -202,10 +230,86 @@ export function setState(slug, patch) {
   return next;
 }
 
-// ---- Drafts: the code typed so far, per problem and language (kept in this browser only for now) ----
-export const getDraft = (slug, lang) => read(`draft.${slug}.${lang}`, null);
-export const saveDraft = (slug, lang, code) => write(`draft.${slug}.${lang}`, code);
-export function clearDraft(slug, lang) { remove(`draft.${slug}.${lang}`); }
+// ---- Submissions: the result of every Submit (the server keeps the code of the recent ones) ----
+export function recordSubmission({ slug, lang, verdict, passed, total, timeMs, code }) {
+  if (!owner || !VERDICTS.includes(verdict)) return;   // a cancelled or unfinished run is not a submission
+  enqueue({
+    t: 'submission', slug, lang, verdict, passed, total,
+    timeMs: Number.isFinite(timeMs) ? Math.round(timeMs) : null,
+    code: typeof code === 'string' && code.length <= DRAFT_MAX ? code : null,
+    at: Date.now()
+  });
+}
+
+// ---- Drafts: the code typed so far, per problem and language ----
+// Kept in this browser as { code, at } (older versions kept just the text). They reach the account when a problem is
+// submitted or left, not on every keystroke, and come back when the problem is opened on another device.
+const draftKey = (slug, lang) => `draft.${slug}.${lang}`;
+
+function readDraft(slug, lang) {
+  const v = read(draftKey(slug, lang), null);
+  if (typeof v === 'string') return { code: v, at: 0 };
+  return v && typeof v.code === 'string' ? { code: v.code, at: Number(v.at) || 0 } : null;
+}
+
+export const getDraft = (slug, lang) => { const d = readDraft(slug, lang); return d ? d.code : null; };
+
+// `starter` is the starting code: a draft that is the same as it is no draft at all.
+export function saveDraft(slug, lang, code, starter) {
+  const previous = readDraft(slug, lang);
+  if (starter !== undefined && code === starter) { if (previous) clearDraft(slug, lang); return; }
+  if (previous && previous.code === code) return;   // nothing changed since the last save
+  write(draftKey(slug, lang), { code, at: Date.now() });
+  dirty.set(`${slug}:${lang}`, true);
+}
+
+export function clearDraft(slug, lang) {
+  const had = readDraft(slug, lang);
+  remove(draftKey(slug, lang));
+  if (had) dirty.set(`${slug}:${lang}`, 'cleared');
+}
+
+// The language of the newest draft of a problem, or null. Used to open a problem where the work in progress is.
+export function latestDraftLanguage(slug) {
+  let best = null;
+  for (const lang of LANGS) {
+    const d = readDraft(slug, lang);
+    if (d && (!best || d.at > best.at)) best = { lang, at: d.at };
+  }
+  return best ? best.lang : null;
+}
+
+// Hands the drafts that changed to the queue (call it when a problem is submitted or left, or the page is hidden).
+export function syncDrafts() {
+  if (!owner) return;
+  for (const [key, mark] of dirty) {
+    const [slug, lang] = key.split(':');
+    const d = mark === 'cleared' ? null : readDraft(slug, lang);
+    if (d && d.code.length > DRAFT_MAX) continue;   // too long for the account; it stays in this browser
+    enqueue({ t: 'draft', slug, lang, code: d ? d.code : null, at: d && d.at ? d.at : Date.now() });
+  }
+  dirty.clear();
+}
+
+// Fetches the drafts of one problem from the account and keeps the newer copy of each language. Never throws, and gives up
+// after a moment so that a slow connection cannot hold up opening a problem.
+export async function loadDrafts(slug) {
+  if (!owner) return;
+  let timer;
+  try {
+    const answer = await Promise.race([
+      api(`/api/me/drafts/${slug}`),
+      new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('slow')), DRAFT_WAIT_MS); })
+    ]);
+    const remote = (answer && answer.drafts) || {};
+    for (const lang of LANGS) {
+      const server = remote[lang];
+      const local = readDraft(slug, lang);
+      if (server && (!local || server.at > local.at)) write(draftKey(slug, lang), { code: server.code, at: server.at });
+      else if (local && (!server || local.at > server.at)) dirty.set(`${slug}:${lang}`, true);   // this device has the newer one: tell the account
+    }
+  } catch (e) { /* offline or slow: the drafts of this browser are used */ } finally { clearTimeout(timer); }
+}
 
 // ---- The last language used ----
 export const getLanguage = () => read('language', null);

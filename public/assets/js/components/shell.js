@@ -11,7 +11,7 @@ const NAV = [
   { path: 'roadmap', label: 'Roadmap', icon: 'roadmap' },
   { path: 'problems', label: 'Problems', icon: 'problems' },
   { path: 'progress', label: 'Progress', icon: 'progress', soon: true },
-  { path: 'submissions', label: 'Submissions', icon: 'submissions', soon: true },
+  { path: 'submissions', label: 'Submissions', icon: 'submissions' },
   { path: 'settings', label: 'Settings', icon: 'settings' }
 ];
 

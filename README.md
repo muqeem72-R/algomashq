@@ -31,8 +31,8 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   when chat is built, the chat endpoints must first confirm that both people belong to that chat.
 - A one-time welcome tour for new members, which can be replayed from Settings.
 - A dashboard that shows the learner's own progress (the next problem, solved problems by difficulty, a solving streak and the
-  recently solved list), the Roadmap page (the 10 topics, only there), the Problems pages, My profile and Settings. Progress
-  and Submissions are placeholders for Phase 4.
+  recently solved list), the Roadmap page (the 10 topics, only there), the Problems pages, the Submissions page (your history),
+  My profile and Settings. The Progress page is a placeholder for Phase 4d.
 
 ## What Phase 2 includes
 
@@ -77,8 +77,13 @@ The account (the D1 tables `solved` and `problem_state`) is the source of truth,
 device. The browser keeps a copy in localStorage (one copy per account) so pages open at once and nothing is lost when the
 connection drops: every change goes to the copy first and then through a small queue that is retried until the server has it.
 Solving is never undone and the counters only grow, so two copies are merged by keeping the most. The first sign-in after the
-update moves the progress that older versions kept in the browser into the account. Drafts (the code typed so far) are still kept
-in the browser only; the submission history, bookmarks and notes come in the next parts of Phase 4.
+update moves the progress that older versions kept in the browser into the account.
+
+The same holds for the code. Every Submit is written to the history (the `submissions` table): its result, and the code for the
+last 5 submissions of each problem and for the latest accepted solution in each language (a problem keeps its last 20 rows at
+most; pressing Submit again on the same code with the same result adds nothing). The code typed so far (a *draft*) is saved in
+the account when a problem is submitted or left, not on every keystroke, and comes back on another device: the newer copy wins,
+and the problem opens in the language of its newest draft. Bookmarks, notes and the Progress page come in the next parts.
 
 ## User ids
 
@@ -109,7 +114,7 @@ public/                 static site, served directly by Cloudflare
 src/worker.js           the Worker: sends every /api/* request to the matching handler in functions/
 functions/              the API handlers
   api/auth/             request-otp, verify-otp, me, logout
-  api/me/               photo, tour, settings, progress, solved, state, import
+  api/me/               photo, tour, settings, progress, solved, state, import, submissions, drafts
   api/users/[id].js     what other members can see of a member
   api/config.js         public settings for the browser
   _lib/                 shared code: validation, crypto, sessions, rate limits, Turnstile, Brevo
@@ -243,6 +248,12 @@ for a moment while the app loads.
 | `GET /api/me/progress` | your own progress: the problems you solved (with language and time) and how each problem went |
 | `POST /api/me/solved` | record a solve `{ slug, lang, at? }`; repeating it changes nothing |
 | `PATCH /api/me/state` | save how a problem is going (concept read, hints shown, solution opened, submissions); values only grow |
+| `GET /api/me/submissions` | your submission history, newest first, without the code (`?limit`, `?before` cursor, `?problem=<slug>`, `?verdict=accepted\|failed`) |
+| `POST /api/me/submissions` | record one Submit `{ slug, lang, verdict, passed, total, timeMs?, code?, at? }`; an accepted one also counts as solved; the same code with the same result again is ignored |
+| `GET /api/me/submissions/:id` | one of your submissions with its code (someone else's is 404) |
+| `DELETE /api/me/submissions` | clear your history (`?problem=<slug>` for one problem); your solved problems stay |
+| `PUT /api/me/drafts` | save the code typed so far `{ slug, lang, code, at }`; a newer copy replaces an older one; `code: null` removes it |
+| `GET /api/me/drafts/:slug` | your saved drafts of one problem |
 | `POST /api/me/import` | move the progress that older versions kept in the browser into the account (once, nothing is removed) |
 | `GET /api/users/:id` | your own profile (with a preview of what others see), or the public view of another member |
 
@@ -262,7 +273,7 @@ for a moment while the app loads.
 - The main site never allows `unsafe-eval`. Java, which needs it, runs on a separate origin that has no cookies and no access
   to the main site, can only be embedded by the main site, and only answers messages from it. A test (`tests/security.test.js`)
   fails if the main site's policy is ever loosened or if the two sides stop agreeing on who may talk to whom.
-- Progress (what you solved and how each problem went) is private: only its owner can read it, and no view of a member that
+- Progress, the submission history (with your code) and your drafts are private: only its owner can read it, and no view of a member that
   other members can get contains any of it. The judge runs in the browser, so the server cannot re-check a solve; it only checks
   that a report is well formed, names a real problem and language, and has a believable time. Writes are rate-limited.
 - Profile photos are small JPEGs stored as base64 in D1 (about 30 KB each). They are served only to signed-in members,

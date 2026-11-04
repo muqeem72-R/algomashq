@@ -29,7 +29,8 @@ export function workspaceView(ctx, slug) {
   let cleanup = () => {};
   root.__destroy = () => { destroyed = true; cleanup(); };
 
-  loadProblem(slug).then((problem) => { if (!destroyed) build(problem); }).catch((error) => {
+  // The drafts typed on another device are fetched together with the problem (it never waits long for them).
+  Promise.all([loadProblem(slug), progress.loadDrafts(slug)]).then(([problem]) => { if (!destroyed) build(problem); }).catch((error) => {
     root.replaceChildren(h('div', { class: 'page' }, h('div', { class: 'card empty' },
       h('h3', { text: 'Problem not found' }), h('p', { text: error.message }),
       h('a', { class: 'btn btn-primary', href: '#/problems', text: 'Back to the problems' }))));
@@ -50,10 +51,11 @@ export function workspaceView(ctx, slug) {
     function pickLanguage() {
       const usable = (l) => engine.LANGUAGES[l] && engine.LANGUAGES[l].available && problem.starter[l];
       const saved = progress.getLanguage();
-      if (saved && usable(saved)) return saved;
       const preferred = ctx.user().preferredLanguage;
-      if (usable(preferred)) return preferred;
-      return usable('cpp') ? 'cpp' : 'python';
+      const chosen = saved && usable(saved) ? saved : usable(preferred) ? preferred : usable('cpp') ? 'cpp' : 'python';
+      // Code typed on another device may be in a different language: then open on that one, so the work in progress is in front.
+      const draftLanguage = progress.latestDraftLanguage(slug);
+      return draftLanguage && usable(draftLanguage) && progress.getDraft(slug, chosen) === null ? draftLanguage : chosen;
     }
 
     // ---------- Header ----------
@@ -63,7 +65,8 @@ export function workspaceView(ctx, slug) {
       h('h2', { text: `${problem.order}. ${problem.title}` }),
       h('span', { class: `level ${problem.difficulty}`, text: problem.difficulty[0].toUpperCase() + problem.difficulty.slice(1) }),
       topic ? h('span', { class: 'ws-topic', text: topic.title }) : null,
-      solvedBadge
+      solvedBadge,
+      h('a', { class: 'ws-history', href: `#/submissions/${slug}`, title: 'Your earlier submissions of this problem' }, icon('clock', 15), 'History')
     );
 
     // ---------- Left: tabs ----------
@@ -295,13 +298,14 @@ export function workspaceView(ctx, slug) {
 
     function onCodeChange(text) {
       clearTimeout(draftTimer);
-      draftTimer = setTimeout(() => progress.saveDraft(slug, lang, text), 400);
+      const editedLang = lang;
+      draftTimer = setTimeout(() => progress.saveDraft(slug, editedLang, text, problem.starter[editedLang]), 400);
     }
 
     langSelect.addEventListener('change', async () => {
       const next = langSelect.value;
       if (next === lang) return;
-      progress.saveDraft(slug, lang, currentCode());
+      progress.saveDraft(slug, lang, currentCode(), problem.starter[lang]);
       lang = next;
       progress.setLanguage(lang);
       if (editorApi) { editorApi.setLanguage(lang); editorApi.setValue(startCode()); }
@@ -363,11 +367,17 @@ export function workspaceView(ctx, slug) {
     const submit = guard(async () => {
       showConsole('result');
       progress.setState(slug, { attempts: progress.getState(slug).attempts + 1 });
+      const code = currentCode();
+      const submittedLang = lang;
       resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine({ phase: 'compiling' })));
-      const v = await judge.submit(problem, lang, currentCode(), (info) => resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine(info))));
+      const v = await judge.submit(problem, submittedLang, code, (info) => resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine(info))));
       renderVerdict(v);
+      // The result goes into the submission history (a cancelled run is skipped), and the account hears about the code.
+      progress.recordSubmission({ slug, lang: submittedLang, verdict: v.status, passed: v.passed, total: v.total, timeMs: v.status === 'accepted' ? v.slowest : v.ms, code });
+      progress.saveDraft(slug, submittedLang, code, problem.starter[submittedLang]);
+      progress.syncDrafts();
       if (v.status === 'accepted') {
-        const first = progress.markSolved(slug, lang);
+        const first = progress.markSolved(slug, submittedLang);
         solvedBadge.hidden = false;
         if (first) toast('Solved! The solution is now unlocked.');
         if (currentTab === 'solution') showTab('solution');
@@ -436,7 +446,8 @@ export function workspaceView(ctx, slug) {
 
     cleanup = () => {
       clearTimeout(draftTimer);
-      if (editorApi) { progress.saveDraft(slug, lang, editorApi.getValue()); editorApi.destroy(); }
+      if (editorApi) { progress.saveDraft(slug, lang, editorApi.getValue(), problem.starter[lang]); editorApi.destroy(); }
+      progress.syncDrafts();   // the account hears about the code of this problem when it is left
       engine.cancel();
     };
   }
