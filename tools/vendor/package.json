@@ -1,0 +1,21 @@
+{
+  "name": "algomashq-vendor-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build tools that prepare the browser compilers and the code editor for public/vendor. Run with: npm run vendor (from the project root).",
+  "dependencies": {
+    "@bjorn3/browser_wasi_shim": "0.4.2",
+    "@codemirror/autocomplete": "^6.20.4",
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-cpp": "^6.0.2",
+    "@codemirror/lang-java": "^6.0.1",
+    "@codemirror/lang-python": "^6.1.7",
+    "@codemirror/language": "^6.11.0",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.0",
+    "@lezer/highlight": "^1.2.1",
+    "@yowasp/clang": "22.0.0-git20542-10",
+    "esbuild": "^0.25.0",
+    "pyodide": "314.0.7"
+  }
+}

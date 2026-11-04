@@ -26,6 +26,14 @@
   --shadow: 0 10px 40px rgba(0, 0, 0, .45);
   --scrim: rgba(3, 5, 9, .72);
   --accent-text: var(--accent-d);
+  --syn-keyword: #c4a1ff;
+  --syn-string: #9fd8a0;
+  --syn-number: #ffab84;
+  --syn-comment: #707a8f;
+  --syn-type: #8db4ff;
+  --syn-function: #7fdbd0;
+  --syn-meta: #f2c76b;
+  --syn-punct: #a3abbd;
 }
 
 :root[data-theme="light"] {
@@ -44,6 +52,14 @@
   --shadow: 0 10px 36px rgba(24, 32, 56, .16);
   --scrim: rgba(20, 24, 36, .55);
   --accent-text: var(--accent-l);
+  --syn-keyword: #7c3aed;
+  --syn-string: #15803d;
+  --syn-number: #c2410c;
+  --syn-comment: #7a8398;
+  --syn-type: #1d4ed8;
+  --syn-function: #0e7490;
+  --syn-meta: #a16207;
+  --syn-punct: #566074;
 }
 
 /* Accent colors. --accent fills buttons, --accent-ink is the text on top of that fill. */

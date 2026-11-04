@@ -9,7 +9,7 @@ import { ACCENTS, getAccent, getThemePref, setAccent, setThemePref } from '../th
 const NAV = [
   { path: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
   { path: 'roadmap', label: 'Roadmap', icon: 'roadmap' },
-  { path: 'problems', label: 'Problems', icon: 'problems', soon: true },
+  { path: 'problems', label: 'Problems', icon: 'problems' },
   { path: 'progress', label: 'Progress', icon: 'progress', soon: true },
   { path: 'submissions', label: 'Submissions', icon: 'submissions', soon: true },
   { path: 'settings', label: 'Settings', icon: 'settings' }
@@ -101,6 +101,7 @@ export function createShell(ctx) {
     el,
     content,
     refreshAvatar: drawAvatar,
+    setTitle(text) { title.textContent = text; },
     setPage(path, pageTitle) {
       title.textContent = pageTitle;
       navLinks.forEach((a) => {
