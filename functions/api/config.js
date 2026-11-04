@@ -7,6 +7,7 @@ import { OTP_TTL_SECONDS, RESEND_SECONDS, PHOTO_REQUIRED } from '../_lib/config.
 export async function onRequestGet({ env }) {
   return json({
     appName: env.APP_NAME || 'AlgoMashq',
+    javaOrigin: env.JAVA_ORIGIN || null,
     turnstileSiteKey: turnstileConfigured(env) ? env.TURNSTILE_SITE_KEY : null,
     photoRequired: PHOTO_REQUIRED,
     resendSeconds: RESEND_SECONDS,

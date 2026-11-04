@@ -1,0 +1,17 @@
+# The Java sandbox: a second, tiny Worker that only serves static files.
+#
+# Java runs in the browser with CheerpJ, which needs 'unsafe-eval' in its Content-Security-Policy. The main site must
+# stay strict, so Java lives here, on its OWN origin (algomashq-java.<your-subdomain>.workers.dev). The main site embeds
+# this page in a hidden iframe and talks to it with postMessage only. The page has no cookies, no login and no access to
+# the main site's data, and only the main site may embed it (frame-ancestors in public/_headers).
+#
+# Deploy:  npm run deploy:java        Run locally:  npm run dev:java  (port 8789)
+
+name = "algomashq-java"
+compatibility_date = "2025-09-01"
+
+workers_dev = true
+preview_urls = false
+
+[assets]
+directory = "./public"

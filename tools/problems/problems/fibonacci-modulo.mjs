@@ -55,7 +55,8 @@ export default {
   ],
   starter: {
     python: '# Read n and print F(n) mod 1000000007\nMOD = 1000000007\nn = int(input())\n\n# Your code here\n',
-    cpp: '#include <iostream>\nusing namespace std;\n\nconst long long MOD = 1000000007LL;\n\nint main() {\n    long long n;\n    cin >> n;\n    // Print F(n) mod MOD\n    return 0;\n}\n'
+    cpp: '#include <iostream>\nusing namespace std;\n\nconst long long MOD = 1000000007LL;\n\nint main() {\n    long long n;\n    cin >> n;\n    // Print F(n) mod MOD\n    return 0;\n}\n',
+    java: 'import java.util.Scanner;\n\npublic class Main {\n    static final long MOD = 1_000_000_007L;\n\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        long n = in.nextLong();\n        // Print F(n) mod MOD\n    }\n}\n'
   },
   solution: {
     explanation: [
@@ -66,7 +67,8 @@ export default {
     complexity: 'Time O(log n), space O(log n) for the recursion.',
     code: {
       python: 'MOD = 1_000_000_007\n\ndef fib_pair(k):\n    # returns (F(k), F(k+1)) modulo MOD\n    if k == 0:\n        return (0, 1)\n    a, b = fib_pair(k >> 1)\n    c = a * ((2 * b - a) % MOD) % MOD\n    d = (a * a + b * b) % MOD\n    if k & 1:\n        return (d, (c + d) % MOD)\n    return (c, d)\n\nn = int(input())\nprint(fib_pair(n)[0])\n',
-      cpp: '#include <iostream>\n#include <utility>\nusing namespace std;\n\nconst long long MOD = 1000000007LL;\n\n// returns (F(k), F(k+1)) modulo MOD\npair<long long, long long> fibPair(long long k) {\n    if (k == 0) return {0, 1};\n    auto [a, b] = fibPair(k >> 1);\n    long long t = (2 * b - a + MOD) % MOD;\n    long long c = a * t % MOD;\n    long long d = (a * a + b * b) % MOD;\n    if (k & 1) return {d, (c + d) % MOD};\n    return {c, d};\n}\n\nint main() {\n    long long n;\n    cin >> n;\n    cout << fibPair(n).first << endl;\n    return 0;\n}\n'
+      cpp: '#include <iostream>\n#include <utility>\nusing namespace std;\n\nconst long long MOD = 1000000007LL;\n\n// returns (F(k), F(k+1)) modulo MOD\npair<long long, long long> fibPair(long long k) {\n    if (k == 0) return {0, 1};\n    auto [a, b] = fibPair(k >> 1);\n    long long t = (2 * b - a + MOD) % MOD;\n    long long c = a * t % MOD;\n    long long d = (a * a + b * b) % MOD;\n    if (k & 1) return {d, (c + d) % MOD};\n    return {c, d};\n}\n\nint main() {\n    long long n;\n    cin >> n;\n    cout << fibPair(n).first << endl;\n    return 0;\n}\n',
+      java: 'import java.util.Scanner;\n\npublic class Main {\n    static final long MOD = 1_000_000_007L;\n\n    // returns {F(k), F(k+1)} modulo MOD\n    static long[] fibPair(long k) {\n        if (k == 0) return new long[] {0, 1};\n        long[] half = fibPair(k >> 1);\n        long a = half[0], b = half[1];\n        long c = a * ((2 * b - a + MOD) % MOD) % MOD;\n        long d = (a * a + b * b) % MOD;\n        if ((k & 1) == 1) return new long[] {d, (c + d) % MOD};\n        return new long[] {c, d};\n    }\n\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        long n = in.nextLong();\n        System.out.println(fibPair(n)[0]);\n    }\n}\n'
     }
   },
 

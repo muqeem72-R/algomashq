@@ -32,11 +32,12 @@ export default {
   hints: [
     'Multiplying `b` times is far too slow when `b` is 10^18.',
     '`a^10 = (a^5)^2` and `a^5 = a * (a^2)^2`. How many times can you halve `b` before it reaches 0?',
-    'Take `% m` after every multiplication. Start with `a % m`, and in C++ keep every value in `long long`: two values below 10^9 multiply to less than 10^18.'
+    'Take `% m` after every multiplication. Start with `a % m`, and in C++ (`long long`) or Java (`long`) keep every value in 64 bits: two values below 10^9 multiply to less than 10^18.'
   ],
   starter: {
     python: '# Read a, b, m and print (a ** b) % m\na, b, m = map(int, input().split())\n\n# Your code here\n',
-    cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long a, b, m;\n    cin >> a >> b >> m;\n    // Print (a^b) mod m\n    return 0;\n}\n'
+    cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long a, b, m;\n    cin >> a >> b >> m;\n    // Print (a^b) mod m\n    return 0;\n}\n',
+    java: 'import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        long a = in.nextLong();\n        long b = in.nextLong();\n        long m = in.nextLong();\n        // Print (a^b) mod m\n    }\n}\n'
   },
   solution: {
     explanation: [
@@ -47,7 +48,8 @@ export default {
     complexity: 'Time O(log b), space O(1).',
     code: {
       python: 'a, b, m = map(int, input().split())\n\nresult = 1 % m\nbase = a % m\nwhile b > 0:\n    if b & 1:\n        result = result * base % m\n    base = base * base % m\n    b >>= 1\nprint(result)\n',
-      cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long a, b, m;\n    cin >> a >> b >> m;\n    long long result = 1 % m;\n    long long base = a % m;\n    while (b > 0) {\n        if (b & 1) result = result * base % m;\n        base = base * base % m;\n        b >>= 1;\n    }\n    cout << result << endl;\n    return 0;\n}\n'
+      cpp: '#include <iostream>\nusing namespace std;\n\nint main() {\n    long long a, b, m;\n    cin >> a >> b >> m;\n    long long result = 1 % m;\n    long long base = a % m;\n    while (b > 0) {\n        if (b & 1) result = result * base % m;\n        base = base * base % m;\n        b >>= 1;\n    }\n    cout << result << endl;\n    return 0;\n}\n',
+      java: 'import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        long a = in.nextLong();\n        long b = in.nextLong();\n        long m = in.nextLong();\n        long result = 1 % m;\n        long base = a % m;\n        while (b > 0) {\n            if ((b & 1) == 1) result = result * base % m;\n            base = base * base % m;\n            b >>= 1;\n        }\n        System.out.println(result);\n    }\n}\n'
     }
   },
 

@@ -8,6 +8,10 @@ APP_SECRET=local-dev-secret-change-me
 TURNSTILE_SITE_KEY=1x00000000000000000000AA
 TURNSTILE_SECRET=1x0000000000000000000000000000000AA
 
+# The Java sandbox for local work: run it with  npm run dev:java  (port 8789).
+# It must be a different site from the app, so use 127.0.0.1 here while the app is on localhost.
+JAVA_ORIGIN=http://127.0.0.1:8789
+
 # 1 = print the login code in the dev server console instead of sending an email.
 DEV_LOG_OTP=1
 

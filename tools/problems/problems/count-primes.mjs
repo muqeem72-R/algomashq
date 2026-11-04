@@ -33,7 +33,8 @@ export default {
   ],
   starter: {
     python: '# Read N and print how many primes are in 1..N\nn = int(input())\n\n# Your code here\n',
-    cpp: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // Print the number of primes in 1..n\n    return 0;\n}\n'
+    cpp: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // Print the number of primes in 1..n\n    return 0;\n}\n',
+    java: 'import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        int n = in.nextInt();\n        // Print the number of primes in 1..n\n    }\n}\n'
   },
   solution: {
     explanation: [
@@ -43,7 +44,8 @@ export default {
     complexity: 'Time O(N log log N), space O(N).',
     code: {
       python: 'n = int(input())\n\nif n < 2:\n    print(0)\nelse:\n    is_prime = bytearray([1]) * (n + 1)\n    is_prime[0] = is_prime[1] = 0\n    p = 2\n    while p * p <= n:\n        if is_prime[p]:\n            is_prime[p * p::p] = bytearray(len(range(p * p, n + 1, p)))\n        p += 1\n    print(sum(is_prime))\n',
-      cpp: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<char> isPrime(n + 1, 1);\n    isPrime[0] = 0;\n    if (n >= 1) isPrime[1] = 0;\n    for (long long p = 2; p * p <= n; p++) {\n        if (isPrime[p]) {\n            for (long long j = p * p; j <= n; j += p) isPrime[j] = 0;\n        }\n    }\n    int count = 0;\n    for (int i = 2; i <= n; i++) count += isPrime[i];\n    cout << count << endl;\n    return 0;\n}\n'
+      cpp: '#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<char> isPrime(n + 1, 1);\n    isPrime[0] = 0;\n    if (n >= 1) isPrime[1] = 0;\n    for (long long p = 2; p * p <= n; p++) {\n        if (isPrime[p]) {\n            for (long long j = p * p; j <= n; j += p) isPrime[j] = 0;\n        }\n    }\n    int count = 0;\n    for (int i = 2; i <= n; i++) count += isPrime[i];\n    cout << count << endl;\n    return 0;\n}\n',
+      java: 'import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner in = new Scanner(System.in);\n        int n = in.nextInt();\n        boolean[] composite = new boolean[n + 1];\n        int count = 0;\n        for (int i = 2; i <= n; i++) {\n            if (!composite[i]) {\n                count++;\n                for (long j = (long) i * i; j <= n; j += i) {\n                    composite[(int) j] = true;\n                }\n            }\n        }\n        System.out.println(count);\n    }\n}\n'
     }
   },
 

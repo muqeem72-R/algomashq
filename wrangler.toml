@@ -30,3 +30,5 @@ TURNSTILE_SITE_KEY = "0x4AAAAAAFyUOqDaBEATu8SS"
 # Sender shown on login emails. It must be a sender or domain verified in Brevo.
 BREVO_SENDER_EMAIL = "mukeemuddeen9694@gmail.com"
 BREVO_SENDER_NAME = "AlgoMashq"
+# Where the Java sandbox lives (a second Worker, see java/). Java is switched off when this is empty.
+JAVA_ORIGIN = "https://algomashq-java.mukeemkhan.workers.dev"

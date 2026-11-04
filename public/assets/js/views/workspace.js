@@ -13,7 +13,7 @@ import * as judge from '../judge/judge.js';
 
 const STATUS_TEXT = {
   accepted: 'Accepted', wrong_answer: 'Wrong Answer', runtime_error: 'Runtime Error', time_limit: 'Time Limit Exceeded',
-  output_limit: 'Output Limit Exceeded', memory_limit: 'Memory Limit Exceeded', compile_error: 'Compile Error', cancelled: 'Stopped', ok: 'Finished'
+  output_limit: 'Output Limit Exceeded', memory_limit: 'Memory Limit Exceeded', compile_error: 'Compile Error', cancelled: 'Stopped', ok: 'Finished', not_run: 'Not run'
 };
 const LANG_LIST = ['python', 'cpp', 'java'];
 const mb = (bytes) => (bytes / 1048576).toFixed(1);
@@ -116,8 +116,8 @@ export function workspaceView(ctx, slug) {
         h('h4', { text: 'Output' }), h('div', { class: 'prose' }, blocks(problem.outputFormat)),
         h('h4', { text: 'Constraints' }), h('ul', { class: 'constraints' }, problem.constraints.map((c) => h('li', null, h('code', { text: c })))),
         h('h4', { text: 'Examples' }), ...examples,
-        h('p', { class: 'limit-note' }, `Time limit: ${seconds(judge.timeLimitFor(problem, 'cpp'))} s for C++ and ${seconds(judge.timeLimitFor(problem, 'python'))} s for Python (Python in the browser is slower).`),
-        h('p', { class: 'limit-note' }, 'Good to know: your code runs in your own browser. In C++, try/catch is not available, and for very large inputs scanf reads much faster than cin.')
+        h('p', { class: 'limit-note' }, `Time limit: ${seconds(judge.timeLimitFor(problem, 'cpp'))} s for C++ and ${seconds(judge.timeLimitFor(problem, 'python'))} s for Python and Java (both are slower in the browser).`),
+        h('p', { class: 'limit-note' }, 'Good to know: your code runs in your own browser. In C++, try/catch is not available, and for very large inputs scanf reads much faster than cin. In Java, recursion is limited to about 3000 nested calls, and every compile takes several seconds.')
       ];
     }
 
@@ -263,7 +263,10 @@ export function workspaceView(ctx, slug) {
       updateButtons();
       if (engine.status(target) === 'ready') { setEngineNote(`${engine.LANGUAGES[target].label} is ready`); return true; }
       const info = engine.LANGUAGES[target];
-      setEngineNote(target === 'cpp' ? `Setting up the C++ compiler (${info.download}, downloaded once)` : `Starting ${info.label}`, target === 'cpp' ? 0 : undefined);
+      const first = target === 'cpp' ? `Setting up the C++ compiler (${info.download}, downloaded once)`
+        : target === 'java' ? `Setting up Java (${info.download}). The very first time can take a minute or two.`
+          : `Starting ${info.label}`;
+      setEngineNote(first, target === 'cpp' ? 0 : undefined);
       try {
         await engine.prepare(target, (p) => {
           if (target !== lang || destroyed) return;
@@ -323,12 +326,13 @@ export function workspaceView(ctx, slug) {
     }
 
     function runLine(info) {
-      return info.phase === 'compiling' ? 'Compiling' : `Running test ${info.index} of ${info.total}`;
+      if (info.phase === 'compiling') return lang === 'java' ? 'Compiling (Java takes about 10 seconds)' : 'Compiling';
+      return `Running test ${info.index} of ${info.total}`;
     }
 
     const runCustom = guard(async () => {
       showConsole('output');
-      outputBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' Compiling'));
+      outputBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine({ phase: 'compiling' })));
       const compiled = await engine.compile(lang, currentCode());
       if (!compiled.ok) { outputBox.replaceChildren(statusLine('compile_error'), pre(compiled.log, 'is-error')); return; }
       outputBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' Running'));
@@ -342,13 +346,14 @@ export function workspaceView(ctx, slug) {
 
     const runExamples = guard(async () => {
       showConsole('result');
-      resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' Compiling'));
+      resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine({ phase: 'compiling' })));
       const r = await judge.runExamples(problem, lang, currentCode(), (info) => resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine(info))));
       if (r.status === 'compile_error') { resultBox.replaceChildren(statusLine('compile_error'), pre(r.log, 'is-error')); return; }
       const list = r.results.map((x, i) => {
         const ok = x.status === 'accepted';
-        const parts = [h('div', { class: 'case-head' }, h('strong', { text: x.test.label }), h('span', { class: ok ? 'verdict-ok' : 'verdict-bad', text: STATUS_TEXT[x.status] || x.status }), h('span', { class: 'muted', text: `${x.ms} ms` }))];
-        if (!ok) parts.push(...failureDetail({ status: x.status, input: x.test.input, expected: x.test.output, actual: x.stdout, stderr: x.stderr }));
+        const skipped = x.status === 'not_run';
+        const parts = [h('div', { class: 'case-head' }, h('strong', { text: x.test.label }), h('span', { class: ok ? 'verdict-ok' : skipped ? 'muted' : 'verdict-bad', text: STATUS_TEXT[x.status] || x.status }), skipped ? null : h('span', { class: 'muted', text: `${x.ms} ms` }))];
+        if (!ok && !skipped) parts.push(...failureDetail({ status: x.status, input: x.test.input, expected: x.test.output, actual: x.stdout, stderr: x.stderr }));
         return h('div', { class: 'case' + (ok ? '' : ' is-bad') }, parts);
       });
       const passed = r.results.filter((x) => x.status === 'accepted').length;
@@ -358,7 +363,7 @@ export function workspaceView(ctx, slug) {
     const submit = guard(async () => {
       showConsole('result');
       progress.setState(slug, { attempts: progress.getState(slug).attempts + 1 });
-      resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' Compiling'));
+      resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine({ phase: 'compiling' })));
       const v = await judge.submit(problem, lang, currentCode(), (info) => resultBox.replaceChildren(h('p', { class: 'muted' }, h('span', { class: 'spinner' }), ' ' + runLine(info))));
       renderVerdict(v);
       if (v.status === 'accepted') {

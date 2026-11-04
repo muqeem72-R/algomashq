@@ -44,7 +44,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 |---|---|---|
 | 0. Decisions | Name and domain, stack, code-execution backend | Decisions finalised |
 | 1. Foundation and Login (DONE, see section 10) | Full-page desktop layout, themes, Brevo login (email OTP), Turnstile, sessions, D1 database, user ids, profile photo, welcome tour | A user can log in and see a dashboard |
-| 2. Problem workspace (DONE for Python and C++, Java still to do; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
+| 2. Problem workspace (DONE for Python, C++ and Java; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
 | 4. Progress | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
@@ -79,7 +79,7 @@ About 10 topics x 3 levels x 5-10 problems = roughly 150-300 problems. Each prob
 
 - The name AlgoMashq is decided. The site runs on the free Cloudflare address `algomashq.<subdomain>.workers.dev`.
   A paid custom domain (`algomashq.dev`) is optional and can wait.
-- Java: it runs in the browser in the spike (CheerpJ), but it is not in the product yet. See section 12.
+- Java runs in the product through a second Worker (algomashq-java). Open points: the CheerpJ license credit and the 75 MB first download. See section 12.
 - Git auto-deploy: pushing to GitHub should deploy the Worker through Cloudflare's Workers Builds. Builds were stuck
   during a Cloudflare incident on 2026-11-03, so the first deployments were made with `npm run deploy`. Confirm that a
   push now deploys by itself.
@@ -146,7 +146,7 @@ Online compiler APIs (Judge0, JDoodle, Piston): the free tiers are tiny (Judge0 
 day, JDoodle about 200 credits a day) and every user would share one key; public community instances have no uptime
 guarantee. They can only be an optional best-effort fallback, never the main engine.
 
-## 12. Phase 2 status: done for Python and C++
+## 12. Phase 2 status: done (Python, C++ and Java)
 
 What exists:
 
@@ -154,19 +154,37 @@ What exists:
 - The problem page teaches before it tests: Concept first, then Problem, three Hints and a Solution tab that unlocks after
   the problem is solved (or when the learner chooses to open it).
 - Editor (CodeMirror 6, mounted in a shadow root so its styles work under the strict CSP), drafts saved per problem and language.
-- A judge: compile once, run every test, stop at the first failure. Verdicts: Accepted, Wrong Answer, Runtime Error, Time Limit,
+- A judge: compile once, run the tests, stop at the first failure. Verdicts: Accepted, Wrong Answer, Runtime Error, Time Limit,
   Memory Limit, Output Limit, Compile Error. Hidden test data is never shown.
 - Python (Pyodide) and C++ (clang in WebAssembly) run in Web Workers inside the learner's browser. A program that passes its
   time limit is stopped by terminating its worker.
+- Java (CheerpJ 5, Java 21 and javac in the browser) runs in a **second Worker on its own origin**, `algomashq-java`, because
+  CheerpJ needs `unsafe-eval`, which the main site never allows. The main site embeds it in a hidden iframe and talks to it only
+  with `postMessage`; both sides check the origin. A program that never ends is stopped by terminating the Java worker inside
+  the sandbox. All the tests of one submission run in one Java process, each in a fresh class loader, so static fields start
+  fresh. `System.exit` ends only that test. The same code is not compiled twice.
 - 6 original problems in the Basics topic (2 easy, 2 medium, 2 hard). Each one teaches a complexity or recursion idea, and a
   naive solution fails on time on purpose.
-- All 12 reference solutions (6 problems x 2 languages) were run through the real judge in a real browser and are Accepted.
-  Wrong, slow, crashing and non-compiling programs get the right verdicts.
+- All 18 reference solutions (6 problems x 3 languages) were run through the real judge in a real browser and are Accepted.
+  Wrong, slow, crashing and non-compiling programs get the right verdicts in every language. Java was also checked on the live
+  site with the real Content-Security-Policy on both origins.
+
+What to know about Java in the browser (it is the heaviest language here):
+
+- First use downloads about 75 MB from CheerpJ's CDN (kept by the browser afterwards). Every compile takes about 10 s, and a
+  Submit with the same code as the last Examples run reuses the compile. After a program was stopped the next run is slow
+  (about 30 s) because the Java process starts again.
+- It is about as slow as Python (a loop of 50 million additions takes 6 s), so it gets 5 times the C++ time limit.
+- Recursion is limited to about 3000 nested calls, and a deeper one is reported as a stack overflow. A very large allocation
+  fails with a plain ArithmeticException (CheerpJ's way of reporting an out-of-range size).
+- Needs a recent Chromium-based browser. Browsers that block storage for embedded pages may not run it.
+- License: CheerpJ's free Community tier (individuals and non-commercial open source) with the credit "Built with CheerpJ",
+  which is shown in the sidebar. A company sponsor or a paid edition would need a different tier; the repository has no
+  open-source license file yet, which may be worth adding.
 
 What is not done:
 
-- **Java.** It is listed in the editor as "coming soon". It worked in the spike with CheerpJ, but there are open problems:
-  an endless loop freezes the page unless Java runs in a separate-origin frame, reading stdin is untested, the runtime is
-  loaded from CheerpJ's CDN, and the license terms must be read. The Java reference solutions also need a way to be verified.
 - Progress is kept in the browser only. The solved list moves to the account database in Phase 4.
 - More problems and the other 9 topics (Phases 3 and 5).
+- Not tried: CheerpJ's experimental WasmGC engine (the test did not finish), a long-lived Java process to make compiles
+  faster, and Firefox and Safari.

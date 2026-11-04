@@ -16,7 +16,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(HERE, 'problems');
 const OUT = path.resolve(HERE, '../../public/problems');
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
-const LANGUAGES_WITH_CODE = ['python', 'cpp'];
+const LANGUAGES_WITH_CODE = ['python', 'cpp', 'java'];
 
 const fail = (slug, message) => { throw new Error(`[${slug}] ${message}`); };
 
