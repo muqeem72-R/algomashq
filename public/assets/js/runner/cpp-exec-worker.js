@@ -69,5 +69,8 @@ self.onmessage = async (event) => {
       else { status = 'runtime_error'; message = text.replace(/^RuntimeError:\s*/, ''); }
     }
   }
-  postMessage({ ok: true, status, stdout: join(out), stderr: (join(err) + (message ? (err.size ? '\n' : '') + message : '')).slice(0, 4000), ms: Math.round(performance.now() - started) });
+  const stderrText = join(err);
+  // When memory runs out, the C++ runtime prints "bad_alloc" on stderr and then traps; call that what it is.
+  if (status === 'runtime_error' && /bad_alloc/.test(stderrText)) { status = 'memory_limit'; message = 'The program used too much memory.'; }
+  postMessage({ ok: true, status, stdout: join(out), stderr: (stderrText + (message ? (err.size ? '\n' : '') + message : '')).slice(0, 4000), ms: Math.round(performance.now() - started) });
 };
