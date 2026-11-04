@@ -46,7 +46,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 | 1. Foundation and Login (DONE, see section 10) | Full-page desktop layout, themes, Brevo login (email OTP), Turnstile, sessions, D1 database, user ids, profile photo, welcome tour | A user can log in and see a dashboard |
 | 2. Problem workspace (DONE for Python, C++ and Java; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
-| 4. Progress | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
+| 4. Progress (4a DONE, see section 14) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
 | 6. Polish and hardening | Admin page, rate limits, security, analytics, accessibility | Public launch |
 | 7. Optional | Leaderboard, discussion, contests, mock interviews | Later |
@@ -227,3 +227,29 @@ How it was checked:
 Limits to keep in mind when adding problems: recursion depth must stay below about 500 (Python and Java), Java inputs should
 stay below a few thousand numbers (Scanner is slow), and printed decimals must avoid exact ties (languages round them
 differently).
+
+## 14. Phase 4a status: progress in the account (done)
+
+Phase 4 is built in four parts: 4a progress in the account, 4b submission history (with the submitted code, the last 5 per
+problem) and syncing drafts, 4c bookmarks and notes, 4d the Progress page.
+
+What 4a does:
+
+- Tables `solved` (user, problem, language, time) and `problem_state` (concept read, hints shown, solution opened, submissions).
+  Both only ever grow, so merging two copies is "keep the most" and there are no conflicts.
+- `GET /api/me/progress`, `POST /api/me/solved`, `PATCH /api/me/state` and `POST /api/me/import` (see the README).
+- The browser keeps a copy per account, writes to it first and sends changes through a retried queue, so nothing is lost offline.
+  The dashboard, the problem list and the problem page read the same data as before; it simply comes from the account now.
+- The first sign-in after the update moves the progress that older versions kept in the browser into the account.
+- Private by design: only the owner can read it, and no member view contains it (tests check both).
+
+What to know:
+
+- The judge runs in the browser, so a solve is reported by the browser and the server cannot re-check it. The server checks that the
+  problem and language are real and the time is believable. This is fine for a personal learning platform; a leaderboard
+  (Phase 7) would need another idea.
+- Free-tier cost: a first solve is about 2 database writes, a hint or a submission about 2 more. A learner finishing all 100
+  problems writes a few hundred rows in total.
+- Still only in the browser: drafts (they come with 4b), and the streak is computed from the solve times.
+- If a shared computer is used, the very first sign-in after the update takes over the old browser-only progress. Later accounts
+  on that browser start empty, because each account now has its own saved copy.

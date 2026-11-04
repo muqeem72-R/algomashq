@@ -71,6 +71,15 @@ loaded from CheerpJ's CDN, under CheerpJ's free Community license for non-commer
 https://cheerpj.com/licensing/. All the tests of one submission run in one Java process, each in a fresh class loader, so one
 test cannot affect the next.
 
+## Where the progress lives
+
+The account (the D1 tables `solved` and `problem_state`) is the source of truth, so the progress follows a learner to every
+device. The browser keeps a copy in localStorage (one copy per account) so pages open at once and nothing is lost when the
+connection drops: every change goes to the copy first and then through a small queue that is retried until the server has it.
+Solving is never undone and the counters only grow, so two copies are merged by keeping the most. The first sign-in after the
+update moves the progress that older versions kept in the browser into the account. Drafts (the code typed so far) are still kept
+in the browser only; the submission history, bookmarks and notes come in the next parts of Phase 4.
+
 ## User ids
 
 Format: `<initials><number><letters>`, for example `mk001A`.
@@ -100,7 +109,7 @@ public/                 static site, served directly by Cloudflare
 src/worker.js           the Worker: sends every /api/* request to the matching handler in functions/
 functions/              the API handlers
   api/auth/             request-otp, verify-otp, me, logout
-  api/me/               photo, tour, settings
+  api/me/               photo, tour, settings, progress, solved, state, import
   api/users/[id].js     what other members can see of a member
   api/config.js         public settings for the browser
   _lib/                 shared code: validation, crypto, sessions, rate limits, Turnstile, Brevo
@@ -231,6 +240,10 @@ for a moment while the app loads.
 | `GET /api/users/:id/photo` | another member's photo (signed-in members only; 404 when they have none) |
 | `POST /api/me/tour` | remember that the tour was seen |
 | `PATCH /api/me/settings` | change the preferred language |
+| `GET /api/me/progress` | your own progress: the problems you solved (with language and time) and how each problem went |
+| `POST /api/me/solved` | record a solve `{ slug, lang, at? }`; repeating it changes nothing |
+| `PATCH /api/me/state` | save how a problem is going (concept read, hints shown, solution opened, submissions); values only grow |
+| `POST /api/me/import` | move the progress that older versions kept in the browser into the account (once, nothing is removed) |
 | `GET /api/users/:id` | your own profile (with a preview of what others see), or the public view of another member |
 
 ## Security notes
@@ -249,5 +262,8 @@ for a moment while the app loads.
 - The main site never allows `unsafe-eval`. Java, which needs it, runs on a separate origin that has no cookies and no access
   to the main site, can only be embedded by the main site, and only answers messages from it. A test (`tests/security.test.js`)
   fails if the main site's policy is ever loosened or if the two sides stop agreeing on who may talk to whom.
+- Progress (what you solved and how each problem went) is private: only its owner can read it, and no view of a member that
+  other members can get contains any of it. The judge runs in the browser, so the server cannot re-check a solve; it only checks
+  that a report is well formed, names a real problem and language, and has a believable time. Writes are rate-limited.
 - Profile photos are small JPEGs stored as base64 in D1 (about 30 KB each). They are served only to signed-in members,
   never to the public. Looking up other members is rate-limited, so a script cannot walk through every user id.

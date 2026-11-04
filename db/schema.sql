@@ -58,3 +58,27 @@ CREATE TABLE IF NOT EXISTS rate_limits (
   count        INTEGER NOT NULL,
   window_start INTEGER NOT NULL
 );
+
+-- ---- Phase 4: the learner's progress ----
+-- A problem solved in a language. Solving is never undone, so rows are only ever added; the first row for a problem is
+-- the first time it was solved. (user_id, slug, lang) is the key, so a repeated report is ignored.
+CREATE TABLE IF NOT EXISTS solved (
+  user_id   TEXT NOT NULL,
+  slug      TEXT NOT NULL,
+  lang      TEXT NOT NULL CHECK (lang IN ('cpp', 'java', 'python')),
+  solved_at INTEGER NOT NULL,
+  PRIMARY KEY (user_id, slug, lang)
+);
+
+-- How each problem went: concept read, hints shown (0 to 3), solution opened, number of submissions.
+-- Every column only grows, so merging two copies is "take the larger value".
+CREATE TABLE IF NOT EXISTS problem_state (
+  user_id      TEXT NOT NULL,
+  slug         TEXT NOT NULL,
+  concept_seen INTEGER NOT NULL DEFAULT 0,
+  hints        INTEGER NOT NULL DEFAULT 0,
+  revealed     INTEGER NOT NULL DEFAULT 0,
+  attempts     INTEGER NOT NULL DEFAULT 0,
+  updated_at   INTEGER NOT NULL,
+  PRIMARY KEY (user_id, slug)
+);

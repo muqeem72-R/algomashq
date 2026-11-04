@@ -16,6 +16,7 @@ import { soonView } from './views/soon.js';
 import * as engine from './runner/engine.js';
 import { problemsView } from './views/problems.js';
 import { workspaceView } from './views/workspace.js';
+import * as progress from './progress.js';
 
 const app = document.getElementById('app');
 const state = { config: null, user: null, shell: null, tourShown: false, replay: false, destroyView: null };
@@ -59,15 +60,32 @@ function showProblem(title, text, retry) {
 
 async function logout() {
   try { await api('/api/auth/logout', { method: 'POST' }); } catch (e) { /* the cookie is cleared by the server; if it failed we still leave */ }
+  progress.reset();
   state.user = null;
   state.shell = null;
   state.tourShown = false;
   navigate('login');
 }
 
-function onAuthenticated(user) {
+// The learner's progress lives in the account. Waiting for it keeps the first page right; if the server is slow,
+// the page opens with the copy saved in this browser and a list page is redrawn when the real data has arrived.
+async function loadProgress() {
+  if (!state.user) return;
+  const loading = progress.load(state.user).catch(() => {});
+  let slow = false;
+  await Promise.race([loading, new Promise((resolve) => setTimeout(() => { slow = true; resolve(); }, 4000))]);
+  if (slow) {
+    loading.then(() => {
+      const path = currentPath();
+      if (state.user && (path === 'dashboard' || path === 'problems' || path.startsWith('problems/'))) render();
+    });
+  }
+}
+
+async function onAuthenticated(user) {
   state.user = user;
   state.shell = null;
+  await loadProgress();
   navigate('dashboard');
 }
 
@@ -175,6 +193,7 @@ async function boot() {
     }
     toast('The server is not fully set up yet.');
   }
+  await loadProgress();
   onRouteChange(render);
   render();
 }
