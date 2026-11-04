@@ -105,7 +105,7 @@ function runTour() {
     { target: '[data-tour="next"]', title: 'Your next problem', body: 'The dashboard always shows the next problem for you, plus your progress and your streak. Problems are numbered by effort: start at 1 and work your way up.' },
     { target: '[data-tour="theme"]', title: 'Make it yours', body: 'Switch between light, dark and system themes, and pick the accent color you like.' },
     { target: '[data-tour="avatar"]', title: 'Your profile', body: 'Click your photo to see your user ID, open your profile, change settings or log out. Other members see your photo, user ID and country, never your name or email.' },
-    { target: null, title: 'You are all set', body: 'Start with the Basics topic whenever you are ready. You can replay this tour from Settings.' }
+    { target: null, title: 'You are all set', body: 'Start with problem 1 whenever you are ready. You can replay this tour from Settings.' }
   ];
   startTour(steps, () => {
     if (state.shell) state.shell.content.scrollTop = 0;

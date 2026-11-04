@@ -34,8 +34,13 @@ test('the problems are numbered 1, 2, 3 ... without gaps, and a harder level nev
   assert.equal(new Set(index.map((p) => p.title)).size, index.length, 'titles must be unique');
 });
 
-test('the basics topic has 100 problems', () => {
-  assert.equal(index.filter((p) => p.topic === 'basics').length, 100);
+test('every topic on the site has exactly 100 problems, and only released topics are on the site', () => {
+  const released = JSON.parse(fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../tools/problems/release.json'), 'utf8')).released;
+  assert.deepEqual(released, TOPICS.slice(0, released.length).map((t) => t.id), 'topics are released in the order of the roadmap');
+  const topics = [...new Set(index.map((p) => p.topic))];
+  assert.deepEqual(topics, released, 'the site has the released topics and nothing else');
+  for (const id of released) assert.equal(index.filter((p) => p.topic === id).length, 100, id);
+  assert.equal(index.length, released.length * 100);
 });
 
 for (const entry of index) {

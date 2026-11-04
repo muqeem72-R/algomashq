@@ -1,11 +1,21 @@
 // Builds the problem files that the site serves.
-//   npm run problems
+//   npm run problems                        the released topics, into public/problems (what is committed and deployed)
+//   node tools/problems/build.mjs --all --out <folder>
+//                                           every topic, also the ones not released yet, into a folder of your choice
+//                                           (used to check the unreleased topics without putting them on the site)
+//   add --verbose for one line per problem
 //
-// Each problem lives in tools/problems/problems/<slug>.mjs. For every one this script:
+// The problems live in tools/problems/problems/ (Basics) and tools/problems/topics/<topic>/ (the other topics), one file each.
+// For every one this script:
 //   - writes the starter and solution code of a problem that has a `program` (see programs.mjs)
 //   - makes the tests, and computes the expected output with the problem's own JavaScript reference solution
 //   - checks that the problem is complete (every required field, starter code, solution code, enough tests)
-//   - writes public/problems/<slug>.json and the list public/problems/index.json
+//   - checks the numbering: a problem of topic number T (Basics is 1) has a number from (T - 1) * 100 + 1 to T * 100, numbers are
+//     unique, and within a topic a harder level never comes before an easier one
+//   - writes <folder>/<slug>.json and the list <folder>/index.json
+//
+// A topic goes on the site when it is named in tools/problems/release.json. The released topics must be the first topics of the
+// roadmap, in order (so the numbers have no gaps), and each must have exactly 100 problems.
 // The generated files are committed, so a deployment never has to run this script.
 
 import fs from 'node:fs';
@@ -15,18 +25,29 @@ import { TOPICS } from '../../public/assets/js/data/topics.js';
 import { expand } from './programs.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const SRC = path.join(HERE, 'problems');
-const OUT = path.resolve(HERE, '../../public/problems');
+const args = process.argv.slice(2);
+const ALL = args.includes('--all');
+const VERBOSE = args.includes('--verbose');
+const outAt = args.indexOf('--out');
+const OUT = outAt >= 0 ? path.resolve(args[outAt + 1]) : path.resolve(HERE, '../../public/problems');
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
 const LANGUAGES_WITH_CODE = ['python', 'cpp', 'java'];
+const PER_TOPIC = 100;
 
 const fail = (slug, message) => { throw new Error(`[${slug}] ${message}`); };
 
-function check(p) {
+const RELEASED = JSON.parse(fs.readFileSync(path.join(HERE, 'release.json'), 'utf8')).released;
+if (JSON.stringify(RELEASED) !== JSON.stringify(TOPICS.slice(0, RELEASED.length).map((t) => t.id))) {
+  fail('release.json', `the released topics must be the first topics of the roadmap in order (${TOPICS.slice(0, RELEASED.length).map((t) => t.id).join(', ')})`);
+}
+
+function check(p, from) {
   const need = ['slug', 'title', 'topic', 'difficulty', 'order', 'tags', 'concept', 'statement', 'inputFormat', 'outputFormat', 'constraints', 'examples', 'hints', 'starter', 'solution', 'solve', 'tests'];
-  for (const key of need) if (p[key] === undefined) fail(p.slug || '?', `missing "${key}"`);
+  for (const key of need) if (p[key] === undefined) fail(p.slug || from, `missing "${key}"`);
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(p.slug)) fail(p.slug, 'slug must be lowercase words joined by dashes');
-  if (!TOPICS.some((t) => t.id === p.topic)) fail(p.slug, `unknown topic "${p.topic}"`);
+  const topicIndex = TOPICS.findIndex((t) => t.id === p.topic);
+  if (topicIndex < 0) fail(p.slug, `unknown topic "${p.topic}"`);
+  if (p.order < topicIndex * PER_TOPIC + 1 || p.order > (topicIndex + 1) * PER_TOPIC) fail(p.slug, `order ${p.order} is outside the numbers of the topic (${topicIndex * PER_TOPIC + 1} to ${(topicIndex + 1) * PER_TOPIC})`);
   if (!DIFFICULTIES.includes(p.difficulty)) fail(p.slug, `difficulty must be one of ${DIFFICULTIES.join(', ')}`);
   if (p.hints.length !== 3) fail(p.slug, 'exactly 3 hints are expected');
   if (p.examples.length < 1) fail(p.slug, 'at least one example is needed');
@@ -37,12 +58,26 @@ function check(p) {
   if (!p.solution.explanation || !p.solution.complexity) fail(p.slug, 'solution needs an explanation and a complexity line');
 }
 
-const files = fs.readdirSync(SRC).filter((f) => f.endsWith('.mjs')).sort();
+// All the source files: Basics lives directly in problems/, every other topic in topics/<topic>/.
+function sourceFiles() {
+  const list = fs.readdirSync(path.join(HERE, 'problems')).filter((f) => f.endsWith('.mjs')).sort().map((f) => path.join(HERE, 'problems', f));
+  const topicsDir = path.join(HERE, 'topics');
+  if (fs.existsSync(topicsDir)) {
+    for (const dir of fs.readdirSync(topicsDir).sort()) {
+      const full = path.join(topicsDir, dir);
+      if (fs.statSync(full).isDirectory()) for (const f of fs.readdirSync(full).filter((x) => x.endsWith('.mjs')).sort()) list.push(path.join(full, f));
+    }
+  }
+  return list;
+}
+
 const problems = [];
-for (const file of files) {
-  const mod = await import(pathToFileURL(path.join(SRC, file)).href);
+for (const file of sourceFiles()) {
+  const mod = await import(pathToFileURL(file).href);
   const p = expand(mod.default);
-  check(p);
+  check(p, path.basename(file));
+  const folder = path.basename(path.dirname(file));
+  if (folder !== 'problems' && folder !== p.topic) fail(p.slug, `the file is in topics/${folder} but the problem says topic "${p.topic}"`);
 
   const examples = p.examples.map((e) => ({ input: e.input, output: p.solve(e.input) + '\n', note: e.note }));
   const hiddenInputs = p.tests();
@@ -50,6 +85,7 @@ for (const file of files) {
   if (hiddenInputs.length < minTests) fail(p.slug, `at least ${minTests} hidden tests are expected`);
   if (!p.noInput && p.examples.some((e) => !e.input.trim())) fail(p.slug, 'an example without input needs noInput: true');
   const tests = hiddenInputs.map((input) => ({ input, output: p.solve(input) + '\n' }));
+  for (const t of [...examples, ...tests]) if (!t.output.trim()) fail(p.slug, 'a test has an empty expected output');
   const bytes = JSON.stringify(tests).length;
   if (bytes > 2_000_000) fail(p.slug, `hidden tests are ${bytes} bytes; keep them under 2 MB`);
 
@@ -77,16 +113,29 @@ for (const topic of TOPICS) {
     last = rank;
   }
 }
+for (const id of RELEASED) {
+  const n = problems.filter((p) => p.topic === id).length;
+  if (n !== PER_TOPIC) fail('release.json', `the topic "${id}" is released but has ${n} problems, not ${PER_TOPIC}`);
+}
 
+const emit = problems.filter((p) => ALL || RELEASED.includes(p.topic));
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
-for (const p of problems) fs.writeFileSync(path.join(OUT, `${p.slug}.json`), JSON.stringify(p));
+for (const p of emit) fs.writeFileSync(path.join(OUT, `${p.slug}.json`), JSON.stringify(p));
 fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify({
-  problems: problems.map(({ slug, title, topic, difficulty, order, tags }) => ({ slug, title, topic, difficulty, order, tags }))
+  problems: emit.map(({ slug, title, topic, difficulty, order, tags }) => ({ slug, title, topic, difficulty, order, tags }))
 }, null, 1));
 
-for (const p of problems) {
-  const size = fs.statSync(path.join(OUT, `${p.slug}.json`)).size;
-  console.log(`${p.slug.padEnd(18)} ${p.difficulty.padEnd(7)} ${String(p.tests.length).padStart(2)} hidden tests, ${(size / 1024).toFixed(0)} KB`);
+if (VERBOSE) {
+  for (const p of emit) {
+    const size = fs.statSync(path.join(OUT, `${p.slug}.json`)).size;
+    console.log(`${p.slug.padEnd(30)} ${p.difficulty.padEnd(7)} ${String(p.tests.length).padStart(2)} hidden tests, ${(size / 1024).toFixed(0)} KB`);
+  }
 }
-console.log(`${problems.length} problems written to public/problems`);
+for (const topic of TOPICS) {
+  const mine = problems.filter((p) => p.topic === topic.id);
+  if (!mine.length) continue;
+  const by = (d) => mine.filter((p) => p.difficulty === d).length;
+  console.log(`${topic.id.padEnd(15)} ${String(mine.length).padStart(3)} problems (${by('easy')} easy, ${by('medium')} medium, ${by('hard')} hard)  ${RELEASED.includes(topic.id) ? 'released' : 'not released'}`);
+}
+console.log(`${emit.length} problems written to ${path.relative(process.cwd(), OUT) || '.'}`);
