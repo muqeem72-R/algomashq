@@ -415,4 +415,36 @@ Two things that came up: the build now accepts hidden tests of up to 5 MB per pr
 and a Java solution had a real compile error in the real judge (a `long` used as a string index) that the other two languages
 did not show, which is why every language is run for every problem.
 
-Next: Linked List, Stack, Queue (301-400).
+### Linked List, Stack, Queue (301-400, released)
+
+| Numbers | What they teach |
+|---|---|
+| 301-310 | lists: reversing, the middle, duplicates in a sorted list, merging, a palindrome, removing values, the k-th node from the end, a cycle, sorted insertion, a binary number |
+| 311-322 | stacks: matching brackets, adjacent duplicates, a score record, backspaces, postfix expressions, the next greater element, a stack with the minimum, discounts, nesting depth, folders |
+| 323-330 | queues: a queue from two stacks, recent requests, a moving sum, the first unique value, tickets, sandwiches, a circular queue, a stack from a queue |
+| 331-345 | list surgery: the n-th node from the end, swaps in pairs, rotation, partition, adding numbers, odd and even nodes, reversing a part, reordering, sorting, the start of a cycle, two lists that meet, the middle node, twin sums |
+| 346-363 | monotonic stacks and stack parsing: warmer days, nested strings, file paths, asteroids, removing digits, stock span, car fleets, minimums of subarrays, scores of brackets, valid sequences, the smallest subsequence, function times, the 132 pattern, larger nodes in a list, text in brackets |
+| 364-375 | deques and queue designs: the maximum of a sliding window, a circular deque, scores of jumps, a limited range, people seen in a queue, a hit counter, a senate vote, a deck of cards, a queue with the maximum, a stack with increments, browser history, robots within a budget |
+| 376-382 | hard lists: groups of k, merging k lists with a heap, a deep copy with random pointers, an LRU cache, an LFU cache, zero-sum blocks, groups of growing size |
+| 383-391 | stacks on grids and text: the largest rectangle in a histogram, in a grid of ones, counting rectangles, two calculators (parentheses and precedence), the longest valid parentheses, the sum of ranges of subarrays, the widest ramp, the atoms of a formula |
+| 392-400 | deques and designs: a shortest block with a large sum (negative numbers), a sum with length limits, the best minimum for every window size, the second greater element, a most-frequent stack, a text editor with a cursor, a maximum min-product, the cheapest tree from its leaves, dinner plate stacks |
+
+How it was checked: 1206 native Python runs against the JavaScript reference with no difference (and 13 more after the tests of
+one problem were changed, see below; every hard problem and most
+medium problems are also compared with a brute force while the tests are built; the list problems check the result by walking the
+nodes, and the copy with random pointers prints `invalid` if the copy shares a node with the original); 100 of 100 solutions
+Accepted in each of Python, C++ and Java by the real judge in a real browser, and all starter files compile; 490 unit tests pass;
+a browser session on a clean server passed 25 checks (four topics on the site, roadmap, list and filters, three problems solved
+through the editor, Progress page).
+
+Things that came up: a long chain of nodes freed in Python overflowed the stack in the browser, so the Python list code now keeps
+a registry of its nodes and frees them in a loop. A correct Java solution of "Merge Two Sorted Lists" threw a
+`NullPointerException` in the browser (CheerpJ) on a hidden test where a one-node list sits in the middle of a list of 20000
+values. In a separate experiment the error appeared as soon as one branch of the loop had run about 70 times before the other
+branch ran for the first time (68 times was fine), and only when the method assigned to its reference parameters; copying the
+parameters to local variables avoided it. That is a fault of the engine and not of the solution, so the hidden tests of that
+problem now put the one-node list at the smallest or the largest value (still 1 against 20000) and use a middle value only with a
+short list. The number of tests did not go down (it went up by three). Once, during a long Java run, the runner gave no answer in
+time; the same problem was Accepted at once when it was run alone.
+
+Next: Recursion and Backtracking (401-500).
