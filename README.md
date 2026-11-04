@@ -41,7 +41,11 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   are saved in the browser, and Run (own input), Examples and Submit buttons.
 - A judge with the usual verdicts: Accepted, Wrong Answer, Runtime Error, Time Limit Exceeded, Memory Limit, Output Limit and
   Compile Error. Hidden test data is never shown.
-- 6 original sample problems in the Basics topic (2 easy, 2 medium, 2 hard).
+- 100 original problems in the Basics topic, numbered 1 to 100 by effort (1-50 easy, 51-81 medium, 82-100 hard). They start with
+  printing `hello world!` and go through input and arithmetic, conditions, loops, arrays and strings, number theory, recursion and
+  complexity ("a loop would take years, find the formula") up to big-number arithmetic and matrix power. Every problem has a concept
+  note, a statement with examples, three hints, starter code, a worked solution with its complexity, and hidden tests, in Python,
+  C++ and Java.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 
@@ -59,9 +63,11 @@ is fine for learning, but contests or a leaderboard would need a server-side che
 allow. So Java runs in a tiny second Worker (`java/`, deployed as `algomashq-java`), on its own address. The main site embeds
 it in a hidden iframe and talks to it only with `postMessage`; both sides check who they are talking to, and only the main
 site may embed the sandbox. The sandbox has no cookies, no login and no access to the site's data. The Java runtime itself is
-loaded from CheerpJ's CDN, under CheerpJ's free Community license for non-commercial use, which asks for the credit
-"Built with CheerpJ" (it is shown in the sidebar). All the tests of one submission run in one Java process, each in a fresh
-class loader, so one test cannot affect the next.
+loaded from CheerpJ's CDN, under CheerpJ's free Community license for non-commercial use. That license asks for the credit
+"Built with CheerpJ". The sidebar of the site does not show it (the owner's choice); the credit is kept in this file, in
+`public/vendor/THIRD_PARTY.md` and on the sandbox page itself. Whether that is enough for the license is worth checking at
+https://cheerpj.com/licensing/. All the tests of one submission run in one Java process, each in a fresh class loader, so one
+test cannot affect the next.
 
 ## User ids
 
@@ -129,6 +135,14 @@ With `DEV_LOG_OTP=1` (set in `.dev.vars`) no email is sent: the login code is pr
 Each problem is one file in `tools/problems/problems/`. It has the text (concept, statement, formats, hints), starter code
 and solution code for Python, C++ and Java, a JavaScript reference solution (`solve`), and a function that makes the test inputs.
 The expected outputs are computed from the reference solution.
+
+The number of a problem is its `order`: it must be unique, and a harder level must never come before an easier one (the build
+checks both). A problem with no input sets `noInput: true`.
+
+To avoid writing six full programs by hand, a problem can describe its program once in a `program` entry: the input (`io`, for
+example `['n:int', 'a:int[n]']`) and the solution logic in each language. `tools/problems/programs.mjs` then writes the complete
+starter code and solution code (reading the input, includes, `main`, optional helper functions). Hand-written `starter` or
+`solution.code` for a language still wins over the generated text.
 
 ```bash
 npm run problems        # rebuilds public/problems/*.json and checks that every problem is complete

@@ -2,8 +2,8 @@ export default {
   slug: 'factorial',
   title: 'Factorial',
   topic: 'basics',
-  difficulty: 'easy',
-  order: 2,
+  difficulty: 'medium',
+  order: 74,
   tags: ['recursion', 'math'],
 
   concept: {

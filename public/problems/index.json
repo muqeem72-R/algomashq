@@ -1,37 +1,907 @@
 {
  "problems": [
   {
+   "slug": "hello-world",
+   "title": "Hello, World",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 1,
+   "tags": [
+    "output",
+    "syntax"
+   ]
+  },
+  {
+   "slug": "print-three-lines",
+   "title": "Print Three Lines",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 2,
+   "tags": [
+    "output",
+    "syntax"
+   ]
+  },
+  {
+   "slug": "print-an-expression",
+   "title": "Let the Computer Calculate",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 3,
+   "tags": [
+    "arithmetic",
+    "syntax"
+   ]
+  },
+  {
+   "slug": "print-a-triangle",
+   "title": "A Triangle of Stars",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 4,
+   "tags": [
+    "output",
+    "patterns"
+   ]
+  },
+  {
+   "slug": "echo-a-number",
+   "title": "Echo a Number",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 5,
+   "tags": [
+    "input",
+    "syntax"
+   ]
+  },
+  {
+   "slug": "greet-a-person",
+   "title": "Greet a Person",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 6,
+   "tags": [
+    "input",
+    "strings"
+   ]
+  },
+  {
+   "slug": "sum-of-two-numbers",
+   "title": "Sum of Two Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 7,
+   "tags": [
+    "input",
+    "arithmetic"
+   ]
+  },
+  {
+   "slug": "basic-operations",
+   "title": "Sum, Difference and Product",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 8,
+   "tags": [
+    "arithmetic",
+    "output"
+   ]
+  },
+  {
+   "slug": "quotient-and-remainder",
+   "title": "Quotient and Remainder",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 9,
+   "tags": [
+    "arithmetic",
+    "division"
+   ]
+  },
+  {
+   "slug": "swap-two-numbers",
+   "title": "Swap Two Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 10,
+   "tags": [
+    "variables",
+    "assignment"
+   ]
+  },
+  {
+   "slug": "square-and-cube",
+   "title": "Square and Cube",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 11,
+   "tags": [
+    "arithmetic",
+    "variables"
+   ]
+  },
+  {
+   "slug": "rectangle-area-and-perimeter",
+   "title": "Rectangle Area and Perimeter",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 12,
+   "tags": [
+    "arithmetic",
+    "formulas"
+   ]
+  },
+  {
+   "slug": "average-of-three-numbers",
+   "title": "Average of Three Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 13,
+   "tags": [
+    "decimals",
+    "formatting"
+   ]
+  },
+  {
+   "slug": "celsius-to-fahrenheit",
+   "title": "Celsius to Fahrenheit",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 14,
+   "tags": [
+    "decimals",
+    "formulas"
+   ]
+  },
+  {
+   "slug": "clock-to-seconds",
+   "title": "Time in Seconds",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 15,
+   "tags": [
+    "arithmetic",
+    "units"
+   ]
+  },
+  {
+   "slug": "minutes-to-hours-and-minutes",
+   "title": "Minutes to Hours and Minutes",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 16,
+   "tags": [
+    "arithmetic",
+    "division"
+   ]
+  },
+  {
+   "slug": "last-digit",
+   "title": "Last Digit",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 17,
+   "tags": [
+    "arithmetic",
+    "digits"
+   ]
+  },
+  {
+   "slug": "digits-of-three-digit-number",
+   "title": "Digits of a Three-Digit Number",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 18,
+   "tags": [
+    "arithmetic",
+    "digits"
+   ]
+  },
+  {
+   "slug": "even-or-odd",
+   "title": "Even or Odd",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 19,
+   "tags": [
+    "conditions",
+    "remainder"
+   ]
+  },
+  {
+   "slug": "sign-of-a-number",
+   "title": "Sign of a Number",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 20,
+   "tags": [
+    "conditions"
+   ]
+  },
+  {
+   "slug": "larger-of-two",
+   "title": "Larger of Two Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 21,
+   "tags": [
+    "conditions",
+    "comparison"
+   ]
+  },
+  {
+   "slug": "largest-of-three",
+   "title": "Largest of Three Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 22,
+   "tags": [
+    "conditions",
+    "comparison"
+   ]
+  },
+  {
+   "slug": "leap-year",
+   "title": "Leap Year",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 23,
+   "tags": [
+    "conditions",
+    "logic"
+   ]
+  },
+  {
+   "slug": "grade-calculator",
+   "title": "Grade Calculator",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 24,
+   "tags": [
+    "conditions",
+    "ranges"
+   ]
+  },
+  {
+   "slug": "vowel-or-consonant",
+   "title": "Vowel or Consonant",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 25,
+   "tags": [
+    "characters",
+    "conditions"
+   ]
+  },
+  {
+   "slug": "kind-of-character",
+   "title": "Kind of Character",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 26,
+   "tags": [
+    "characters",
+    "conditions",
+    "ascii"
+   ]
+  },
+  {
+   "slug": "name-of-the-day",
+   "title": "Name of the Day",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 27,
+   "tags": [
+    "conditions",
+    "switch"
+   ]
+  },
+  {
+   "slug": "triangle-type",
+   "title": "Type of Triangle",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 28,
+   "tags": [
+    "conditions",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "fizz-buzz-number",
+   "title": "Fizz Buzz",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 29,
+   "tags": [
+    "conditions",
+    "remainder"
+   ]
+  },
+  {
+   "slug": "point-quadrant",
+   "title": "Where Is the Point?",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 30,
+   "tags": [
+    "conditions",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "days-in-month",
+   "title": "Days in a Month",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 31,
+   "tags": [
+    "conditions",
+    "logic"
+   ]
+  },
+  {
+   "slug": "simple-calculator",
+   "title": "Simple Calculator",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 32,
+   "tags": [
+    "conditions",
+    "characters",
+    "input"
+   ]
+  },
+  {
+   "slug": "count-up-to-n",
+   "title": "Count Up to N",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 33,
+   "tags": [
+    "loops",
+    "for"
+   ]
+  },
+  {
+   "slug": "count-down-from-n",
+   "title": "Countdown",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 34,
+   "tags": [
+    "loops",
+    "for"
+   ]
+  },
+  {
+   "slug": "sum-of-first-n",
+   "title": "Sum of the First N Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 35,
+   "tags": [
+    "loops",
+    "accumulator"
+   ]
+  },
+  {
+   "slug": "even-numbers-up-to-n",
+   "title": "Even Numbers",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 36,
+   "tags": [
+    "loops",
+    "conditions"
+   ]
+  },
+  {
+   "slug": "multiplication-table",
+   "title": "Multiplication Table",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 37,
+   "tags": [
+    "loops",
+    "output"
+   ]
+  },
+  {
+   "slug": "sum-of-squares",
+   "title": "Sum of Squares",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 38,
+   "tags": [
+    "loops",
+    "accumulator"
+   ]
+  },
+  {
+   "slug": "count-the-digits",
+   "title": "Count the Digits",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 39,
+   "tags": [
+    "loops",
+    "while",
+    "digits"
+   ]
+  },
+  {
+   "slug": "sum-of-the-digits",
+   "title": "Sum of the Digits",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 40,
+   "tags": [
+    "loops",
+    "while",
+    "digits"
+   ]
+  },
+  {
+   "slug": "reverse-a-number",
+   "title": "Reverse a Number",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 41,
+   "tags": [
+    "loops",
+    "while",
+    "digits"
+   ]
+  },
+  {
+   "slug": "palindrome-number",
+   "title": "Palindrome Number",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 42,
+   "tags": [
+    "loops",
+    "digits",
+    "palindrome"
+   ]
+  },
+  {
+   "slug": "power-by-multiplying",
+   "title": "Power by Multiplying",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 43,
+   "tags": [
+    "loops",
+    "accumulator",
+    "math"
+   ]
+  },
+  {
    "slug": "sum-of-array",
    "title": "Sum of an Array",
    "topic": "basics",
    "difficulty": "easy",
-   "order": 1,
+   "order": 44,
    "tags": [
     "loops",
     "arrays"
    ]
   },
   {
+   "slug": "smallest-and-largest",
+   "title": "Smallest and Largest",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 45,
+   "tags": [
+    "arrays",
+    "loops",
+    "min-max"
+   ]
+  },
+  {
+   "slug": "count-even-and-odd",
+   "title": "Count Even and Odd",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 46,
+   "tags": [
+    "arrays",
+    "loops",
+    "counting"
+   ]
+  },
+  {
+   "slug": "linear-search",
+   "title": "Linear Search",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 47,
+   "tags": [
+    "arrays",
+    "search",
+    "break"
+   ]
+  },
+  {
+   "slug": "count-occurrences",
+   "title": "Count Occurrences",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 48,
+   "tags": [
+    "arrays",
+    "counting"
+   ]
+  },
+  {
+   "slug": "reverse-array",
+   "title": "Reverse an Array",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 49,
+   "tags": [
+    "arrays",
+    "loops",
+    "indexes"
+   ]
+  },
+  {
+   "slug": "reverse-a-string",
+   "title": "Reverse a String",
+   "topic": "basics",
+   "difficulty": "easy",
+   "order": 50,
+   "tags": [
+    "strings",
+    "loops"
+   ]
+  },
+  {
+   "slug": "count-vowels",
+   "title": "Count the Vowels",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 51,
+   "tags": [
+    "strings",
+    "counting",
+    "characters"
+   ]
+  },
+  {
+   "slug": "palindrome-string",
+   "title": "Palindrome String",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 52,
+   "tags": [
+    "strings",
+    "two-indexes",
+    "palindrome"
+   ]
+  },
+  {
+   "slug": "toggle-case",
+   "title": "Toggle the Case",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 53,
+   "tags": [
+    "strings",
+    "ascii",
+    "characters"
+   ]
+  },
+  {
+   "slug": "star-triangle",
+   "title": "Triangle of Any Size",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 54,
+   "tags": [
+    "loops",
+    "nested-loops",
+    "patterns"
+   ]
+  },
+  {
+   "slug": "star-pyramid",
+   "title": "Pyramid of Stars",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 55,
+   "tags": [
+    "loops",
+    "nested-loops",
+    "patterns"
+   ]
+  },
+  {
+   "slug": "number-triangle",
+   "title": "Number Triangle",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 56,
+   "tags": [
+    "loops",
+    "nested-loops",
+    "patterns"
+   ]
+  },
+  {
+   "slug": "second-largest",
+   "title": "Second Largest",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 57,
+   "tags": [
+    "arrays",
+    "min-max",
+    "one-pass"
+   ]
+  },
+  {
+   "slug": "check-sorted",
+   "title": "Is It Sorted?",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 58,
+   "tags": [
+    "arrays",
+    "neighbors",
+    "early-exit"
+   ]
+  },
+  {
+   "slug": "count-words",
+   "title": "Count the Words",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 59,
+   "tags": [
+    "strings",
+    "lines",
+    "counting"
+   ]
+  },
+  {
+   "slug": "letter-frequency",
+   "title": "Most Frequent Letter",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 60,
+   "tags": [
+    "strings",
+    "counting",
+    "frequency-array"
+   ]
+  },
+  {
+   "slug": "caesar-cipher",
+   "title": "Caesar Cipher",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 61,
+   "tags": [
+    "strings",
+    "modulo",
+    "ascii"
+   ]
+  },
+  {
+   "slug": "gcd",
+   "title": "Greatest Common Divisor",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 62,
+   "tags": [
+    "math",
+    "euclid",
+    "loops"
+   ]
+  },
+  {
+   "slug": "lcm",
+   "title": "Least Common Multiple",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 63,
+   "tags": [
+    "math",
+    "euclid",
+    "overflow"
+   ]
+  },
+  {
+   "slug": "prime-check",
+   "title": "Is It Prime?",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 64,
+   "tags": [
+    "math",
+    "primes",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "count-divisors",
+   "title": "Count the Divisors",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 65,
+   "tags": [
+    "math",
+    "divisors",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "perfect-number",
+   "title": "Perfect Number",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 66,
+   "tags": [
+    "math",
+    "divisors"
+   ]
+  },
+  {
+   "slug": "armstrong-number",
+   "title": "Armstrong Number",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 67,
+   "tags": [
+    "digits",
+    "loops",
+    "power"
+   ]
+  },
+  {
+   "slug": "prime-factorization",
+   "title": "Prime Factors",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 68,
+   "tags": [
+    "math",
+    "primes",
+    "divisors"
+   ]
+  },
+  {
+   "slug": "decimal-to-binary",
+   "title": "Decimal to Binary",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 69,
+   "tags": [
+    "number-systems",
+    "loops",
+    "strings"
+   ]
+  },
+  {
+   "slug": "binary-to-decimal",
+   "title": "Binary to Decimal",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 70,
+   "tags": [
+    "number-systems",
+    "strings",
+    "loops"
+   ]
+  },
+  {
+   "slug": "digital-root",
+   "title": "Digital Root",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 71,
+   "tags": [
+    "digits",
+    "loops",
+    "math"
+   ]
+  },
+  {
+   "slug": "collatz-steps",
+   "title": "Collatz Steps",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 72,
+   "tags": [
+    "loops",
+    "simulation",
+    "overflow"
+   ]
+  },
+  {
+   "slug": "fibonacci-by-loop",
+   "title": "Fibonacci with a Loop",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 73,
+   "tags": [
+    "loops",
+    "fibonacci",
+    "sequences"
+   ]
+  },
+  {
    "slug": "factorial",
    "title": "Factorial",
    "topic": "basics",
-   "difficulty": "easy",
-   "order": 2,
+   "difficulty": "medium",
+   "order": 74,
    "tags": [
     "recursion",
     "math"
    ]
   },
   {
-   "slug": "fast-power",
-   "title": "Fast Power",
+   "slug": "recursive-sum",
+   "title": "Recursive Sum",
    "topic": "basics",
    "difficulty": "medium",
-   "order": 3,
+   "order": 75,
+   "tags": [
+    "recursion",
+    "call-stack"
+   ]
+  },
+  {
+   "slug": "recursive-digit-sum",
+   "title": "Recursive Digit Sum",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 76,
+   "tags": [
+    "recursion",
+    "digits"
+   ]
+  },
+  {
+   "slug": "recursive-power",
+   "title": "Recursive Power",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 77,
+   "tags": [
+    "recursion",
+    "modulo",
+    "power"
+   ]
+  },
+  {
+   "slug": "recursive-fibonacci",
+   "title": "Fibonacci by Recursion",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 78,
+   "tags": [
+    "recursion",
+    "fibonacci",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "trailing-zeros",
+   "title": "Zeros at the End of N Factorial",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 79,
    "tags": [
     "math",
     "complexity",
-    "modular arithmetic"
+    "factorial"
    ]
   },
   {
@@ -39,10 +909,235 @@
    "title": "Count the Primes",
    "topic": "basics",
    "difficulty": "medium",
-   "order": 4,
+   "order": 80,
    "tags": [
     "math",
     "sieve",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "fast-power",
+   "title": "Fast Power",
+   "topic": "basics",
+   "difficulty": "medium",
+   "order": 81,
+   "tags": [
+    "math",
+    "complexity",
+    "modular arithmetic"
+   ]
+  },
+  {
+   "slug": "sum-to-n-modulo",
+   "title": "Sum to a Huge N",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 82,
+   "tags": [
+    "complexity",
+    "math",
+    "modulo",
+    "overflow"
+   ]
+  },
+  {
+   "slug": "count-multiples",
+   "title": "Divisible by A or B",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 83,
+   "tags": [
+    "complexity",
+    "math",
+    "inclusion-exclusion",
+    "gcd"
+   ]
+  },
+  {
+   "slug": "integer-square-root",
+   "title": "Integer Square Root",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 84,
+   "tags": [
+    "complexity",
+    "binary-search",
+    "math"
+   ]
+  },
+  {
+   "slug": "fibonacci-with-memo",
+   "title": "Fibonacci with Memory",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 85,
+   "tags": [
+    "recursion",
+    "memoization",
+    "fibonacci"
+   ]
+  },
+  {
+   "slug": "tower-of-hanoi",
+   "title": "Tower of Hanoi",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 86,
+   "tags": [
+    "recursion",
+    "divide-and-conquer"
+   ]
+  },
+  {
+   "slug": "grid-paths",
+   "title": "Paths in a Grid",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 87,
+   "tags": [
+    "recursion",
+    "memoization",
+    "grid"
+   ]
+  },
+  {
+   "slug": "binary-strings",
+   "title": "All Binary Strings",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 88,
+   "tags": [
+    "recursion",
+    "generation",
+    "choices"
+   ]
+  },
+  {
+   "slug": "goldbach-pair",
+   "title": "Sum of Two Primes",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 89,
+   "tags": [
+    "primes",
+    "sieve",
+    "arrays"
+   ]
+  },
+  {
+   "slug": "sum-of-divisors",
+   "title": "Sum of All Divisors",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 90,
+   "tags": [
+    "math",
+    "primes",
+    "divisors",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "euler-totient",
+   "title": "Euler's Totient",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 91,
+   "tags": [
+    "math",
+    "primes",
+    "gcd",
+    "complexity"
+   ]
+  },
+  {
+   "slug": "count-digit-ones",
+   "title": "How Many Ones?",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 92,
+   "tags": [
+    "digits",
+    "math",
+    "complexity",
+    "counting"
+   ]
+  },
+  {
+   "slug": "add-big-numbers",
+   "title": "Add Huge Numbers",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 93,
+   "tags": [
+    "strings",
+    "big-numbers",
+    "carry",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "multiply-big-numbers",
+   "title": "Multiply Huge Numbers",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 94,
+   "tags": [
+    "strings",
+    "big-numbers",
+    "arrays",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "factorial-of-big-n",
+   "title": "Factorial of a Big Number",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 95,
+   "tags": [
+    "arrays",
+    "big-numbers",
+    "factorial",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "spiral-matrix",
+   "title": "Spiral Matrix",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 96,
+   "tags": [
+    "2d-arrays",
+    "simulation",
+    "boundaries"
+   ]
+  },
+  {
+   "slug": "ncr-modulo",
+   "title": "Binomial Coefficient Modulo a Prime",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 97,
+   "tags": [
+    "math",
+    "modulo",
+    "power",
+    "combinatorics"
+   ]
+  },
+  {
+   "slug": "tribonacci-modulo",
+   "title": "Tribonacci for a Gigantic N",
+   "topic": "basics",
+   "difficulty": "hard",
+   "order": 98,
+   "tags": [
+    "math",
+    "matrix",
+    "modulo",
     "complexity"
    ]
   },
@@ -51,7 +1146,7 @@
    "title": "The Last Person Standing",
    "topic": "basics",
    "difficulty": "hard",
-   "order": 5,
+   "order": 99,
    "tags": [
     "recursion",
     "math",
@@ -63,7 +1158,7 @@
    "title": "Gigantic Fibonacci",
    "topic": "basics",
    "difficulty": "hard",
-   "order": 6,
+   "order": 100,
    "tags": [
     "recursion",
     "math",

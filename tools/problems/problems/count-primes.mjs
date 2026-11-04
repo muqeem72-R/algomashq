@@ -3,7 +3,7 @@ export default {
   title: 'Count the Primes',
   topic: 'basics',
   difficulty: 'medium',
-  order: 4,
+  order: 80,
   tags: ['math', 'sieve', 'complexity'],
 
   concept: {

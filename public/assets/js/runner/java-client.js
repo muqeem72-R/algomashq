@@ -10,6 +10,11 @@
 
 const WARMUP = 'public class Main { public static void main(String[] args) { System.out.println(1); } }';
 
+// One Java worker stops answering after roughly 60 compiles and runs (measured: the 68th compile of a tiny program never
+// returned). So the worker is replaced by a fresh one well before that. The new one starts from the browser's copy of the
+// runtime, which takes about half a minute, once in a long while.
+const OPERATIONS_PER_WORKER = 30;
+
 export function createJavaClient(origin) {
   let frame = null;
   let loaded = null;                 // resolves when the iframe page has loaded
@@ -18,6 +23,7 @@ export function createJavaClient(origin) {
   let warmedUp = false;              // the runtime's compiler part has been downloaded once
   let generation = 0;                // changes every time the Java worker is thrown away
   let lastCompile = null;            // the last compile result, so the same code is not compiled twice
+  let operations = 0;                // compiles and runs done by the current Java worker
   const listeners = new Set();       // functions that receive every message from the sandbox
 
   function onMessage(event) {
@@ -73,10 +79,11 @@ export function createJavaClient(origin) {
         // compile does not have to wait for it. After a restart the browser already has it.
         if (!warmedUp) {
           await request({ type: 'compile', code: WARMUP }, ['compiled'], 600000);
+          operations += 1;
           warmedUp = true;
         }
       })();
-      initialized.catch(() => { initialized = null; });
+      initialized.catch(() => { stopWorker(); });
     }
     return initialized;
   }
@@ -85,7 +92,18 @@ export function createJavaClient(origin) {
     await prepare();
     // Compiling takes about ten seconds, so pressing Submit after Examples with the same code reuses the result.
     if (lastCompile && lastCompile.code === code && lastCompile.generation === generation) return lastCompile.result;
-    const m = await request({ type: 'compile', code }, ['compiled'], 300000);
+    if (operations >= OPERATIONS_PER_WORKER) {      // time for a fresh worker
+      stopWorker();
+      await prepare();
+    }
+    operations += 1;
+    let m;
+    try {
+      m = await request({ type: 'compile', code }, ['compiled'], 180000);
+    } catch (error) {
+      stopWorker();                                 // a worker that did not answer is not used again
+      throw error;
+    }
     const result = { ok: m.rc === 0, program: { dir: m.dir, mainClass: m.mainClass }, log: m.log || '' };
     lastCompile = { code, generation, result };
     return result;
@@ -96,6 +114,7 @@ export function createJavaClient(origin) {
     initialized = null;
     generation += 1;
     lastCompile = null;
+    operations = 0;
     if (frame && frame.contentWindow) post({ type: 'stop' });
   }
 
@@ -144,6 +163,7 @@ export function createJavaClient(origin) {
       };
 
       listeners.add(listener);
+      operations += 1;
       running = { id, cancel: () => { stopWorker(); report(current, { status: 'cancelled', stdout: '', stderr: '', ms: 0 }); finish(); } };
       post({ type: 'run', id, dir: program.dir, mainClass: program.mainClass, tests: inputs });
     });

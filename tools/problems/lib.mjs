@@ -33,3 +33,18 @@ export function modPow(base, exp, mod) {
   }
   return result;
 }
+
+// The words (separated by spaces or new lines) of a test input.
+export const words = (input) => input.split(/\s+/).filter(Boolean);
+
+// The numbers of a test input, as BigInt so that nothing is lost.
+export const bigs = (input) => words(input).map(BigInt);
+
+// An array made by calling fn(0), fn(1), ... fn(count - 1): handy for building lists of tests.
+export const many = (count, fn) => Array.from({ length: count }, (_, i) => fn(i));
+
+// The two input lines of an array problem: its length, then its elements.
+export const arr = (a) => `${a.length}\n${a.join(' ')}\n`;
+
+// Random array of `length` integers in [lo, hi].
+export const randArray = (r, length, lo, hi) => Array.from({ length }, () => randInt(r, lo, hi));

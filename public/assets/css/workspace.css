@@ -11,6 +11,7 @@
 .ptable tr:last-child td { border-bottom: 0; }
 .ptable tbody tr:hover { background: var(--surface-2); }
 .ptable-status { width: 44px; }
+.ptable-num { width: 56px; color: var(--faint); font-variant-numeric: tabular-nums; }
 .ptable-title { font-weight: 600; color: var(--text); }
 .ptable-title:hover { color: var(--accent-text); text-decoration: none; }
 .ptable-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }

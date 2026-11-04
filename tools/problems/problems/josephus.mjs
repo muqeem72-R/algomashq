@@ -22,7 +22,7 @@ export default {
   title: 'The Last Person Standing',
   topic: 'basics',
   difficulty: 'hard',
-  order: 5,
+  order: 99,
   tags: ['recursion', 'math', 'simulation'],
 
   concept: {

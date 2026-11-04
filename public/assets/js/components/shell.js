@@ -53,8 +53,7 @@ export function createShell(ctx) {
     h('a', { class: 'brand', href: '#/dashboard', 'aria-label': ctx.appName }, logoMark(), ctx.appName),
     h('nav', { class: 'nav', 'aria-label': 'Main', 'data-tour': 'nav' }, navLinks),
     h('div', { class: 'sidebar-note' },
-      h('strong', { text: 'Free for everyone' }), 'No ads, no paywall, no limits.',
-      h('div', { class: 'credit' }, h('a', { href: 'https://cheerpj.com', target: '_blank', rel: 'noopener', text: 'Built with CheerpJ' }), ' (Java)')
+      h('strong', { text: 'Free for everyone' }), 'No ads, no paywall, no limits.'
     )
   );
 

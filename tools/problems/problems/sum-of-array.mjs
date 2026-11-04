@@ -5,7 +5,7 @@ export default {
   title: 'Sum of an Array',
   topic: 'basics',
   difficulty: 'easy',
-  order: 1,
+  order: 44,
   tags: ['loops', 'arrays'],
 
   concept: {
