@@ -46,7 +46,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 | 1. Foundation and Login (DONE, see section 10) | Full-page desktop layout, themes, Brevo login (email OTP), Turnstile, sessions, D1 database, user ids, profile photo, welcome tour | A user can log in and see a dashboard |
 | 2. Problem workspace (DONE for Python, C++ and Java; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
-| 4. Progress (4a DONE, see section 14) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
+| 4. Progress (4a and 4b DONE, see sections 14 and 15) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
 | 6. Polish and hardening | Admin page, rate limits, security, analytics, accessibility | Public launch |
 | 7. Optional | Leaderboard, discussion, contests, mock interviews | Later |
@@ -253,3 +253,29 @@ What to know:
 - Still only in the browser: drafts (they come with 4b), and the streak is computed from the solve times.
 - If a shared computer is used, the very first sign-in after the update takes over the old browser-only progress. Later accounts
   on that browser start empty, because each account now has its own saved copy.
+
+## 15. Phase 4b status: submission history and drafts (done)
+
+What 4b does:
+
+- Table `submissions`: one row per Submit (the verdict, tests passed, slowest time, language, time and the code). Run and
+  Examples are not recorded. Code is kept for the last 5 submissions of a problem and for the latest accepted solution in each
+  language, and at most 20 rows are kept per problem; pressing Submit again on the same code with the same result adds nothing.
+  An accepted submission also marks the problem solved.
+- Table `drafts`: the code typed so far, per problem and language. It reaches the account when a problem is submitted or left
+  (or the page is hidden), not on every keystroke. The newer copy wins. A problem opens in the language of its newest draft.
+- The Submissions page (`#/submissions`, and `#/submissions/<problem>` from the "History" link on a problem): a table with the
+  result, language, tests and time; a click shows the code, with "Use this code in the editor" and "Copy"; a filter (all, accepted,
+  not accepted); "Show more"; and "Clear history" (it does not touch what you solved).
+- Everything is private to its owner; the tests check that other learners get 404 or an empty answer and that no member view
+  contains any of it.
+
+What to know:
+
+- Free-tier cost of a Submit: about 4 database writes (the rate limit counter, the row, the trimming only when something is
+  trimmed, and the solved row if accepted), plus the draft and the state. About 10 000 submits a day fit in the free write limit,
+  which is plenty for now; it is a number to watch in Phase 6.
+- A draft that a learner resets on one device can come back from another device that still has the old text (there are no
+  "deleted" markers). It is a small price for keeping the sync simple.
+- Still to come in Phase 4: 4c bookmarks and notes, 4d the Progress page (per-topic progress, a year-long activity calendar).
+

@@ -26,12 +26,14 @@ export async function problemSlugs(env, request, now = Date.now()) {
 
 export const isSlug = (value, slugs) => typeof value === 'string' && value.length <= 80 && SLUG_RE.test(value) && slugs.has(value);
 
-// One solve report { slug, lang, at } -> a clean one, or null. A time that is missing or not believable becomes "now".
+// A time reported by the browser: kept when it is believable (after the site existed, not in the future), otherwise "now".
+export const believableTime = (at, now = Date.now()) => (Number.isFinite(at) && at >= EARLIEST && at <= now + FUTURE_SLACK_MS ? Math.floor(at) : now);
+
+// One solve report { slug, lang, at } -> a clean one, or null.
 export function cleanSolve(item, slugs, now = Date.now()) {
   if (!item || typeof item !== 'object') return null;
   if (!isSlug(item.slug, slugs) || !LANGUAGE_IDS.includes(item.lang)) return null;
-  const at = Number.isFinite(item.at) && item.at >= EARLIEST && item.at <= now + FUTURE_SLACK_MS ? Math.floor(item.at) : now;
-  return { slug: item.slug, lang: item.lang, at };
+  return { slug: item.slug, lang: item.lang, at: believableTime(item.at, now) };
 }
 
 const whole = (value, max) => {
