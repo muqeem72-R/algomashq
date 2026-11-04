@@ -2,7 +2,7 @@
 // The topic cards live on the Roadmap page only; this page shows the learner's own progress (kept in the account).
 
 import { h, icon } from '../dom.js';
-import { LANGUAGES } from '../data/topics.js';
+import { LANGUAGES, TOPICS } from '../data/topics.js';
 import { loadIndex } from '../problems-data.js';
 import { getSolved, getState } from '../progress.js';
 import { DAY, dayNumber, solvesPerDay, streaks } from '../progress-stats.js';
@@ -89,11 +89,15 @@ export function dashboardView(ctx) {
     const next = problems.find((p) => !solvedAll[p.slug]);   // the problems are numbered by effort, so the lowest open number is next
     const stats = activity(solvedEntries.map(([, e]) => e));
 
+    // How many topics have problems on the site, so that the texts stay right while topics are added one by one.
+    const liveTopics = new Set(problems.map((p) => p.topic)).size;
+    const moreToCome = liveTopics < TOPICS.length;
+
     subtitle.textContent = solvedCount === 0
       ? 'Start with problem 1. It takes two minutes, and every problem after it builds on the one before.'
       : next
         ? `You have solved ${solvedCount} of ${total} problems. Keep going, one problem at a time.`
-        : `You have solved all ${total} problems of the Basics topic.`;
+        : `You have solved all ${total} problems on the site.`;
 
     // ---- Next up ----
     if (next) {
@@ -115,8 +119,8 @@ export function dashboardView(ctx) {
     } else {
       nextCard.replaceChildren(
         h('div', { class: 'eyebrow', text: 'All done' }),
-        h('h3', { class: 'next-title', text: 'You solved every Basics problem' }),
-        h('p', { class: 'next-text', text: 'More topics are on the way. The roadmap shows what comes next, and you can always go back and solve a problem in another language.' }),
+        h('h3', { class: 'next-title', text: 'You solved every problem' }),
+        h('p', { class: 'next-text', text: `${moreToCome ? 'More topics are on the way. The roadmap shows what comes next, and you' : 'You have finished the whole roadmap. You'} can always go back and solve a problem in another language.` }),
         h('div', { class: 'next-actions' },
           h('a', { class: 'btn btn-primary', href: '#/roadmap' }, 'Open the roadmap', icon('arrow', 16)),
           h('a', { class: 'btn btn-ghost', href: '#/problems', text: 'Browse all problems' })
@@ -130,7 +134,7 @@ export function dashboardView(ctx) {
       h('div', { class: 'card-label', text: 'Your progress' }),
       h('div', { class: 'progress-figure' }, h('strong', { text: String(solvedCount) }), h('span', { text: ` / ${total}` })),
       bar(solvedCount, total, '', `${solvedCount} of ${total} problems solved`),
-      h('div', { class: 'hint', text: `${percent}% of the Basics topic. The other topics open soon.` })
+      h('div', { class: 'hint', text: `${percent}% of the problems on the site.${moreToCome ? ' More topics open soon.' : ''}` })
     );
 
     // ---- By level ----
