@@ -18,7 +18,6 @@ const DRAFT_WAIT_MS = 1500;       // how long opening a problem waits for the dr
 const DRAFT_MAX = 20000;          // the server keeps no more than this much code
 const QUEUE_MAX = 300;
 const LANGS = ['cpp', 'java', 'python'];
-const VERDICTS = ['accepted', 'wrong_answer', 'runtime_error', 'time_limit', 'memory_limit', 'output_limit', 'compile_error'];
 
 function read(key, fallback) {
   try {
@@ -232,9 +231,10 @@ export function setState(slug, patch) {
   return next;
 }
 
-// ---- Submissions: the result and code of a Submit. The account keeps the last one for each problem and language. ----
+// ---- Solutions: the code of an ACCEPTED Submit. The account keeps the last accepted one for each problem and language. ----
+// A submission that is not accepted is not saved at all (not its code, not its result).
 export function recordSubmission({ slug, lang, verdict, passed, total, timeMs, code }) {
-  if (!owner || !VERDICTS.includes(verdict)) return;   // a cancelled or unfinished run is not a submission
+  if (!owner || verdict !== 'accepted') return;
   enqueue({
     t: 'submission', slug, lang, verdict, passed, total,
     timeMs: Number.isFinite(timeMs) ? Math.round(timeMs) : null,

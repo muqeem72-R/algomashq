@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS problem_state (
 );
 
 -- ---- Phase 4b: the last submission and the code typed so far ----
--- For every problem and language the account keeps ONE submission: the last one the learner pressed Submit for, with its
--- result and its code. A newer Submit replaces it (Run and Examples are not recorded).
+-- Only an ACCEPTED solution is saved. For every problem and language the account keeps ONE: the last accepted one, with its
+-- code. A submission that is not accepted saves nothing and never replaces it (Run and Examples are not recorded either).
 CREATE TABLE IF NOT EXISTS submissions (
   user_id      TEXT NOT NULL,
   slug         TEXT NOT NULL,
