@@ -130,3 +130,19 @@
 
 
 @media (max-width: 1100px) { .ws-lang { width: 120px; } .engine-note { display: none; } }
+
+/* ---- Bookmarks, notes and the filters about what you did ---- */
+.ptable-star { width: 52px; text-align: right; }
+.star-btn, .ws-star { display: inline-grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--faint); cursor: pointer; }
+.star-btn:hover, .ws-star:hover { background: var(--surface-2); color: var(--text); }
+.star-btn[aria-pressed="true"], .ws-star[aria-pressed="true"] { color: #f5b301; }
+.star-btn[aria-pressed="true"] svg, .ws-star[aria-pressed="true"] svg { fill: currentColor; }
+.note-mark { display: inline-flex; margin-left: 8px; vertical-align: -2px; color: var(--accent-text); }
+.chip-toggle { display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-size: 13.5px; font-weight: 600; cursor: pointer; }
+.chip-toggle:hover { background: var(--surface-2); color: var(--text); }
+.chip-toggle[aria-pressed="true"] { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); color: var(--accent-text); }
+.chip-toggle[aria-pressed="true"] svg { fill: currentColor; }
+.ws-tabs button.has-note::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 6px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.notes-input { display: block; width: 100%; min-height: 220px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font: 14px/1.6 var(--font); resize: vertical; }
+.notes-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.notes-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13px; color: var(--faint); }

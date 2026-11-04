@@ -84,7 +84,11 @@ one: the last code that was Accepted (the `submissions` table). Accepting a newe
 language keeps its own, so a learner has at most three saved solutions per problem. A submission that is not accepted saves nothing
 (not its code, not its result) and never touches a saved solution. The code typed so far (a *draft*) is a different thing: it is saved in
 the account when a problem is submitted or left, not on every keystroke, and comes back on another device; the newer copy wins, and the
-problem opens in the language of its newest draft. Bookmarks, notes and the Progress page come in the next parts.
+problem opens in the language of its newest draft. Bookmarks and notes follow the same pattern. A bookmark is a star on a problem (in the list and in the problem's header); a note is a
+private plain-text note of at most 500 characters on a problem (the Notes tab). Both are kept in the account, the newer copy wins, and
+removing a bookmark or emptying a note keeps a small record with its time, so an old copy on another device cannot bring it back. The
+Problems list can be filtered by what you did: all, solved, unsolved, bookmarked, and with notes; the numbers on the filters count what
+the topic, difficulty and search leave. The Progress page comes in the next part.
 
 ## User ids
 
@@ -115,7 +119,7 @@ public/                 static site, served directly by Cloudflare
 src/worker.js           the Worker: sends every /api/* request to the matching handler in functions/
 functions/              the API handlers
   api/auth/             request-otp, verify-otp, me, logout
-  api/me/               photo, tour, settings, progress, solved, state, import, submissions, drafts
+  api/me/               photo, tour, settings, progress, solved, state, import, submissions, drafts, bookmarks, notes
   api/users/[id].js     what other members can see of a member
   api/config.js         public settings for the browser
   _lib/                 shared code: validation, crypto, sessions, rate limits, Turnstile, Brevo
@@ -246,7 +250,7 @@ for a moment while the app loads.
 | `GET /api/users/:id/photo` | another member's photo (signed-in members only; 404 when they have none) |
 | `POST /api/me/tour` | remember that the tour was seen |
 | `PATCH /api/me/settings` | change the preferred language |
-| `GET /api/me/progress` | your own progress: the problems you solved (with language and time) and how each problem went |
+| `GET /api/me/progress` | your own progress: the problems you solved (with language and time), how each problem went, your bookmarked problems and the problems that have a note |
 | `POST /api/me/solved` | record a solve `{ slug, lang, at? }`; repeating it changes nothing |
 | `PATCH /api/me/state` | save how a problem is going (concept read, hints shown, solution opened, submissions); values only grow |
 | `GET /api/me/submissions` | your saved solutions, newest first, without the code: one per problem and language (`?problem=<slug>`) |
@@ -255,6 +259,9 @@ for a moment while the app loads.
 | `DELETE /api/me/submissions` | clear your saved solutions (`?problem=<slug>` for one problem); your solved problems stay |
 | `PUT /api/me/drafts` | save the code typed so far `{ slug, lang, code, at }`; a newer copy replaces an older one; `code: null` removes it |
 | `GET /api/me/drafts/:slug` | your saved drafts of one problem |
+| `PUT /api/me/bookmarks` | bookmark or un-bookmark a problem `{ slug, marked, at }`; the copy with the newer time wins |
+| `PUT /api/me/notes` | save your private note on a problem `{ slug, body, at }`: plain text, at most 500 characters (longer is refused with 422), an empty body removes it; the newer copy wins |
+| `GET /api/me/notes/:slug` | your own note on one problem, `{ note: { body, at } }` or `{ note: null }` |
 | `POST /api/me/import` | move the progress that older versions kept in the browser into the account (once, nothing is removed) |
 | `GET /api/users/:id` | your own profile (with a preview of what others see), or the public view of another member |
 
@@ -274,7 +281,7 @@ for a moment while the app loads.
 - The main site never allows `unsafe-eval`. Java, which needs it, runs on a separate origin that has no cookies and no access
   to the main site, can only be embedded by the main site, and only answers messages from it. A test (`tests/security.test.js`)
   fails if the main site's policy is ever loosened or if the two sides stop agreeing on who may talk to whom.
-- Progress, the submission history (with your code) and your drafts are private: only its owner can read it, and no view of a member that
+- Progress, your saved solutions (with your code), your drafts, bookmarks and notes are private: only its owner can read it, and no view of a member that
   other members can get contains any of it. The judge runs in the browser, so the server cannot re-check a solve; it only checks
   that a report is well formed, names a real problem and language, and has a believable time. Writes are rate-limited.
 - Profile photos are small JPEGs stored as base64 in D1 (about 30 KB each). They are served only to signed-in members,

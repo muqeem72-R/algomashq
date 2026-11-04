@@ -46,7 +46,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 | 1. Foundation and Login (DONE, see section 10) | Full-page desktop layout, themes, Brevo login (email OTP), Turnstile, sessions, D1 database, user ids, profile photo, welcome tour | A user can log in and see a dashboard |
 | 2. Problem workspace (DONE for Python, C++ and Java; see section 12) | Concept, problem, hints and solution tabs, code editor, console, Run, Examples and Submit, a judge, code running in the browser | One problem works end to end |
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
-| 4. Progress (4a and 4b DONE, see sections 14 and 15) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
+| 4. Progress (4a, 4b and 4c DONE, see sections 14 to 16) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
 | 6. Polish and hardening | Admin page, rate limits, security, analytics, accessibility | Public launch |
 | 7. Optional | Leaderboard, discussion, contests, mock interviews | Later |
@@ -280,3 +280,27 @@ What to know:
 - A draft that a learner resets on one device can come back from another device that still has the old text (there are no
   "deleted" markers). It is a small price for keeping the sync simple.
 - Still to come in Phase 4: 4c bookmarks and notes, 4d the Progress page (per-topic progress, a year-long activity calendar).
+
+## 16. Phase 4c status: bookmarks, notes and filters (done)
+
+What 4c does:
+
+- Bookmarks: a star on every problem, in the Problems list and in the header of a problem. Table `bookmarks` keeps a row per problem
+  with a marked flag and its time (a removed bookmark keeps its row with marked = 0, so a stale copy on another device cannot bring
+  it back). The list of bookmarked problems comes with the one progress call.
+- Notes: a Notes tab on every problem with a private note, plain text, **at most 500 characters** (the field stops at 500 and the
+  server refuses more). It is saved a moment after typing stops, when the field loses focus and when the tab or the problem is left.
+  Table `notes`: the newer copy wins, and an emptied note keeps an empty row with its time for the same reason as above. A dot on the
+  tab and a note mark in the list show which problems have one; the note itself is fetched when a problem is opened.
+- Filters in the Problems list: **All / Solved / Unsolved** with the number of problems behind each, plus **Bookmarked** and **With
+  notes** chips. The numbers count what the topic, the difficulty and the search leave, so they always match the list.
+- Everything is private to its owner (the tests check that other learners get an empty answer, and that no member view contains any
+  of it). Notes are shown as text, never as markup.
+
+What to know:
+
+- Free-tier cost: a bookmark or a note save is about 2 database writes (the rate limit counter and the row).
+- Two devices editing the same note at the same time do not merge: the copy with the newer time wins.
+- Not done on purpose, to look at later: a "Saved for later" card on the dashboard.
+- Still to come in Phase 4: 4d the Progress page (per-topic progress, a year-long activity calendar).
+

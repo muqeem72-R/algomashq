@@ -109,3 +109,24 @@ CREATE TABLE IF NOT EXISTS drafts (
   updated_at INTEGER NOT NULL,
   PRIMARY KEY (user_id, slug, lang)
 );
+
+-- ---- Phase 4c: bookmarks and notes ----
+-- A bookmark is a row with marked = 1. Removing it keeps the row with marked = 0 (and the time), so that an old copy
+-- on another device cannot bring it back.
+CREATE TABLE IF NOT EXISTS bookmarks (
+  user_id    TEXT NOT NULL,
+  slug       TEXT NOT NULL,
+  marked     INTEGER NOT NULL,
+  updated_at INTEGER NOT NULL,
+  PRIMARY KEY (user_id, slug)
+);
+
+-- A personal note on a problem: plain text, at most 500 characters. An emptied note keeps its row with an empty body
+-- (and the time) for the same reason as above. A newer copy replaces an older one.
+CREATE TABLE IF NOT EXISTS notes (
+  user_id    TEXT NOT NULL,
+  slug       TEXT NOT NULL,
+  body       TEXT NOT NULL,
+  updated_at INTEGER NOT NULL,
+  PRIMARY KEY (user_id, slug)
+);

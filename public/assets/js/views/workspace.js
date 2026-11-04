@@ -29,8 +29,8 @@ export function workspaceView(ctx, slug) {
   let cleanup = () => {};
   root.__destroy = () => { destroyed = true; cleanup(); };
 
-  // The drafts typed on another device are fetched together with the problem (it never waits long for them).
-  Promise.all([loadProblem(slug), progress.loadDrafts(slug)]).then(([problem]) => { if (!destroyed) build(problem); }).catch((error) => {
+  // The drafts and the note written on another device are fetched together with the problem (it never waits long for them).
+  Promise.all([loadProblem(slug), progress.loadDrafts(slug), progress.loadNote(slug)]).then(([problem]) => { if (!destroyed) build(problem); }).catch((error) => {
     root.replaceChildren(h('div', { class: 'page' }, h('div', { class: 'card empty' },
       h('h3', { text: 'Problem not found' }), h('p', { text: error.message }),
       h('a', { class: 'btn btn-primary', href: '#/problems', text: 'Back to the problems' }))));
@@ -60,9 +60,18 @@ export function workspaceView(ctx, slug) {
 
     // ---------- Header ----------
     const solvedBadge = h('span', { class: 'solved-badge', hidden: !progress.isSolved(slug) }, icon('check', 14), 'Solved');
+    const starBtn = h('button', { class: 'ws-star', type: 'button', onClick: () => { progress.setBookmark(slug, !progress.isBookmarked(slug)); drawStar(); } }, icon('star', 18));
+    function drawStar() {
+      const on = progress.isBookmarked(slug);
+      starBtn.setAttribute('aria-pressed', String(on));
+      starBtn.setAttribute('aria-label', on ? 'Remove the bookmark' : 'Bookmark this problem');
+      starBtn.title = on ? 'Bookmarked. Click to remove the bookmark' : 'Bookmark this problem';
+    }
+    drawStar();
     const head = h('div', { class: 'ws-head' },
       h('a', { class: 'ws-back', href: '#/problems', 'aria-label': 'Back to the problems' }, icon('back', 18)),
       h('h2', { text: `${problem.order}. ${problem.title}` }),
+      starBtn,
       h('span', { class: `level ${problem.difficulty}`, text: problem.difficulty[0].toUpperCase() + problem.difficulty.slice(1) }),
       topic ? h('span', { class: 'ws-topic', text: topic.title }) : null,
       solvedBadge,
@@ -74,7 +83,8 @@ export function workspaceView(ctx, slug) {
       { id: 'concept', label: 'Concept' },
       { id: 'problem', label: 'Problem' },
       { id: 'hints', label: 'Hints' },
-      { id: 'solution', label: 'Solution' }
+      { id: 'solution', label: 'Solution' },
+      { id: 'notes', label: 'Notes' }
     ];
     const tabBar = h('div', { class: 'ws-tabs', role: 'tablist' });
     const pane = h('div', { class: 'ws-pane', role: 'tabpanel', tabindex: '0' });
@@ -87,10 +97,48 @@ export function workspaceView(ctx, slug) {
     }
 
     function showTab(id) {
+      if (currentTab === 'notes') flushNote();   // what was typed is saved before the tab is replaced
       currentTab = id;
       for (const t of tabs) tabButtons[t.id].setAttribute('aria-selected', String(t.id === id));
-      pane.replaceChildren(...(id === 'concept' ? conceptPane() : id === 'problem' ? problemPane() : id === 'hints' ? hintsPane() : solutionPane()));
+      pane.replaceChildren(...(id === 'concept' ? conceptPane() : id === 'problem' ? problemPane() : id === 'hints' ? hintsPane() : id === 'notes' ? notesPane() : solutionPane()));
       pane.scrollTop = 0;
+    }
+
+    // A dot on the Notes tab tells that there is a note.
+    const markNotesTab = () => tabButtons.notes.classList.toggle('has-note', progress.hasNote(slug));
+    markNotesTab();
+
+    // The note is plain text, saved a moment after typing stops, when the field loses focus, and when the tab or the problem is left.
+    let noteArea = null;
+    let noteTimer = null;
+    function flushNote() {
+      clearTimeout(noteTimer);
+      if (noteArea) { progress.saveNote(slug, noteArea.value); markNotesTab(); }
+    }
+
+    function notesPane() {
+      noteArea = h('textarea', {
+        class: 'notes-input', maxlength: String(progress.NOTE_MAX), rows: '10', 'aria-label': 'Your notes for this problem',
+        placeholder: 'What is the idea? What went wrong? What do you want to remember?'
+      });
+      noteArea.value = progress.getNote(slug);
+      const count = h('span', { class: 'notes-count' });
+      const status = h('span', { class: 'muted' });
+      const refresh = () => { count.textContent = `${noteArea.value.length} / ${progress.NOTE_MAX}`; };
+      refresh();
+      noteArea.addEventListener('input', () => {
+        refresh();
+        status.textContent = '';
+        clearTimeout(noteTimer);
+        noteTimer = setTimeout(() => { flushNote(); status.textContent = 'Saved'; }, 1500);
+      });
+      noteArea.addEventListener('blur', () => { flushNote(); status.textContent = 'Saved'; });
+      return [
+        h('h3', { text: 'Your notes' }),
+        h('p', { class: 'muted', text: `Private notes for this problem, only you can see them. Plain text, up to ${progress.NOTE_MAX} characters.` }),
+        noteArea,
+        h('div', { class: 'notes-foot' }, status, count)
+      ];
     }
 
     function conceptPane() {
@@ -447,6 +495,7 @@ export function workspaceView(ctx, slug) {
     cleanup = () => {
       clearTimeout(draftTimer);
       if (editorApi) { progress.saveDraft(slug, lang, editorApi.getValue(), problem.starter[lang]); editorApi.destroy(); }
+      flushNote();
       progress.syncDrafts();   // the account hears about the code of this problem when it is left
       engine.cancel();
     };

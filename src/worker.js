@@ -22,6 +22,9 @@ import * as meSubmissions from '../functions/api/me/submissions.js';
 import * as meSubmission from '../functions/api/me/submissions/[slug]/[lang].js';
 import * as meDrafts from '../functions/api/me/drafts.js';
 import * as meDraftsOfProblem from '../functions/api/me/drafts/[slug].js';
+import * as meBookmarks from '../functions/api/me/bookmarks.js';
+import * as meNotes from '../functions/api/me/notes.js';
+import * as meNoteOfProblem from '../functions/api/me/notes/[slug].js';
 import * as userById from '../functions/api/users/[id].js';
 import * as userPhoto from '../functions/api/users/[id]/photo.js';
 import { onRequest as middleware } from '../functions/api/_middleware.js';
@@ -45,6 +48,9 @@ const ROUTES = [
   { pattern: /^\/api\/me\/submissions\/([^/]+)\/([^/]+)$/, names: ['slug', 'lang'], handlers: meSubmission },
   { pattern: /^\/api\/me\/drafts$/, names: [], handlers: meDrafts },
   { pattern: /^\/api\/me\/drafts\/([^/]+)$/, names: ['slug'], handlers: meDraftsOfProblem },
+  { pattern: /^\/api\/me\/bookmarks$/, names: [], handlers: meBookmarks },
+  { pattern: /^\/api\/me\/notes$/, names: [], handlers: meNotes },
+  { pattern: /^\/api\/me\/notes\/([^/]+)$/, names: ['slug'], handlers: meNoteOfProblem },
   { pattern: /^\/api\/users\/([^/]+)\/photo$/, names: ['id'], handlers: userPhoto },
   { pattern: /^\/api\/users\/([^/]+)$/, names: ['id'], handlers: userById }
 ];
