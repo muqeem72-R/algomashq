@@ -1,0 +1,71 @@
+import { many, rng, randInt } from '../lib.mjs';
+const r = String.raw;
+
+export default {
+  slug: 'star-pyramid',
+  title: 'Pyramid of Stars',
+  topic: 'basics',
+  difficulty: 'medium',
+  order: 55,
+  tags: ['loops', 'nested-loops', 'patterns'],
+
+  concept: {
+    title: 'Counting spaces and stars per row',
+    body: [
+      'A centred pyramid has two kinds of characters in each row: the spaces on the left and the stars. Work out how many of each row `i` (from 1 to `n`) needs. For `n = 4`:',
+      { code: '   *        row 1: 3 spaces, 1 star\n  ***       row 2: 2 spaces, 3 stars\n *****      row 3: 1 space,  5 stars\n*******     row 4: 0 spaces, 7 stars' },
+      'The spaces are `n - i` and the stars are `2 * i - 1`. Inside each row you therefore need two inner loops one after the other: one for the spaces, one for the stars.',
+      'The judge compares your output word by word, so only the stars of each row matter to it. Still print the spaces: it keeps the picture right and trains the habit of getting the layout exactly as asked.'
+    ]
+  },
+
+  statement: ['Given `n`, print a pyramid of stars with `n` rows. Row `i` (from 1) has `n - i` spaces followed by `2 * i - 1` stars.'],
+  inputFormat: ['A single integer `n`.'],
+  outputFormat: ['`n` rows forming a centred pyramid.'],
+  constraints: ['1 <= n <= 50'],
+  examples: [{ input: '3\n', note: 'Rows: 2 spaces + 1 star, 1 space + 3 stars, 0 spaces + 5 stars.' }],
+  hints: [
+    'Row `i` has `n - i` leading spaces and `2 * i - 1` stars. Check this for `i = 1` and `i = n`.',
+    'In each row use one inner loop for the spaces and a second inner loop for the stars.',
+    'End each row with a line break.'
+  ],
+  program: {
+    io: ['n:int'],
+    python: r`
+      for i in range(1, n + 1):
+          for _ in range(n - i):
+              print(" ", end="")
+          for _ in range(2 * i - 1):
+              print("*", end="")
+          print()`,
+    cpp: r`
+      for (int i = 1; i <= n; i++) {
+          for (int k = 0; k < n - i; k++) {
+              cout << " ";
+          }
+          for (int k = 0; k < 2 * i - 1; k++) {
+              cout << "*";
+          }
+          cout << endl;
+      }`,
+    java: r`
+      for (int i = 1; i <= n; i++) {
+          for (int k = 0; k < n - i; k++) {
+              System.out.print(" ");
+          }
+          for (int k = 0; k < 2 * i - 1; k++) {
+              System.out.print("*");
+          }
+          System.out.println();
+      }`
+  },
+  solution: {
+    explanation: ['For each row the first inner loop prints `n - i` spaces and the second prints `2 * i - 1` stars. The widest row has `2n - 1` stars and no leading space.'],
+    complexity: 'Time O(n^2), space O(1).'
+  },
+  solve(input) { const n = Number(input.trim()); return Array.from({ length: n }, (_, k) => ' '.repeat(n - k - 1) + '*'.repeat(2 * k + 1)).join('\n'); },
+  tests() {
+    const g = rng(55);
+    return ['3\n', '1\n', '2\n', '4\n', '5\n', '10\n', '50\n', ...many(4, () => `${randInt(g, 1, 50)}\n`)];
+  }
+};

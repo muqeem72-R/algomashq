@@ -1,6 +1,6 @@
 # AlgoMashq: Workflow and Roadmap
 
-A free, full-page desktop platform where users learn Data Structures and Algorithms by solving problems in the browser, in C++, Java or Python. Status: planning only, nothing is built yet.
+A free, full-page desktop platform where users learn Data Structures and Algorithms by solving problems in the browser, in C++, Java or Python. Status: Phases 1 and 2 are done and live; the Basics topic has its 100 problems (section 13).
 
 ## 1. Product goals
 
@@ -79,7 +79,7 @@ About 10 topics x 3 levels x 5-10 problems = roughly 150-300 problems. Each prob
 
 - The name AlgoMashq is decided. The site runs on the free Cloudflare address `algomashq.<subdomain>.workers.dev`.
   A paid custom domain (`algomashq.dev`) is optional and can wait.
-- Java runs in the product through a second Worker (algomashq-java). Open points: the CheerpJ license credit and the 75 MB first download. See section 12.
+- Java runs in the product through a second Worker (algomashq-java). Open points: the CheerpJ license credit (the site no longer shows it in the sidebar, see section 12) and the 75 MB first download.
 - Git auto-deploy: pushing to GitHub should deploy the Worker through Cloudflare's Workers Builds. Builds were stuck
   during a Cloudflare incident on 2026-11-03, so the first deployments were made with `npm run deploy`. Confirm that a
   push now deploys by itself.
@@ -163,11 +163,10 @@ What exists:
   with `postMessage`; both sides check the origin. A program that never ends is stopped by terminating the Java worker inside
   the sandbox. All the tests of one submission run in one Java process, each in a fresh class loader, so static fields start
   fresh. `System.exit` ends only that test. The same code is not compiled twice.
-- 6 original problems in the Basics topic (2 easy, 2 medium, 2 hard). Each one teaches a complexity or recursion idea, and a
-  naive solution fails on time on purpose.
-- All 18 reference solutions (6 problems x 3 languages) were run through the real judge in a real browser and are Accepted.
-  Wrong, slow, crashing and non-compiling programs get the right verdicts in every language. Java was also checked on the live
-  site with the real Content-Security-Policy on both origins.
+- 100 original problems in the Basics topic (section 13). Several of them make a naive solution fail on time on purpose.
+- All 300 reference solutions (100 problems x 3 languages) were run through the real judge in a real browser and are Accepted,
+  and every starter file compiles. Wrong, slow, crashing and non-compiling programs get the right verdicts in every language
+  (checked on the first 6 problems). Java was also checked on the live site with the real Content-Security-Policy on both origins.
 
 What to know about Java in the browser (it is the heaviest language here):
 
@@ -175,12 +174,17 @@ What to know about Java in the browser (it is the heaviest language here):
   Submit with the same code as the last Examples run reuses the compile. After a program was stopped the next run is slow
   (about 30 s) because the Java process starts again.
 - It is about as slow as Python (a loop of 50 million additions takes 6 s), so it gets 5 times the C++ time limit.
+- One Java worker stops answering after roughly 60 compiles and runs (the 68th compile of a tiny program never returned). The
+  client therefore replaces the worker with a fresh one after 30 operations (the replacement takes 10 to 30 s, once in a long
+  while), and also throws a worker away when a request does not answer.
 - Recursion is limited to about 3000 nested calls, and a deeper one is reported as a stack overflow. A very large allocation
   fails with a plain ArithmeticException (CheerpJ's way of reporting an out-of-range size).
 - Needs a recent Chromium-based browser. Browsers that block storage for embedded pages may not run it.
-- License: CheerpJ's free Community tier (individuals and non-commercial open source) with the credit "Built with CheerpJ",
-  which is shown in the sidebar. A company sponsor or a paid edition would need a different tier; the repository has no
-  open-source license file yet, which may be worth adding.
+- License: CheerpJ's free Community tier (individuals and non-commercial open source) asks for the credit "Built with CheerpJ".
+  The sidebar of the site does not show it any more (the owner's choice); the credit is kept in the README, in
+  public/vendor/THIRD_PARTY.md and on the sandbox page. Check https://cheerpj.com/licensing/ to be sure that this is enough.
+  A company sponsor or a paid edition would need a different tier; the repository has no open-source license file yet,
+  which may be worth adding.
 
 What is not done:
 
@@ -188,3 +192,38 @@ What is not done:
 - More problems and the other 9 topics (Phases 3 and 5).
 - Not tried: CheerpJ's experimental WasmGC engine (the test did not finish), a long-lived Java process to make compiles
   faster, and Firefox and Safari.
+
+## 13. Basics content: the 100 problems (done)
+
+The Basics topic has 100 problems. The number of a problem is its effort: 1 is the easiest and 100 the hardest, and a harder
+level never comes before an easier one (the build checks this). Levels: 1-50 easy, 51-81 medium, 82-100 hard.
+
+| Numbers | What they teach |
+|---|---|
+| 1-4 | printing: `hello world!`, several lines, the result of a calculation, a fixed pattern |
+| 5-18 | reading input, variables, 64-bit integers, `/` and `%`, decimals and formatted output, units, digits of a number |
+| 19-32 | `if / else if / else`, `and` / `or`, `switch`, characters and ASCII, combining small rules (leap year, days in a month, a calculator) |
+| 33-43 | `for` and `while` loops, the accumulator pattern, digits of a number (count, sum, reverse, palindrome), powers by multiplying |
+| 44-50 | the first arrays and strings: sum, smallest and largest, counting, linear search, reversing |
+| 51-61 | strings and arrays in practice, nested loops (star and number patterns), frequency array, Caesar cipher |
+| 62-73 | gcd and lcm, primes, divisors, perfect and Armstrong numbers, prime factors, binary, digital root, Collatz, Fibonacci by loop |
+| 74-78 | recursion: factorial, the call stack, recursion with two parameters, recursion that calls itself twice |
+| 79-92 | complexity thinking: formulas instead of loops (sum to 10^18, trailing zeros, inclusion-exclusion), binary search on the answer, fast power, memoization, Hanoi, recursion that generates, the sieve, number theory formulas |
+| 93-98 | big numbers as strings and arrays, a 2-D array (spiral), modular division with Fermat, matrix power |
+| 99-100 | Josephus and Fibonacci modulo for a gigantic n |
+
+Every problem has a concept note (with code in the three languages where a new piece of syntax appears), the statement with
+examples, three hints, starter code, a worked solution with its complexity, and hidden tests, in Python, C++ and Java.
+
+How it was checked:
+
+- The build (`npm run problems`) refuses duplicate numbers, titles and slugs, a missing field, and a level that goes backwards.
+- Every Python solution was run natively against every example and hidden test (1525 runs, no difference from the JavaScript
+  reference), and the problems whose formulas could be wrong (totient, digit ones, Tribonacci) check their reference against a
+  plain brute force while the tests are built.
+- All 300 solutions and all 300 starter files went through the real judge in a real browser (Edge): 100 of 100 Accepted in each
+  language, no browser errors. The unit tests pass (134).
+
+Limits to keep in mind when adding problems: recursion depth must stay below about 500 (Python and Java), Java inputs should
+stay below a few thousand numbers (Scanner is slow), and printed decimals must avoid exact ties (languages round them
+differently).

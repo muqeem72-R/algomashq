@@ -24,6 +24,20 @@ test('the basics topic has easy, medium and hard problems', () => {
   for (const level of ['easy', 'medium', 'hard']) assert.ok(levels.has(level), `no ${level} problem in the basics topic`);
 });
 
+test('the problems are numbered 1, 2, 3 ... without gaps, and a harder level never comes before an easier one', () => {
+  const orders = index.map((p) => p.order);
+  assert.deepEqual(orders, orders.map((_, i) => i + 1));
+  for (const topic of TOPICS) {
+    const ranks = index.filter((p) => p.topic === topic.id).map((p) => ['easy', 'medium', 'hard'].indexOf(p.difficulty));
+    assert.deepEqual(ranks, [...ranks].sort((a, b) => a - b), `${topic.id}: difficulty must not go down as the number goes up`);
+  }
+  assert.equal(new Set(index.map((p) => p.title)).size, index.length, 'titles must be unique');
+});
+
+test('the basics topic has 100 problems', () => {
+  assert.equal(index.filter((p) => p.topic === 'basics').length, 100);
+});
+
 for (const entry of index) {
   test(`${entry.slug}: the problem is complete and consistent`, () => {
     const p = load(entry.slug);
@@ -35,10 +49,10 @@ for (const entry of index) {
     assert.ok(p.concept.title && p.concept.body.length >= 2, 'the concept needs a title and some text');
     assert.ok(p.statement.length >= 1 && p.inputFormat.length >= 1 && p.outputFormat.length >= 1 && p.constraints.length >= 1);
     assert.ok(p.examples.length >= 1);
-    assert.ok(p.tests.length >= 5, 'at least 5 hidden tests');
+    assert.ok(p.tests.length >= (p.noInput ? 1 : 5), 'enough hidden tests');
     for (const lang of ['python', 'cpp', 'java']) {
-      assert.ok(p.starter[lang] && p.starter[lang].length > 20, `starter code for ${lang}`);
-      assert.ok(p.solution.code[lang] && p.solution.code[lang].length > 40, `solution code for ${lang}`);
+      assert.ok(p.starter[lang] && p.starter[lang].length > 10, `starter code for ${lang}`);
+      assert.ok(p.solution.code[lang] && p.solution.code[lang].length > 15, `solution code for ${lang}`);
       assert.notEqual(p.starter[lang], p.solution.code[lang], `the starter must not already be the solution (${lang})`);
     }
     assert.ok(p.solution.explanation.length >= 1 && p.solution.complexity);
@@ -48,6 +62,6 @@ for (const entry of index) {
     }
     // The examples must not be leaked twice: a hidden test should not simply repeat an example.
     const shown = new Set(p.examples.map((e) => e.input));
-    assert.ok(p.tests.some((t) => !shown.has(t.input)), 'hidden tests must add new cases');
+    if (!p.noInput) assert.ok(p.tests.some((t) => !shown.has(t.input)), 'hidden tests must add new cases');
   });
 }

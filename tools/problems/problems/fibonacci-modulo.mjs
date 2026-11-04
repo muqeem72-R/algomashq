@@ -23,7 +23,7 @@ export default {
   title: 'Gigantic Fibonacci',
   topic: 'basics',
   difficulty: 'hard',
-  order: 6,
+  order: 100,
   tags: ['recursion', 'math', 'complexity'],
 
   concept: {

@@ -5,7 +5,7 @@ export default {
   title: 'Fast Power',
   topic: 'basics',
   difficulty: 'medium',
-  order: 3,
+  order: 81,
   tags: ['math', 'complexity', 'modular arithmetic'],
 
   concept: {

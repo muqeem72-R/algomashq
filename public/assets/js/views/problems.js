@@ -43,12 +43,13 @@ export function problemsView(ctx, topicId) {
     }
     listHost.replaceChildren(h('div', { class: 'card table-card' },
       h('table', { class: 'ptable' },
-        h('thead', null, h('tr', null, ['', 'Title', 'Topic', 'Difficulty'].map((t) => h('th', { text: t })))),
+        h('thead', null, h('tr', null, ['', '#', 'Title', 'Topic', 'Difficulty'].map((t) => h('th', { text: t })))),
         h('tbody', null, rows.map((p) => {
           const topic = TOPICS.find((t) => t.id === p.topic);
           const isDone = !!solved[p.slug];
           return h('tr', null,
             h('td', { class: 'ptable-status', title: isDone ? 'Solved' : 'Not solved yet' }, isDone ? h('span', { class: 'status-done' }, icon('check', 16)) : h('span', { class: 'status-open' })),
+            h('td', { class: 'ptable-num', text: String(p.order) }),
             h('td', null, h('a', { class: 'ptable-title', href: `#/problem/${p.slug}`, text: p.title }), h('div', { class: 'ptable-tags' }, p.tags.map((t) => h('span', { text: t })))),
             h('td', { class: 'muted', text: topic ? topic.title : p.topic }),
             h('td', null, h('span', { class: `level ${p.difficulty}`, text: cap(p.difficulty) })));

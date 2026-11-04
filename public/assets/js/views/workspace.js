@@ -60,7 +60,7 @@ export function workspaceView(ctx, slug) {
     const solvedBadge = h('span', { class: 'solved-badge', hidden: !progress.isSolved(slug) }, icon('check', 14), 'Solved');
     const head = h('div', { class: 'ws-head' },
       h('a', { class: 'ws-back', href: '#/problems', 'aria-label': 'Back to the problems' }, icon('back', 18)),
-      h('h2', { text: problem.title }),
+      h('h2', { text: `${problem.order}. ${problem.title}` }),
       h('span', { class: `level ${problem.difficulty}`, text: problem.difficulty[0].toUpperCase() + problem.difficulty.slice(1) }),
       topic ? h('span', { class: 'ws-topic', text: topic.title }) : null,
       solvedBadge
@@ -106,7 +106,7 @@ export function workspaceView(ctx, slug) {
       const examples = problem.examples.map((e, i) => h('div', { class: 'example' },
         h('div', { class: 'example-title', text: `Example ${i + 1}` }),
         h('div', { class: 'example-grid' },
-          h('div', null, h('div', { class: 'mini-label', text: 'Input' }), pre(e.input)),
+          h('div', null, h('div', { class: 'mini-label', text: 'Input' }), problem.noInput ? h('p', { class: 'muted', text: 'This problem has no input.' }) : pre(e.input)),
           h('div', null, h('div', { class: 'mini-label', text: 'Output' }), pre(e.output))),
         e.note ? h('p', { class: 'example-note' }, inline(e.note)) : null
       ));
