@@ -111,3 +111,37 @@ Verified: 16 unit tests (`npm test`), 53 API checks against a local server, and 
 without a photo, code, dashboard, tour, profile, settings, reload, log out, camera capture, photo upload and removal).
 
 Next: Phase 2, the problem workspace. It needs the code-execution decision from section 8.
+
+## 11. Phase 2 spike results: running code in the browser
+
+Decision: code runs in the user's own browser with WebAssembly (free, no server, no abuse risk). A throwaway spike
+(not part of the repository) tested all three languages in a real browser (Edge 156) on 2026-11-04.
+
+| | Python | C++ | Java |
+|---|---|---|---|
+| Engine | Pyodide 314 | YoWASP clang 22 (clang + wasm-ld + libc++) | CheerpJ 5, Java 21 runtime |
+| Works | Yes | Yes | Yes |
+| First download | about 6-7 MB compressed | about 20-26 MB compressed (100 MB raw) | measured first compile: 30 s |
+| Start / compile | start 3.5-4 s | compile 4-7 s (0.2 s with only `<cstdio>`) | compile 3 s after the first one |
+| Run | 3-4x slower than normal Python | near native (sieve of 20 million: 0.33 s) | under 1 s |
+| Compile errors | traceback | clang messages with line and column | javac messages with line and column |
+| Stop a runaway program | kill the worker (1.5 s) | kill the worker | not solved: runs on the main thread |
+
+Known limits and workarounds:
+
+- C++: no exceptions (`try`/`catch` is refused; compile with `-fno-exceptions`), a 64 MB stack flag is needed for deep
+  recursion, `bits/stdc++.h` needs a shim header (done in the spike), `cin` is slow for huge inputs (1 million numbers:
+  4.8 s, `scanf`: 0.08 s), stdout must be reported as a plain file so `printf` is fast, and big global arrays make the
+  compile slow (16 MB: 5 s, 32 MB: 23 s, 100 MB: the browser crashes). Advise `vector` for large data.
+- C++ toolchain files are larger than the 25 MiB limit of one static asset (the main wasm is 72 MB), so they must be
+  split in parts and joined in the browser.
+- Java: the runtime is loaded from CheerpJ's own CDN (a third-party dependency, and the CSP must allow it). The license
+  says free for personal, educational and hobby use; read the terms before launch. Running on the main thread means an
+  infinite loop would freeze the tab, so it needs isolation (untested). Reading stdin is untested.
+- Python is slower than normal, so its time limits must be more generous.
+- Because the judge runs in the browser, a verdict can be faked. That is fine for learning; contests and
+  leaderboards would need a server-side check.
+
+Online compiler APIs (Judge0, JDoodle, Piston): the free tiers are tiny (Judge0 on RapidAPI about 50 submissions a
+day, JDoodle about 200 credits a day) and every user would share one key; public community instances have no uptime
+guarantee. They can only be an optional best-effort fallback, never the main engine.
