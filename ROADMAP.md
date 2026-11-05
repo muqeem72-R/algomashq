@@ -479,4 +479,39 @@ variable called `sc` clashed with the scanner of the generated program), and a u
 final newline; both were fixed before the release. The hidden tests were chosen so that the slowest Python reference takes
 about two seconds natively (the browser limit for Python is ten); no hidden test was made smaller to fit.
 
-Next: Trees (501-600).
+### Trees (501-600, released)
+
+| Numbers | What they teach |
+|---|---|
+| 501-510 | the basics of a binary tree: depth, counting nodes and leaves, sums, the three depth-first walks and the level order, the minimum depth, the largest and the smallest value |
+| 511-520 | comparing and changing trees: equal trees, mirror symmetry, inverting, a root-to-leaf sum, a balanced height, left leaves, the level with the largest sum, similar leaves, merging two trees, a subtree inside a tree |
+| 521-530 | search trees, a heap and a trie: look up, check, insert, the k-th smallest, a range sum, the closest value, the smallest difference, a balanced tree from a sorted list, a min-heap by hand, a trie of words and prefixes |
+| 531-540 | paths: lowest common ancestors (in any tree and in a search tree), the diameter, paths with a given sum (count, list, numbers formed by digits), good nodes, the right-side view, zigzag levels, the bottom-left value |
+| 541-550 | shape and building: a tree from two walks, a search tree from its pre-order, writing a tree as text and reading it back, flattening, vertical order, the widest level, nodes at distance k, choosing nodes that are not neighbours |
+| 551-559 | search tree operations: delete, trim, add the bigger values, an iterator, pairs with a given sum, the next larger value, a valid pre-order, rank and k-th with subtree sizes, merging two search trees |
+| 560-568 | heaps: the k-th largest of a stream, the two heaviest stones, joining ropes, a task scheduler with a cooldown, reorganising a string, the running median, meeting rooms, numbers built from given primes, the k closest points |
+| 569-575 | tries and general trees: counting words by prefix, shortest unique prefixes, a dictionary with dots, replacing words by roots, and depth, subtree sizes and the diameter of trees given by parents or by edges |
+| 576-584 | hard, binary trees: the best path with negative values, cameras, two swapped values, orderings that build the same tree, the richest search tree inside a tree, duplicate subtrees, good pairs of leaves, the most common subtree sum, deleting nodes to get a forest |
+| 585-592 | hard, general trees: the sum of distances (rerooting), the k-th ancestor and the lowest common ancestor with binary lifting, subtree sums with updates (Euler tour and Fenwick tree), centroids, the longest path with different neighbours, rooted tree isomorphism, the best roots for the lowest tree |
+| 593-600 | hard, heaps and tries: the skyline, the median of every window, the narrowest range over k lists, rain on a grid of heights, projects and capital, the best team, courses with deadlines, the largest XOR with a limit |
+
+How it was checked: 2461 native Python runs against the JavaScript reference with no difference (most medium and hard problems
+are also compared with a brute force or an independent method while the tests are built); 100 of 100 solutions Accepted in each of
+Python, C++ and Java by the real judge in a real browser (300 checks, on files identical to the released ones), and all starter
+files compile; 690 unit tests pass; a browser session on a clean server passed 25 checks (six topics on the site, roadmap,
+list and filters, three problems solved through the editor, Progress page).
+
+Things that came up: a binary-tree problem reads the tree in level order, and the first number of the input is the number of words
+of the description. Python ignores that number but C++ and Java read exactly that many words, so a wrong number in one test is only
+seen in two of the three languages; the real-browser check found one such test, and a small script now checks the number in every
+test of the topic. The tree functions are recursive, so the trees in the tests are at most 800 levels tall (the recursion limit of
+Python is 1000), and a tree can have up to 20000 nodes; the problems on general trees (given by parents or by edges) can be paths
+of 20000 nodes, and their solutions use loops with a breadth-first order instead of recursion. The result of "Straighten the Tree
+Into a List" is a chain of 20000 nodes, and freeing it at the end of the run crashed Python in the browser ("Maximum call stack
+size exceeded", which also made every later Python run in that browser session fail); like in the list topic, the starter code of
+that one problem cuts the chain in a loop at the end. The build keeps the hidden tests of one problem under 5 MB, so for the
+trees with 20000 nodes the tests use fewer queries per tree, but every problem still has its biggest tests (up to 20000 nodes and
+up to 20000 queries); no hidden test was made smaller. A problem that was planned (Word Search II with a trie) already exists in
+the Backtracking topic, so it was replaced by "The Largest XOR With a Limit".
+
+Next: Graphs (601-700).

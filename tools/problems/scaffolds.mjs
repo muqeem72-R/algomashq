@@ -130,6 +130,171 @@ export const LIST = {
     }`
 };
 
+// Binary trees. The input of a tree problem is the tree written in level order, with N for a missing child (the form used by many
+// online judges: "1 2 3 N N 4 5" is a root 1 with the children 2 and 3, and 3 has the children 4 and 5). The starter builds the tree
+// and prints the answer; the learner only writes the function that works on the nodes.
+export const TREE = {
+  python: r`
+    class TreeNode:
+        def __init__(self, val, left=None, right=None):
+            self.val = val
+            self.left = left
+            self.right = right
+
+
+    # Builds a binary tree from a level-order list of words; "N" marks a missing child.
+    def build_tree(vals):
+        if not vals or vals[0] == "N":
+            return None
+        root = TreeNode(int(vals[0]))
+        queue = [root]
+        head = 0
+        i = 1
+        while head < len(queue) and i < len(vals):
+            node = queue[head]
+            head += 1
+            if vals[i] != "N":
+                node.left = TreeNode(int(vals[i]))
+                queue.append(node.left)
+            i += 1
+            if i < len(vals) and vals[i] != "N":
+                node.right = TreeNode(int(vals[i]))
+                queue.append(node.right)
+            i += 1
+        return root
+
+
+    # Prints a tree in the same level-order form ("empty" for no tree).
+    def print_tree(root):
+        if root is None:
+            print("empty")
+            return
+        out = []
+        queue = [root]
+        head = 0
+        while head < len(queue):
+            node = queue[head]
+            head += 1
+            if node is None:
+                out.append("N")
+            else:
+                out.append(str(node.val))
+                queue.append(node.left)
+                queue.append(node.right)
+        while out and out[-1] == "N":
+            out.pop()
+        print(" ".join(out))`,
+  cpp: r`
+    struct TreeNode {
+        long long val;
+        TreeNode* left;
+        TreeNode* right;
+        TreeNode(long long v) : val(v), left(nullptr), right(nullptr) {}
+    };
+
+    // Builds a binary tree from a level-order list of words; "N" marks a missing child.
+    TreeNode* buildTree(const vector<string>& vals) {
+        if (vals.empty() || vals[0] == "N") return nullptr;
+        TreeNode* root = new TreeNode(stoll(vals[0]));
+        vector<TreeNode*> queue = {root};
+        size_t head = 0, i = 1;
+        while (head < queue.size() && i < vals.size()) {
+            TreeNode* node = queue[head++];
+            if (vals[i] != "N") {
+                node->left = new TreeNode(stoll(vals[i]));
+                queue.push_back(node->left);
+            }
+            i++;
+            if (i < vals.size() && vals[i] != "N") {
+                node->right = new TreeNode(stoll(vals[i]));
+                queue.push_back(node->right);
+            }
+            i++;
+        }
+        return root;
+    }
+
+    // Prints a tree in the same level-order form ("empty" for no tree).
+    void printTree(TreeNode* root) {
+        if (root == nullptr) {
+            cout << "empty\n";
+            return;
+        }
+        vector<string> out;
+        vector<TreeNode*> queue = {root};
+        size_t head = 0;
+        while (head < queue.size()) {
+            TreeNode* node = queue[head++];
+            if (node == nullptr) {
+                out.push_back("N");
+            } else {
+                out.push_back(to_string(node->val));
+                queue.push_back(node->left);
+                queue.push_back(node->right);
+            }
+        }
+        while (!out.empty() && out.back() == "N") out.pop_back();
+        for (size_t k = 0; k < out.size(); k++) cout << (k ? " " : "") << out[k];
+        cout << "\n";
+    }`,
+  java: r`
+    static class TreeNode {
+        long val;
+        TreeNode left, right;
+
+        TreeNode(long val) {
+            this.val = val;
+        }
+    }
+
+    // Builds a binary tree from a level-order list of words; "N" marks a missing child.
+    static TreeNode buildTree(String[] vals) {
+        if (vals.length == 0 || vals[0].equals("N")) return null;
+        TreeNode root = new TreeNode(Long.parseLong(vals[0]));
+        ArrayList<TreeNode> queue = new ArrayList<>();
+        queue.add(root);
+        int head = 0, i = 1;
+        while (head < queue.size() && i < vals.length) {
+            TreeNode node = queue.get(head++);
+            if (!vals[i].equals("N")) {
+                node.left = new TreeNode(Long.parseLong(vals[i]));
+                queue.add(node.left);
+            }
+            i++;
+            if (i < vals.length && !vals[i].equals("N")) {
+                node.right = new TreeNode(Long.parseLong(vals[i]));
+                queue.add(node.right);
+            }
+            i++;
+        }
+        return root;
+    }
+
+    // Prints a tree in the same level-order form ("empty" for no tree).
+    static void printTree(TreeNode root) {
+        if (root == null) {
+            System.out.println("empty");
+            return;
+        }
+        ArrayList<String> out = new ArrayList<>();
+        ArrayList<TreeNode> queue = new ArrayList<>();
+        queue.add(root);
+        int head = 0;
+        while (head < queue.size()) {
+            TreeNode node = queue.get(head++);
+            if (node == null) {
+                out.add("N");
+            } else {
+                out.add(String.valueOf(node.val));
+                queue.add(node.left);
+                queue.add(node.right);
+            }
+        }
+        while (!out.isEmpty() && out.get(out.size() - 1).equals("N")) out.remove(out.size() - 1);
+        System.out.println(String.join(" ", out));
+    }`
+};
+
 const join = (...parts) => parts.filter(Boolean).map(dedent).join('\n\n\n');
 
 // A list problem: `solution` and `stub` hold the function in each language (the learner's function with its body, and the empty one);
@@ -142,5 +307,17 @@ export function listProgram({ io = ['n:int', 'a:int[n]'], solution, stub, call, 
     starterHelpers: { python: both('python', stub), cpp: both('cpp', stub), java: both('java', stub) },
     python: `${call.python}\nfree_nodes()`, cpp: call.cpp, java: call.java,
     starterBody: { ...call, python: `${call.python}\nfree_nodes()` }
+  };
+}
+
+// A tree problem: like listProgram, but the starter builds binary trees from the level-order words (`vals`) and nothing has to be freed.
+export function treeProgram({ io = ['t:int', 'vals:word[t]'], solution, stub, call, includes, fast = true, extra, base = TREE }) {
+  const both = (lang, tail) => join(base[lang], extra && extra[lang], tail[lang]);
+  return {
+    io, fast, includes,
+    helpers: { python: both('python', solution), cpp: both('cpp', solution), java: both('java', solution) },
+    starterHelpers: { python: both('python', stub), cpp: both('cpp', stub), java: both('java', stub) },
+    python: call.python, cpp: call.cpp, java: call.java,
+    starterBody: { ...call }
   };
 }

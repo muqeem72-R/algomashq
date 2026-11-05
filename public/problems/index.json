@@ -6071,6 +6071,1234 @@
     "puzzle",
     "latin-square"
    ]
+  },
+  {
+   "slug": "tree-depth",
+   "title": "How Deep Is the Tree?",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 501,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "count-tree-nodes",
+   "title": "Count the Nodes",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 502,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "sum-of-tree-values",
+   "title": "The Sum of All Values",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 503,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "count-tree-leaves",
+   "title": "Count the Leaves",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 504,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "inorder-walk",
+   "title": "Left, Root, Right",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 505,
+   "tags": [
+    "tree",
+    "traversal",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "preorder-walk",
+   "title": "Root, Left, Right",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 506,
+   "tags": [
+    "tree",
+    "traversal",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "postorder-walk",
+   "title": "Left, Right, Root",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 507,
+   "tags": [
+    "tree",
+    "traversal",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "levels-of-a-tree",
+   "title": "The Tree Level by Level",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 508,
+   "tags": [
+    "tree",
+    "bfs",
+    "queue",
+    "level-order"
+   ]
+  },
+  {
+   "slug": "minimum-depth-of-a-tree",
+   "title": "The Shortest Way Down",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 509,
+   "tags": [
+    "tree",
+    "recursion",
+    "bfs"
+   ]
+  },
+  {
+   "slug": "largest-and-smallest-in-tree",
+   "title": "The Largest and the Smallest Value",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 510,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "same-tree",
+   "title": "Are the Two Trees the Same?",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 511,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "symmetric-tree",
+   "title": "Is the Tree a Mirror of Itself?",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 512,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "invert-a-tree",
+   "title": "Swap Left and Right Everywhere",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 513,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "root-to-leaf-sum-exists",
+   "title": "A Road Down With a Given Sum",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 514,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "height-balanced-tree",
+   "title": "Is the Tree Balanced?",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 515,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "sum-of-left-leaves",
+   "title": "The Sum of the Left Leaves",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 516,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "level-with-largest-sum",
+   "title": "The Heaviest Level",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 517,
+   "tags": [
+    "tree",
+    "bfs",
+    "level-order"
+   ]
+  },
+  {
+   "slug": "leaf-similar-trees",
+   "title": "Trees With the Same Leaves",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 518,
+   "tags": [
+    "tree",
+    "recursion",
+    "traversal"
+   ]
+  },
+  {
+   "slug": "merge-two-trees",
+   "title": "Lay One Tree on the Other",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 519,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "subtree-of-another-tree",
+   "title": "Is It a Subtree?",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 520,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "search-in-bst",
+   "title": "Look Up Keys in a Search Tree",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 521,
+   "tags": [
+    "tree",
+    "bst",
+    "search"
+   ]
+  },
+  {
+   "slug": "is-valid-bst",
+   "title": "Is It a Search Tree?",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 522,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "insert-into-bst",
+   "title": "Build a Search Tree by Inserting Keys",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 523,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "kth-smallest-in-bst",
+   "title": "The k-th Smallest Key",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 524,
+   "tags": [
+    "tree",
+    "bst",
+    "inorder"
+   ]
+  },
+  {
+   "slug": "range-sum-of-bst",
+   "title": "Sum of the Keys in a Range",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 525,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion",
+    "pruning"
+   ]
+  },
+  {
+   "slug": "closest-value-in-bst",
+   "title": "The Key Closest to a Target",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 526,
+   "tags": [
+    "tree",
+    "bst",
+    "search"
+   ]
+  },
+  {
+   "slug": "minimum-difference-in-bst",
+   "title": "The Two Closest Keys",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 527,
+   "tags": [
+    "tree",
+    "bst",
+    "inorder"
+   ]
+  },
+  {
+   "slug": "sorted-array-to-balanced-bst",
+   "title": "A Balanced Tree From a Sorted List",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 528,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion",
+    "divide-and-conquer"
+   ]
+  },
+  {
+   "slug": "min-heap-operations",
+   "title": "A Min-Heap by Hand",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 529,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "design"
+   ]
+  },
+  {
+   "slug": "trie-words-and-prefixes",
+   "title": "Words and Prefixes in a Trie",
+   "topic": "trees",
+   "difficulty": "easy",
+   "order": 530,
+   "tags": [
+    "trie",
+    "strings",
+    "design"
+   ]
+  },
+  {
+   "slug": "lowest-common-ancestor",
+   "title": "The Lowest Common Ancestor",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 531,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "lca-in-bst",
+   "title": "The Lowest Common Ancestor in a Search Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 532,
+   "tags": [
+    "tree",
+    "bst"
+   ]
+  },
+  {
+   "slug": "tree-diameter",
+   "title": "The Longest Road in a Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 533,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "path-sum-count",
+   "title": "Roads Down With a Given Sum",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 534,
+   "tags": [
+    "tree",
+    "prefix-sum",
+    "hashing",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "root-to-leaf-paths-with-sum",
+   "title": "List the Roads With a Given Sum",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 535,
+   "tags": [
+    "tree",
+    "backtracking",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "sum-of-root-to-leaf-numbers",
+   "title": "Numbers Written Down the Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 536,
+   "tags": [
+    "tree",
+    "recursion",
+    "math"
+   ]
+  },
+  {
+   "slug": "count-good-nodes",
+   "title": "Nodes That Are Not Beaten From Above",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 537,
+   "tags": [
+    "tree",
+    "recursion",
+    "binary-tree"
+   ]
+  },
+  {
+   "slug": "right-side-view",
+   "title": "What You See From the Right",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 538,
+   "tags": [
+    "tree",
+    "bfs",
+    "level-order"
+   ]
+  },
+  {
+   "slug": "zigzag-level-order",
+   "title": "Levels in a Zigzag",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 539,
+   "tags": [
+    "tree",
+    "bfs",
+    "level-order"
+   ]
+  },
+  {
+   "slug": "bottom-left-value",
+   "title": "The Leftmost Value in the Last Row",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 540,
+   "tags": [
+    "tree",
+    "bfs",
+    "level-order"
+   ]
+  },
+  {
+   "slug": "tree-from-preorder-inorder",
+   "title": "Rebuild a Tree From Two Walks",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 541,
+   "tags": [
+    "tree",
+    "recursion",
+    "divide-and-conquer",
+    "hashing"
+   ]
+  },
+  {
+   "slug": "tree-from-inorder-postorder",
+   "title": "Rebuild a Tree From In-Order and Post-Order",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 542,
+   "tags": [
+    "tree",
+    "recursion",
+    "divide-and-conquer",
+    "hashing"
+   ]
+  },
+  {
+   "slug": "bst-from-preorder",
+   "title": "A Search Tree From Its Pre-Order",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 543,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "serialize-with-hashes",
+   "title": "Write a Tree as One Line of Text",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 544,
+   "tags": [
+    "tree",
+    "recursion",
+    "serialization"
+   ]
+  },
+  {
+   "slug": "deserialize-from-hashes",
+   "title": "Rebuild a Tree From Its Text",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 545,
+   "tags": [
+    "tree",
+    "recursion",
+    "serialization"
+   ]
+  },
+  {
+   "slug": "flatten-to-preorder-list",
+   "title": "Straighten the Tree Into a List",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 546,
+   "tags": [
+    "tree",
+    "recursion",
+    "in-place"
+   ]
+  },
+  {
+   "slug": "vertical-order",
+   "title": "The Tree in Vertical Slices",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 547,
+   "tags": [
+    "tree",
+    "traversal",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "maximum-width",
+   "title": "The Widest Level",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 548,
+   "tags": [
+    "tree",
+    "bfs",
+    "indexing"
+   ]
+  },
+  {
+   "slug": "nodes-at-distance-k",
+   "title": "All Nodes at Distance k",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 549,
+   "tags": [
+    "tree",
+    "bfs",
+    "graph"
+   ]
+  },
+  {
+   "slug": "house-robber-on-a-tree",
+   "title": "Choose Nodes That Are Not Neighbours",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 550,
+   "tags": [
+    "tree",
+    "recursion",
+    "tree-dp"
+   ]
+  },
+  {
+   "slug": "delete-node-in-bst",
+   "title": "Delete a Key From a Search Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 551,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "trim-bst",
+   "title": "Keep Only a Range of a Search Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 552,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion"
+   ]
+  },
+  {
+   "slug": "convert-bst-to-greater-tree",
+   "title": "Add the Bigger Values to Every Node",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 553,
+   "tags": [
+    "tree",
+    "bst",
+    "traversal"
+   ]
+  },
+  {
+   "slug": "bst-iterator-ops",
+   "title": "An Iterator Over a Search Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 554,
+   "tags": [
+    "tree",
+    "bst",
+    "stack",
+    "design"
+   ]
+  },
+  {
+   "slug": "two-sum-in-bst",
+   "title": "Pairs With a Given Sum in a Search Tree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 555,
+   "tags": [
+    "tree",
+    "bst",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "inorder-successor-queries",
+   "title": "The Next Larger Value, Many Times",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 556,
+   "tags": [
+    "tree",
+    "bst",
+    "search"
+   ]
+  },
+  {
+   "slug": "validate-preorder-of-bst",
+   "title": "Could This Be a Pre-Order of a Search Tree?",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 557,
+   "tags": [
+    "tree",
+    "bst",
+    "stack"
+   ]
+  },
+  {
+   "slug": "rank-and-kth-in-bst",
+   "title": "Rank and k-th Value With Subtree Sizes",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 558,
+   "tags": [
+    "tree",
+    "bst",
+    "design"
+   ]
+  },
+  {
+   "slug": "all-elements-in-two-bsts",
+   "title": "Merge Two Search Trees Into One Sorted List",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 559,
+   "tags": [
+    "tree",
+    "bst",
+    "merge",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "kth-largest-in-stream",
+   "title": "The k-th Largest So Far",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 560,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "design"
+   ]
+  },
+  {
+   "slug": "last-stone-weight",
+   "title": "Smash the Two Heaviest Stones",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 561,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "connect-the-ropes",
+   "title": "Join the Ropes at the Smallest Cost",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 562,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "task-scheduler",
+   "title": "Run Tasks With a Cooldown",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 563,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "greedy",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "reorganize-string",
+   "title": "No Two Equal Letters Side by Side",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 564,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "greedy",
+    "string"
+   ]
+  },
+  {
+   "slug": "median-from-stream",
+   "title": "The Running Median",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 565,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "design"
+   ]
+  },
+  {
+   "slug": "meeting-rooms-needed",
+   "title": "How Many Meeting Rooms?",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 566,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "sorting",
+    "intervals"
+   ]
+  },
+  {
+   "slug": "super-ugly-numbers",
+   "title": "Numbers Built From Given Primes",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 567,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "math"
+   ]
+  },
+  {
+   "slug": "k-closest-points",
+   "title": "The k Points Closest to the Origin",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 568,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "autocomplete-counts",
+   "title": "How Many Words Start With This?",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 569,
+   "tags": [
+    "trie",
+    "string",
+    "design"
+   ]
+  },
+  {
+   "slug": "shortest-unique-prefixes",
+   "title": "The Shortest Prefix That Names a Word",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 570,
+   "tags": [
+    "trie",
+    "string"
+   ]
+  },
+  {
+   "slug": "word-dictionary-with-dots",
+   "title": "A Dictionary That Understands Dots",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 571,
+   "tags": [
+    "trie",
+    "string",
+    "recursion",
+    "design"
+   ]
+  },
+  {
+   "slug": "replace-words-with-roots",
+   "title": "Replace Words With Their Roots",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 572,
+   "tags": [
+    "trie",
+    "string"
+   ]
+  },
+  {
+   "slug": "depth-of-a-general-tree",
+   "title": "The Depth of a Tree Given by Parents",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 573,
+   "tags": [
+    "tree",
+    "bfs",
+    "iteration"
+   ]
+  },
+  {
+   "slug": "subtree-sizes-from-parents",
+   "title": "The Size of Every Subtree",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 574,
+   "tags": [
+    "tree",
+    "bfs",
+    "iteration",
+    "tree-dp"
+   ]
+  },
+  {
+   "slug": "tree-diameter-from-edges",
+   "title": "The Diameter of a Tree Given by Edges",
+   "topic": "trees",
+   "difficulty": "medium",
+   "order": 575,
+   "tags": [
+    "tree",
+    "bfs",
+    "graph"
+   ]
+  },
+  {
+   "slug": "binary-tree-max-path-sum",
+   "title": "The Best Path in a Tree With Negative Values",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 576,
+   "tags": [
+    "tree",
+    "recursion",
+    "tree-dp"
+   ]
+  },
+  {
+   "slug": "binary-tree-cameras",
+   "title": "Watch Every Node With the Fewest Cameras",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 577,
+   "tags": [
+    "tree",
+    "greedy",
+    "recursion",
+    "tree-dp"
+   ]
+  },
+  {
+   "slug": "recover-bst",
+   "title": "Two Values Were Swapped in a Search Tree",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 578,
+   "tags": [
+    "tree",
+    "bst",
+    "inorder"
+   ]
+  },
+  {
+   "slug": "same-bst-orderings",
+   "title": "Other Orders That Build the Same Search Tree",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 579,
+   "tags": [
+    "tree",
+    "bst",
+    "combinatorics",
+    "recursion",
+    "modular-arithmetic"
+   ]
+  },
+  {
+   "slug": "max-sum-bst-subtree",
+   "title": "The Richest Search Tree Hidden Inside",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 580,
+   "tags": [
+    "tree",
+    "bst",
+    "recursion",
+    "tree-dp"
+   ]
+  },
+  {
+   "slug": "duplicate-subtrees-count",
+   "title": "How Many Subtrees Appear Twice?",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 581,
+   "tags": [
+    "tree",
+    "hashing",
+    "recursion",
+    "serialization"
+   ]
+  },
+  {
+   "slug": "good-leaf-pairs",
+   "title": "Pairs of Leaves That Are Close",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 582,
+   "tags": [
+    "tree",
+    "recursion",
+    "tree-dp",
+    "counting"
+   ]
+  },
+  {
+   "slug": "most-frequent-subtree-sum",
+   "title": "The Most Common Subtree Sum",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 583,
+   "tags": [
+    "tree",
+    "recursion",
+    "hashing"
+   ]
+  },
+  {
+   "slug": "delete-nodes-return-forest",
+   "title": "Cut Nodes Out and List the Remaining Trees",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 584,
+   "tags": [
+    "tree",
+    "recursion",
+    "forest"
+   ]
+  },
+  {
+   "slug": "sum-of-distances-in-tree",
+   "title": "The Total Distance From Every Node",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 585,
+   "tags": [
+    "tree",
+    "rerooting",
+    "tree-dp",
+    "bfs"
+   ]
+  },
+  {
+   "slug": "kth-ancestor-queries",
+   "title": "Jump k Steps Up the Tree",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 586,
+   "tags": [
+    "tree",
+    "binary-lifting",
+    "queries"
+   ]
+  },
+  {
+   "slug": "lca-queries-binary-lifting",
+   "title": "Common Ancestors for Many Pairs of Nodes",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 587,
+   "tags": [
+    "tree",
+    "binary-lifting",
+    "lca",
+    "queries"
+   ]
+  },
+  {
+   "slug": "subtree-sums-with-updates",
+   "title": "Subtree Sums While the Values Change",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 588,
+   "tags": [
+    "tree",
+    "euler-tour",
+    "fenwick-tree",
+    "queries"
+   ]
+  },
+  {
+   "slug": "tree-centroids",
+   "title": "The Centroid of a Tree",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 589,
+   "tags": [
+    "tree",
+    "centroid",
+    "bfs"
+   ]
+  },
+  {
+   "slug": "longest-path-different-adjacent",
+   "title": "The Longest Path With No Equal Neighbours",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 590,
+   "tags": [
+    "tree",
+    "tree-dp",
+    "string"
+   ]
+  },
+  {
+   "slug": "rooted-tree-isomorphism",
+   "title": "Are These Two Trees the Same Shape?",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 591,
+   "tags": [
+    "tree",
+    "hashing",
+    "isomorphism",
+    "canonical-form"
+   ]
+  },
+  {
+   "slug": "minimum-height-roots",
+   "title": "The Best Roots for the Lowest Tree",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 592,
+   "tags": [
+    "tree",
+    "graph",
+    "bfs",
+    "topological-order"
+   ]
+  },
+  {
+   "slug": "skyline-of-buildings",
+   "title": "The Skyline of a City",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 593,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "sweep-line"
+   ]
+  },
+  {
+   "slug": "sliding-window-median",
+   "title": "The Median of Every Window",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 594,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "sliding-window",
+    "lazy-deletion"
+   ]
+  },
+  {
+   "slug": "smallest-range-covering-all-lists",
+   "title": "The Narrowest Range That Touches Every List",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 595,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "sliding-window",
+    "k-way-merge"
+   ]
+  },
+  {
+   "slug": "trapping-rain-water-grid",
+   "title": "Rain Falls on a Grid of Heights",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 596,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "grid",
+    "dijkstra-like"
+   ]
+  },
+  {
+   "slug": "maximize-capital-with-projects",
+   "title": "Choose Projects to Grow Your Capital",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 597,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "greedy",
+    "two-heaps"
+   ]
+  },
+  {
+   "slug": "maximum-team-performance",
+   "title": "The Best Team of at Most k Engineers",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 598,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "greedy",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "schedule-the-most-courses",
+   "title": "Take As Many Courses As Possible Before Their Deadlines",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 599,
+   "tags": [
+    "heap",
+    "priority-queue",
+    "greedy",
+    "scheduling"
+   ]
+  },
+  {
+   "slug": "max-xor-with-a-limit",
+   "title": "The Largest XOR With Numbers Up to a Limit",
+   "topic": "trees",
+   "difficulty": "hard",
+   "order": 600,
+   "tags": [
+    "trie",
+    "bit-manipulation",
+    "offline-queries",
+    "sorting"
+   ]
   }
  ]
 }
