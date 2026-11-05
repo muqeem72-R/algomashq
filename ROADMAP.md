@@ -514,4 +514,36 @@ trees with 20000 nodes the tests use fewer queries per tree, but every problem s
 up to 20000 queries); no hidden test was made smaller. A problem that was planned (Word Search II with a trie) already exists in
 the Backtracking topic, so it was replaced by "The Largest XOR With a Limit".
 
-Next: Graphs (601-700).
+### Graphs (601-700, released)
+
+| Numbers | What they teach |
+|---|---|
+| 601-610 | the basics: counting groups of nodes, degrees, is it a tree, the orders of a breadth-first and a depth-first search, distances from one node, connection queries, group sizes, the centre of a star, the town judge |
+| 611-620 | grids and order: counting islands, the biggest island, flood fill, the coast line, land that cannot reach the edge, can all the courses be finished, keys and rooms, a cycle in an undirected graph, two colours, gene mutations |
+| 621-630 | the structure of a graph: an Euler circuit, cables that connect a network, adjacency lists, sources and sinks, a simple path, common neighbours, jumping to a zero, the knight's trip, nodes at each distance, triangles |
+| 631-639 | breadth-first search on grids and puzzles: rotting oranges, the nearest zero, the shortest bridge, a maze exit, snakes and ladders, a combination lock, a word ladder, surrounded regions, water that reaches both oceans |
+| 640-648 | layers and orders: sub-islands, the point farthest from land, the fewest obstacles (weights 0 and 1), a course order, semesters, the heaviest path in a DAG, an alien alphabet, all ancestors of a node, safe nodes |
+| 649-657 | union-find and spanning trees: the edge that closes a cycle, the moment everybody is connected, removing stones, swapping letters, equations, group sizes over time, the longest cycle when each node points to one other, paths with short edges, the minimum spanning tree |
+| 658-666 | shortest paths: Dijkstra, signal delay, at most k stops, the smallest steepest step, a DAG with negative costs, a toll grid, Floyd-Warshall for the loneliest city, a negative cycle, counting shortest routes |
+| 667-675 | more paths and trees: the widest road, reversing one-way streets, joining points with cable, wells and pipes, one free road, a mother vertex, jumps between equal numbers, a rolling ball, a clear path with diagonals |
+| 676-684 | hard, components and flow: strongly connected components and the condensation, bridges, articulation points, 2-SAT, bipartite matching, maximum flow (Dinic), an itinerary as an Euler path, a minimum path cover |
+| 685-692 | hard, paths and trees: the shortest walk that touches every node (bitmask), the second-best route, critical and pseudo-critical edges, the second-best spanning tree, islands that appear one by one, regions cut by slashes, good paths in a tree, cities linked by a common divisor |
+| 693-700 | hard, states and matching: 0-1 BFS with a deque, breaking k walls, a sliding puzzle searched from the goal, bus routes, edge-disjoint paths, stable matching (Gale-Shapley), the shortest cycle, a second shortest drive through traffic lights |
+
+How it was checked: 1806 native Python runs against the JavaScript reference with no difference (most medium and hard problems
+are also compared with a brute force or an independent method while the tests are built); 100 of 100 solutions Accepted in each of
+Python, C++ and Java by the real judge in a real browser (300 checks, on files identical to the released ones), and all starter
+files compile; 790 unit tests pass; a browser session on a clean server passed 25 checks (seven topics on the site, roadmap,
+list and filters, three problems solved through the editor, Progress page).
+
+Things that came up: the helper that mixes an undirected edge list also swaps the two ends of an edge. On a directed graph that
+turns a DAG into a graph with cycles, so some tests of directed problems were wrong when the checks first ran; the tests of
+directed graphs are now only shuffled, and the affected problems were checked again in the browser. All depth-first searches are loops with a stack, because the
+tests contain paths of 20000 nodes. In the browser, a Java solution that walked `List<List<Integer>>` with a position pointer for
+every node made the Java runner stop answering ("The Java runner did not answer in time") on some inputs, while the same
+algorithm over plain int arrays (compressed rows: one `head` array and one `to` array) finished in milliseconds; the Java
+solutions of the hard problems therefore keep their graphs in int arrays. The build keeps the hidden tests of one problem under
+5 MB, so the matching problem has at most 200 people on each side and the sliding puzzle asks for 20000 boards in one test; every
+problem still has tests as large as its limits allow, and no hidden test was made smaller.
+
+Next: Dynamic Programming (701-800).

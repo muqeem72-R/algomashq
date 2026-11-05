@@ -7299,6 +7299,1289 @@
     "offline-queries",
     "sorting"
    ]
+  },
+  {
+   "slug": "count-components",
+   "title": "How Many Separate Groups?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 601,
+   "tags": [
+    "graph",
+    "bfs",
+    "connected-components"
+   ]
+  },
+  {
+   "slug": "node-degrees",
+   "title": "How Many Neighbours Has Each Node?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 602,
+   "tags": [
+    "graph",
+    "degree"
+   ]
+  },
+  {
+   "slug": "graph-is-a-tree",
+   "title": "Is This Graph a Tree?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 603,
+   "tags": [
+    "graph",
+    "tree",
+    "bfs"
+   ]
+  },
+  {
+   "slug": "bfs-visit-order",
+   "title": "Visit the Nodes Level by Level",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 604,
+   "tags": [
+    "graph",
+    "bfs"
+   ]
+  },
+  {
+   "slug": "dfs-visit-order",
+   "title": "Dive Deep Before Turning Back",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 605,
+   "tags": [
+    "graph",
+    "dfs",
+    "stack"
+   ]
+  },
+  {
+   "slug": "distances-from-one",
+   "title": "How Far Is Every Node From Node 1?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 606,
+   "tags": [
+    "graph",
+    "bfs",
+    "shortest-path"
+   ]
+  },
+  {
+   "slug": "connected-queries",
+   "title": "Can You Get From a to b?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 607,
+   "tags": [
+    "graph",
+    "connected-components",
+    "queries"
+   ]
+  },
+  {
+   "slug": "component-sizes",
+   "title": "The Sizes of All the Groups",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 608,
+   "tags": [
+    "graph",
+    "bfs",
+    "connected-components",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "center-of-a-star",
+   "title": "Find the Centre of the Star",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 609,
+   "tags": [
+    "graph",
+    "degree"
+   ]
+  },
+  {
+   "slug": "town-judge",
+   "title": "Find the Town Judge",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 610,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "degree"
+   ]
+  },
+  {
+   "slug": "number-of-islands",
+   "title": "Count the Islands",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 611,
+   "tags": [
+    "graph",
+    "grid",
+    "dfs",
+    "flood-fill"
+   ]
+  },
+  {
+   "slug": "largest-island",
+   "title": "The Biggest Island",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 612,
+   "tags": [
+    "graph",
+    "grid",
+    "dfs",
+    "flood-fill"
+   ]
+  },
+  {
+   "slug": "flood-fill",
+   "title": "Paint the Connected Region",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 613,
+   "tags": [
+    "graph",
+    "grid",
+    "flood-fill"
+   ]
+  },
+  {
+   "slug": "land-perimeter",
+   "title": "The Coast Line of the Land",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 614,
+   "tags": [
+    "grid",
+    "counting"
+   ]
+  },
+  {
+   "slug": "enclosed-land-cells",
+   "title": "Land That Cannot Reach the Edge",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 615,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "can-finish-courses",
+   "title": "Can All the Courses Be Finished?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 616,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "topological-sort",
+    "cycle"
+   ]
+  },
+  {
+   "slug": "keys-and-rooms",
+   "title": "Can You Visit Every Room?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 617,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "dfs",
+    "reachability"
+   ]
+  },
+  {
+   "slug": "cycle-in-undirected-graph",
+   "title": "Does the Graph Contain a Cycle?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 618,
+   "tags": [
+    "graph",
+    "union-find",
+    "cycle"
+   ]
+  },
+  {
+   "slug": "two-colourable-graph",
+   "title": "Can the Nodes Be Painted in Two Colours?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 619,
+   "tags": [
+    "graph",
+    "bfs",
+    "bipartite"
+   ]
+  },
+  {
+   "slug": "gene-mutations",
+   "title": "The Fewest Mutations to Reach a Gene",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 620,
+   "tags": [
+    "graph",
+    "bfs",
+    "strings",
+    "implicit-graph"
+   ]
+  },
+  {
+   "slug": "euler-circuit-exists",
+   "title": "Walk Along Every Road Exactly Once",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 621,
+   "tags": [
+    "graph",
+    "euler",
+    "degree",
+    "connected-components"
+   ]
+  },
+  {
+   "slug": "connect-the-network",
+   "title": "Move the Cables to Connect All Computers",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 622,
+   "tags": [
+    "graph",
+    "union-find",
+    "connected-components"
+   ]
+  },
+  {
+   "slug": "adjacency-lists",
+   "title": "Write the Neighbours of Every Node",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 623,
+   "tags": [
+    "graph",
+    "adjacency-list",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "sources-and-sinks",
+   "title": "Where Does the Flow Start and End?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 624,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "degree"
+   ]
+  },
+  {
+   "slug": "graph-is-a-simple-path",
+   "title": "Is the Graph One Straight Path?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 625,
+   "tags": [
+    "graph",
+    "degree",
+    "connected-components"
+   ]
+  },
+  {
+   "slug": "common-neighbours",
+   "title": "Friends Two People Have in Common",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 626,
+   "tags": [
+    "graph",
+    "adjacency-list",
+    "sets"
+   ]
+  },
+  {
+   "slug": "jump-game-reachability",
+   "title": "Jump Left or Right to Reach a Zero",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 627,
+   "tags": [
+    "graph",
+    "bfs",
+    "implicit-graph",
+    "array"
+   ]
+  },
+  {
+   "slug": "knight-on-a-board",
+   "title": "The Knight's Shortest Trip",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 628,
+   "tags": [
+    "graph",
+    "bfs",
+    "grid",
+    "implicit-graph"
+   ]
+  },
+  {
+   "slug": "level-sizes",
+   "title": "How Many Nodes Are at Each Distance?",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 629,
+   "tags": [
+    "graph",
+    "bfs"
+   ]
+  },
+  {
+   "slug": "number-of-triangles",
+   "title": "Count the Triangles",
+   "topic": "graphs",
+   "difficulty": "easy",
+   "order": 630,
+   "tags": [
+    "graph",
+    "adjacency-list",
+    "sets",
+    "counting"
+   ]
+  },
+  {
+   "slug": "rotting-oranges",
+   "title": "How Long Until the Oranges Rot?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 631,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "distance-to-nearest-zero",
+   "title": "The Distance to the Nearest Zero",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 632,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "shortest-bridge",
+   "title": "Build the Shortest Bridge",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 633,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "nearest-exit-in-maze",
+   "title": "The Nearest Way Out of the Maze",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 634,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "shortest-path"
+   ]
+  },
+  {
+   "slug": "snakes-and-ladders",
+   "title": "Snakes and Ladders With the Fewest Throws",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 635,
+   "tags": [
+    "graph",
+    "bfs",
+    "shortest-path",
+    "implicit-graph"
+   ]
+  },
+  {
+   "slug": "open-the-lock",
+   "title": "Open the Lock With the Fewest Turns",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 636,
+   "tags": [
+    "graph",
+    "bfs",
+    "implicit-graph",
+    "strings"
+   ]
+  },
+  {
+   "slug": "word-ladder-length",
+   "title": "Change One Letter at a Time",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 637,
+   "tags": [
+    "graph",
+    "bfs",
+    "implicit-graph",
+    "strings",
+    "hashing"
+   ]
+  },
+  {
+   "slug": "surrounded-regions",
+   "title": "Capture the Surrounded Regions",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 638,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "pacific-atlantic-flow",
+   "title": "Water That Reaches Both Oceans",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 639,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "count-sub-islands",
+   "title": "Islands Inside Islands",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 640,
+   "tags": [
+    "graph",
+    "grid",
+    "dfs",
+    "flood-fill"
+   ]
+  },
+  {
+   "slug": "farthest-from-land",
+   "title": "As Far From the Land as Possible",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 641,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "minimum-obstacle-removal",
+   "title": "Fewest Obstacles to Clear",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 642,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "0-1-bfs",
+    "deque"
+   ]
+  },
+  {
+   "slug": "course-order",
+   "title": "A Valid Order of the Courses, Smallest First",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 643,
+   "tags": [
+    "graph",
+    "topological-sort",
+    "heap",
+    "directed-graph"
+   ]
+  },
+  {
+   "slug": "parallel-courses",
+   "title": "The Fewest Semesters",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 644,
+   "tags": [
+    "graph",
+    "topological-sort",
+    "bfs",
+    "layers"
+   ]
+  },
+  {
+   "slug": "longest-path-in-dag",
+   "title": "The Heaviest Road in a One-Way Network",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 645,
+   "tags": [
+    "graph",
+    "topological-sort",
+    "dp",
+    "dag"
+   ]
+  },
+  {
+   "slug": "alien-dictionary",
+   "title": "Find the Order of an Alien Alphabet",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 646,
+   "tags": [
+    "graph",
+    "topological-sort",
+    "strings",
+    "heap"
+   ]
+  },
+  {
+   "slug": "all-ancestors-of-nodes",
+   "title": "Everyone Who Can Reach a Node",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 647,
+   "tags": [
+    "graph",
+    "topological-sort",
+    "dag",
+    "bitset"
+   ]
+  },
+  {
+   "slug": "eventual-safe-states",
+   "title": "Which Nodes Never Lead Into a Cycle?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 648,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "topological-sort",
+    "cycle"
+   ]
+  },
+  {
+   "slug": "redundant-connection",
+   "title": "Which Edge Closes the Cycle?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 649,
+   "tags": [
+    "graph",
+    "union-find",
+    "cycle"
+   ]
+  },
+  {
+   "slug": "earliest-moment-all-connected",
+   "title": "When Does Everyone Know Everyone?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 650,
+   "tags": [
+    "graph",
+    "union-find",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "most-stones-removed",
+   "title": "Remove As Many Stones As You Can",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 651,
+   "tags": [
+    "graph",
+    "union-find",
+    "hashing"
+   ]
+  },
+  {
+   "slug": "smallest-string-with-swaps",
+   "title": "The Smallest String After Allowed Swaps",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 652,
+   "tags": [
+    "graph",
+    "union-find",
+    "sorting",
+    "strings"
+   ]
+  },
+  {
+   "slug": "equality-equations",
+   "title": "Can All the Equations Be True?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 653,
+   "tags": [
+    "graph",
+    "union-find"
+   ]
+  },
+  {
+   "slug": "largest-group-over-time",
+   "title": "The Biggest Group After Every New Friendship",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 654,
+   "tags": [
+    "graph",
+    "union-find",
+    "online"
+   ]
+  },
+  {
+   "slug": "longest-cycle-in-functional-graph",
+   "title": "The Longest Cycle When Every Node Points to One Other",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 655,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "cycle",
+    "functional-graph"
+   ]
+  },
+  {
+   "slug": "paths-under-a-limit",
+   "title": "Is There a Road With Only Short Edges?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 656,
+   "tags": [
+    "graph",
+    "union-find",
+    "offline-queries",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "minimum-spanning-tree-weight",
+   "title": "The Cheapest Way to Connect Everything",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 657,
+   "tags": [
+    "graph",
+    "mst",
+    "kruskal",
+    "union-find",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "dijkstra-distances",
+   "title": "Shortest Distances on Weighted Roads",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 658,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "dijkstra",
+    "heap"
+   ]
+  },
+  {
+   "slug": "network-delay-time",
+   "title": "When Does the Last Node Get the Signal?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 659,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "dijkstra",
+    "directed-graph"
+   ]
+  },
+  {
+   "slug": "cheapest-flights-within-k-stops",
+   "title": "The Cheapest Trip With at Most k Stops",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 660,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "bellman-ford",
+    "dp"
+   ]
+  },
+  {
+   "slug": "path-with-minimum-effort",
+   "title": "The Hike With the Smallest Steepest Step",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 661,
+   "tags": [
+    "graph",
+    "grid",
+    "dijkstra",
+    "minimax"
+   ]
+  },
+  {
+   "slug": "shortest-path-in-a-dag",
+   "title": "The Cheapest Route in an Acyclic Network (Costs Can Be Negative)",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 662,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "dag",
+    "dp",
+    "topological-sort"
+   ]
+  },
+  {
+   "slug": "minimum-cost-grid-path",
+   "title": "The Cheapest Walk Across a Toll Grid",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 663,
+   "tags": [
+    "graph",
+    "grid",
+    "dijkstra",
+    "shortest-path"
+   ]
+  },
+  {
+   "slug": "city-with-fewest-neighbours",
+   "title": "The Loneliest City",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 664,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "floyd-warshall"
+   ]
+  },
+  {
+   "slug": "negative-cycle-exists",
+   "title": "Is There a Cycle That Pays You Back?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 665,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "bellman-ford",
+    "cycle"
+   ]
+  },
+  {
+   "slug": "count-shortest-paths",
+   "title": "How Many Shortest Routes Are There?",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 666,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "dijkstra",
+    "counting",
+    "modular-arithmetic"
+   ]
+  },
+  {
+   "slug": "widest-path",
+   "title": "The Widest Road From Town 1 to Town n",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 667,
+   "tags": [
+    "graph",
+    "union-find",
+    "greedy",
+    "bottleneck"
+   ]
+  },
+  {
+   "slug": "routes-with-reversals",
+   "title": "Turn the Fewest One-Way Streets Around",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 668,
+   "tags": [
+    "graph",
+    "bfs",
+    "0-1-bfs",
+    "deque",
+    "directed-graph"
+   ]
+  },
+  {
+   "slug": "connect-points-minimum-cost",
+   "title": "Join All the Points With the Least Cable",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 669,
+   "tags": [
+    "graph",
+    "mst",
+    "prim",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "water-supply-wells",
+   "title": "Wells and Pipes for Every Village",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 670,
+   "tags": [
+    "graph",
+    "mst",
+    "kruskal",
+    "union-find",
+    "virtual-node"
+   ]
+  },
+  {
+   "slug": "shortest-path-with-one-free-edge",
+   "title": "One Free Road on the Way",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 671,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "dijkstra",
+    "state-graph"
+   ]
+  },
+  {
+   "slug": "mother-vertex-count",
+   "title": "Nodes From Which Everything Can Be Reached",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 672,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "dfs",
+    "reachability"
+   ]
+  },
+  {
+   "slug": "jump-game-with-equal-values",
+   "title": "Jump to Any Place With the Same Number",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 673,
+   "tags": [
+    "graph",
+    "bfs",
+    "hashing",
+    "implicit-graph"
+   ]
+  },
+  {
+   "slug": "rolling-ball-maze",
+   "title": "A Ball That Rolls Until It Hits a Wall",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 674,
+   "tags": [
+    "graph",
+    "grid",
+    "dijkstra",
+    "implicit-graph"
+   ]
+  },
+  {
+   "slug": "clear-path-in-grid",
+   "title": "The Shortest Clear Path, Diagonals Allowed",
+   "topic": "graphs",
+   "difficulty": "medium",
+   "order": 675,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "shortest-path"
+   ]
+  },
+  {
+   "slug": "scc-count-and-sizes",
+   "title": "Groups That Can All Reach Each Other",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 676,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "scc",
+    "kosaraju"
+   ]
+  },
+  {
+   "slug": "condensation-longest-path",
+   "title": "Collect the Most Treasure on a One-Way Tour",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 677,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "scc",
+    "dp",
+    "condensation"
+   ]
+  },
+  {
+   "slug": "critical-connections",
+   "title": "Which Cables Cannot Be Lost?",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 678,
+   "tags": [
+    "graph",
+    "bridges",
+    "tarjan",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "articulation-points",
+   "title": "Which Junctions Cut the Network in Two?",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 679,
+   "tags": [
+    "graph",
+    "articulation-points",
+    "tarjan",
+    "dfs"
+   ]
+  },
+  {
+   "slug": "two-sat-satisfiable",
+   "title": "Can All the \"Either-Or\" Conditions Hold?",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 680,
+   "tags": [
+    "graph",
+    "directed-graph",
+    "scc",
+    "2-sat",
+    "logic"
+   ]
+  },
+  {
+   "slug": "maximum-bipartite-matching",
+   "title": "Pair Up As Many As Possible",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 681,
+   "tags": [
+    "graph",
+    "bipartite",
+    "matching",
+    "augmenting-path"
+   ]
+  },
+  {
+   "slug": "maximum-flow",
+   "title": "How Much Can Flow Through the Network?",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 682,
+   "tags": [
+    "graph",
+    "flow",
+    "dinic",
+    "directed-graph"
+   ]
+  },
+  {
+   "slug": "reconstruct-itinerary",
+   "title": "Use Every Ticket Exactly Once, in the Smallest Order",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 683,
+   "tags": [
+    "graph",
+    "euler-path",
+    "hierholzer",
+    "directed-graph"
+   ]
+  },
+  {
+   "slug": "minimum-path-cover",
+   "title": "Cover All Nodes With the Fewest Separate Paths",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 684,
+   "tags": [
+    "graph",
+    "dag",
+    "matching",
+    "bipartite",
+    "path-cover"
+   ]
+  },
+  {
+   "slug": "visit-all-nodes-shortest",
+   "title": "The Shortest Walk That Touches Every Node",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 685,
+   "tags": [
+    "graph",
+    "bfs",
+    "bitmask",
+    "state-space"
+   ]
+  },
+  {
+   "slug": "second-shortest-route",
+   "title": "The Second-Best Route (Strictly Longer)",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 686,
+   "tags": [
+    "graph",
+    "shortest-path",
+    "dijkstra",
+    "k-shortest"
+   ]
+  },
+  {
+   "slug": "critical-and-pseudo-critical-edges",
+   "title": "Edges That Every Cheapest Network Needs, and Edges That It May Use",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 687,
+   "tags": [
+    "graph",
+    "mst",
+    "kruskal",
+    "union-find"
+   ]
+  },
+  {
+   "slug": "second-best-spanning-tree",
+   "title": "The Second-Cheapest Spanning Tree",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 688,
+   "tags": [
+    "graph",
+    "mst",
+    "binary-lifting",
+    "lca"
+   ]
+  },
+  {
+   "slug": "islands-added-one-by-one",
+   "title": "Count the Islands As Land Appears",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 689,
+   "tags": [
+    "graph",
+    "grid",
+    "union-find",
+    "online"
+   ]
+  },
+  {
+   "slug": "regions-cut-by-slashes",
+   "title": "How Many Regions Do the Slashes Make?",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 690,
+   "tags": [
+    "graph",
+    "grid",
+    "union-find",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "good-paths-in-a-tree",
+   "title": "Paths Where Both Ends Are the Highest",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 691,
+   "tags": [
+    "graph",
+    "tree",
+    "union-find",
+    "sorting",
+    "counting"
+   ]
+  },
+  {
+   "slug": "connected-by-common-divisor",
+   "title": "Cities Linked by a Big Common Divisor",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 692,
+   "tags": [
+    "graph",
+    "union-find",
+    "number-theory",
+    "sieve"
+   ]
+  },
+  {
+   "slug": "valid-grid-path-min-cost",
+   "title": "Fewest Arrows to Turn to Reach the Corner",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 693,
+   "tags": [
+    "graph",
+    "grid",
+    "0-1-bfs",
+    "deque",
+    "shortest-path"
+   ]
+  },
+  {
+   "slug": "obstacle-elimination-path",
+   "title": "Shortest Path If You Can Break k Walls",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 694,
+   "tags": [
+    "graph",
+    "grid",
+    "bfs",
+    "state-space"
+   ]
+  },
+  {
+   "slug": "sliding-puzzle-two-by-four",
+   "title": "Slide the Tiles of a 2 by 4 Puzzle Home",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 695,
+   "tags": [
+    "graph",
+    "bfs",
+    "state-space",
+    "puzzle",
+    "multi-source"
+   ]
+  },
+  {
+   "slug": "bus-routes",
+   "title": "The Fewest Buses From Stop to Stop",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 696,
+   "tags": [
+    "graph",
+    "bfs",
+    "bipartite",
+    "implicit-graph"
+   ]
+  },
+  {
+   "slug": "edge-disjoint-paths",
+   "title": "How Many Roads Can Be Used Without Sharing One",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 697,
+   "tags": [
+    "graph",
+    "max-flow",
+    "augmenting-path",
+    "menger"
+   ]
+  },
+  {
+   "slug": "stable-matching",
+   "title": "Pair Everyone So That Nobody Wants to Elope",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 698,
+   "tags": [
+    "graph",
+    "bipartite",
+    "matching",
+    "greedy",
+    "gale-shapley"
+   ]
+  },
+  {
+   "slug": "shortest-cycle",
+   "title": "The Length of the Shortest Cycle",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 699,
+   "tags": [
+    "graph",
+    "bfs",
+    "girth",
+    "cycle"
+   ]
+  },
+  {
+   "slug": "second-minimum-signal-time",
+   "title": "The Second Fastest Drive Through the Traffic Lights",
+   "topic": "graphs",
+   "difficulty": "hard",
+   "order": 700,
+   "tags": [
+    "graph",
+    "bfs",
+    "second-shortest",
+    "simulation"
+   ]
   }
  ]
 }

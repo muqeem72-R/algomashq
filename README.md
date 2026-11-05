@@ -70,6 +70,12 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   centroids, tree isomorphism). A binary-tree problem reads the tree in level order (`N` for a missing child); its starter code
   builds the tree and prints the result, and you only write the function that works on the nodes. Trees have up to 20000 nodes
   and up to 800 levels, and the problems on general trees can be paths of 20000 nodes, so those solutions use loops, not recursion.
+- 100 original problems in the **Graphs** topic, numbered 601 to 700 by effort (601-630 easy, 631-675 medium, 676-700 hard):
+  breadth-first and depth-first search on graphs and grids, connected components, cycles and colouring, topological order,
+  union-find and spanning trees, shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall, 0-1 BFS), strongly connected
+  components, bridges and articulation points, 2-SAT, matching and maximum flow, Euler paths, and searches over states (bitmasks,
+  puzzles, limited resources). A graph is given as `n m` followed by `m` edge lines, a grid as `h w` followed by its rows; the
+  biggest tests have graphs with 20000 nodes and tens of thousands of edges, so the solutions use loops with a stack instead of recursion.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 
