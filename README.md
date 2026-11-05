@@ -64,6 +64,12 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   permutations, combinations, strings and grids, games with memoisation, constraint puzzles (queens, sudoku, Latin squares,
   skyscrapers, lights out) and exact search with pruning, bitmasks and meet in the middle. Problems whose answer is a list print
   at most a few thousand lines.
+- 100 original problems in the **Trees** topic, numbered 501 to 600 by effort (501-530 easy, 531-575 medium, 576-600 hard):
+  binary trees and their traversals, paths and levels, building a tree from walks, search trees, heaps and priority queues,
+  tries, and trees given by a parent array or by edges (depth, subtree sizes, ancestors with binary lifting, Euler tours,
+  centroids, tree isomorphism). A binary-tree problem reads the tree in level order (`N` for a missing child); its starter code
+  builds the tree and prints the result, and you only write the function that works on the nodes. Trees have up to 20000 nodes
+  and up to 800 levels, and the problems on general trees can be paths of 20000 nodes, so those solutions use loops, not recursion.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 

@@ -3,6 +3,7 @@
 //   node tools/problems/build.mjs --all --out <folder>
 //                                           every topic, also the ones not released yet, into a folder of your choice
 //                                           (used to check the unreleased topics without putting them on the site)
+//   add --only <topic> to read the sources of one topic only (fast while writing a topic; it skips the check against the other topics)
 //   add --verbose for one line per problem
 //
 // The problems live in tools/problems/problems/ (Basics, one file each) and tools/problems/topics/<topic>/ (the other topics). A file in a
@@ -30,6 +31,8 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const ALL = args.includes('--all');
 const VERBOSE = args.includes('--verbose');
+const onlyAt = args.indexOf('--only');
+const ONLY = onlyAt >= 0 ? args[onlyAt + 1] : null;
 const outAt = args.indexOf('--out');
 const OUT = outAt >= 0 ? path.resolve(args[outAt + 1]) : path.resolve(HERE, '../../public/problems');
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
@@ -62,10 +65,10 @@ function check(p, from) {
 
 // All the source files: Basics lives directly in problems/, every other topic in topics/<topic>/.
 function sourceFiles() {
-  const list = fs.readdirSync(path.join(HERE, 'problems')).filter((f) => f.endsWith('.mjs')).sort().map((f) => path.join(HERE, 'problems', f));
+  const list = ONLY && ONLY !== 'basics' ? [] : fs.readdirSync(path.join(HERE, 'problems')).filter((f) => f.endsWith('.mjs')).sort().map((f) => path.join(HERE, 'problems', f));
   const topicsDir = path.join(HERE, 'topics');
   if (fs.existsSync(topicsDir)) {
-    for (const dir of fs.readdirSync(topicsDir).sort()) {
+    for (const dir of fs.readdirSync(topicsDir).sort().filter((d) => !ONLY || d === ONLY)) {
       const full = path.join(topicsDir, dir);
       if (fs.statSync(full).isDirectory()) for (const f of fs.readdirSync(full).filter((x) => x.endsWith('.mjs')).sort()) list.push(path.join(full, f));
     }
@@ -133,7 +136,7 @@ for (const topic of TOPICS) {
     last = rank;
   }
 }
-for (const id of RELEASED) {
+for (const id of ONLY ? [] : RELEASED) {
   const n = problems.filter((p) => p.topic === id).length;
   if (n !== PER_TOPIC) fail('release.json', `the topic "${id}" is released but has ${n} problems, not ${PER_TOPIC}`);
 }
