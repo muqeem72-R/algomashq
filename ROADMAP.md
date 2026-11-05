@@ -578,4 +578,35 @@ that value exists: several solutions walk a row from the right to the left (a 0/
 while the coin problems walk it from the left to the right so that a coin can be used again, and the concept texts explain the
 difference. The Java solutions keep their tables in plain arrays.
 
-Next: Greedy, Bit Manipulation, Intervals (801-900).
+### Greedy, Bit Manipulation, Intervals (801-900, released)
+
+| Numbers | What they teach |
+|---|---|
+| 801-810 | greedy choices: the fewest banknotes, feeding children, change at a stand, the most ice creams, planting flowers, pairs with the biggest minimums, loading a truck, the largest triangle, equalising moves, cutting balanced strings |
+| 811-820 | ranges: meetings that clash, the total length covered, overlapping pairs, missing ranges, a sorted list written as ranges, the overlap of two range lists, which range holds a point, the widest gap, covered ranges, the closest times of a day |
+| 821-830 | bits: powers of two, ones in every number, differing bits, parity, the lowest one-bit, reversing 32 bits, flipping below the top bit, the longest distance between ones, alternating bits, swapping bit pairs |
+| 831-839 | greedy choices: the fewest jumps, the gas station start, candy for every child, cutting a word without shared letters, rebuilding a queue, two cities, boats, the longest zigzag, the largest number with rising digits |
+| 840-848 | greedy with sorting: negating k times, beating the opponent's cards, the token game, halving a list, distinct letter counts, the best order of dishes, the smallest word with a letter sum, groups of consecutive cards, jobs with deadlines |
+| 849-857 | ranges and sweeps: cancelling meetings, arrows and balloons, inserting a range, car capacity, common free time, the fewest clips, blocks after each addition, the next range, the earliest common slot |
+| 858-866 | bit tricks: a number among triples, two numbers that appear once, bit differences of all pairs, the AND of a range, carries in an addition, Gray code positions, disjoint words, flips to make OR equal, valid UTF-8 |
+| 867-875 | XOR and masks: XOR of ranges, the largest XOR of a pair, subarrays with AND k, a common bit, distinct ORs, sorting by ones, the k-th symbol, recovering a permutation, the closest XOR number |
+| 876-884 | hard, greedy: patching sums, the largest number from two lists, fuel stops, events one per day, tasks with pills, the cheapest crew, projects with capital, k-way merging, the smallest word that keeps each letter once |
+| 885-892 | hard, ranges: the shortest range for each point, weighted jobs, tracking covered ranges, the busiest moment, the area of rectangles, the busiest room with delays, the cheapest priced ranges, the most meetings in k rooms |
+| 893-900 | hard, bits: XOR of long subarrays, pairs with XOR in a range, triples with AND zero, the XOR sum of a pairing, the largest XOR subset, the k-th smallest subset XOR, the shortest subarray reaching the full OR, subsets with AND zero |
+
+How it was checked: 1655 native Python runs against the JavaScript reference with no difference (every problem is also compared
+with a brute force or an independent method while the tests are built); 100 of 100 solutions Accepted in each of Python, C++ and
+Java by the real judge in a real browser (300 checks, on files identical to the released ones), and all starter files compile;
+990 unit tests pass; a browser session on a clean server passed 25 checks (nine topics on the site, roadmap, list and filters,
+three problems solved through the editor, Progress page).
+
+Things that came up: one of the planned hard problems (the smallest range that takes one number from every list) was already in
+the Trees topic under another title; the duplicate check that compares slugs and titles across all topics found it before the
+release, and it was replaced by a new problem about the cheapest priced ranges that cover a street. The build keeps the hidden
+tests of one problem under 5 MB, so inputs with numbers up to 10^18 or with two long lists are limited to 15000-30000 numbers
+and the biggest tests still use these limits. Java solutions sort pairs by packing them into one `long` key (for example
+`end << 15 | index`) and keep heaps and trees in plain arrays, because comparator-based sorting of objects and heaps of boxed
+numbers are slow in the in-browser Java runner. Reference solutions that are written with the same method as the program were
+compared with an exhaustive search on small inputs, and the fast and slow methods were compared with each other on mid-size inputs.
+
+Next: Advanced (901-1000).

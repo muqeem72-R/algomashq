@@ -83,6 +83,13 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   profile DP (dominoes and colourings) and tree DP. Each concept text explains the state, the recurrence and the order in which the
   table is filled. Answers that grow very fast are asked modulo 1000000007, and the sizes are chosen so that a plain solution in
   Python, C++ or Java fits the time limit.
+- 100 original problems in the **Greedy, Bit Manipulation, Intervals** topic, numbered 801 to 900 by effort (801-830 easy, 831-875
+  medium, 876-900 hard): greedy choices with a proof idea (sorting by a key, the cheapest piece first, jump and refuel
+  strategies, heaps, monotonic stacks, binary search on the answer), ranges and sweeps (merging and covering, meetings and
+  rooms, booking counters, weighted scheduling, rectangle area with a segment tree) and bit manipulation (masks and shifts, XOR
+  tricks, prefix XOR, tries, the linear basis, sum-over-subsets counting, bitmask DP). Each concept text states the greedy
+  rule and why it works, or the bit identity that replaces a loop. Numbers up to 10^18 are read as 64-bit integers, and the
+  sizes are chosen so that a plain solution in Python, C++ or Java fits the time limit.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 

@@ -9835,6 +9835,1260 @@
     "column-states",
     "counting"
    ]
+  },
+  {
+   "slug": "fewest-banknotes",
+   "title": "Pay With the Fewest Banknotes",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 801,
+   "tags": [
+    "greedy",
+    "coins",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "feed-the-children",
+   "title": "How Many Children Can Get a Cookie They Like?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 802,
+   "tags": [
+    "greedy",
+    "sorting",
+    "two-pointers",
+    "matching"
+   ]
+  },
+  {
+   "slug": "change-at-the-stand",
+   "title": "Can the Lemonade Stand Always Give Change?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 803,
+   "tags": [
+    "greedy",
+    "simulation",
+    "counting"
+   ]
+  },
+  {
+   "slug": "most-ice-creams",
+   "title": "How Many Ice Creams Can You Buy?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 804,
+   "tags": [
+    "greedy",
+    "sorting",
+    "counting-sort"
+   ]
+  },
+  {
+   "slug": "plant-flowers",
+   "title": "Can k More Flowers Be Planted Without Neighbours?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 805,
+   "tags": [
+    "greedy",
+    "array",
+    "scan"
+   ]
+  },
+  {
+   "slug": "pairs-with-biggest-minimums",
+   "title": "Pair Up the Numbers for the Biggest Sum of Minimums",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 806,
+   "tags": [
+    "greedy",
+    "sorting",
+    "pairing"
+   ]
+  },
+  {
+   "slug": "load-the-truck",
+   "title": "Load the Truck With the Most Units",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 807,
+   "tags": [
+    "greedy",
+    "sorting",
+    "knapsack-like"
+   ]
+  },
+  {
+   "slug": "largest-triangle-perimeter",
+   "title": "The Largest Triangle That Can Be Made From Three Sticks",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 808,
+   "tags": [
+    "greedy",
+    "sorting",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "moves-to-equalize",
+   "title": "The Fewest Moves to Make All the Numbers Equal",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 809,
+   "tags": [
+    "greedy",
+    "median",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "cut-balanced-strings",
+   "title": "Cut the String Into the Most Balanced Pieces",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 810,
+   "tags": [
+    "greedy",
+    "string",
+    "counting"
+   ]
+  },
+  {
+   "slug": "do-the-meetings-clash",
+   "title": "Can One Person Attend All the Meetings?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 811,
+   "tags": [
+    "intervals",
+    "sorting",
+    "overlap"
+   ]
+  },
+  {
+   "slug": "total-length-covered",
+   "title": "How Much of the Line Is Covered by the Ranges?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 812,
+   "tags": [
+    "intervals",
+    "merging",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "overlapping-pairs-of-ranges",
+   "title": "How Many Pairs of Ranges Overlap?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 813,
+   "tags": [
+    "intervals",
+    "counting",
+    "sorting",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "missing-ranges",
+   "title": "List the Numbers That Are Missing From a Sorted List",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 814,
+   "tags": [
+    "intervals",
+    "gaps",
+    "scan"
+   ]
+  },
+  {
+   "slug": "sorted-list-as-ranges",
+   "title": "Write a Sorted List of Numbers as Ranges",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 815,
+   "tags": [
+    "intervals",
+    "scan",
+    "grouping"
+   ]
+  },
+  {
+   "slug": "overlap-of-two-range-lists",
+   "title": "How Long Are Two Lists of Ranges Both Open?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 816,
+   "tags": [
+    "intervals",
+    "two-pointers",
+    "intersection"
+   ]
+  },
+  {
+   "slug": "which-range-holds-the-point",
+   "title": "Which Range Holds the Point?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 817,
+   "tags": [
+    "intervals",
+    "binary-search",
+    "queries"
+   ]
+  },
+  {
+   "slug": "widest-gap-between-meetings",
+   "title": "The Longest Free Time Between Two Meetings",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 818,
+   "tags": [
+    "intervals",
+    "merging",
+    "gaps"
+   ]
+  },
+  {
+   "slug": "remove-covered-ranges",
+   "title": "How Many Ranges Are Not Inside Another Range?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 819,
+   "tags": [
+    "intervals",
+    "sorting",
+    "domination"
+   ]
+  },
+  {
+   "slug": "closest-times-of-the-day",
+   "title": "The Smallest Difference Between Two Times of the Day",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 820,
+   "tags": [
+    "intervals",
+    "sorting",
+    "circular",
+    "time"
+   ]
+  },
+  {
+   "slug": "which-numbers-are-powers-of-two",
+   "title": "Which Numbers Are Powers of Two?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 821,
+   "tags": [
+    "bits",
+    "bit-tricks",
+    "power-of-two"
+   ]
+  },
+  {
+   "slug": "ones-in-every-number",
+   "title": "How Many One-Bits Does Each Number Have?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 822,
+   "tags": [
+    "bits",
+    "bit-tricks",
+    "popcount"
+   ]
+  },
+  {
+   "slug": "bits-that-differ",
+   "title": "How Many Bits Differ Between Two Numbers?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 823,
+   "tags": [
+    "bits",
+    "xor",
+    "hamming-distance"
+   ]
+  },
+  {
+   "slug": "even-or-odd-number-of-ones",
+   "title": "Is the Number of One-Bits Even or Odd?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 824,
+   "tags": [
+    "bits",
+    "xor",
+    "parity"
+   ]
+  },
+  {
+   "slug": "lowest-one-bit-value",
+   "title": "The Value of the Lowest One-Bit of Each Number",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 825,
+   "tags": [
+    "bits",
+    "bit-tricks",
+    "twos-complement"
+   ]
+  },
+  {
+   "slug": "reverse-the-32-bits",
+   "title": "Reverse the 32 Bits of Each Number",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 826,
+   "tags": [
+    "bits",
+    "shifts",
+    "reverse"
+   ]
+  },
+  {
+   "slug": "flip-below-the-highest-bit",
+   "title": "Flip All the Bits Below the Highest One-Bit",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 827,
+   "tags": [
+    "bits",
+    "masks",
+    "complement"
+   ]
+  },
+  {
+   "slug": "longest-distance-between-ones",
+   "title": "The Longest Distance Between Two Neighbouring One-Bits",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 828,
+   "tags": [
+    "bits",
+    "scan",
+    "binary-gap"
+   ]
+  },
+  {
+   "slug": "do-the-bits-alternate",
+   "title": "Do the Bits of the Number Alternate?",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 829,
+   "tags": [
+    "bits",
+    "xor",
+    "patterns"
+   ]
+  },
+  {
+   "slug": "swap-neighbouring-bit-pairs",
+   "title": "Swap the Bits at Even and Odd Positions",
+   "topic": "greedy-bits",
+   "difficulty": "easy",
+   "order": 830,
+   "tags": [
+    "bits",
+    "masks",
+    "shifts"
+   ]
+  },
+  {
+   "slug": "fewest-jumps-to-the-end",
+   "title": "The Fewest Jumps to Reach the Last Square",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 831,
+   "tags": [
+    "greedy",
+    "jump-game",
+    "bfs-levels"
+   ]
+  },
+  {
+   "slug": "gas-station-start",
+   "title": "Where Can the Round Trip Around the Ring Road Start?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 832,
+   "tags": [
+    "greedy",
+    "circular",
+    "prefix-sums"
+   ]
+  },
+  {
+   "slug": "candy-for-every-child",
+   "title": "The Fewest Candies That Respect the Ratings",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 833,
+   "tags": [
+    "greedy",
+    "two-passes",
+    "array"
+   ]
+  },
+  {
+   "slug": "cut-without-sharing-letters",
+   "title": "Cut the Word So That No Letter Is in Two Pieces",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 834,
+   "tags": [
+    "greedy",
+    "string",
+    "intervals",
+    "last-occurrence"
+   ]
+  },
+  {
+   "slug": "rebuild-the-queue",
+   "title": "Rebuild the Queue From Heights and Counts",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 835,
+   "tags": [
+    "greedy",
+    "sorting",
+    "insertion"
+   ]
+  },
+  {
+   "slug": "send-half-to-each-city",
+   "title": "Send Half of the People to Each City at the Smallest Cost",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 836,
+   "tags": [
+    "greedy",
+    "sorting",
+    "exchange-argument"
+   ]
+  },
+  {
+   "slug": "boats-for-everyone",
+   "title": "How Many Boats Carry Everyone?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 837,
+   "tags": [
+    "greedy",
+    "sorting",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "longest-zigzag-subsequence",
+   "title": "The Longest Up-and-Down Subsequence",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 838,
+   "tags": [
+    "greedy",
+    "subsequence",
+    "zigzag"
+   ]
+  },
+  {
+   "slug": "largest-number-with-rising-digits",
+   "title": "The Largest Number Not Above N Whose Digits Never Decrease",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 839,
+   "tags": [
+    "greedy",
+    "digits",
+    "math"
+   ]
+  },
+  {
+   "slug": "negate-exactly-k-times",
+   "title": "Negate Exactly K Times for the Largest Sum",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 840,
+   "tags": [
+    "greedy",
+    "sorting",
+    "parity"
+   ]
+  },
+  {
+   "slug": "beat-the-opponents-cards",
+   "title": "Win As Many Rounds Against the Opponent as You Can",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 841,
+   "tags": [
+    "greedy",
+    "sorting",
+    "two-pointers",
+    "matching"
+   ]
+  },
+  {
+   "slug": "highest-token-score",
+   "title": "Play the Tokens for the Highest Score",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 842,
+   "tags": [
+    "greedy",
+    "sorting",
+    "two-pointers",
+    "game"
+   ]
+  },
+  {
+   "slug": "halve-the-list",
+   "title": "Delete the Fewest Different Values to Halve the List",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 843,
+   "tags": [
+    "greedy",
+    "sorting",
+    "counting"
+   ]
+  },
+  {
+   "slug": "distinct-letter-counts",
+   "title": "Delete the Fewest Letters So No Two Letters Share a Count",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 844,
+   "tags": [
+    "greedy",
+    "counting",
+    "sorting",
+    "string"
+   ]
+  },
+  {
+   "slug": "dishes-in-the-best-order",
+   "title": "Cook the Dishes in the Order with the Best Like-Time Total",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 845,
+   "tags": [
+    "greedy",
+    "sorting",
+    "prefix-sums"
+   ]
+  },
+  {
+   "slug": "smallest-word-with-letter-sum",
+   "title": "The Smallest Word With a Given Length and Letter Sum",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 846,
+   "tags": [
+    "greedy",
+    "string",
+    "lexicographic"
+   ]
+  },
+  {
+   "slug": "deal-in-consecutive-groups",
+   "title": "Can the Cards Be Dealt in Groups of Consecutive Values?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 847,
+   "tags": [
+    "greedy",
+    "sorting",
+    "counting",
+    "sweep"
+   ]
+  },
+  {
+   "slug": "jobs-with-deadlines",
+   "title": "Pick the Most Profitable Jobs That Meet Their Deadlines",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 848,
+   "tags": [
+    "greedy",
+    "sorting",
+    "union-find",
+    "scheduling"
+   ]
+  },
+  {
+   "slug": "cancel-fewest-meetings",
+   "title": "Cancel the Fewest Meetings So That None Clash",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 849,
+   "tags": [
+    "greedy",
+    "intervals",
+    "sorting",
+    "activity-selection"
+   ]
+  },
+  {
+   "slug": "fewest-arrows-for-balloons",
+   "title": "The Fewest Arrows That Burst Every Balloon",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 850,
+   "tags": [
+    "greedy",
+    "intervals",
+    "sorting",
+    "stabbing"
+   ]
+  },
+  {
+   "slug": "insert-a-range",
+   "title": "Insert a New Range Into a Sorted List of Ranges",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 851,
+   "tags": [
+    "intervals",
+    "merging",
+    "sweep",
+    "array"
+   ]
+  },
+  {
+   "slug": "smallest-car-capacity",
+   "title": "The Smallest Car That Can Take Every Trip",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 852,
+   "tags": [
+    "greedy",
+    "sweep-line",
+    "events",
+    "difference-array"
+   ]
+  },
+  {
+   "slug": "common-free-time",
+   "title": "The Free Time Common to All Workers",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 853,
+   "tags": [
+    "intervals",
+    "merging",
+    "sweep-line",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "fewest-clips-to-cover",
+   "title": "The Fewest Video Clips That Cover the Whole Event",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 854,
+   "tags": [
+    "greedy",
+    "intervals",
+    "jump-game",
+    "covering"
+   ]
+  },
+  {
+   "slug": "blocks-after-each-addition",
+   "title": "Blocks of Filled Cells After Each Addition",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 855,
+   "tags": [
+    "intervals",
+    "union-find",
+    "simulation",
+    "online"
+   ]
+  },
+  {
+   "slug": "next-range-after-each-range",
+   "title": "The Next Range That Starts After Each Range Ends",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 856,
+   "tags": [
+    "intervals",
+    "sorting",
+    "binary-search",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "earliest-common-slot",
+   "title": "The Earliest Time Two People Can Meet for a Given Length",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 857,
+   "tags": [
+    "intervals",
+    "two-pointers",
+    "sorting",
+    "scheduling"
+   ]
+  },
+  {
+   "slug": "single-among-triples",
+   "title": "The Number That Appears Once Among Triples",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 858,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "counting-in-binary"
+   ]
+  },
+  {
+   "slug": "two-numbers-that-appear-once",
+   "title": "The Two Numbers That Appear Only Once",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 859,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "lowest-set-bit",
+    "partition"
+   ]
+  },
+  {
+   "slug": "bit-differences-of-all-pairs",
+   "title": "Total Bit Differences Over All Pairs of Numbers",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 860,
+   "tags": [
+    "bit-manipulation",
+    "counting",
+    "hamming-distance",
+    "combinatorics"
+   ]
+  },
+  {
+   "slug": "and-of-a-whole-range",
+   "title": "The AND of Every Number in a Range",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 861,
+   "tags": [
+    "bit-manipulation",
+    "common-prefix",
+    "shifts"
+   ]
+  },
+  {
+   "slug": "carries-in-binary-addition",
+   "title": "How Many Carries Happen in a Binary Addition?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 862,
+   "tags": [
+    "bit-manipulation",
+    "popcount",
+    "carry",
+    "math"
+   ]
+  },
+  {
+   "slug": "position-in-the-gray-sequence",
+   "title": "At Which Position Does a Gray Code Word Appear?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 863,
+   "tags": [
+    "bit-manipulation",
+    "gray-code",
+    "prefix-xor"
+   ]
+  },
+  {
+   "slug": "disjoint-words-best-product",
+   "title": "Two Words With No Common Letter: The Largest Product of Lengths",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 864,
+   "tags": [
+    "bit-manipulation",
+    "bitmask",
+    "strings"
+   ]
+  },
+  {
+   "slug": "flips-to-make-or-equal",
+   "title": "The Fewest Bit Flips to Make A OR B Equal C",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 865,
+   "tags": [
+    "bit-manipulation",
+    "popcount",
+    "per-bit-reasoning"
+   ]
+  },
+  {
+   "slug": "valid-utf8-bytes",
+   "title": "Is This Byte Sequence a Valid UTF-8 Text?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 866,
+   "tags": [
+    "bit-manipulation",
+    "simulation",
+    "validation"
+   ]
+  },
+  {
+   "slug": "xor-of-many-ranges",
+   "title": "The XOR of Many Ranges of a List",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 867,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "prefix-xor",
+    "queries"
+   ]
+  },
+  {
+   "slug": "largest-xor-of-a-pair",
+   "title": "The Largest XOR of Two Numbers From the List",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 868,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "greedy",
+    "prefixes",
+    "hashing"
+   ]
+  },
+  {
+   "slug": "subarrays-with-and-equal-k",
+   "title": "How Many Subarrays Have AND Equal to K?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 869,
+   "tags": [
+    "bit-manipulation",
+    "and",
+    "subarrays",
+    "distinct-values"
+   ]
+  },
+  {
+   "slug": "longest-run-with-common-bit",
+   "title": "The Longest Subarray That Shares a Common Bit",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 870,
+   "tags": [
+    "bit-manipulation",
+    "and",
+    "subarrays",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "distinct-or-values-of-subarrays",
+   "title": "How Many Different OR Values Do the Subarrays Have?",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 871,
+   "tags": [
+    "bit-manipulation",
+    "or",
+    "subarrays",
+    "sets"
+   ]
+  },
+  {
+   "slug": "sort-by-number-of-ones",
+   "title": "Sort the Numbers by Their Count of One-Bits",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 872,
+   "tags": [
+    "bit-manipulation",
+    "popcount",
+    "sorting",
+    "custom-order"
+   ]
+  },
+  {
+   "slug": "kth-symbol-of-the-growing-row",
+   "title": "The K-th Symbol of the Growing Row",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 873,
+   "tags": [
+    "bit-manipulation",
+    "recursion",
+    "thue-morse",
+    "math"
+   ]
+  },
+  {
+   "slug": "recover-the-permutation-from-neighbour-xors",
+   "title": "Recover the Permutation From the XORs of Neighbours",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 874,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "permutation",
+    "math"
+   ]
+  },
+  {
+   "slug": "closest-number-with-given-bit-count",
+   "title": "The Number With the Same Bit Count as B That Is Closest to A in XOR",
+   "topic": "greedy-bits",
+   "difficulty": "medium",
+   "order": 875,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "greedy",
+    "popcount"
+   ]
+  },
+  {
+   "slug": "numbers-to-add-for-every-sum",
+   "title": "The Fewest Numbers to Add So That Every Sum Up to N Exists",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 876,
+   "tags": [
+    "greedy",
+    "math",
+    "doubling",
+    "subset-sums"
+   ]
+  },
+  {
+   "slug": "largest-number-from-two-digit-lists",
+   "title": "The Largest Number Built From Two Lists of Digits",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 877,
+   "tags": [
+    "greedy",
+    "monotonic-stack",
+    "merge",
+    "lexicographic"
+   ]
+  },
+  {
+   "slug": "fewest-fuel-stops",
+   "title": "The Fewest Stops to Refuel on the Way to the Goal",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 878,
+   "tags": [
+    "greedy",
+    "heap",
+    "refuelling"
+   ]
+  },
+  {
+   "slug": "most-events-one-per-day",
+   "title": "Attend the Most Events, One Per Day",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 879,
+   "tags": [
+    "greedy",
+    "heap",
+    "scheduling",
+    "sweep"
+   ]
+  },
+  {
+   "slug": "tasks-with-magic-pills",
+   "title": "How Many Tasks Can the Workers Do With a Few Magic Pills?",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 880,
+   "tags": [
+    "greedy",
+    "binary-search",
+    "deque",
+    "matching"
+   ]
+  },
+  {
+   "slug": "cheapest-crew-of-k-workers",
+   "title": "The Cheapest Crew of K Workers",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 881,
+   "tags": [
+    "greedy",
+    "heap",
+    "sorting",
+    "ratio"
+   ]
+  },
+  {
+   "slug": "fund-the-best-projects",
+   "title": "Fund the Best Projects to Maximise the Final Capital",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 882,
+   "tags": [
+    "greedy",
+    "heap",
+    "two-heaps",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "cheapest-merging-of-piles",
+   "title": "The Cheapest Way to Merge All Piles, K at a Time",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 883,
+   "tags": [
+    "greedy",
+    "heap",
+    "huffman",
+    "merging"
+   ]
+  },
+  {
+   "slug": "smallest-word-keeping-each-letter-once",
+   "title": "The Smallest Word That Keeps Every Letter Exactly Once",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 884,
+   "tags": [
+    "greedy",
+    "monotonic-stack",
+    "string",
+    "lexicographic"
+   ]
+  },
+  {
+   "slug": "shortest-range-covering-each-point",
+   "title": "The Shortest Range That Covers Each Point",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 885,
+   "tags": [
+    "intervals",
+    "offline-queries",
+    "heap",
+    "sweep-line"
+   ]
+  },
+  {
+   "slug": "best-profit-without-overlaps",
+   "title": "The Best Profit From Jobs That Do Not Overlap",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 886,
+   "tags": [
+    "intervals",
+    "dynamic-programming",
+    "binary-search",
+    "weighted-scheduling"
+   ]
+  },
+  {
+   "slug": "track-covered-ranges",
+   "title": "Keep Track of Covered Ranges With Add, Remove and Ask",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 887,
+   "tags": [
+    "intervals",
+    "sorted-list",
+    "range-module",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "busiest-moment-after-each-booking",
+   "title": "The Busiest Moment After Each New Booking",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 888,
+   "tags": [
+    "intervals",
+    "segment-tree",
+    "lazy-propagation",
+    "coordinate-compression"
+   ]
+  },
+  {
+   "slug": "area-covered-by-rectangles",
+   "title": "The Total Area Covered by Overlapping Rectangles",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 889,
+   "tags": [
+    "intervals",
+    "sweep-line",
+    "segment-tree",
+    "geometry"
+   ]
+  },
+  {
+   "slug": "busiest-room-with-delays",
+   "title": "Which Room Hosts the Most Meetings When Meetings Can Be Delayed?",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 890,
+   "tags": [
+    "intervals",
+    "heap",
+    "simulation",
+    "two-heaps"
+   ]
+  },
+  {
+   "slug": "cheapest-ranges-to-cover-the-street",
+   "title": "The Cheapest Priced Ranges That Cover the Whole Street",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 891,
+   "tags": [
+    "intervals",
+    "dynamic-programming",
+    "fenwick-tree",
+    "covering"
+   ]
+  },
+  {
+   "slug": "most-meetings-in-k-rooms",
+   "title": "The Most Meetings That Fit in K Rooms",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 892,
+   "tags": [
+    "intervals",
+    "greedy",
+    "multiset",
+    "scheduling"
+   ]
+  },
+  {
+   "slug": "largest-xor-of-a-long-subarray",
+   "title": "The Largest XOR of a Subarray With At Least L Elements",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 893,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "trie",
+    "prefix-xor"
+   ]
+  },
+  {
+   "slug": "pairs-with-xor-in-a-range",
+   "title": "Count the Pairs Whose XOR Lies in a Range",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 894,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "trie",
+    "counting"
+   ]
+  },
+  {
+   "slug": "triples-with-zero-and",
+   "title": "Count the Triples Whose AND Is Zero",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 895,
+   "tags": [
+    "bit-manipulation",
+    "sos-dp",
+    "submasks",
+    "counting"
+   ]
+  },
+  {
+   "slug": "smallest-xor-sum-of-a-pairing",
+   "title": "The Smallest XOR Sum of a Pairing",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 896,
+   "tags": [
+    "bit-manipulation",
+    "bitmask-dp",
+    "assignment"
+   ]
+  },
+  {
+   "slug": "largest-xor-of-a-subset",
+   "title": "The Largest XOR of Any Subset",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 897,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "linear-basis",
+    "gaussian-elimination"
+   ]
+  },
+  {
+   "slug": "kth-smallest-subset-xor",
+   "title": "The K-th Smallest XOR of a Subset",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 898,
+   "tags": [
+    "bit-manipulation",
+    "xor",
+    "linear-basis",
+    "order-statistics"
+   ]
+  },
+  {
+   "slug": "shortest-subarray-with-full-or-from-each-start",
+   "title": "The Shortest Subarray From Each Start That Reaches the Largest OR",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 899,
+   "tags": [
+    "bit-manipulation",
+    "or",
+    "subarrays",
+    "next-occurrence"
+   ]
+  },
+  {
+   "slug": "subsets-with-zero-and",
+   "title": "How Many Subsets Have an AND of Zero?",
+   "topic": "greedy-bits",
+   "difficulty": "hard",
+   "order": 900,
+   "tags": [
+    "bit-manipulation",
+    "sos-dp",
+    "inclusion-exclusion",
+    "counting-modulo"
+   ]
   }
  ]
 }
