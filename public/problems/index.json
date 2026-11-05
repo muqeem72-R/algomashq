@@ -8582,6 +8582,1259 @@
     "second-shortest",
     "simulation"
    ]
+  },
+  {
+   "slug": "ways-up-the-stairs",
+   "title": "Count the Ways Up the Stairs",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 701,
+   "tags": [
+    "dp",
+    "fibonacci",
+    "counting"
+   ]
+  },
+  {
+   "slug": "three-step-hops",
+   "title": "Hops of One, Two or Three Steps",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 702,
+   "tags": [
+    "dp",
+    "counting",
+    "tribonacci"
+   ]
+  },
+  {
+   "slug": "cheapest-stairs",
+   "title": "The Cheapest Way to the Top of the Stairs",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 703,
+   "tags": [
+    "dp",
+    "min-cost",
+    "stairs"
+   ]
+  },
+  {
+   "slug": "rob-the-street",
+   "title": "The Richest Houses With No Two Neighbours",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 704,
+   "tags": [
+    "dp",
+    "take-or-skip",
+    "array"
+   ]
+  },
+  {
+   "slug": "rob-the-circle",
+   "title": "The Same Houses Around a Round Square",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 705,
+   "tags": [
+    "dp",
+    "take-or-skip",
+    "circular"
+   ]
+  },
+  {
+   "slug": "tile-with-dominoes-and-l-pieces",
+   "title": "Tile a Two-Row Floor With Dominoes and L-Pieces",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 706,
+   "tags": [
+    "dp",
+    "counting",
+    "tiling"
+   ]
+  },
+  {
+   "slug": "paint-the-fence",
+   "title": "Paint the Fence Posts",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 707,
+   "tags": [
+    "dp",
+    "counting",
+    "two-states"
+   ]
+  },
+  {
+   "slug": "bit-count-total",
+   "title": "How Many One-Bits Are There From 0 to n?",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 708,
+   "tags": [
+    "dp",
+    "bits",
+    "table"
+   ]
+  },
+  {
+   "slug": "one-trade-profit",
+   "title": "The Best Day to Buy and the Best Day to Sell",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 709,
+   "tags": [
+    "dp",
+    "array",
+    "prefix-minimum"
+   ]
+  },
+  {
+   "slug": "count-search-tree-shapes",
+   "title": "How Many Different Search Trees Have n Nodes?",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 710,
+   "tags": [
+    "dp",
+    "counting",
+    "catalan",
+    "bst"
+   ]
+  },
+  {
+   "slug": "routes-around-walls",
+   "title": "Count the Routes Through a Walled Grid",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 711,
+   "tags": [
+    "dp",
+    "grid",
+    "counting"
+   ]
+  },
+  {
+   "slug": "cheapest-grid-route",
+   "title": "The Cheapest Route Across a Table of Costs",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 712,
+   "tags": [
+    "dp",
+    "grid",
+    "min-cost"
+   ]
+  },
+  {
+   "slug": "triangle-descent",
+   "title": "The Lightest Way Down a Triangle",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 713,
+   "tags": [
+    "dp",
+    "triangle",
+    "min-cost",
+    "bottom-up"
+   ]
+  },
+  {
+   "slug": "falling-path",
+   "title": "The Smallest Sum of a Falling Path",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 714,
+   "tags": [
+    "dp",
+    "grid",
+    "min-cost"
+   ]
+  },
+  {
+   "slug": "gold-mine-walk",
+   "title": "Walk Through the Gold Mine",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 715,
+   "tags": [
+    "dp",
+    "grid",
+    "max-sum"
+   ]
+  },
+  {
+   "slug": "pascal-row",
+   "title": "The k-th Row of Pascal's Triangle",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 716,
+   "tags": [
+    "dp",
+    "pascal",
+    "combinatorics"
+   ]
+  },
+  {
+   "slug": "fewest-squares",
+   "title": "The Fewest Perfect Squares That Add Up to n",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 717,
+   "tags": [
+    "dp",
+    "unbounded",
+    "min-count"
+   ]
+  },
+  {
+   "slug": "largest-square-of-ones",
+   "title": "The Largest Square Made Only of Ones",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 718,
+   "tags": [
+    "dp",
+    "grid",
+    "square"
+   ]
+  },
+  {
+   "slug": "sparse-binary-strings",
+   "title": "Binary Strings With k Ones and No Two Ones Side by Side",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 719,
+   "tags": [
+    "dp",
+    "counting",
+    "strings",
+    "two-dimensional"
+   ]
+  },
+  {
+   "slug": "ugly-numbers",
+   "title": "Numbers With Only the Prime Factors 2, 3 and 5",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 720,
+   "tags": [
+    "dp",
+    "three-pointers",
+    "sequence"
+   ]
+  },
+  {
+   "slug": "alternating-subsequence-sum",
+   "title": "The Biggest Alternating Sum of a Subsequence",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 721,
+   "tags": [
+    "dp",
+    "subsequence",
+    "two-states"
+   ]
+  },
+  {
+   "slug": "arithmetic-slices-count",
+   "title": "Count the Stretches With a Constant Step",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 722,
+   "tags": [
+    "dp",
+    "array",
+    "arithmetic-progression"
+   ]
+  },
+  {
+   "slug": "can-reach-the-end",
+   "title": "Can You Hop to the Last Square?",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 723,
+   "tags": [
+    "dp",
+    "jump-game",
+    "reachability"
+   ]
+  },
+  {
+   "slug": "steps-down-to-one",
+   "title": "The Fewest Steps From n Down to 1",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 724,
+   "tags": [
+    "dp",
+    "min-steps",
+    "queries"
+   ]
+  },
+  {
+   "slug": "best-sightseeing-pair",
+   "title": "The Best Pair of Sights Along the Road",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 725,
+   "tags": [
+    "dp",
+    "array",
+    "best-so-far"
+   ]
+  },
+  {
+   "slug": "positive-product-run",
+   "title": "The Longest Stretch With a Positive Product",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 726,
+   "tags": [
+    "dp",
+    "array",
+    "sign",
+    "two-states"
+   ]
+  },
+  {
+   "slug": "paint-houses-three-colours",
+   "title": "Paint the Street With Three Colours",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 727,
+   "tags": [
+    "dp",
+    "states",
+    "min-cost"
+   ]
+  },
+  {
+   "slug": "counters-on-two-rows",
+   "title": "Place Counters on a Two-Row Board",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 728,
+   "tags": [
+    "dp",
+    "counting",
+    "column-states"
+   ]
+  },
+  {
+   "slug": "alternating-building-triples",
+   "title": "Count the Alternating Triples of Buildings",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 729,
+   "tags": [
+    "dp",
+    "subsequence-count",
+    "string"
+   ]
+  },
+  {
+   "slug": "frog-crosses-the-stones",
+   "title": "The Frog Crosses the Stones",
+   "topic": "dp",
+   "difficulty": "easy",
+   "order": 730,
+   "tags": [
+    "dp",
+    "min-cost",
+    "jumps"
+   ]
+  },
+  {
+   "slug": "fewest-coins-for-amount",
+   "title": "Pay the Exact Amount With the Fewest Coins",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 731,
+   "tags": [
+    "dp",
+    "coins",
+    "unbounded-knapsack",
+    "min-count"
+   ]
+  },
+  {
+   "slug": "ways-to-make-change",
+   "title": "In How Many Ways Can the Change Be Paid?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 732,
+   "tags": [
+    "dp",
+    "coins",
+    "unbounded-knapsack",
+    "counting"
+   ]
+  },
+  {
+   "slug": "equal-halves-partition",
+   "title": "Can the Numbers Be Split Into Two Equal Halves?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 733,
+   "tags": [
+    "dp",
+    "subset-sum",
+    "knapsack",
+    "bitset"
+   ]
+  },
+  {
+   "slug": "target-sum-signs",
+   "title": "Put a Plus or a Minus in Front of Every Number",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 734,
+   "tags": [
+    "dp",
+    "subset-sum",
+    "counting",
+    "knapsack"
+   ]
+  },
+  {
+   "slug": "ones-and-zeros-strings",
+   "title": "How Many Binary Strings Fit in the Budget?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 735,
+   "tags": [
+    "dp",
+    "knapsack",
+    "two-dimensional",
+    "strings"
+   ]
+  },
+  {
+   "slug": "zero-one-knapsack-value",
+   "title": "Pack the Bag With the Most Valuable Items",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 736,
+   "tags": [
+    "dp",
+    "knapsack",
+    "0-1-knapsack"
+   ]
+  },
+  {
+   "slug": "cut-the-rod-for-the-best-price",
+   "title": "Cut the Rod for the Best Price",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 737,
+   "tags": [
+    "dp",
+    "unbounded-knapsack",
+    "rod-cutting"
+   ]
+  },
+  {
+   "slug": "smallest-stone-difference",
+   "title": "Two Piles of Stones With the Smallest Difference",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 738,
+   "tags": [
+    "dp",
+    "subset-sum",
+    "partition",
+    "bitset"
+   ]
+  },
+  {
+   "slug": "dice-sum-ways",
+   "title": "In How Many Ways Can the Dice Show the Sum s?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 739,
+   "tags": [
+    "dp",
+    "counting",
+    "dice"
+   ]
+  },
+  {
+   "slug": "longest-increasing-subsequence",
+   "title": "The Longest Strictly Rising Subsequence",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 740,
+   "tags": [
+    "dp",
+    "lis",
+    "binary-search",
+    "subsequence"
+   ]
+  },
+  {
+   "slug": "longest-common-subsequence",
+   "title": "The Longest Subsequence Two Words Share",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 741,
+   "tags": [
+    "dp",
+    "lcs",
+    "string",
+    "two-strings"
+   ]
+  },
+  {
+   "slug": "edit-distance",
+   "title": "The Fewest Edits to Turn One Word Into Another",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 742,
+   "tags": [
+    "dp",
+    "edit-distance",
+    "string",
+    "two-strings"
+   ]
+  },
+  {
+   "slug": "longest-palindromic-subsequence",
+   "title": "The Longest Palindrome Hidden in a Word",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 743,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "palindrome",
+    "string"
+   ]
+  },
+  {
+   "slug": "count-subsequence-occurrences",
+   "title": "How Many Times Is the Word Hidden Inside the Text?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 744,
+   "tags": [
+    "dp",
+    "counting",
+    "subsequence",
+    "string"
+   ]
+  },
+  {
+   "slug": "maximum-sum-rising-subsequence",
+   "title": "The Rising Subsequence With the Biggest Sum",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 745,
+   "tags": [
+    "dp",
+    "subsequence",
+    "lis-variant"
+   ]
+  },
+  {
+   "slug": "longest-arithmetic-subsequence",
+   "title": "The Longest Subsequence With a Constant Step",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 746,
+   "tags": [
+    "dp",
+    "subsequence",
+    "arithmetic-progression",
+    "two-dimensional"
+   ]
+  },
+  {
+   "slug": "longest-rise-then-fall",
+   "title": "The Longest Subsequence That Rises and Then Falls",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 747,
+   "tags": [
+    "dp",
+    "subsequence",
+    "bitonic",
+    "lis-variant"
+   ]
+  },
+  {
+   "slug": "common-subsequence-of-three",
+   "title": "The Longest Subsequence Shared by Three Words",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 748,
+   "tags": [
+    "dp",
+    "lcs",
+    "three-dimensional",
+    "string"
+   ]
+  },
+  {
+   "slug": "decode-digit-messages",
+   "title": "Read the Digits as Letters: How Many Messages?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 749,
+   "tags": [
+    "dp",
+    "string",
+    "counting",
+    "decoding"
+   ]
+  },
+  {
+   "slug": "count-word-breaks",
+   "title": "Cut the Text Into Dictionary Words in How Many Ways?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 750,
+   "tags": [
+    "dp",
+    "string",
+    "dictionary",
+    "counting"
+   ]
+  },
+  {
+   "slug": "wildcard-pattern-match",
+   "title": "Does the Pattern With Wildcards Match the Text?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 751,
+   "tags": [
+    "dp",
+    "string",
+    "pattern-matching",
+    "wildcard"
+   ]
+  },
+  {
+   "slug": "interleaved-words",
+   "title": "Is the Third Word a Shuffle of the Other Two?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 752,
+   "tags": [
+    "dp",
+    "string",
+    "interleaving",
+    "two-pointers"
+   ]
+  },
+  {
+   "slug": "fewest-palindrome-cuts",
+   "title": "The Fewest Cuts That Leave Only Palindromes",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 753,
+   "tags": [
+    "dp",
+    "string",
+    "palindrome",
+    "partition"
+   ]
+  },
+  {
+   "slug": "longest-balanced-bracket-run",
+   "title": "The Longest Balanced Run of Brackets",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 754,
+   "tags": [
+    "dp",
+    "string",
+    "brackets"
+   ]
+  },
+  {
+   "slug": "knight-phone-numbers",
+   "title": "The Knight Dials Phone Numbers",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 755,
+   "tags": [
+    "dp",
+    "counting",
+    "graph-dp",
+    "states"
+   ]
+  },
+  {
+   "slug": "longest-repeated-piece",
+   "title": "The Longest Piece That Appears Twice Without Overlap",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 756,
+   "tags": [
+    "dp",
+    "string",
+    "repeated-substring"
+   ]
+  },
+  {
+   "slug": "cheapest-deletions-to-equal",
+   "title": "Make Two Words Equal by Deleting the Cheapest Letters",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 757,
+   "tags": [
+    "dp",
+    "string",
+    "lcs-variant",
+    "weighted"
+   ]
+  },
+  {
+   "slug": "dungeon-game",
+   "title": "The Smallest Starting Health for the Dungeon",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 758,
+   "tags": [
+    "dp",
+    "grid",
+    "backward-dp"
+   ]
+  },
+  {
+   "slug": "best-coin-route-and-count",
+   "title": "The Richest Route and How Many Routes Are Richest",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 759,
+   "tags": [
+    "dp",
+    "grid",
+    "counting",
+    "pairs"
+   ]
+  },
+  {
+   "slug": "longest-rising-path-in-grid",
+   "title": "The Longest Rising Path in a Table",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 760,
+   "tags": [
+    "dp",
+    "grid",
+    "sorting",
+    "dag"
+   ]
+  },
+  {
+   "slug": "paths-with-sum-divisible-by-k",
+   "title": "Routes Whose Sum Is a Multiple of k",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 761,
+   "tags": [
+    "dp",
+    "grid",
+    "modular",
+    "counting"
+   ]
+  },
+  {
+   "slug": "out-of-boundary-paths",
+   "title": "How Many Ways Can the Ball Roll Out of the Grid?",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 762,
+   "tags": [
+    "dp",
+    "grid",
+    "counting",
+    "moves"
+   ]
+  },
+  {
+   "slug": "largest-plus-sign",
+   "title": "The Biggest Plus Sign That Fits Between the Blocked Cells",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 763,
+   "tags": [
+    "dp",
+    "grid",
+    "four-directions"
+   ]
+  },
+  {
+   "slug": "routes-with-few-turns",
+   "title": "Count the Routes That Turn at Most k Times",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 764,
+   "tags": [
+    "dp",
+    "grid",
+    "counting",
+    "direction-state"
+   ]
+  },
+  {
+   "slug": "two-robots-collect-cherries",
+   "title": "Two Robots Collect the Cherries",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 765,
+   "tags": [
+    "dp",
+    "grid",
+    "two-agents",
+    "states"
+   ]
+  },
+  {
+   "slug": "falling-path-different-columns",
+   "title": "A Falling Path That Never Repeats a Column",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 766,
+   "tags": [
+    "dp",
+    "grid",
+    "two-minimums",
+    "optimisation"
+   ]
+  },
+  {
+   "slug": "trade-with-cooldown",
+   "title": "Trade Shares With a Rest Day After Every Sale",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 767,
+   "tags": [
+    "dp",
+    "state-machine",
+    "stock"
+   ]
+  },
+  {
+   "slug": "trade-with-fee",
+   "title": "Trade Shares When Every Sale Costs a Fee",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 768,
+   "tags": [
+    "dp",
+    "state-machine",
+    "stock"
+   ]
+  },
+  {
+   "slug": "two-trades-at-most",
+   "title": "The Best Profit From at Most Two Trades",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 769,
+   "tags": [
+    "dp",
+    "state-machine",
+    "stock"
+   ]
+  },
+  {
+   "slug": "k-trades-at-most",
+   "title": "The Best Profit From at Most k Trades",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 770,
+   "tags": [
+    "dp",
+    "state-machine",
+    "stock",
+    "k-transactions"
+   ]
+  },
+  {
+   "slug": "cheapest-travel-passes",
+   "title": "The Cheapest Combination of Travel Passes",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 771,
+   "tags": [
+    "dp",
+    "timeline",
+    "min-cost"
+   ]
+  },
+  {
+   "slug": "delete-and-earn",
+   "title": "Pick a Number, Earn Its Value, Lose Its Neighbours",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 772,
+   "tags": [
+    "dp",
+    "take-or-skip",
+    "counting",
+    "reduction"
+   ]
+  },
+  {
+   "slug": "rob-the-village-tree",
+   "title": "Rob the Houses of a Village Built as a Tree",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 773,
+   "tags": [
+    "dp",
+    "tree-dp",
+    "take-or-skip"
+   ]
+  },
+  {
+   "slug": "three-best-windows",
+   "title": "Three Separate Windows With the Biggest Total",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 774,
+   "tags": [
+    "dp",
+    "windows",
+    "prefix-sums",
+    "multi-stage"
+   ]
+  },
+  {
+   "slug": "flip-to-zeros-then-ones",
+   "title": "Flip the Fewest Bits to Get Zeros and Then Ones",
+   "topic": "dp",
+   "difficulty": "medium",
+   "order": 775,
+   "tags": [
+    "dp",
+    "string",
+    "two-states",
+    "binary"
+   ]
+  },
+  {
+   "slug": "burst-balloons",
+   "title": "Burst the Balloons for the Most Coins",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 776,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "last-action"
+   ]
+  },
+  {
+   "slug": "matrix-chain-order",
+   "title": "The Cheapest Order to Multiply a Chain of Matrices",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 777,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "matrix-chain"
+   ]
+  },
+  {
+   "slug": "merge-stones-in-groups",
+   "title": "Merge the Piles of Stones k at a Time",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 778,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "merging"
+   ]
+  },
+  {
+   "slug": "strange-printer-turns",
+   "title": "The Fewest Turns of a Printer That Overwrites",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 779,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "string"
+   ]
+  },
+  {
+   "slug": "cut-the-stick-cheapest",
+   "title": "Cut the Stick at All the Marks as Cheaply as Possible",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 780,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "cuts"
+   ]
+  },
+  {
+   "slug": "piles-at-the-ends-game",
+   "title": "Two Players Take Piles From the Ends: Who Wins by How Much?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 781,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "game-theory",
+    "minimax"
+   ]
+  },
+  {
+   "slug": "shortest-round-trip",
+   "title": "The Shortest Round Trip Through All the Cities",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 782,
+   "tags": [
+    "dp",
+    "bitmask",
+    "tsp"
+   ]
+  },
+  {
+   "slug": "cheapest-task-assignment",
+   "title": "Give Every Worker One Task at the Smallest Total Price",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 783,
+   "tags": [
+    "dp",
+    "bitmask",
+    "assignment"
+   ]
+  },
+  {
+   "slug": "split-into-k-equal-groups",
+   "title": "Can the Numbers Be Split Into k Groups With Equal Sums?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 784,
+   "tags": [
+    "dp",
+    "bitmask",
+    "partition"
+   ]
+  },
+  {
+   "slug": "dot-star-pattern-match",
+   "title": "Does the Pattern With Dot and Star Match the Whole Text?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 785,
+   "tags": [
+    "dp",
+    "string",
+    "regex",
+    "pattern-matching"
+   ]
+  },
+  {
+   "slug": "count-distinct-subsequences",
+   "title": "How Many Different Subsequences Does the Word Have?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 786,
+   "tags": [
+    "dp",
+    "string",
+    "counting",
+    "subsequence"
+   ]
+  },
+  {
+   "slug": "count-longest-rising-subsequences",
+   "title": "How Many Longest Rising Subsequences Are There?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 787,
+   "tags": [
+    "dp",
+    "lis",
+    "counting",
+    "pairs"
+   ]
+  },
+  {
+   "slug": "nested-envelopes",
+   "title": "How Many Envelopes Fit Inside Each Other?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 788,
+   "tags": [
+    "dp",
+    "lis",
+    "sorting",
+    "two-dimensional"
+   ]
+  },
+  {
+   "slug": "count-palindromic-subsequences",
+   "title": "Count the Palindromic Subsequences by Position",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 789,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "palindrome",
+    "counting"
+   ]
+  },
+  {
+   "slug": "shortest-window-with-subsequence",
+   "title": "The Shortest Piece of the Text That Contains the Word as a Subsequence",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 790,
+   "tags": [
+    "dp",
+    "string",
+    "subsequence",
+    "window"
+   ]
+  },
+  {
+   "slug": "largest-rectangle-of-ones",
+   "title": "The Largest Rectangle Made Only of Ones",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 791,
+   "tags": [
+    "dp",
+    "grid",
+    "histogram",
+    "monotonic-stack"
+   ]
+  },
+  {
+   "slug": "equal-height-billboards",
+   "title": "Two Billboard Supports of Exactly the Same Height",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 792,
+   "tags": [
+    "dp",
+    "knapsack",
+    "difference",
+    "partition"
+   ]
+  },
+  {
+   "slug": "count-numbers-digit-sum-multiple",
+   "title": "Count the Numbers Whose Digit Sum Is a Multiple of k",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 793,
+   "tags": [
+    "dp",
+    "digit-dp",
+    "counting",
+    "modular"
+   ]
+  },
+  {
+   "slug": "domino-tilings-of-a-board",
+   "title": "In How Many Ways Can the Board Be Covered With Dominoes?",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 794,
+   "tags": [
+    "dp",
+    "profile-dp",
+    "bitmask",
+    "tiling"
+   ]
+  },
+  {
+   "slug": "fewest-egg-drops",
+   "title": "The Fewest Drops to Find the Breaking Floor",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 795,
+   "tags": [
+    "dp",
+    "egg-drop",
+    "optimisation",
+    "inverse-dp"
+   ]
+  },
+  {
+   "slug": "optimal-search-tree-cost",
+   "title": "The Cheapest Search Tree for Given Frequencies",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 796,
+   "tags": [
+    "dp",
+    "interval-dp",
+    "bst",
+    "optimal-tree"
+   ]
+  },
+  {
+   "slug": "k-separate-stretches",
+   "title": "Pick k Separate Stretches With the Biggest Total",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 797,
+   "tags": [
+    "dp",
+    "subarray",
+    "k-segments",
+    "two-states"
+   ]
+  },
+  {
+   "slug": "job-schedule-difficulty",
+   "title": "Split the Jobs Into d Days With the Least Total Difficulty",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 798,
+   "tags": [
+    "dp",
+    "partition",
+    "scheduling",
+    "running-maximum"
+   ]
+  },
+  {
+   "slug": "shortest-common-superstring",
+   "title": "The Shortest Word That Contains All the Given Words",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 799,
+   "tags": [
+    "dp",
+    "bitmask",
+    "tsp",
+    "strings"
+   ]
+  },
+  {
+   "slug": "three-colour-grid-count",
+   "title": "Colour the Grid With Three Colours and No Equal Neighbours",
+   "topic": "dp",
+   "difficulty": "hard",
+   "order": 800,
+   "tags": [
+    "dp",
+    "profile-dp",
+    "column-states",
+    "counting"
+   ]
   }
  ]
 }
