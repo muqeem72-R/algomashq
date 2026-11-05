@@ -546,4 +546,36 @@ solutions of the hard problems therefore keep their graphs in int arrays. The bu
 5 MB, so the matching problem has at most 200 people on each side and the sliding puzzle asks for 20000 boards in one test; every
 problem still has tests as large as its limits allow, and no hidden test was made smaller.
 
-Next: Dynamic Programming (701-800).
+### Dynamic Programming (701-800, released)
+
+| Numbers | What they teach |
+|---|---|
+| 701-710 | recurrences on a line: stairs with 1, 2 or 3 steps, the cheapest stairs, robbing a street and a circle of houses, tilings of a two-row floor, painting a fence, counting bits, one stock trade, the shapes of search trees |
+| 711-720 | grids and tables: routes around walls, the cheapest route, the lightest way down a triangle, falling paths, the gold mine, Pascal's row, the fewest squares, the largest square of ones, binary strings with k ones and no two side by side, numbers with the factors 2, 3 and 5 |
+| 721-730 | sequences: alternating sums, arithmetic stretches, reaching the end, steps down to 1, a sightseeing pair, positive products, painting houses, counters on two rows, alternating triples, the frog on the stones |
+| 731-739 | knapsack and coins: the fewest coins, ways to make change, two equal halves, signs for a target, a knapsack with two limits, the classic knapsack, rod cutting, the smallest stone difference, sums of dice |
+| 740-748 | subsequences: the longest rising subsequence in O(n log n), the longest common subsequence, edit distance, the longest palindromic subsequence, counting occurrences, the heaviest rising subsequence, arithmetic subsequences, rise-then-fall, three words |
+| 749-757 | strings: decoding digits, cutting a text into dictionary words, wildcards, interleaving, palindrome cuts, balanced brackets, the knight on a keypad, repeated pieces, the cheapest deletions |
+| 758-766 | grids with a state: the dungeon, the richest route and how many there are, the longest rising path, sums divisible by k, out-of-boundary paths, plus signs, routes with few turns, two robots, falling paths in different columns |
+| 767-775 | stocks and other state machines: a cooldown, a fee, two trades, k trades, travel passes, delete and earn, a village shaped as a tree, three windows, flipping bits |
+| 776-784 | hard, intervals and bitmasks: balloons, matrix chains, merging stones, the strange printer, cutting a stick, a game on the ends of a row, the travelling salesman, task assignment, equal groups |
+| 785-792 | hard, strings and sequences: dot and star patterns, distinct subsequences, counting the longest rising subsequences, nested envelopes, palindromic subsequences, the shortest window, the largest rectangle of ones, billboard supports |
+| 793-800 | hard, states and counting: digit DP, domino tilings with a profile, egg drops, the optimal search tree, k separate stretches, a job schedule, the shortest superstring, colouring a grid |
+
+How it was checked: 2037 native Python runs against the JavaScript reference with no difference (every problem is also compared
+with a brute force or an independent method while the tests are built); 100 of 100 solutions Accepted in each of Python, C++ and
+Java by the real judge in a real browser (300 checks, on files identical to the released ones), and all starter files compile;
+890 unit tests pass; a browser session on a clean server passed 25 checks (eight topics on the site, roadmap, list and filters,
+three problems solved through the editor, Progress page).
+
+Things that came up: the build keeps the hidden tests of one problem under 5 MB, and the first versions of the tests of several array
+problems were over this limit (a long list of numbers up to 10^9 is about 1 MB). The limits written in these statements were
+therefore chosen with the budget in mind (lists of at most 100000 numbers, tables of a few hundred rows and columns), and the
+largest tests of every problem still use the limits of its statement. The DP tables were also chosen so that the work is at most
+a few million steps: the reference solutions need less than a second natively, and a plain Python solution is far from the time
+limit, which is 5 times longer in the browser. A DP that needs the next value of a table cell must be filled in an order in which
+that value exists: several solutions walk a row from the right to the left (a 0/1 knapsack) so that an item is used only once,
+while the coin problems walk it from the left to the right so that a coin can be used again, and the concept texts explain the
+difference. The Java solutions keep their tables in plain arrays.
+
+Next: Greedy, Bit Manipulation, Intervals (801-900).

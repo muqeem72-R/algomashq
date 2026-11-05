@@ -76,6 +76,13 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   components, bridges and articulation points, 2-SAT, matching and maximum flow, Euler paths, and searches over states (bitmasks,
   puzzles, limited resources). A graph is given as `n m` followed by `m` edge lines, a grid as `h w` followed by its rows; the
   biggest tests have graphs with 20000 nodes and tens of thousands of edges, so the solutions use loops with a stack instead of recursion.
+- 100 original problems in the **Dynamic Programming** topic, numbered 701 to 800 by effort (701-730 easy, 731-775 medium, 776-800 hard):
+  recurrences on a line (stairs, houses, tilings), counting routes and cheapest routes on grids, knapsack and coin problems,
+  longest increasing and common subsequences, edit distance and other string tables, stock trading as a small state machine,
+  interval DP (balloons, matrix chains, stones, a game on the ends), bitmask DP (round trips, assignments, superstrings), digit DP,
+  profile DP (dominoes and colourings) and tree DP. Each concept text explains the state, the recurrence and the order in which the
+  table is filled. Answers that grow very fast are asked modulo 1000000007, and the sizes are chosen so that a plain solution in
+  Python, C++ or Java fits the time limit.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 
