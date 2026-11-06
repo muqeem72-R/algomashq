@@ -1,1 +1,1 @@
-{ "released": ["basics", "arrays-strings", "hashing", "linear", "backtracking", "trees", "graphs", "dp", "greedy-bits"] }
+{ "released": ["basics", "arrays-strings", "hashing", "linear", "backtracking", "trees", "graphs", "dp", "greedy-bits", "advanced"] }

@@ -90,6 +90,14 @@ Everything runs on free tiers: one Cloudflare Worker (site and API), Cloudflare 
   tricks, prefix XOR, tries, the linear basis, sum-over-subsets counting, bitmask DP). Each concept text states the greedy
   rule and why it works, or the bit identity that replaces a loop. Numbers up to 10^18 are read as 64-bit integers, and the
   sizes are chosen so that a plain solution in Python, C++ or Java fits the time limit.
+- 100 original problems in the **Advanced** topic, numbered 901 to 1000 by effort (901-930 easy, 931-975 medium, 976-1000 hard):
+  the Fenwick tree (prefix sums, order statistics, 2D sums, offline counting), the segment tree (point and range changes, lazy
+  marks that compose, a merge sort tree, a persistent tree, segment tree beats), string algorithms (the prefix function, the
+  Z-function, KMP and its automaton, Aho-Corasick, suffix arrays with LCP, Lyndon words, the palindromic tree) and tools for many
+  questions on a fixed list (sparse tables, Mo's algorithm, sqrt decomposition, the convex hull trick, matrix powers, meet in the
+  middle, the XOR basis). Each concept text explains the structure, why a change or a question touches only O(log n) nodes (or the
+  idea that replaces the plain loop), and the sizes are chosen so that a plain solution in Python, C++ or Java fits the time limit.
+  With this topic all ten topics of the roadmap are on the site: 1000 problems.
 
 **How code runs.** Everything runs in the learner's own browser with WebAssembly, so it costs nothing and needs no server:
 

@@ -609,4 +609,38 @@ and the biggest tests still use these limits. Java solutions sort pairs by packi
 numbers are slow in the in-browser Java runner. Reference solutions that are written with the same method as the program were
 compared with an exhaustive search on small inputs, and the fast and slow methods were compared with each other on mid-size inputs.
 
-Next: Advanced (901-1000).
+### Advanced: Segment Tree, Fenwick Tree, KMP (901-1000, released)
+
+| Numbers | What they teach |
+|---|---|
+| 901-910 | Fenwick tree: changing a number and summing a range, replacing a number, smaller numbers before and larger numbers after each one, adding to a range and asking one cell, counting inserted values, the sum of the smaller numbers, free seats, lamps switched on, the best score so far |
+| 911-920 | segment tree: the smallest, the first cell at least x (a descent), zeros, the GCD, sum and largest, XOR, the two smallest, the sign of a product, the leftmost smallest, how many equal the largest |
+| 921-930 | strings: the prefix function, the Z-function, positions of a pattern, the longest border, the shortest repeating unit, rotations, the longest pattern prefix at each position, all borders, the sum of the Z-function, the longest prefix that appears again |
+| 931-939 | medium, Fenwick tree: the k-th smallest in a changing set, rectangle sums in 2D, range add and range sum, reverse pairs, close pairs, distinct values in ranges, points below and to the left, the last person in a circle, crossing chords |
+| 940-948 | medium, segment tree: the longest run of ones, assigning to a range, adding and asking the smallest, balanced brackets in a range, switching a range of lamps, the k-th lamp, the best block sum, the longest rising run, the product modulo a prime |
+| 949-957 | medium, strings: restoring a word from its prefix function, how often each prefix occurs, repetitions, a border that occurs inside, circular text, squares, the smallest rotation, Lyndon words, palindromes around each centre |
+| 958-966 | medium, static queries and trees: sparse tables for the minimum, the GCD and the spread, path sums and subtree maximums on an Euler tour, overlapping words, KMP on rises and falls, occurrences inside ranges, the shortest word containing two words |
+| 967-975 | medium, offline queries: counting a value in ranges, numbers at most x in ranges, the balance point of weights, neighbour swaps, rising triples, rising subsequences of length k, a window with few inversions, block sums between bounds, nested segments |
+| 976-984 | hard, segment tree: two kinds of lazy marks, a merge sort tree with coded (online) questions, a persistent tree for the k-th smallest, the sum of squares, the minimum and its count, affine marks modulo a prime, segment tree beats, repairing brackets, the skyline seen from the left |
+| 985-992 | hard, strings: the k-th different substring, Aho-Corasick counting and avoiding keywords, longest common extensions with a suffix array and a sparse table, the border of a word with pushes and pops (a KMP automaton), the shortest unique substring, the longest block repeated k times, matching with one wrong letter |
+| 993-1000 | hard, offline and math: Mo's algorithm, sqrt decomposition, the convex hull trick, matrix powers for routes of an exact time, meet in the middle, the XOR basis on a graph, the offline mex, the palindromic tree |
+
+How it was checked: 1277 native Python runs against the JavaScript reference with no difference (every problem is also compared
+with a brute force or an independent method while the tests are built); 100 of 100 solutions Accepted in each of Python, C++ and
+Java by the real judge in a real browser (300 checks, on files identical to the released ones), and all starter files compile;
+1090 unit tests pass; a browser session on a clean server passed 25 checks (all ten topics on the site and none left "Opening
+soon", roadmap, list and filters, three problems solved through the editor including number 1000, Progress page). The slowest
+Python reference solution takes 0.83 s natively, and the browser gives Python 5 times the time limit.
+
+Things that came up: several planned problems were already in the earlier topics (the cheapest priced ranges, the closest subset
+sum, a linear recurrence, rebuilding a queue from counts, the running median), so they were replaced before writing by new ones
+(a skyline with changes, counting subsets by meet in the middle, routes of an exact travel time with a matrix power, block sums
+between bounds, a window with few inversions).
+The native check found a test generator that wrote an operation with one column too many, and the build refused one set of tests
+that was 5008374 bytes: the limit is measured on the JSON text, where every line break counts twice, so the long answers of a
+push-and-pop problem had to be shortened. Java solutions pack a pair into one `long` key to sort it (`value << 15 | index` and
+similar) and use plain arrays for suffix arrays, tries, hulls and trees. The numbers that a problem multiplies are kept small
+enough for 64-bit integers (the convex hull test multiplies two differences, so the weights are digits), and the references
+use `BigInt` where a product would be larger than 2^53.
+
+All ten topics are released: 1000 problems.
