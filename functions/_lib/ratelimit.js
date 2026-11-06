@@ -1,3 +1,5 @@
+import { STATS_KEEP_DAYS } from './stats.js';
+
 // Fixed-window rate limits kept in D1, so they hold across every running instance
 // (an in-memory counter would not). The update is a single atomic statement.
 
@@ -26,6 +28,7 @@ export async function sweep(db, now = Date.now()) {
   await db.batch([
     db.prepare('DELETE FROM rate_limits WHERE window_start < ?').bind(now - 2 * day),
     db.prepare('DELETE FROM otp_codes WHERE expires_at < ?').bind(now - day),
-    db.prepare('DELETE FROM sessions WHERE expires_at < ?').bind(now)
+    db.prepare('DELETE FROM sessions WHERE expires_at < ?').bind(now),
+    db.prepare('DELETE FROM daily_stats WHERE day < ?').bind(new Date(now - STATS_KEEP_DAYS * day).toISOString().slice(0, 10))
   ]);
 }

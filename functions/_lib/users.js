@@ -63,13 +63,14 @@ export const chatView = (row) => ({
   preferredLanguage: row.preferred_language
 });
 
-export const selfView = (row) => ({
+export const selfView = (row, { isAdmin = false } = {}) => ({
   ...chatView(row),
   firstName: row.first_name,
   lastName: row.last_name,
   email: row.email,
   tourDone: !!row.tour_done,
-  createdAt: row.created_at
+  createdAt: row.created_at,
+  isAdmin: !!isAdmin
 });
 
 // ---- Queries ----------------------------------------------------------------------------

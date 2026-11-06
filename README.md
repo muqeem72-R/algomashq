@@ -311,11 +311,16 @@ for a moment while the app loads.
 | `GET /api/config` | public settings (app name, Turnstile site key) |
 | `POST /api/auth/request-otp` | email a login code (login or sign-up) |
 | `POST /api/auth/verify-otp` | check the code, create the account if new, start a session |
+| `POST /api/auth/google` | sign in with a Google ID token `{ credential, profile? }`; answers `{ needsProfile, suggested }` for a new member, who then sends the profile too |
+| `POST /api/events` | the browser reports an anonymous event from a fixed list (a counter goes up; nothing else is stored) |
 | `GET /api/auth/me` | the signed-in member, or `{ "user": null }` |
 | `POST /api/auth/logout` | end the session |
 | `GET/POST/DELETE /api/me/photo` | read, replace or remove your own photo |
 | `GET /api/users/:id/photo` | another member's photo (signed-in members only; 404 when they have none) |
 | `POST /api/me/tour` | remember that the tour was seen |
+| `POST /api/me/logout-all` | end every login of this account, on all devices |
+| `DELETE /api/me/account` | delete the account and everything of it `{ confirm: <your user id> }` |
+| `GET /api/admin/overview`, `GET /api/admin/users`, `POST /api/admin/users/:id`, `GET /api/admin/problems` | the Admin page (admins only; everyone else gets 404) |
 | `PATCH /api/me/settings` | change the preferred language |
 | `GET /api/me/progress` | your own progress: the problems you solved (with language and time), how each problem went, your bookmarked problems and the problems that have a note |
 | `POST /api/me/solved` | record a solve `{ slug, lang, at? }`; repeating it changes nothing |
@@ -351,5 +356,12 @@ for a moment while the app loads.
 - Progress, your saved solutions (with your code), your drafts, bookmarks and notes are private: only its owner can read it, and no view of a member that
   other members can get contains any of it. The judge runs in the browser, so the server cannot re-check a solve; it only checks
   that a report is well formed, names a real problem and language, and has a believable time. Writes are rate-limited.
+- Sign in with Google: the server checks the ID token itself (RS256 signature with Google's public keys, issuer, audience = this site's
+  client id, expiry, verified email). There is no client secret and no redirect. The email code stays as the second way in, and the
+  login page falls back to it whenever Google fails (see ROADMAP section 19). The page policy allows only the four addresses of
+  Google's button under `accounts.google.com/gsi/`, and `Cross-Origin-Opener-Policy: same-origin-allow-popups` keeps the pop-up working.
+- Admins are the emails in the secret `ADMIN_EMAILS` (`npx wrangler secret put ADMIN_EMAILS`); the endpoints check on the server and
+  answer 404 to everyone else. The counters on the Admin page (`daily_stats`) hold no email, user id or IP.
+- Every API answer carries `X-Frame-Options`, `Cross-Origin-Resource-Policy`, `Referrer-Policy: no-referrer` and its own CSP.
 - Profile photos are small JPEGs stored as base64 in D1 (about 30 KB each). They are served only to signed-in members,
   never to the public. Looking up other members is rate-limited, so a script cannot walk through every user id.

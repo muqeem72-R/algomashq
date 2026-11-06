@@ -130,3 +130,38 @@ CREATE TABLE IF NOT EXISTS notes (
   updated_at INTEGER NOT NULL,
   PRIMARY KEY (user_id, slug)
 );
+
+-- ---- Phase 6: Google sign-in, analytics and the admin page ----
+-- A sign-in method linked to an account. Google gives every person a stable `sub`; it is the key, because an email
+-- address can change. (provider, subject) is unique, so one Google account can belong to one account only.
+CREATE TABLE IF NOT EXISTS identities (
+  provider   TEXT NOT NULL CHECK (provider IN ('google')),
+  subject    TEXT NOT NULL,
+  user_id    TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  PRIMARY KEY (provider, subject)
+);
+CREATE INDEX IF NOT EXISTS idx_identities_user ON identities (user_id);
+
+-- First-party, anonymous counters (no person is recorded): one row per UTC day and metric, for example
+-- login_google or google_failed:expired. They answer "what happened on the site" for the admin page.
+CREATE TABLE IF NOT EXISTS daily_stats (
+  day    TEXT NOT NULL,
+  metric TEXT NOT NULL,
+  n      INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, metric)
+);
+
+-- What an admin did to someone else's account (removed a photo, signed them out, deleted the account).
+CREATE TABLE IF NOT EXISTS admin_log (
+  id       INTEGER PRIMARY KEY AUTOINCREMENT,
+  at       INTEGER NOT NULL,
+  admin_id TEXT NOT NULL,
+  action   TEXT NOT NULL,
+  target   TEXT NOT NULL
+);
+
+-- Indexes for the admin overview (counts by day, active members).
+CREATE INDEX IF NOT EXISTS idx_users_created ON users (created_at);
+CREATE INDEX IF NOT EXISTS idx_sessions_seen ON sessions (last_seen_at);
+CREATE INDEX IF NOT EXISTS idx_solved_at ON solved (solved_at);

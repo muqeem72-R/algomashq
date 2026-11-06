@@ -14,6 +14,7 @@
 // a sandbox on another origin (java-client.js) and runs all the tests of one submission in a single Java process.
 
 import { createJavaClient } from './java-client.js';
+import { reportEvent } from '../api.js';
 
 export const LANGUAGES = {
   python: { id: 'python', label: 'Python', available: true, download: 'about 7 MB' },
@@ -79,6 +80,7 @@ export function prepare(lang, onProgress) {
       engine.status = 'ready';
     }).catch((error) => {
       engine.status = 'error';
+      reportEvent('engine_failed_' + lang);   // an anonymous counter for the admin page: "the engine of this language could not start"
       if (engine.worker) engine.worker.terminate();
       engine.worker = null;
       engine.ready = null;
@@ -103,6 +105,7 @@ function prepareJava() {
     engine.status = 'loading';
     engine.ready = engine.client.prepare().then(() => { engine.status = 'ready'; }).catch((error) => {
       engine.status = 'error';
+      reportEvent('engine_failed_java');
       engine.ready = null;
       throw error;
     });

@@ -30,5 +30,11 @@ TURNSTILE_SITE_KEY = "0x4AAAAAAFyUOqDaBEATu8SS"
 # Sender shown on login emails. It must be a sender or domain verified in Brevo.
 BREVO_SENDER_EMAIL = "mukeemuddeen9694@gmail.com"
 BREVO_SENDER_NAME = "AlgoMashq"
+# Sign in with Google. This is the OAuth "client id" of a Web application (Google Cloud console > APIs & Services >
+# Credentials). It is public by design, not a secret. The Google button is hidden while it is empty.
+GOOGLE_CLIENT_ID = ""
+# Admins are NOT listed here (this file is committed to GitHub): set the secret ADMIN_EMAILS (comma separated emails) with
+#   npx wrangler secret put ADMIN_EMAILS
+# Nobody is an admin while it is not set.
 # Where the Java sandbox lives (a second Worker, see java/). Java is switched off when this is empty.
 JAVA_ORIGIN = "https://algomashq-java.mukeemkhan.workers.dev"

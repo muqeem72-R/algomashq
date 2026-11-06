@@ -64,10 +64,10 @@
 .swatches { display: flex; gap: 10px; margin-top: 10px; }
 .swatch { width: 28px; height: 28px; padding: 0; border-radius: 50%; border: 2px solid transparent; box-shadow: inset 0 0 0 2px var(--surface); }
 .swatch[aria-pressed="true"] { border-color: var(--text); }
-.swatch[data-accent="indigo"]  { background: #6366f1; }
+.swatch[data-accent="indigo"]  { background: #6063ee; }
 .swatch[data-accent="emerald"] { background: #10b981; }
 .swatch[data-accent="amber"]   { background: #f59e0b; }
-.swatch[data-accent="rose"]    { background: #f43f5e; }
+.swatch[data-accent="rose"]    { background: #e11d48; }
 .swatch[data-accent="sky"]     { background: #0ea5e9; }
 
 /* ---- Cards ---- */

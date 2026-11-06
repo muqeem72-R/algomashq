@@ -11,6 +11,8 @@ import { cleanEmail, cleanProfile } from '../../_lib/validate.js';
 import { hit } from '../../_lib/ratelimit.js';
 import { createSession } from '../../_lib/session.js';
 import { createUser, ensureUserId, findUserByEmail, selfView } from '../../_lib/users.js';
+import { isAdminEmail } from '../../_lib/admin.js';
+import { track } from '../../_lib/stats.js';
 import { OTP_MAX_ATTEMPTS, LIMITS } from '../../_lib/config.js';
 
 // The sign-up profile was saved with its photo as bare base64; validation expects a data URL.
@@ -20,7 +22,8 @@ function storedProfile(json) {
   return profile;
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
   if (!sameOrigin(request)) return fail(403, 'forbidden');
   if (!env.DB || !env.APP_SECRET) return fail(503, 'not_configured');
 
@@ -53,6 +56,7 @@ export async function onRequestPost({ request, env }) {
 
   const given = await hmacHex(env.APP_SECRET, `otp:${email}:${code}`);
   if (!safeEqual(otp.code_hash, given)) {
+    track(context, 'otp_wrong');
     return fail(400, 'invalid_code', { attemptsLeft: Math.max(0, OTP_MAX_ATTEMPTS - counted.attempts) });
   }
 
@@ -78,5 +82,6 @@ export async function onRequestPost({ request, env }) {
 
   await db.prepare('UPDATE users SET last_login_at = ? WHERE seq = ?').bind(now, user.seq).run();
   const cookie = await createSession(request, db, user.user_id, now);
-  return json({ user: selfView(user), isNewUser }, 200, { 'Set-Cookie': cookie });
+  track(context, isNewUser ? 'signup_otp' : 'login_otp');
+  return json({ user: selfView(user, { isAdmin: isAdminEmail(env, user.email) }), isNewUser }, 200, { 'Set-Cookie': cookie });
 }

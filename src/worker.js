@@ -25,6 +25,14 @@ import * as meDraftsOfProblem from '../functions/api/me/drafts/[slug].js';
 import * as meBookmarks from '../functions/api/me/bookmarks.js';
 import * as meNotes from '../functions/api/me/notes.js';
 import * as meNoteOfProblem from '../functions/api/me/notes/[slug].js';
+import * as google from '../functions/api/auth/google.js';
+import * as events from '../functions/api/events.js';
+import * as meLogoutAll from '../functions/api/me/logout-all.js';
+import * as meAccount from '../functions/api/me/account.js';
+import * as adminOverview from '../functions/api/admin/overview.js';
+import * as adminUsers from '../functions/api/admin/users.js';
+import * as adminUser from '../functions/api/admin/users/[id].js';
+import * as adminProblems from '../functions/api/admin/problems.js';
 import * as userById from '../functions/api/users/[id].js';
 import * as userPhoto from '../functions/api/users/[id]/photo.js';
 import { onRequest as middleware } from '../functions/api/_middleware.js';
@@ -35,6 +43,8 @@ const ROUTES = [
   { pattern: /^\/api\/config$/, names: [], handlers: config },
   { pattern: /^\/api\/auth\/request-otp$/, names: [], handlers: requestOtp },
   { pattern: /^\/api\/auth\/verify-otp$/, names: [], handlers: verifyOtp },
+  { pattern: /^\/api\/auth\/google$/, names: [], handlers: google },
+  { pattern: /^\/api\/events$/, names: [], handlers: events },
   { pattern: /^\/api\/auth\/me$/, names: [], handlers: authMe },
   { pattern: /^\/api\/auth\/logout$/, names: [], handlers: logout },
   { pattern: /^\/api\/me\/photo$/, names: [], handlers: mePhoto },
@@ -51,6 +61,12 @@ const ROUTES = [
   { pattern: /^\/api\/me\/bookmarks$/, names: [], handlers: meBookmarks },
   { pattern: /^\/api\/me\/notes$/, names: [], handlers: meNotes },
   { pattern: /^\/api\/me\/notes\/([^/]+)$/, names: ['slug'], handlers: meNoteOfProblem },
+  { pattern: /^\/api\/me\/logout-all$/, names: [], handlers: meLogoutAll },
+  { pattern: /^\/api\/me\/account$/, names: [], handlers: meAccount },
+  { pattern: /^\/api\/admin\/overview$/, names: [], handlers: adminOverview },
+  { pattern: /^\/api\/admin\/users$/, names: [], handlers: adminUsers },
+  { pattern: /^\/api\/admin\/users\/([^/]+)$/, names: ['id'], handlers: adminUser },
+  { pattern: /^\/api\/admin\/problems$/, names: [], handlers: adminProblems },
   { pattern: /^\/api\/users\/([^/]+)\/photo$/, names: ['id'], handlers: userPhoto },
   { pattern: /^\/api\/users\/([^/]+)$/, names: ['id'], handlers: userById }
 ];

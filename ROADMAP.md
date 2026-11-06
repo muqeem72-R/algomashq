@@ -48,7 +48,7 @@ Basics come first. Each topic gets Easy, Medium and Hard problems.
 | 3. Content engine | Concept primer per topic, problems, hints, test cases, solutions in all three languages | One topic fully live |
 | 4. Progress (DONE, see sections 14 to 17) | Solved tracking, submission history, streaks, bookmarks, personal notes, per-topic progress | Full progress on the dashboard |
 | 5. Content writing | All 10 topics, each with Easy, Medium and Hard problems | Complete curriculum |
-| 6. Polish and hardening | Admin page, rate limits, security, analytics, accessibility | Public launch |
+| 6. Polish and hardening (BUILT, see section 19; needs the Google client id) | Google sign-in, admin page, rate limits, security, analytics, accessibility | Public launch |
 | 7. Optional | Leaderboard, discussion, contests, mock interviews | Later |
 
 ## 5. Pages
@@ -644,3 +644,65 @@ enough for 64-bit integers (the convex hull test multiplies two differences, so 
 use `BigInt` where a product would be larger than 2^53.
 
 All ten topics are released: 1000 problems.
+
+## 19. Phase 6: Google sign-in, admin, analytics and hardening (built; needs the steps in "To switch it on")
+
+### What was built
+
+- **Sign in with Google, with the email code kept as the way out.** The login page has a "Continue with Google" button above the email
+  form. A returning member signs in with one click. A new member clicks Google and then fills "One more step" (name, country, state,
+  language, photo; the name from Google is filled in and the email is not asked again). The 6-digit email code is not removed: it is
+  the second way in, and the page sends the person to it whenever Google does not work:
+  - the Google script is blocked or offline -> the button is replaced by a message and the email form is ready;
+  - Google is slow (8 s) -> a note says the email code can be used;
+  - the button was clicked and nothing happened -> a link under the button, "Use an email code instead", focuses the email field;
+  - the server refuses the token (expired, wrong site, unverified email, Google unreachable) -> a message that says what to do, and the
+    email field is focused and highlighted. A request that hangs is cut after 20 s.
+  The server (`POST /api/auth/google`) checks the signature with Google's public keys (RS256 only, keys cached for an hour and
+  refreshed when a new key id appears), the issuer, the audience (this site's client id), the expiry and that Google verified the
+  email. No client secret is needed. The account is found by Google's stable id first, then by the verified email, so a person who
+  signed up with the email code lands in the same account, and a changed Google email does not make a second account. Table
+  `identities` links one Google id to one account.
+- **Admin page** (`#/admin`, the Admin link appears only for the emails in `ADMIN_EMAILS`; every admin endpoint checks on the server
+  and answers 404 to everyone else). Overview: members, active today / week / month, solutions, how many are linked to Google, new
+  members and solutions per day (30 days, with hover readouts and a table view), how people sign in, the Brevo daily mail meter, a
+  list of "what went wrong" in plain words, countries and languages, and what admins did. Members: search, take down a photo, sign a
+  member out everywhere, delete an account (never an admin's). Problems: the most solved and where members get stuck. Charts follow
+  the dataviz rules: one hue, thin marks, a readout on hover and on keyboard focus, and a table under every chart.
+- **Analytics without tracking.** Table `daily_stats` holds one counter per day and event (sign-ins by method, failures by reason,
+  engines that could not start, server errors). No email, user id or IP is stored with them; the browser can report only the events
+  on a fixed list (`POST /api/events`). Old rows are swept after 400 days.
+- **Account control in Settings.** "Sign out everywhere" and "Delete my account" (the member types their user ID to confirm; every
+  table with their rows is cleared, and the copies kept in the browser too). A test compares the deletion list with `schema.sql`, so a
+  new table with a `user_id` cannot be forgotten. `/privacy.html` and `/terms.html` say in plain words what is kept.
+- **Rate limits** on the new and the so-far unlimited endpoints: Google sign-in per IP (and a stricter limit on creating accounts),
+  events, photo changes, settings, account deletion.
+- **Security.** The page policy allows exactly the four Google addresses its button needs (`accounts.google.com/gsi/...`) and nothing
+  broader; HSTS; `Cross-Origin-Opener-Policy: same-origin-allow-popups` (plain `same-origin` would break the Google pop-up); every API
+  answer carries `X-Frame-Options`, `Cross-Origin-Resource-Policy`, `Referrer-Policy: no-referrer` and its own restrictive CSP; tests check that
+  every admin endpoint calls `requireAdmin` and that every endpoint that changes data checks the request's origin.
+- **Accessibility.** Contrast is now tested from `tokens.css` (WCAG AA, both themes, all five accents): the hint text colour and the
+  indigo and rose accents were too weak and were corrected (hint text 4.4:1 -> 4.9:1 dark and 3.2:1 -> 4.6:1 light; white on indigo
+  4.47:1 -> 4.65:1; white on rose 3.67:1 -> 4.70:1). New controls have labels, focus rings and keyboard-reachable readouts.
+
+### To switch it on (production steps: they need the owner)
+
+1. **Google Cloud console** (free): create a project, then APIs & Services > OAuth consent screen (External; app name AlgoMashq; the
+   support email; add the scopes `openid`, `email`, `profile`; publish the app so that anyone can sign in), then Credentials > Create
+   credentials > OAuth client ID > Web application. Under "Authorized JavaScript origins" add `https://algomashq.mukeemkhan.workers.dev`
+   (and `http://localhost:8788` for local work). No redirect URI is needed. Copy the client id (`...apps.googleusercontent.com`).
+2. Put the client id in `wrangler.toml` (`GOOGLE_CLIENT_ID`; it is public by design) and set the admin emails as a secret, so that they do not
+3. Add the new tables to the real database once: `npx wrangler d1 execute algomashq --remote --file=db/schema.sql` (every statement is
+   `IF NOT EXISTS`, so it is safe to run twice and changes no existing data).
+4. `npx wrangler deploy`, then sign in once with Google on the live site and open the Admin page.
+
+### How it was checked
+
+Unit tests: the ID-token check against every way a token can be wrong (signature from another key, `alg: none`, wrong site, wrong
+issuer, expired, unverified email, rubbish, Google unreachable, key rotation), the admin and deletion rules, the headers, the CSP and
+the contrast ratios. A browser session against a local server with a stand-in for Google (its own key, published like Google's)
+covers: a new member, a returning member, the same Google id with a new email, an email-code account met by Google, four kinds of bad
+token, an expired token shown to a person, Google blocked in the browser, sign-up with the email code, an admin (overview, members,
+search, sign out, delete, problems), a member who is not an admin (page and API say "not found"), sign out everywhere, and account
+deletion. The real Google script and button could not be run offline, so the first real sign-in on the live site is the last check.
+
