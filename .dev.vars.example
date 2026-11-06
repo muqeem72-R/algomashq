@@ -18,3 +18,8 @@ DEV_LOG_OTP=1
 # Leave empty while DEV_LOG_OTP=1. Put the real Brevo API key here to test real emails.
 BREVO_API_KEY=
 BREVO_SENDER_EMAIL=
+
+# Sign in with Google (optional locally). The client id of a "Web application" OAuth client; the button is hidden while it is empty.
+GOOGLE_CLIENT_ID=
+# Emails (comma separated) that may open the Admin page.
+ADMIN_EMAILS=

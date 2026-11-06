@@ -17,6 +17,7 @@ import * as engine from './runner/engine.js';
 import { problemsView } from './views/problems.js';
 import { workspaceView } from './views/workspace.js';
 import { submissionsView } from './views/submissions.js';
+import { adminView } from './views/admin.js';
 import * as progress from './progress.js';
 
 const app = document.getElementById('app');
@@ -29,7 +30,8 @@ const PAGES = {
   progress: { title: 'Progress', view: progressView },
   submissions: { title: 'Submissions', view: (c) => submissionsView(c, null) },
   profile: { title: 'My profile', view: profileView },
-  settings: { title: 'Settings', view: settingsView }
+  settings: { title: 'Settings', view: settingsView },
+  admin: { title: 'Admin', view: adminView, adminOnly: true }
 };
 
 // What the views are allowed to ask of the app.
@@ -120,7 +122,7 @@ function runTour() {
 
 // Finds the page for an address: a fixed page, a topic's problem list (problems/basics) or one problem (problem/factorial).
 function resolvePage(path) {
-  if (PAGES[path]) return { key: path, ...PAGES[path] };
+  if (PAGES[path]) return PAGES[path].adminOnly && !state.user.isAdmin ? null : { key: path, ...PAGES[path] };   // a member who is not an admin sees "Page not found"
   const topicMatch = /^problems\/([a-z0-9-]+)$/.exec(path);
   if (topicMatch) { const topic = topicMatch[1]; return { key: 'problems', title: 'Problems', view: (c) => problemsView(c, topic) }; }
   const historyMatch = /^submissions\/([a-z0-9-]+)$/.exec(path);

@@ -18,10 +18,61 @@ test('the main site never allows unsafe-eval or inline scripts and styles', () =
   assert.equal(directive(policy, 'frame-ancestors'), "'none'");
 });
 
-test('the main site may embed the Java sandbox and nothing else but Turnstile', () => {
+test('the main site may embed the Java sandbox, Turnstile and the Google button, and nothing else', () => {
   const frames = directive(csp('public/_headers'), 'frame-src').split(/\s+/).filter(Boolean).sort();
   const javaOrigin = /JAVA_ORIGIN\s*=\s*"([^"]+)"/.exec(read('wrangler.toml'))[1];
-  assert.deepEqual(frames, ['https://challenges.cloudflare.com', javaOrigin].sort());
+  assert.deepEqual(frames, ['https://accounts.google.com/gsi/', 'https://challenges.cloudflare.com', javaOrigin].sort());
+});
+
+test('Google gets exactly the four addresses its sign-in button needs, not the whole of google.com', () => {
+  const policy = csp('public/_headers');
+  const list = (name) => directive(policy, name).split(/\s+/).filter(Boolean);
+  assert.ok(list('script-src').includes('https://accounts.google.com/gsi/client'));
+  assert.ok(list('style-src').includes('https://accounts.google.com/gsi/style'));
+  assert.ok(list('connect-src').includes('https://accounts.google.com/gsi/'));
+  assert.ok(list('frame-src').includes('https://accounts.google.com/gsi/'));
+  // No other directive mentions Google, and no source is a wildcard or a bare host.
+  for (const name of ['default-src', 'img-src', 'worker-src', 'media-src', 'form-action', 'base-uri', 'object-src']) {
+    assert.ok(!list(name).some((s) => s.includes('google')), name + ' must not mention Google');
+  }
+  for (const source of [...list('script-src'), ...list('style-src'), ...list('connect-src'), ...list('frame-src')]) {
+    assert.ok(!/^https?:\/\/\*|^\*|^https:$/.test(source), 'no wildcard sources: ' + source);
+    if (source.includes('google')) assert.ok(/^https:\/\/accounts\.google\.com\/gsi\//.test(source), 'Google only under /gsi/: ' + source);
+  }
+});
+
+test('the site is HTTPS only, and keeps the opener so that the Google pop-up can answer', () => {
+  const headers = read('public/_headers');
+  assert.match(headers, /Strict-Transport-Security:\s*max-age=\d{8,}/);
+  assert.match(headers, /Cross-Origin-Opener-Policy:\s*same-origin-allow-popups/);   // "same-origin" would break the Google pop-up
+  assert.match(headers, /X-Frame-Options:\s*DENY/);
+  assert.match(headers, /X-Content-Type-Options:\s*nosniff/);
+});
+
+test('the Google client id is a public setting; the admin list and every secret stay out of the committed settings', () => {
+  const toml = read('wrangler.toml');
+  assert.match(toml, /^GOOGLE_CLIENT_ID\s*=\s*"(?:[0-9]+-[a-z0-9_-]+\.apps\.googleusercontent\.com)?"/m);
+  assert.ok(!/^ADMIN_EMAILS\s*=/m.test(toml), 'admin emails are a secret (wrangler secret put ADMIN_EMAILS): this file is public on GitHub');
+  assert.ok(!/GOOGLE_CLIENT_SECRET|BREVO_API_KEY\s*=\s*"[^"]|APP_SECRET\s*=\s*"[^"]|TURNSTILE_SECRET\s*=\s*"[^"]/.test(toml), 'secrets belong in the dashboard or .dev.vars');
+});
+
+test('every admin endpoint asks the server whether the caller is an admin', () => {
+  const dir = path.join(ROOT, 'functions/api/admin');
+  const files = [];
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : files.push(path.join(d, e.name))));
+  walk(dir);
+  assert.ok(files.length >= 4);
+  for (const file of files) assert.ok(fs.readFileSync(file, 'utf8').includes('requireAdmin('), path.relative(ROOT, file) + ' must call requireAdmin');
+});
+
+test('every endpoint that changes data checks that the request comes from this site', () => {
+  const files = [];
+  const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : files.push(path.join(d, e.name))));
+  walk(path.join(ROOT, 'functions/api'));
+  for (const file of files) {
+    const text = fs.readFileSync(file, 'utf8');
+    if (/onRequest(Post|Patch|Put|Delete)/.test(text)) assert.ok(text.includes('sameOrigin('), path.relative(ROOT, file) + ' changes data without sameOrigin()');
+  }
 });
 
 test('the Java sandbox is locked down to the pages that may embed it', () => {

@@ -16,7 +16,17 @@ export const LIMITS = {
   verifyPerEmailPerHour: 20,
   // Looking at other members. Generous for normal use, but stops a script from walking through every user id.
   lookupsPerHour: 300,
-  photoFetchesPerHour: 1500
+  photoFetchesPerHour: 1500,
+  // Sign in with Google. A token is checked with one request to Google's keys (cached), so the limits are loose, but
+  // creating accounts is limited harder: one person has no need for ten new accounts a day.
+  googlePerIpPerHour: 60,
+  googleSignupsPerIpPerDay: 10,
+  // Anonymous browser events (see stats.js).
+  eventsPerIpPerHour: 60,
+  // Changing one's own account.
+  photoChangesPerHour: 20,
+  settingsPerHour: 120,
+  deleteAccountPerDay: 3
 };
 
 export const PHOTO_MAX_BYTES = 100 * 1024;   // after client-side resizing a photo is about 20-40 KB

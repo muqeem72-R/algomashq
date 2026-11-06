@@ -7,6 +7,8 @@ import { json, fail, readJson, sameOrigin } from '../../_lib/http.js';
 import { requireUser } from '../../_lib/auth.js';
 import { cleanPhoto } from '../../_lib/validate.js';
 import { photoResponse } from '../../_lib/photo.js';
+import { hit } from '../../_lib/ratelimit.js';
+import { LIMITS } from '../../_lib/config.js';
 
 export async function onRequestGet(context) {
   const { user, error } = await requireUser(context);
@@ -20,6 +22,7 @@ export async function onRequestPost(context) {
   if (error) return error;
   const parsed = await readJson(context.request, 170000);
   if (parsed.error) return parsed.error;
+  if (!(await hit(context.env.DB, 'photo:' + user.user_id, LIMITS.photoChangesPerHour, 3600)).allowed) return fail(429, 'rate_limited');
   const data = cleanPhoto(parsed.body.photo);
   if (!data) return fail(422, 'invalid_input', { fields: { photo: 'That photo could not be used. Try another one.' } });
   const now = Date.now();

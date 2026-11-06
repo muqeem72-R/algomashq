@@ -45,7 +45,9 @@ export function createShell(ctx) {
   const title = h('h1');
   const content = h('main', { class: 'content', id: 'main', tabindex: '-1' });
 
-  const navLinks = NAV.map((item) =>
+  // The Admin link is only shown to admins. Hiding it is a courtesy: the server refuses everyone else anyway.
+  const items = ctx.user().isAdmin ? [...NAV, { path: 'admin', label: 'Admin', icon: 'shield' }] : NAV;
+  const navLinks = items.map((item) =>
     h('a', { class: 'nav-link', href: '#/' + item.path, 'data-path': item.path },
       icon(item.icon, 20), item.label, item.soon ? h('span', { class: 'nav-soon', text: 'Soon' }) : null)
   );

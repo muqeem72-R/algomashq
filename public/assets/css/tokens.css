@@ -19,7 +19,7 @@
   --border: #252b38;
   --text: #e8ebf2;
   --muted: #a0a8ba;
-  --faint: #6f788c;
+  --faint: #8089a0;   /* 4.9:1 on cards: hint text must stay readable (tests/contrast.test.js) */
   --danger: #ff7b7b;
   --danger-soft: rgba(255, 123, 123, .12);
   --success: #3ddc97;
@@ -45,7 +45,7 @@
   --border: #dfe3ec;
   --text: #141824;
   --muted: #566074;
-  --faint: #8089a0;
+  --faint: #646d82;   /* 4.6:1 on cards */
   --danger: #c62828;
   --danger-soft: rgba(198, 40, 40, .09);
   --success: #12805c;
@@ -63,10 +63,10 @@
 }
 
 /* Accent colors. --accent fills buttons, --accent-ink is the text on top of that fill. */
-:root[data-accent="indigo"]  { --accent: #6366f1; --accent-ink: #fff;    --accent-d: #a5b4fc; --accent-l: #4338ca; }
+:root[data-accent="indigo"]  { --accent: #6063ee; --accent-ink: #fff;    --accent-d: #a5b4fc; --accent-l: #4338ca; }
 :root[data-accent="emerald"] { --accent: #10b981; --accent-ink: #04231a; --accent-d: #6ee7b7; --accent-l: #047857; }
 :root[data-accent="amber"]   { --accent: #f59e0b; --accent-ink: #1f1500; --accent-d: #fcd34d; --accent-l: #a45a06; }
-:root[data-accent="rose"]    { --accent: #f43f5e; --accent-ink: #fff;    --accent-d: #fda4af; --accent-l: #be123c; }
+:root[data-accent="rose"]    { --accent: #e11d48; --accent-ink: #fff;    --accent-d: #fda4af; --accent-l: #be123c; }
 :root[data-accent="sky"]     { --accent: #0ea5e9; --accent-ink: #03202e; --accent-d: #7dd3fc; --accent-l: #0369a1; }
 
 :root { --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent); }

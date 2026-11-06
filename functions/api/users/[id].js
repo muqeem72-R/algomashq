@@ -10,6 +10,7 @@ import { requireUser } from '../../_lib/auth.js';
 import { hit } from '../../_lib/ratelimit.js';
 import { LIMITS } from '../../_lib/config.js';
 import { findUserById, publicView, chatView, selfView, USER_ID_RE } from '../../_lib/users.js';
+import { isAdminEmail } from '../../_lib/admin.js';
 
 export async function onRequestGet(context) {
   const { user, error } = await requireUser(context);
@@ -20,7 +21,7 @@ export async function onRequestGet(context) {
 
   if (id === user.user_id) {
     return json({
-      user: selfView(user),
+      user: selfView(user, { isAdmin: isAdminEmail(context.env, user.email) }),
       self: true,
       asSeenByOthers: { everywhere: publicView(user), inChat: chatView(user) }
     });

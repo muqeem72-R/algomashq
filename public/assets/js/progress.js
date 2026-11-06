@@ -160,6 +160,20 @@ export async function load(user) {
 }
 
 // Forget the account in memory (the saved copy stays in the browser for the next sign-in).
+// After an account is deleted: removes every copy this browser kept of it (solved list, drafts, notes, the send queue).
+export function purge(userId) {
+  reset();
+  try {
+    const mark = PREFIX + 'u.' + userId + '.';
+    const doomed = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(mark)) doomed.push(k);
+    }
+    for (const k of doomed) localStorage.removeItem(k);
+  } catch (e) { /* storage is not available: nothing was kept */ }
+}
+
 export function reset() {
   clearTimeout(sendTimer);
   clearTimeout(retryTimer);

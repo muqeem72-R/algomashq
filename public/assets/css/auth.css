@@ -55,6 +55,18 @@
 .form-actions { display: grid; gap: 14px; margin-top: 4px; }
 .form-switch { text-align: center; color: var(--muted); font-size: 14px; }
 
+/* Sign in with Google: the button (drawn by Google), a status line, a hint that points to the email code, and a divider. */
+.google-block { display: grid; gap: 12px; margin-top: 24px; justify-items: center; }
+.google-block .alert { margin: 0; text-align: left; }
+.google-button { display: flex; justify-content: center; min-height: 44px; width: 100%; }
+.google-status { margin: 0; color: var(--muted); font-size: 14px; text-align: center; }
+.google-status:empty { display: none; }
+.google-hint { margin: 0; color: var(--muted); font-size: 13px; text-align: center; }
+.divider { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 6px; color: var(--muted); font-size: 13px; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+/* When Google does not work, the email form is marked so that the eye finds it. */
+.form.attention .input { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
 .turnstile { min-height: 65px; }
 .turnstile.quiet { min-height: 0; }
 

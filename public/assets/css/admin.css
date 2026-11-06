@@ -1,0 +1,64 @@
+/* The Admin page, the danger zone in Settings, and the Privacy and Terms pages. Charts reuse the .viz-* styles of the Progress page. */
+
+.admin-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.admin-tabs { display: inline-flex; gap: 4px; margin-bottom: 20px; padding: 4px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; }
+.admin-tabs button { height: 38px; padding: 0 18px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font-weight: 600; transition: background .15s var(--ease), color .15s var(--ease); }
+.admin-tabs button[aria-selected="true"] { background: var(--accent-soft); color: var(--accent-text); }
+.admin-body { display: grid; gap: 16px; }
+.admin-body > .alert { margin: 0; }
+.admin-body .prog-row { margin-bottom: 0; }
+.prog-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* headline numbers */
+.stat-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.stat-tile { display: grid; gap: 6px; align-content: start; }
+.stat-label { font-size: 13px; font-weight: 600; color: var(--muted); }
+.stat-value { font-size: 36px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat-hint { font-size: 13px; color: var(--faint); }
+
+/* ranked bars: the value is printed at the tip, the track is only a quiet guide */
+.rbars { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.rbar { display: grid; grid-template-columns: minmax(120px, 36%) minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 2px 4px; margin: 0 -4px; border-radius: 6px; outline: none; }
+.rbar:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 1px; }
+.rbar-label { font-size: 13.5px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rbar-track { display: block; height: 10px; border-radius: 0 4px 4px 0; background: transparent; }
+.rbar-fill { display: block; height: 100%; border-radius: 0 4px 4px 0; background: var(--accent); }
+.rbar:hover .rbar-fill, .rbar:focus-visible .rbar-fill { background: color-mix(in srgb, var(--accent) 72%, var(--text)); }
+.rbar-value { min-width: 2.5ch; text-align: right; font: 600 13px var(--mono); color: var(--muted); }
+.admin-mini { margin: 16px 0 8px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
+.admin-meter { margin-top: 18px; }
+
+/* tables */
+.admin-scroll { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.admin-table th, .admin-table td { padding: 9px 10px; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--border); }
+.admin-table th { font-size: 12px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; color: var(--faint); white-space: nowrap; }
+.admin-table td.num, .admin-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.admin-table td.break { word-break: break-all; }
+.user-id.small { font-size: 15px; letter-spacing: 0; }
+.badge { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-text); font-size: 11.5px; font-weight: 700; }
+.admin-search { margin: 4px 0 14px; max-width: 460px; }
+.admin-status { margin-top: 12px; }
+.admin-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.btn.danger { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 40%, var(--border)); }
+.btn.danger:hover:not([disabled]) { background: var(--danger-soft); }
+
+/* Settings: the danger zone */
+.danger-zone { border-color: color-mix(in srgb, var(--danger) 40%, var(--border)); }
+.danger-zone h3 { color: var(--danger); }
+.confirm-box { display: grid; gap: 10px; padding: 14px; border-radius: var(--radius-sm); background: var(--danger-soft); }
+.confirm-box .input { max-width: 260px; font-family: var(--mono); }
+.confirm-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Privacy and Terms (static pages, no script) */
+.doc { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+.doc h1 { font-size: 32px; letter-spacing: -.02em; }
+.doc h2 { margin-top: 32px; font-size: 20px; }
+.doc p, .doc li { color: var(--muted); }
+.doc a { color: var(--accent-text); }
+.doc .back { display: inline-block; margin-bottom: 24px; font-weight: 600; }
+
+@media (max-width: 1100px) {
+  .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prog-two { grid-template-columns: 1fr; }
+}

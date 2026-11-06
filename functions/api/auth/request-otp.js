@@ -13,6 +13,7 @@ import { hit, sweep } from '../../_lib/ratelimit.js';
 import { verifyTurnstile } from '../../_lib/turnstile.js';
 import { sendOtpEmail } from '../../_lib/brevo.js';
 import { findUserByEmail } from '../../_lib/users.js';
+import { track } from '../../_lib/stats.js';
 import { OTP_TTL_SECONDS, RESEND_SECONDS, DAILY_EMAIL_CAP, LIMITS } from '../../_lib/config.js';
 
 export async function onRequestPost(context) {
@@ -80,10 +81,12 @@ export async function onRequestPost(context) {
     });
   } catch (e) {
     console.error('Could not send the login email:', e.message);
+    track(context, 'email_failed');
     await db.prepare('UPDATE otp_codes SET used = 1 WHERE email = ? AND used = 0').bind(email).run();
     return fail(502, 'email_failed');
   }
 
+  track(context, 'otp_sent');
   if (Math.random() < 0.1) context.waitUntil(sweep(db, now));
   return ok();
 }
