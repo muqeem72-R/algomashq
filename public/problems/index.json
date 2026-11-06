@@ -11089,6 +11089,1307 @@
     "inclusion-exclusion",
     "counting-modulo"
    ]
+  },
+  {
+   "slug": "change-one-cell-sum-a-range",
+   "title": "Change One Number, Sum a Range",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 901,
+   "tags": [
+    "fenwick-tree",
+    "point-update",
+    "range-sum",
+    "queries"
+   ]
+  },
+  {
+   "slug": "replace-one-cell-sum-a-range",
+   "title": "Replace a Number, Sum a Range",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 902,
+   "tags": [
+    "fenwick-tree",
+    "point-assignment",
+    "range-sum",
+    "queries"
+   ]
+  },
+  {
+   "slug": "smaller-numbers-before-each",
+   "title": "How Many Smaller Numbers Came Before Each One?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 903,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "coordinate-compression"
+   ]
+  },
+  {
+   "slug": "larger-numbers-after-each",
+   "title": "How Many Larger Numbers Come After Each One?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 904,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "coordinate-compression",
+    "inversions"
+   ]
+  },
+  {
+   "slug": "add-to-a-range-ask-one-cell",
+   "title": "Add to a Whole Range, Ask About One Cell",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 905,
+   "tags": [
+    "fenwick-tree",
+    "difference-array",
+    "range-update",
+    "point-query"
+   ]
+  },
+  {
+   "slug": "count-inserted-values-at-most-x",
+   "title": "How Many Inserted Numbers Are at Most x?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 906,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "online",
+    "frequency-table"
+   ]
+  },
+  {
+   "slug": "sum-of-smaller-numbers-before",
+   "title": "The Sum of the Smaller Numbers That Came Before",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 907,
+   "tags": [
+    "fenwick-tree",
+    "prefix-sum",
+    "coordinate-compression",
+    "weighted-counting"
+   ]
+  },
+  {
+   "slug": "free-seats-before-a-seat",
+   "title": "How Many Seats Are Free Before This One?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 908,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "state",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "switch-a-lamp-count-lamps-on",
+   "title": "Switch One Lamp, Count the Lamps That Are On",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 909,
+   "tags": [
+    "fenwick-tree",
+    "binary",
+    "point-update",
+    "range-count"
+   ]
+  },
+  {
+   "slug": "best-score-among-the-first-players",
+   "title": "The Best Score Among the First Players When Scores Only Rise",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 910,
+   "tags": [
+    "fenwick-tree",
+    "prefix-maximum",
+    "point-update",
+    "monotone"
+   ]
+  },
+  {
+   "slug": "smallest-in-a-range-with-changes",
+   "title": "The Smallest Number in a Range, With Changes",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 911,
+   "tags": [
+    "segment-tree",
+    "point-update",
+    "range-minimum",
+    "queries"
+   ]
+  },
+  {
+   "slug": "first-position-at-least-x",
+   "title": "The First Cell From a Position That Is at Least x",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 912,
+   "tags": [
+    "segment-tree",
+    "tree-descent",
+    "point-update",
+    "search"
+   ]
+  },
+  {
+   "slug": "zeros-in-a-range-with-changes",
+   "title": "How Many Zeros Are in a Range?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 913,
+   "tags": [
+    "segment-tree",
+    "point-update",
+    "counting",
+    "queries"
+   ]
+  },
+  {
+   "slug": "gcd-of-a-range-with-changes",
+   "title": "The Greatest Common Divisor of a Range, With Changes",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 914,
+   "tags": [
+    "segment-tree",
+    "gcd",
+    "point-update",
+    "queries"
+   ]
+  },
+  {
+   "slug": "sum-and-largest-of-a-range",
+   "title": "The Sum and the Largest Number of a Range",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 915,
+   "tags": [
+    "segment-tree",
+    "merge-nodes",
+    "point-update",
+    "queries"
+   ]
+  },
+  {
+   "slug": "xor-of-a-range-with-changes",
+   "title": "The XOR of a Range, With Changes",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 916,
+   "tags": [
+    "segment-tree",
+    "xor",
+    "point-update",
+    "queries"
+   ]
+  },
+  {
+   "slug": "sum-of-the-two-smallest-in-a-range",
+   "title": "The Sum of the Two Smallest Numbers in a Range",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 917,
+   "tags": [
+    "segment-tree",
+    "merge-nodes",
+    "point-update",
+    "queries"
+   ]
+  },
+  {
+   "slug": "sign-of-a-product-with-changes",
+   "title": "Is the Product of a Range Positive, Negative or Zero?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 918,
+   "tags": [
+    "segment-tree",
+    "sign",
+    "point-update",
+    "queries"
+   ]
+  },
+  {
+   "slug": "leftmost-smallest-in-a-range",
+   "title": "Where Is the Leftmost Smallest Number of a Range?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 919,
+   "tags": [
+    "segment-tree",
+    "argmin",
+    "tie-breaking",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "how-many-equal-the-largest",
+   "title": "How Many Cells Equal the Largest Number of the Range?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 920,
+   "tags": [
+    "segment-tree",
+    "merge-nodes",
+    "counting",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "prefix-function-values",
+   "title": "The Prefix Function of a Word",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 921,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "strings",
+    "borders"
+   ]
+  },
+  {
+   "slug": "z-function-values",
+   "title": "The Z-Function of a Word",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 922,
+   "tags": [
+    "z-function",
+    "strings",
+    "prefix-match"
+   ]
+  },
+  {
+   "slug": "positions-of-a-pattern",
+   "title": "Where Does the Pattern Occur in the Text?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 923,
+   "tags": [
+    "kmp",
+    "pattern-matching",
+    "prefix-function",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-border-of-a-word",
+   "title": "The Longest Border of a Word",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 924,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "borders",
+    "strings"
+   ]
+  },
+  {
+   "slug": "shortest-repeating-unit",
+   "title": "The Shortest Block That Builds the Word by Repetition",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 925,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "period",
+    "strings"
+   ]
+  },
+  {
+   "slug": "is-one-word-a-rotation-of-the-other",
+   "title": "Is One Word a Rotation of the Other?",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 926,
+   "tags": [
+    "kmp",
+    "pattern-matching",
+    "rotation",
+    "strings"
+   ]
+  },
+  {
+   "slug": "longest-pattern-prefix-at-each-position",
+   "title": "The Longest Part of the Pattern That Ends at Each Position",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 927,
+   "tags": [
+    "kmp",
+    "automaton",
+    "pattern-matching",
+    "strings"
+   ]
+  },
+  {
+   "slug": "all-borders-of-a-word",
+   "title": "List Every Border of a Word",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 928,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "borders",
+    "strings"
+   ]
+  },
+  {
+   "slug": "sum-of-the-z-function",
+   "title": "The Total Similarity of a Word With Its Suffixes",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 929,
+   "tags": [
+    "z-function",
+    "strings",
+    "prefix-match",
+    "counting"
+   ]
+  },
+  {
+   "slug": "longest-prefix-that-occurs-again",
+   "title": "The Longest Prefix That Appears Again Later in the Word",
+   "topic": "advanced",
+   "difficulty": "easy",
+   "order": 930,
+   "tags": [
+    "z-function",
+    "strings",
+    "prefix-match",
+    "maximum"
+   ]
+  },
+  {
+   "slug": "kth-smallest-in-a-changing-set",
+   "title": "The k-th Smallest Number in a Set That Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 931,
+   "tags": [
+    "fenwick-tree",
+    "order-statistics",
+    "binary-lifting",
+    "multiset"
+   ]
+  },
+  {
+   "slug": "rectangle-sums-with-point-changes",
+   "title": "Rectangle Sums on a Table That Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 932,
+   "tags": [
+    "fenwick-tree",
+    "2d",
+    "point-update",
+    "rectangle-query"
+   ]
+  },
+  {
+   "slug": "add-to-a-range-sum-a-range",
+   "title": "Add to a Range, Sum a Range",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 933,
+   "tags": [
+    "fenwick-tree",
+    "range-update",
+    "range-query",
+    "two-trees"
+   ]
+  },
+  {
+   "slug": "reverse-pairs-double",
+   "title": "Count the Pairs Where an Earlier Number Is More Than Double a Later One",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 934,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "coordinate-compression",
+    "inversions"
+   ]
+  },
+  {
+   "slug": "close-pairs-by-difference",
+   "title": "Count the Pairs of Numbers That Differ by at Most d",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 935,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "coordinate-compression",
+    "range-count"
+   ]
+  },
+  {
+   "slug": "distinct-values-in-ranges",
+   "title": "How Many Different Numbers Are in a Range?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 936,
+   "tags": [
+    "fenwick-tree",
+    "offline-queries",
+    "distinct-count",
+    "sorting"
+   ]
+  },
+  {
+   "slug": "points-below-and-to-the-left",
+   "title": "How Many Points Are Below and to the Left of Each Point?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 937,
+   "tags": [
+    "fenwick-tree",
+    "dominance",
+    "sorting",
+    "offline"
+   ]
+  },
+  {
+   "slug": "last-person-in-the-circle",
+   "title": "Who Is the Last Person Left in the Circle?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 938,
+   "tags": [
+    "fenwick-tree",
+    "josephus",
+    "order-statistics",
+    "simulation"
+   ]
+  },
+  {
+   "slug": "crossing-chords",
+   "title": "How Many Pairs of Chords Cross?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 939,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "intervals",
+    "sweep"
+   ]
+  },
+  {
+   "slug": "longest-run-of-ones-in-a-range",
+   "title": "The Longest Run of Ones in a Range, With Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 940,
+   "tags": [
+    "segment-tree",
+    "merge-nodes",
+    "prefix-suffix",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "assign-to-a-range-sum-a-range",
+   "title": "Give a Whole Range One Value, Then Sum a Range",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 941,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "range-assign",
+    "range-sum"
+   ]
+  },
+  {
+   "slug": "add-to-a-range-ask-the-smallest",
+   "title": "Add to a Range, Ask for the Smallest Number in a Range",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 942,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "range-add",
+    "range-minimum"
+   ]
+  },
+  {
+   "slug": "balanced-brackets-in-a-range",
+   "title": "Is This Part of the Bracket String Balanced?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 943,
+   "tags": [
+    "segment-tree",
+    "brackets",
+    "prefix-minimum",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "switch-a-range-count-lamps-on",
+   "title": "Switch a Whole Range of Lamps, Count the Lamps That Are On",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 944,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "range-flip",
+    "counting"
+   ]
+  },
+  {
+   "slug": "find-the-kth-lamp-that-is-on",
+   "title": "Where Is the k-th Lamp That Is On?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 945,
+   "tags": [
+    "segment-tree",
+    "tree-descent",
+    "order-statistics",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "best-block-sum-in-a-range",
+   "title": "The Best Block Sum Inside a Range, With Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 946,
+   "tags": [
+    "segment-tree",
+    "maximum-subarray",
+    "merge-nodes",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "longest-rising-run-in-a-range",
+   "title": "The Longest Strictly Rising Run in a Range, With Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 947,
+   "tags": [
+    "segment-tree",
+    "merge-nodes",
+    "rising-run",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "product-of-a-range-modulo-a-prime",
+   "title": "The Product of a Range Modulo 1000000007, With Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 948,
+   "tags": [
+    "segment-tree",
+    "modular-arithmetic",
+    "product",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "restore-the-word-from-the-prefix-function",
+   "title": "Restore the Smallest Word From Its Prefix Function",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 949,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "construction",
+    "greedy"
+   ]
+  },
+  {
+   "slug": "how-often-does-each-prefix-occur",
+   "title": "How Many Times Does Each Prefix Occur in the Word?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 950,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "counting",
+    "dp-on-borders"
+   ]
+  },
+  {
+   "slug": "prefixes-that-are-repetitions",
+   "title": "Which Prefixes of the Word Are a Block Repeated Several Times?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 951,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "period",
+    "repetition"
+   ]
+  },
+  {
+   "slug": "border-that-also-occurs-inside",
+   "title": "The Longest Prefix That Is Also a Suffix and Appears in the Middle",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 952,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "borders",
+    "strings"
+   ]
+  },
+  {
+   "slug": "matches-in-a-circular-text",
+   "title": "How Many Starting Points of a Circular Text Spell the Pattern?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 953,
+   "tags": [
+    "kmp",
+    "pattern-matching",
+    "circular",
+    "strings"
+   ]
+  },
+  {
+   "slug": "prefixes-that-are-squares",
+   "title": "How Many Prefixes of the Word Are Two Equal Halves?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 954,
+   "tags": [
+    "z-function",
+    "squares",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "smallest-rotation-of-a-word",
+   "title": "The Alphabetically Smallest Rotation of a Word",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 955,
+   "tags": [
+    "strings",
+    "rotation",
+    "two-pointers",
+    "minimal-cyclic-shift"
+   ]
+  },
+  {
+   "slug": "split-into-descending-lyndon-words",
+   "title": "Split a Word Into Smaller and Smaller Lyndon Words",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 956,
+   "tags": [
+    "strings",
+    "lyndon-words",
+    "duval",
+    "factorization"
+   ]
+  },
+  {
+   "slug": "palindromes-around-each-centre",
+   "title": "The Longest Palindrome Around Each Letter",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 957,
+   "tags": [
+    "strings",
+    "manacher",
+    "palindromes",
+    "linear-time"
+   ]
+  },
+  {
+   "slug": "smallest-in-many-ranges",
+   "title": "The Smallest Number in Each of Many Ranges",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 958,
+   "tags": [
+    "sparse-table",
+    "range-minimum",
+    "static-queries",
+    "preprocessing"
+   ]
+  },
+  {
+   "slug": "gcd-of-many-ranges",
+   "title": "The Greatest Common Divisor of Each of Many Ranges",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 959,
+   "tags": [
+    "sparse-table",
+    "gcd",
+    "static-queries",
+    "idempotent"
+   ]
+  },
+  {
+   "slug": "spread-of-many-ranges",
+   "title": "The Difference Between the Largest and the Smallest in Each Range",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 960,
+   "tags": [
+    "sparse-table",
+    "range-maximum",
+    "range-minimum",
+    "static-queries"
+   ]
+  },
+  {
+   "slug": "path-sum-from-the-root-with-changes",
+   "title": "The Sum of the Values on the Way From the Root, With Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 961,
+   "tags": [
+    "fenwick-tree",
+    "euler-tour",
+    "tree",
+    "range-update"
+   ]
+  },
+  {
+   "slug": "largest-value-in-a-subtree-with-changes",
+   "title": "The Largest Value in a Subtree, With Changes",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 962,
+   "tags": [
+    "segment-tree",
+    "euler-tour",
+    "tree",
+    "subtree-query"
+   ]
+  },
+  {
+   "slug": "longest-overlap-of-two-words",
+   "title": "How Much Does the End of One Word Overlap the Start of the Other?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 963,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "overlap",
+    "strings"
+   ]
+  },
+  {
+   "slug": "subarrays-that-follow-a-pattern-of-ups-and-downs",
+   "title": "Count the Subarrays That Follow a Pattern of Rises and Falls",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 964,
+   "tags": [
+    "kmp",
+    "pattern-matching",
+    "arrays",
+    "sign-sequence"
+   ]
+  },
+  {
+   "slug": "occurrences-of-a-pattern-inside-ranges",
+   "title": "How Many Occurrences of the Pattern Lie Inside a Part of the Text?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 965,
+   "tags": [
+    "kmp",
+    "prefix-sums",
+    "queries",
+    "pattern-matching"
+   ]
+  },
+  {
+   "slug": "shortest-word-containing-both-words",
+   "title": "The Length of the Shortest Word That Contains Both Words",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 966,
+   "tags": [
+    "kmp",
+    "prefix-function",
+    "superstring",
+    "overlap"
+   ]
+  },
+  {
+   "slug": "count-of-a-value-in-ranges",
+   "title": "How Many Times Does a Value Appear in a Range?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 967,
+   "tags": [
+    "binary-search",
+    "sorting",
+    "static-queries",
+    "counting"
+   ]
+  },
+  {
+   "slug": "numbers-at-most-x-in-ranges",
+   "title": "How Many Numbers in a Range Are at Most x?",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 968,
+   "tags": [
+    "fenwick-tree",
+    "offline-queries",
+    "sorting",
+    "counting"
+   ]
+  },
+  {
+   "slug": "balance-point-of-weights",
+   "title": "The Balance Point of Changing Weights",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 969,
+   "tags": [
+    "fenwick-tree",
+    "weighted-median",
+    "binary-lifting",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "fewest-neighbour-swaps-to-match",
+   "title": "The Fewest Neighbour Swaps to Match Another Order",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 970,
+   "tags": [
+    "fenwick-tree",
+    "inversions",
+    "adjacent-swaps",
+    "matching"
+   ]
+  },
+  {
+   "slug": "rising-triples",
+   "title": "Count the Rising Triples",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 971,
+   "tags": [
+    "fenwick-tree",
+    "counting",
+    "coordinate-compression",
+    "subsequences"
+   ]
+  },
+  {
+   "slug": "rising-subsequences-of-length-k",
+   "title": "Rising Subsequences of Exactly k Numbers",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 972,
+   "tags": [
+    "fenwick-tree",
+    "dp",
+    "counting",
+    "subsequences",
+    "modular-arithmetic"
+   ]
+  },
+  {
+   "slug": "longest-window-with-few-inversions",
+   "title": "The Longest Window With Few Inversions",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 973,
+   "tags": [
+    "fenwick-tree",
+    "two-pointers",
+    "inversions",
+    "sliding-window"
+   ]
+  },
+  {
+   "slug": "count-blocks-with-sum-in-bounds",
+   "title": "Blocks With a Sum Between Two Bounds, Negatives Allowed",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 974,
+   "tags": [
+    "fenwick-tree",
+    "prefix-sum",
+    "coordinate-compression",
+    "counting"
+   ]
+  },
+  {
+   "slug": "nested-segment-pairs",
+   "title": "Pairs of Segments Where One Lies Inside the Other",
+   "topic": "advanced",
+   "difficulty": "medium",
+   "order": 975,
+   "tags": [
+    "fenwick-tree",
+    "sorting",
+    "intervals",
+    "counting"
+   ]
+  },
+  {
+   "slug": "assign-and-add-to-ranges-sum-a-range",
+   "title": "Two Kinds of Range Changes and a Range Sum",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 976,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "tag-composition",
+    "range-assign",
+    "range-add"
+   ]
+  },
+  {
+   "slug": "larger-numbers-in-a-range-online",
+   "title": "How Many Numbers in a Range Are Larger Than x? Questions Come Coded",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 977,
+   "tags": [
+    "merge-sort-tree",
+    "segment-tree",
+    "binary-search",
+    "online-queries"
+   ]
+  },
+  {
+   "slug": "kth-smallest-in-a-range",
+   "title": "The k-th Smallest Number in a Range",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 978,
+   "tags": [
+    "persistent-segment-tree",
+    "order-statistics",
+    "coordinate-compression",
+    "static-queries"
+   ]
+  },
+  {
+   "slug": "sum-of-squares-after-range-additions",
+   "title": "The Sum of Squares of a Range That Keeps Getting Additions",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 979,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "range-add",
+    "sum-of-squares"
+   ]
+  },
+  {
+   "slug": "smallest-in-a-range-and-how-often-it-occurs",
+   "title": "The Smallest Number in a Range and How Many Cells Hold It",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 980,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "range-add",
+    "minimum-count"
+   ]
+  },
+  {
+   "slug": "affine-changes-to-a-range-modulo",
+   "title": "Multiply and Add on a Range, Then Sum a Range",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 981,
+   "tags": [
+    "segment-tree",
+    "lazy-propagation",
+    "affine-tag",
+    "modular-arithmetic"
+   ]
+  },
+  {
+   "slug": "cap-a-range-and-sum-a-range",
+   "title": "Cap the Numbers of a Range, Then Sum a Range",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 982,
+   "tags": [
+    "segment-tree",
+    "segment-tree-beats",
+    "range-chmin",
+    "amortized-analysis"
+   ]
+  },
+  {
+   "slug": "repair-brackets-in-a-part-of-the-string",
+   "title": "The Fewest Flips to Balance a Part of the String",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 983,
+   "tags": [
+    "segment-tree",
+    "brackets",
+    "point-update",
+    "ordered-merge"
+   ]
+  },
+  {
+   "slug": "skyline-seen-from-the-left-after-changes",
+   "title": "How Many Buildings Can You See From the Left After Each Change?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 984,
+   "tags": [
+    "segment-tree",
+    "prefix-maximum",
+    "sqrt-log-trick",
+    "point-update"
+   ]
+  },
+  {
+   "slug": "kth-different-substring",
+   "title": "The k-th Different Substring in Dictionary Order",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 985,
+   "tags": [
+    "suffix-array",
+    "lcp",
+    "strings",
+    "counting"
+   ]
+  },
+  {
+   "slug": "count-keyword-occurrences-in-a-text",
+   "title": "Count All Keyword Occurrences in a Text",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 986,
+   "tags": [
+    "aho-corasick",
+    "trie",
+    "automaton",
+    "strings"
+   ]
+  },
+  {
+   "slug": "count-words-that-avoid-all-keywords",
+   "title": "How Many Words of a Given Length Contain No Forbidden Word?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 987,
+   "tags": [
+    "aho-corasick",
+    "dp",
+    "automaton",
+    "counting",
+    "modular-arithmetic"
+   ]
+  },
+  {
+   "slug": "how-far-do-two-suffixes-match",
+   "title": "How Far Do Two Positions of the Word Match?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 988,
+   "tags": [
+    "suffix-array",
+    "lcp",
+    "sparse-table",
+    "range-minimum"
+   ]
+  },
+  {
+   "slug": "border-after-each-push-or-pop",
+   "title": "The Longest Border of a Word That Grows and Shrinks at the End",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 989,
+   "tags": [
+    "prefix-function",
+    "kmp-automaton",
+    "rollback",
+    "strings"
+   ]
+  },
+  {
+   "slug": "shortest-unique-substring-from-each-position",
+   "title": "The Shortest Substring From Each Position That Occurs Only Once",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 990,
+   "tags": [
+    "suffix-array",
+    "lcp",
+    "strings",
+    "uniqueness"
+   ]
+  },
+  {
+   "slug": "longest-substring-occurring-k-times",
+   "title": "The Longest Block That Appears At Least k Times",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 991,
+   "tags": [
+    "suffix-array",
+    "lcp",
+    "sliding-window-minimum",
+    "strings"
+   ]
+  },
+  {
+   "slug": "matches-with-at-most-one-wrong-letter",
+   "title": "Where Does the Pattern Fit With At Most One Wrong Letter?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 992,
+   "tags": [
+    "z-function",
+    "strings",
+    "approximate-matching",
+    "prefix-suffix"
+   ]
+  },
+  {
+   "slug": "equal-pairs-in-ranges",
+   "title": "How Many Pairs of Equal Numbers Are Inside Each Range?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 993,
+   "tags": [
+    "mo's-algorithm",
+    "offline-queries",
+    "sqrt-decomposition",
+    "counting"
+   ]
+  },
+  {
+   "slug": "add-to-a-range-count-the-big-cells",
+   "title": "Add to a Range, Then Count the Cells That Are at Least x",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 994,
+   "tags": [
+    "sqrt-decomposition",
+    "sorted-blocks",
+    "binary-search",
+    "range-update"
+   ]
+  },
+  {
+   "slug": "cheapest-trips-with-squared-cost",
+   "title": "Split the Packages Into Trips When a Trip Costs the Square of Its Load",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 995,
+   "tags": [
+    "dp",
+    "convex-hull-trick",
+    "monotone-queue",
+    "optimization"
+   ]
+  },
+  {
+   "slug": "routes-with-an-exact-travel-time",
+   "title": "How Many Routes Take Exactly L Minutes?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 996,
+   "tags": [
+    "matrix-exponentiation",
+    "graph",
+    "counting",
+    "modular-arithmetic"
+   ]
+  },
+  {
+   "slug": "subsets-with-a-sum-at-most-t",
+   "title": "How Many Subsets Have a Sum of at Most T?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 997,
+   "tags": [
+    "meet-in-the-middle",
+    "two-pointers",
+    "sorting",
+    "subsets"
+   ]
+  },
+  {
+   "slug": "largest-xor-along-a-walk",
+   "title": "The Largest XOR of the Road Values Along a Walk",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 998,
+   "tags": [
+    "xor-basis",
+    "graph",
+    "cycle-space",
+    "bit-manipulation"
+   ]
+  },
+  {
+   "slug": "smallest-missing-number-in-ranges",
+   "title": "The Smallest Missing Number in Each Range",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 999,
+   "tags": [
+    "segment-tree",
+    "offline-queries",
+    "mex",
+    "descent"
+   ]
+  },
+  {
+   "slug": "different-palindromes-in-every-prefix",
+   "title": "How Many Different Palindromes Are in Every Prefix of the Word?",
+   "topic": "advanced",
+   "difficulty": "hard",
+   "order": 1000,
+   "tags": [
+    "palindromic-tree",
+    "eertree",
+    "strings",
+    "amortized-analysis"
+   ]
   }
  ]
 }
