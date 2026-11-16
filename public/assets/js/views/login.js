@@ -279,7 +279,7 @@ export function loginView(ctx) {
       h('p', { class: 'sub', text: config.googleClientId
         ? (signup ? 'Continue with Google, or fill in the form and we will email you a code. No password needed.' : 'Continue with Google, or ask for a one-time code by email.')
         : (signup ? 'We will email you a code to confirm it is really you. No password needed.' : 'Enter your email and we will send you a one-time code.') }),
-      google,
+      ...(google ? [google] : []),
       form
     );
     const first = google ? null : (fields.firstName || fields.email);
