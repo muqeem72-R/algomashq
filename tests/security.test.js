@@ -90,7 +90,7 @@ test('the sandbox is a different site from the main site, so the browser keeps t
   const javaOrigin = new URL(/JAVA_ORIGIN\s*=\s*"([^"]+)"/.exec(read('wrangler.toml'))[1]);
   assert.equal(javaOrigin.protocol, 'https:');
   assert.ok(javaOrigin.hostname.endsWith('.workers.dev'), 'workers.dev is a public suffix, so each name there is its own site');
-  assert.ok(javaOrigin.hostname.startsWith('algomashq-java.'));
+  assert.ok(javaOrigin.hostname.startsWith('algomashq-run.'));
 });
 
 test('the sandbox page and its files exist and are small enough for one static asset each', () => {

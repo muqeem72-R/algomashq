@@ -3,7 +3,7 @@
 // Java runs with CheerpJ, which needs 'unsafe-eval'. That is not allowed on this site, so Java lives on the other
 // origin. The only link between the two pages is postMessage, and both sides check who is talking to them.
 //
-//   const client = createJavaClient('https://algomashq-java.example.workers.dev');
+//   const client = createJavaClient('https://algomashq-run.example.workers.dev');
 //   await client.prepare();
 //   const { ok, program, log } = await client.compile(code);
 //   await client.runTests(program, ['input 1', 'input 2'], { timeLimitMs: 5000, onResult });

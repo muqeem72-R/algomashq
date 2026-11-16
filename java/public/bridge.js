@@ -2,7 +2,7 @@
 // Worker that runs Java, and passes messages in both directions. Nothing else can talk to it.
 
 // The only pages allowed to use this runner. The first one is the live site; the others are for local development.
-const ALLOWED_PARENTS = ['https://algomashq.mukeemkhan.workers.dev', 'http://localhost:8788', 'http://127.0.0.1:8788'];
+const ALLOWED_PARENTS = ['https://algomashq.muqeem.workers.dev', 'http://localhost:8788', 'http://127.0.0.1:8788'];
 
 const MAX_CODE = 200 * 1024;          // characters of Java source
 const MAX_TESTS_TOTAL = 24 * 1024 * 1024;

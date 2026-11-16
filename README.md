@@ -112,7 +112,7 @@ is fine for learning, but contests or a leaderboard would need a server-side che
 (the account database is used for it in a later phase).
 
 **Why Java lives on a second origin.** CheerpJ needs `unsafe-eval` in the Content-Security-Policy, which the main site must never
-allow. So Java runs in a tiny second Worker (`java/`, deployed as `algomashq-java`), on its own address. The main site embeds
+allow. So Java runs in a tiny second Worker (`java/`, deployed as `algomashq-run`), on its own address. The main site embeds
 it in a hidden iframe and talks to it only with `postMessage`; both sides check who they are talking to, and only the main
 site may embed the sandbox. The sandbox has no cookies, no login and no access to the site's data. The Java runtime itself is
 loaded from CheerpJ's CDN, under CheerpJ's free Community license for non-commercial use. That license asks for the credit
@@ -285,8 +285,8 @@ A problem is only added when its Python, C++ and Java solutions are all Accepted
 
 6. Redeploy, open the site and sign up. The first member to sign up gets sequence number `001` (for example `mk001A`).
 
-   **Java (a second Worker).** Run `npm run deploy:java` once. It creates the Worker `algomashq-java` (free, static files only) at
-   `https://algomashq-java.<your-subdomain>.workers.dev`. That address must match `JAVA_ORIGIN` in `wrangler.toml`, the
+   **Java (a second Worker).** Run `npm run deploy:java` once. It creates the Worker `algomashq-run` (free, static files only) at
+   `https://algomashq-run.<your-subdomain>.workers.dev`. That address must match `JAVA_ORIGIN` in `wrangler.toml`, the
    `frame-src` in `public/_headers`, and the page list in `java/public/_headers` and `java/public/bridge.js` (a test checks
    that they agree). Without `JAVA_ORIGIN` the site simply offers Python and C++ only.
 

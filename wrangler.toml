@@ -21,12 +21,12 @@ run_worker_first = ["/api/*"]
 [[d1_databases]]
 binding = "DB"
 database_name = "algomashq"
-database_id = "c1fa11d5-8968-424d-a6c1-d8856e047636"
+database_id = "6a1c9e95-3bf1-48a0-b77e-3e43cea2b174"
 
 [vars]
 APP_NAME = "AlgoMashq"
 # Public Turnstile site key (Cloudflare dashboard > Turnstile). It is public by design; the secret key is not stored here.
-TURNSTILE_SITE_KEY = "0x4AAAAAAFyUOqDaBEATu8SS"
+TURNSTILE_SITE_KEY = "0x4AAAAAAGDC9XCNgYSO79lj"
 # Sender shown on login emails. It must be a sender or domain verified in Brevo.
 BREVO_SENDER_EMAIL = "muqeem7244@gmail.com"
 BREVO_SENDER_NAME = "AlgoMashq"
@@ -37,4 +37,4 @@ GOOGLE_CLIENT_ID = ""
 #   npx wrangler secret put ADMIN_EMAILS
 # Nobody is an admin while it is not set.
 # Where the Java sandbox lives (a second Worker, see java/). Java is switched off when this is empty.
-JAVA_ORIGIN = "https://algomashq-java.mukeemkhan.workers.dev"
+JAVA_ORIGIN = "https://algomashq-run.muqeem.workers.dev"

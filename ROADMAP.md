@@ -79,7 +79,7 @@ About 10 topics x 3 levels x 5-10 problems = roughly 150-300 problems. Each prob
 
 - The name AlgoMashq is decided. The site runs on the free Cloudflare address `algomashq.<subdomain>.workers.dev`.
   A paid custom domain (`algomashq.dev`) is optional and can wait.
-- Java runs in the product through a second Worker (algomashq-java). Open points: the CheerpJ license credit (the site no longer shows it in the sidebar, see section 12) and the 75 MB first download.
+- Java runs in the product through a second Worker (algomashq-run). Open points: the CheerpJ license credit (the site no longer shows it in the sidebar, see section 12) and the 75 MB first download.
 - Git auto-deploy: pushing to GitHub should deploy the Worker through Cloudflare's Workers Builds. Builds were stuck
   during a Cloudflare incident on 2026-11-03, so the first deployments were made with `npm run deploy`. Confirm that a
   push now deploys by itself.
@@ -104,7 +104,7 @@ Decisions made while building it:
   TypeLab (no shared code or design).
 - A welcome tour runs once for a new member (remembered on the server) and can be replayed from Settings.
 
-Live at https://algomashq.mukeemkhan.workers.dev (one Cloudflare Worker, a D1 database, a Turnstile widget and Brevo
+Live at https://algomashq.muqeem.workers.dev (one Cloudflare Worker, a D1 database, a Turnstile widget and Brevo
 for the login emails, all on free plans). A real sign-up, email code and login worked on the live site on 2026-11-03.
 
 Verified: 16 unit tests (`npm test`), 53 API checks against a local server, and full browser runs (sign-up with and
@@ -158,7 +158,7 @@ What exists:
   Memory Limit, Output Limit, Compile Error. Hidden test data is never shown.
 - Python (Pyodide) and C++ (clang in WebAssembly) run in Web Workers inside the learner's browser. A program that passes its
   time limit is stopped by terminating its worker.
-- Java (CheerpJ 5, Java 21 and javac in the browser) runs in a **second Worker on its own origin**, `algomashq-java`, because
+- Java (CheerpJ 5, Java 21 and javac in the browser) runs in a **second Worker on its own origin**, `algomashq-run`, because
   CheerpJ needs `unsafe-eval`, which the main site never allows. The main site embeds it in a hidden iframe and talks to it only
   with `postMessage`; both sides check the origin. A program that never ends is stopped by terminating the Java worker inside
   the sandbox. All the tests of one submission run in one Java process, each in a fresh class loader, so static fields start
@@ -689,7 +689,7 @@ All ten topics are released: 1000 problems.
 
 1. **Google Cloud console** (free): create a project, then APIs & Services > OAuth consent screen (External; app name AlgoMashq; the
    support email; add the scopes `openid`, `email`, `profile`; publish the app so that anyone can sign in), then Credentials > Create
-   credentials > OAuth client ID > Web application. Under "Authorized JavaScript origins" add `https://algomashq.mukeemkhan.workers.dev`
+   credentials > OAuth client ID > Web application. Under "Authorized JavaScript origins" add `https://algomashq.muqeem.workers.dev`
    (and `http://localhost:8788` for local work). No redirect URI is needed. Copy the client id (`...apps.googleusercontent.com`).
 2. Put the client id in `wrangler.toml` (`GOOGLE_CLIENT_ID`; it is public by design) and set the admin emails as a secret, so that they do not
 3. Add the new tables to the real database once: `npx wrangler d1 execute algomashq --remote --file=db/schema.sql` (every statement is
